@@ -1,0 +1,19 @@
+mysql: &mysql
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  pool: 5
+  host: localhost
+  username: ruby
+
+development:
+  database: tueetion_development
+  <<: *mysql
+
+test:
+  database: tueetion_test
+  <<: *mysql
+
+production:
+  database: tueetion
+  <<: *mysql
