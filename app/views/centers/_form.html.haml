@@ -1,0 +1,13 @@
+= form_for @center do |f|
+  - if @center.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@center.errors.count, "error")} prohibited this center from being saved:"
+      %ul
+        - @center.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .actions
+    = f.submit 'Save'
