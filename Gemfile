@@ -34,8 +34,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :development do
-  gem 'haml', '~> 4.0.3'
+group :development, :test do
+  gem 'haml-rails', '~> 0.4'
 end
 
 # Use ActiveModel has_secure_password
