@@ -13,7 +13,7 @@
 <!-- Set the viewport width to device width for mobile -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+<title>Tueetion</title>
 
 <%= stylesheet_link_tag    "application" %>
 <%= javascript_include_tag "vendor/custom.modernizr" %>
@@ -21,10 +21,47 @@
 </head>
 
 <body>
+  <div class="row">
+    <div class="large-12 columns">
+      <!-- Navigation -->
+      <div class="row">
+        <div class="large-12 columns">
 
-<%= yield %>
+          <nav class="top-bar">
+            <ul class="title-area">
+              <!-- Title Area -->
+              <li class="name">
+                <h1>
+                  <a href="#">Tueetion</a>
+                </h1>
+              </li>
+              <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+            </ul>
 
+            <section class="top-bar-section">
+              <!-- Right Nav Section -->
+              <ul class="right">
+                <li class="divider hide-for-small"></li>
+                <li class="has-dropdown">
+                  <a href="#">Main Item 3</a>
+                  <ul class="dropdown">
+                    <li><a href="#">Dropdown Option</a></li>
+                    <li><a href="#">Dropdown Option</a></li>
+                    <li><a href="#">Dropdown Option</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </section>
 
+          </nav>
+        </div>
+      </div>
+      <!-- End Navigation -->
+      <%= yield %>
+      <!-- Footer -->
+      <!-- End Footer -->
+    </div>
+  </div>
 <%= javascript_include_tag "application" %>
 </body>
 </html>
