@@ -11,12 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130628180104) do
+ActiveRecord::Schema.define(version: 20130820141454) do
 
   create_table "centers", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "centers", ["name"], name: "index_centers_on_name", unique: true, using: :btree
 
 end

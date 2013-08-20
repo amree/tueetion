@@ -18,7 +18,7 @@ class CentersControllerTest < ActionController::TestCase
 
   test "should create center" do
     assert_difference('Center.count') do
-      post :create, center: { name: @center.name }
+      post :create, center: { name: "New name" }
     end
 
     assert_redirected_to center_path(assigns(:center))
