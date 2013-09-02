@@ -32,7 +32,7 @@
               <!-- Title Area -->
               <li class="name">
                 <h1>
-                  <a href="#">Tueetion</a>
+                  <a href="/">Tueetion</a>
                 </h1>
               </li>
               <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -43,11 +43,12 @@
               <ul class="right">
                 <li class="divider hide-for-small"></li>
                 <li class="has-dropdown">
-                  <a href="#">Main Item 3</a>
+                  <a href="#">Account</a>
                   <ul class="dropdown">
-                    <li><a href="#">Dropdown Option</a></li>
-                    <li><a href="#">Dropdown Option</a></li>
-                    <li><a href="#">Dropdown Option</a></li>
+                    <li><a href="<%= new_user_session_path %>">Sign In</a></li>
+                    <li><a href="<%= destroy_user_session_path %>" data-method="delete">Sign Out</a></li>
+                    <li><a href="<%= edit_user_registration_path %>">Edit</a></li>
+                    <li><a href="<%= new_user_registration_path %>">Register</a></li>
                   </ul>
                 </li>
               </ul>
@@ -56,6 +57,20 @@
           </nav>
         </div>
       </div>
+
+      <% unless notice.nil? %>
+        <div data-alert class="alert-box">
+          <%= notice %>
+          <a href="" class="close">×</a>
+        </div>
+      <% end %>
+      <% unless alert.nil? %>
+        <div data-alert class="alert-box alert">
+          <%= alert %>
+          <a href="" class="close">×</a>
+        </div>
+      <% end %>
+
       <!-- End Navigation -->
       <%= yield %>
       <!-- Footer -->
