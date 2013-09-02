@@ -1,19 +1,23 @@
 %h1 Listing centers
 
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
+.row
+  .large-12.columns
+    %table{ width: "100%" }
+      %thead
+        %tr
+          %th Name
+          %th asdf
+          %th aa
+          %th
 
-  - @centers.each do |center|
-    %tr
-      %td= center.name
-      %td= link_to 'Show', center
-      %td= link_to 'Edit', edit_center_path(center)
-      %td= link_to 'Destroy', center, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %tbody
+        - @centers.each do |center|
+          %tr
+            %td= center.name
+            %td= link_to 'Show', center
+            %td= link_to 'Edit', edit_center_path(center)
+            %td= link_to 'Destroy', center, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
+    %br
 
 = link_to 'New Center', new_center_path
