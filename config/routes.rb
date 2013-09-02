@@ -1,4 +1,6 @@
 Tueetion::Application.routes.draw do
+  devise_for :users
+
   resources :centers
 
   root "centers#index"
