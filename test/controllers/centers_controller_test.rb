@@ -2,9 +2,10 @@ require 'test_helper'
 
 class CentersControllerTest < ActionController::TestCase
   setup do
-    sign_in users(:user)
-
+    @user = users(:user)
     @center = centers(:pakar)
+
+    sign_in @user
   end
 
   test "should get index" do
@@ -15,11 +16,20 @@ class CentersControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
+    Center.any_instance.stubs("owner_count").returns(0)
+
     get :new
     assert_response :success
   end
 
+  test "should not get new since the user already has a center" do
+    get :new
+    assert_redirected_to centers_path
+  end
+
   test "should create center" do
+    Center.any_instance.stubs("owner_count").returns(0)
+
     assert_difference('Center.count') do
       post :create, center: { name: "New name" }
     end

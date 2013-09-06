@@ -12,7 +12,11 @@ class CentersController < ApplicationController
 
   # GET /centers/new
   def new
-    @center = Center.new
+    if current_user.center.try(:owner_count) > 0
+      redirect_to centers_path, alert: 'Owner can only have one center.'
+    else
+      @center = Center.new
+    end
   end
 
   # GET /centers/1/edit
