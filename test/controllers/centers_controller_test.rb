@@ -2,11 +2,14 @@ require 'test_helper'
 
 class CentersControllerTest < ActionController::TestCase
   setup do
-    @center = centers(:kota_bharu)
+    sign_in users(:user)
+
+    @center = centers(:pakar)
   end
 
   test "should get index" do
     get :index
+
     assert_response :success
     assert_not_nil assigns(:centers)
   end
