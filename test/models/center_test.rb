@@ -2,11 +2,11 @@ require 'test_helper'
 
 class CenterTest < ActiveSupport::TestCase
   setup do
-    @kota_bharu = centers(:kota_bharu)
+    @pakar = centers(:pakar)
   end
 
   test "name should not be nil" do
-    @dup = @kota_bharu.dup
+    @dup = @pakar.dup
 
     @dup.name = nil
 
@@ -14,7 +14,7 @@ class CenterTest < ActiveSupport::TestCase
   end
 
   test "name should be unique" do
-    @dup = @kota_bharu.dup
+    @dup = @pakar.dup
 
     assert @dup.invalid?, "Name should be unique"
   end
