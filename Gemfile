@@ -39,6 +39,11 @@ group :development, :test do
   gem 'haml-rails', '~> 0.4'
 end
 
+# Pretty console print
+gem 'hirb'
+gem 'awesome_print'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
