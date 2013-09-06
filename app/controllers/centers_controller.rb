@@ -22,6 +22,7 @@ class CentersController < ApplicationController
   # POST /centers
   def create
     @center = Center.new(center_params)
+    @center.user_id = current_user.id
 
     if @center.save
       redirect_to @center, notice: 'Center was successfully created.'
