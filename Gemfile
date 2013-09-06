@@ -54,4 +54,7 @@ gem 'awesome_print'
 # gem 'capistrano', group: :development
 
 # Use debugger
-gem 'debugger', group: [:development, :test]
+group :development, :test do
+  gem 'debugger'
+  gem 'mocha', require: false
+end
