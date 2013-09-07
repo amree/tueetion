@@ -16,9 +16,11 @@ class CentersControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    Center.any_instance.stubs("owner_count").returns(0)
+    sign_out @user
+    sign_in  users(:user_no_center)
 
     get :new
+
     assert_response :success
   end
 
@@ -29,7 +31,8 @@ class CentersControllerTest < ActionController::TestCase
   end
 
   test "should create center" do
-    Center.any_instance.stubs("owner_count").returns(0)
+    sign_out @user
+    sign_in users(:user_no_center)
 
     assert_difference('Center.count') do
       post :create, center: { name: "New name" }

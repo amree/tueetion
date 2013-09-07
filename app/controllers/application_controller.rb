@@ -5,15 +5,11 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_user!
 
-  def after_sign_in_path_for(resource)
-    session[:center_id] = Center.find_by_user_id(current_user.id).try(:id)
-    super
-  end
-
   private
 
   def current_center
-    @current_center ||= Center.find_by_id(session[:center_id]) if session[:center_id]
+    @current_center = current_user.center
   end
+
   helper_method :current_center
 end
