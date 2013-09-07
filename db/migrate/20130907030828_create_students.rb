@@ -1,7 +1,7 @@
 class CreateStudents < ActiveRecord::Migration
   def change
     create_table :students do |t|
-      t.references :center
+      t.references :center, index: true
       t.string :ic
       t.string :first_name
       t.string :last_name

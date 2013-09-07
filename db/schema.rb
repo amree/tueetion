@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20130907184734) do
     t.datetime "updated_at"
   end
 
+  add_index "students", ["center_id"], name: "index_students_on_center_id", using: :btree
+
   create_table "subjects", force: true do |t|
     t.integer  "center_id"
     t.string   "name"
