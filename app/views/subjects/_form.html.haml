@@ -1,0 +1,19 @@
+= form_for @subject do |f|
+  - if @subject.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@subject.errors.count, "error")} prohibited this subject from being saved:"
+      %ul
+        - @subject.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :center
+    = f.text_field :center
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :is_active
+    = f.check_box :is_active
+  .actions
+    = f.submit 'Save'

@@ -4,6 +4,7 @@ Tueetion::Application.routes.draw do
 
   resources :centers
   resources :students
+  resources :subjects
 
   root "centers#index"
   # The priority is based upon order of creation: first created -> highest priority.

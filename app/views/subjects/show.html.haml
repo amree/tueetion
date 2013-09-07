@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Center:
+  = @subject.center
+%p
+  %b Name:
+  = @subject.name
+%p
+  %b Is active:
+  = @subject.is_active
+
+= link_to 'Edit', edit_subject_path(@subject)
+\|
+= link_to 'Back', subjects_path
