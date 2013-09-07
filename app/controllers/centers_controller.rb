@@ -37,11 +37,11 @@ class CentersController < ApplicationController
 
   # PATCH/PUT /centers/1
   def update
-      if @center.update(center_params)
-        redirect_to @center, notice: 'Center was successfully updated.'
-      else
-        render action: 'edit'
-      end
+    if @center.update(center_params)
+      redirect_to @center, notice: 'Center was successfully updated.'
+    else
+      render action: 'edit'
+    end
   end
 
   # DELETE /centers/1

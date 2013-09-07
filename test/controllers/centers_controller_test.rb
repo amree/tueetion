@@ -24,6 +24,7 @@ class CentersControllerTest < ActionController::TestCase
 
   test "should not get new since the user already has a center" do
     get :new
+
     assert_redirected_to centers_path
   end
 
