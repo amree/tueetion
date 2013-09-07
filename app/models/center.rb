@@ -1,5 +1,6 @@
 class Center < ActiveRecord::Base
   belongs_to :user
+  has_many :centers
 
   validates :user, :name, presence: true
   validates :name, uniqueness: true
