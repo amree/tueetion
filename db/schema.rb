@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20130907030828) do
     t.string   "email"
     t.string   "phone"
     t.string   "school_name"
+    t.boolean  "is_active",   default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

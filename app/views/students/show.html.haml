@@ -22,6 +22,10 @@
   %b School name:
   = @student.school_name
 
+%p
+  %b Active:
+  = @student.is_active
+
 = link_to 'Edit', edit_student_path(@student)
 \|
 = link_to 'Back', students_path

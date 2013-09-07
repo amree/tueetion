@@ -9,6 +9,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :email
       t.string :phone
       t.string :school_name
+      t.boolean :is_active, default: true
 
       t.timestamps
     end
