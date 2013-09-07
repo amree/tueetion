@@ -12,8 +12,8 @@ class CentersController < ApplicationController
 
   # GET /centers/new
   def new
-    if current_user.center.try(:owner_count) > 0
-      redirect_to centers_path, alert: 'Owner can only have one center.'
+    if session[:center_id].present? && current_user.center.owner_count > 0
+      redirect_to centers_path, alert: 'You can have only one center.'
     else
       @center = Center.new
     end
@@ -29,6 +29,7 @@ class CentersController < ApplicationController
     @center.user_id = current_user.id
 
     if @center.save
+      session[:center_id] = @center.id
       redirect_to @center, notice: 'Center was successfully created.'
     else
       render action: 'new'

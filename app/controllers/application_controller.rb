@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
 
   def after_sign_in_path_for(resource)
-    session[:center_id] = Center.find_by_user_id(current_user.id).id
+    session[:center_id] = Center.find_by_user_id(current_user.id).try(:id)
     super
   end
 
