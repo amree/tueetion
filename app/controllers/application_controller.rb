@@ -4,4 +4,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :authenticate_user!
+
+  def after_sign_in_path_for(resource)
+    session[:center_id] = Center.find_by_user_id(current_user.id).id
+    super
+  end
+
+  private
+
+  def current_center
+    @current_center ||= Center.find_by_id(session[:center_id]) if session[:center_id]
+  end
+  helper_method :current_center
 end
