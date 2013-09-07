@@ -1,10 +1,11 @@
 class StudentsController < ApplicationController
+  before_action :verify_center
   before_action :set_student, only: [:show, :edit, :update, :destroy]
 
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+    @students = current_center.students.to_a
   end
 
   # GET /students/1
@@ -24,7 +25,7 @@ class StudentsController < ApplicationController
   # POST /students
   # POST /students.json
   def create
-    @student = Student.new(student_params)
+    @student = current_center.students.new(student_params)
 
     respond_to do |format|
       if @student.save
@@ -64,11 +65,17 @@ class StudentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student
-      @student = Student.find(params[:id])
+      @student = current_center.students.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
       params.require(:student).permit(:ic, :first_name, :last_name, :dob, :email, :phone, :school_name)
+    end
+
+    def verify_center
+      if current_center.nil?
+        redirect_to centers_url, alert: 'You need to set a tuition center first.'
+      end
     end
 end
