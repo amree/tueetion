@@ -3,6 +3,8 @@ class CentersController < ApplicationController
 
   # GET /centers
   def index
+    # TODO: This is not a safe coding, it'll load every center
+    # not limited to the current user
     @centers = Center.all
   end
 
@@ -53,7 +55,7 @@ class CentersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_center
-      @center = Center.find(params[:id])
+      @center = Center.where("id = ? and user_id = ?", params[:id], current_user.id).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

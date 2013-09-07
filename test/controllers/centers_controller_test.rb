@@ -3,6 +3,7 @@ require 'test_helper'
 class CentersControllerTest < ActionController::TestCase
   setup do
     @user = users(:user)
+    @user_no_center = users(:user_no_center)
     @center = centers(:pakar)
 
     sign_in @user
@@ -32,31 +33,40 @@ class CentersControllerTest < ActionController::TestCase
 
   test "should create center" do
     sign_out @user
-    sign_in users(:user_no_center)
+    sign_in  @user_no_center
 
     assert_difference('Center.count') do
       post :create, center: { name: "New name" }
     end
 
     assert_redirected_to center_path(assigns(:center))
+    assert_equal @user_no_center.id, Center.last.user.id
   end
 
   test "should show center" do
     get :show, id: @center
+
     assert_response :success
+    assert_equal @user.id, @center.user.id
   end
 
   test "should get edit" do
     get :edit, id: @center
+
     assert_response :success
+    assert_equal @user.id, @center.user.id
   end
 
   test "should update center" do
     patch :update, id: @center, center: { name: @center.name }
+
     assert_redirected_to center_path(assigns(:center))
+    assert_equal @user.id, @center.user.id
   end
 
   test "should destroy center" do
+    assert_equal @user.id, @center.user.id
+
     assert_difference('Center.count', -1) do
       delete :destroy, id: @center
     end
