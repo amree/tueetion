@@ -1,10 +1,11 @@
 class SubjectsController < ApplicationController
+  before_action :verify_center
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
 
   # GET /subjects
   # GET /subjects.json
   def index
-    @subjects = Subject.all
+    @subjects = current_center.subjects.to_a
   end
 
   # GET /subjects/1
@@ -24,7 +25,7 @@ class SubjectsController < ApplicationController
   # POST /subjects
   # POST /subjects.json
   def create
-    @subject = Subject.new(subject_params)
+    @subject = current_center.subjects.new(subject_params)
 
     respond_to do |format|
       if @subject.save
@@ -64,11 +65,17 @@ class SubjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_subject
-      @subject = Subject.find(params[:id])
+      @subject = current_center.subjects.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subject_params
       params.require(:subject).permit(:center_id, :name, :is_active)
+    end
+
+    def verify_center
+      if current_center.nil?
+        redirect_to centers_url, alert: 'You need to set a tuition center first.'
+      end
     end
 end
