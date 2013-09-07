@@ -63,19 +63,20 @@ class StudentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_student
-      @student = current_center.students.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def student_params
-      params.require(:student).permit(:ic, :first_name, :last_name, :dob, :email, :phone, :school_name, :is_active)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_student
+    @student = current_center.students.find(params[:id])
+  end
 
-    def verify_center
-      if current_center.nil?
-        redirect_to centers_url, alert: 'You need to set a tuition center first.'
-      end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def student_params
+    params.require(:student).permit(:ic, :first_name, :last_name, :dob, :email, :phone, :school_name, :is_active)
+  end
+
+  def verify_center
+    if current_center.nil?
+      redirect_to centers_url, alert: 'You need to set a tuition center first.'
     end
+  end
 end

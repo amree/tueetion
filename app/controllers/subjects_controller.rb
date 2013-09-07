@@ -63,19 +63,20 @@ class SubjectsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_subject
-      @subject = current_center.subjects.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def subject_params
-      params.require(:subject).permit(:center_id, :name, :is_active)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_subject
+    @subject = current_center.subjects.find(params[:id])
+  end
 
-    def verify_center
-      if current_center.nil?
-        redirect_to centers_url, alert: 'You need to set a tuition center first.'
-      end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def subject_params
+    params.require(:subject).permit(:center_id, :name, :is_active)
+  end
+
+  def verify_center
+    if current_center.nil?
+      redirect_to centers_url, alert: 'You need to set a tuition center first.'
     end
+  end
 end
