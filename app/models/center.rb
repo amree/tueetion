@@ -1,6 +1,6 @@
 class Center < ActiveRecord::Base
   belongs_to :user
-  has_many :centers
+  has_many :students
 
   validates :user, :name, presence: true
   validates :name, uniqueness: true
