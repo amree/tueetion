@@ -2,6 +2,7 @@ class Center < ActiveRecord::Base
   belongs_to :user
   has_many :students
   has_many :subjects
+  has_many :quantity_fees
 
   validates :user, :name, presence: true
   validates :name, uniqueness: true
