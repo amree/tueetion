@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130907184734) do
+ActiveRecord::Schema.define(version: 20130911135913) do
 
   create_table "centers", force: true do |t|
     t.integer  "user_id"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 20130907184734) do
 
   add_index "centers", ["name"], name: "index_centers_on_name", unique: true, using: :btree
   add_index "centers", ["user_id"], name: "index_centers_on_user_id", using: :btree
+
+  create_table "quantity_fees", force: true do |t|
+    t.integer  "center_id"
+    t.integer  "subject_id"
+    t.decimal  "price",      precision: 4, scale: 2
+    t.boolean  "is_active",                          default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "quantity_fees", ["center_id"], name: "index_quantity_fees_on_center_id", using: :btree
+  add_index "quantity_fees", ["subject_id"], name: "index_quantity_fees_on_subject_id", using: :btree
 
   create_table "students", force: true do |t|
     t.integer  "center_id"

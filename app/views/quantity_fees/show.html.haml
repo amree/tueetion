@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Subject:
+  = @quantity_fee.subject
+%p
+  %b Price:
+  = @quantity_fee.price
+%p
+  %b Is active:
+  = @quantity_fee.is_active
+
+= link_to 'Edit', edit_quantity_fee_path(@quantity_fee)
+\|
+= link_to 'Back', quantity_fees_path

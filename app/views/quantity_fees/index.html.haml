@@ -1,0 +1,23 @@
+%h1 Listing quantity_fees
+
+%table
+  %tr
+    %th Subject
+    %th Price
+    %th Is active
+    %th
+    %th
+    %th
+
+  - @quantity_fees.each do |quantity_fee|
+    %tr
+      %td= quantity_fee.subject
+      %td= quantity_fee.price
+      %td= quantity_fee.is_active
+      %td= link_to 'Show', quantity_fee
+      %td= link_to 'Edit', edit_quantity_fee_path(quantity_fee)
+      %td= link_to 'Destroy', quantity_fee, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Quantity fee', new_quantity_fee_path

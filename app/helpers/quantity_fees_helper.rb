@@ -1,0 +1,2 @@
+module QuantityFeesHelper
+end
