@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Center:
+  = @combination_fee.center
+%p
+  %b Name:
+  = @combination_fee.name
+%p
+  %b Min subjects:
+  = @combination_fee.min_subjects
+%p
+  %b Max subjects:
+  = @combination_fee.max_subjects
+%p
+  %b Price:
+  = @combination_fee.price
+%p
+  %b Is active:
+  = @combination_fee.is_active
+
+= link_to 'Edit', edit_combination_fee_path(@combination_fee)
+\|
+= link_to 'Back', combination_fees_path

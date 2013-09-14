@@ -1,0 +1,29 @@
+%h1 Listing combination_fees
+
+%table
+  %tr
+    %th Center
+    %th Name
+    %th Min subjects
+    %th Max subjects
+    %th Price
+    %th Is active
+    %th
+    %th
+    %th
+
+  - @combination_fees.each do |combination_fee|
+    %tr
+      %td= combination_fee.center
+      %td= combination_fee.name
+      %td= combination_fee.min_subjects
+      %td= combination_fee.max_subjects
+      %td= combination_fee.price
+      %td= combination_fee.is_active
+      %td= link_to 'Show', combination_fee
+      %td= link_to 'Edit', edit_combination_fee_path(combination_fee)
+      %td= link_to 'Destroy', combination_fee, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Combination fee', new_combination_fee_path

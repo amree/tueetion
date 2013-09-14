@@ -2,3 +2,18 @@ bm:
   center: pakar
   name: Bahasa Melayu
   is_active: true
+
+bi:
+  center: pakar
+  name: Bahasa Inggeris
+  is_active: true
+
+math:
+  center: pakar
+  name: Matematik
+  is_active: true
+
+sains:
+  center: pakar
+  name: Sains
+  is_active: true
