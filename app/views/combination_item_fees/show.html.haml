@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Combination item fee:
+  = @combination_item_fee.combination_fee
+%p
+  %b Subject:
+  = @combination_item_fee.subject
+
+= link_to 'Edit', edit_combination_fee_combination_item_fee_path(@combination_fee, @combination_item_fee)
+\|
+= link_to 'Back', @combination_fee

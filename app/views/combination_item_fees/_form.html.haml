@@ -1,0 +1,13 @@
+= form_for [@combination_fee, @combination_item_fee] do |f|
+  - if @combination_item_fee.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@combination_item_fee.errors.count, "error")} prohibited this combination_item_fee from being saved:"
+      %ul
+        - @combination_item_fee.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :subject_id
+    = f.text_field :subject_id
+  .actions
+    = f.submit 'Save'

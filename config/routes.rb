@@ -3,7 +3,9 @@ Tueetion::Application.routes.draw do
   devise_for :users
 
   resources :centers
-  resources :combination_fees
+  resources :combination_fees do
+    resources :combination_item_fees
+  end
   resources :quantity_fees
   resources :students
   resources :subjects
