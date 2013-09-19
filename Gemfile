@@ -27,7 +27,6 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem 'zurb-foundation', '~> 4.2.3'
 gem 'devise', '~> 3.0.3'
 
 group :doc do
