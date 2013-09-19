@@ -12,67 +12,63 @@
 </head>
 
 <body>
-  <div class="row">
-    <div class="large-12 columns">
-      <!-- Navigation -->
-      <div class="row">
-        <div class="large-12 columns">
-
-          <nav class="top-bar">
-            <ul class="title-area">
-              <!-- Title Area -->
-              <li class="name">
-                <h1>
-                  <a href="/">Tueetion</a>
-                </h1>
-              </li>
-              <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-            </ul>
-
-            <section class="top-bar-section">
-              <!-- Right Nav Section -->
-              <ul class="right">
-                <li class="divider hide-for-small"></li>
-                <li class="has-dropdown">
-                  <a href="#">Account</a>
-                  <ul class="dropdown">
-                    <li><a href="<%= new_user_session_path %>">Sign In</a></li>
-                    <li><a href="<%= destroy_user_session_path %>" data-method="delete">Sign Out</a></li>
-                    <li><a href="<%= edit_user_registration_path %>">Edit</a></li>
-                    <li><a href="<%= new_user_registration_path %>">Register</a></li>
-                    <li><a href="<%= centers_path %>">Centers</a></li>
-                    <li><a href="<%= combination_fees_path %>">Combination Fee</a></li>
-                    <li><a href="<%= quantity_fees_path %>">Quantity Fee</a></li>
-                    <li><a href="<%= students_path %>">Students</a></li>
-                    <li><a href="<%= subjects_path %>">Subjects</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </section>
-
-          </nav>
-        </div>
+  <div class="container">
+    <!-- Static navbar -->
+    <div class="navbar navbar-default">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Tueetion</a>
       </div>
-
-      <% unless notice.nil? %>
-        <div data-alert class="alert-box">
-          <%= notice %>
-          <a href="" class="close">×</a>
-        </div>
-      <% end %>
-      <% unless alert.nil? %>
-        <div data-alert class="alert-box alert">
-          <%= alert %>
-          <a href="" class="close">×</a>
-        </div>
-      <% end %>
-
-      <!-- End Navigation -->
-      <%= yield %>
-      <!-- Footer -->
-      <!-- End Footer -->
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="<%= new_user_session_path %>">Sign In</a></li>
+            <li><a href="<%= destroy_user_session_path %>" data-method="delete">Sign Out</a></li>
+            <li><a href="<%= edit_user_registration_path %>">Edit</a></li>
+            <li><a href="<%= new_user_registration_path %>">Register</a></li>
+            <li><a href="<%= centers_path %>">Centers</a></li>
+            <li><a href="<%= combination_fees_path %>">Combination Fee</a></li>
+            <li><a href="<%= quantity_fees_path %>">Quantity Fee</a></li>
+            <li><a href="<%= students_path %>">Students</a></li>
+            <li><a href="<%= subjects_path %>">Subjects</a></li>
+          </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="./">Default</a></li>
+          <li><a href="../navbar-static-top/">Static top</a></li>
+          <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
     </div>
+
+    <% unless notice.nil? %>
+      <div data-alert class="alert-box">
+        <%= notice %>
+        <a href="" class="close">×</a>
+      </div>
+    <% end %>
+    <% unless alert.nil? %>
+      <div data-alert class="alert-box alert">
+        <%= alert %>
+        <a href="" class="close">×</a>
+      </div>
+    <% end %>
+
+    <!-- End Navigation -->
+    <%= yield %>
+    <!-- Footer -->
+    <!-- End Footer -->
   </div>
-<%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application" %>
 </body>
 </html>
