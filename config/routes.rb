@@ -10,7 +10,10 @@ Tueetion::Application.routes.draw do
   resources :students
   resources :subjects
 
-  root "centers#index"
+  get "index", to: "front_pages#index", as: "index"
+
+  root "front_pages#index"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
