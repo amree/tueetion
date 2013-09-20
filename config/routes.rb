@@ -10,7 +10,8 @@ Tueetion::Application.routes.draw do
   resources :students
   resources :subjects
 
-  get "index", to: "front_pages#index", as: "index"
+  get "dashboards/index"
+  get "front_pages/index"
 
   root "front_pages#index"
 
