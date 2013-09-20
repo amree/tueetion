@@ -13,76 +13,12 @@
 
 <body>
   <div class="container">
-    <div class="header">
-      <ul class="nav nav-pills pull-right">
-        <li><a href="#">Pricing</a></li>
-        <li><a href="#">Features</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="<%= new_user_session_path %>">Sign in</a></li>
-        <li class="active"><a href="<%= new_user_registration_path %>">Sign up</a></li>
-      </ul>
-      <h3 class="text-muted">Tueetion</h3>
-    </div>
 
-    <div class="jumbotron">
-      <h1>Jumbotron heading</h1>
-      <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-      <p><a class="btn btn-lg btn-success" href="<%= new_user_registration_path %>">Sign up today</a></p>
-    </div>
-
-    <div class="marketing">
-      <div class="row">
-        <div class="col-md-3 right-border">
-          <img src="http://en.windu.org/data/themes/windu/img/basic2-057.png">
-          <h3>Very easy to use</h3>
-          Windu CMS is a simple, lightweight and fun-to-use website content management software.
-        </div>
-        <div class="col-md-3 right-border">
-          <img src="http://en.windu.org/data/themes/windu/img/basic2-267.png">
-          <h3>Quick and easy to install</h3>
-          Ultrafast SQLite database and intuitive administration panel make Windu CMS capable of
-        </div>
-        <div class="col-md-3 right-border">
-          <img src="http://en.windu.org/data/themes/windu/img/basic2-269.png">
-          <h3>Security</h3>
-          When We created the system We paid special attention to the security of both the
-        </div>
-        <div class="col-md-3">
-          <img src="http://en.windu.org/data/themes/windu/img/basic2-295.png">
-          <h3>High performance</h3>
-          The use of file-based database and efficient object-oriented PHP code, Windu CMS is
-        </div>
-      </div>
-
-
-      <div class="row margin-top-lg">
-        <div class="col-md-12">
-          <button type="button" class="btn btn-info btn-lg">Read more</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="row info margin-top-md">
-      <div class="col-md-6">
-        <h4>Tueetion</h4>
-        <p>
-        Foundation is made by ZURB, a product design company in Campbell, California. We've put more than 15 years of experience building web products, services and websites into this framework.
-        </p>
-      </div>
-      <div class="col-md-3">
-        <h4>Our Company</h4>
-        <ul>
-          <li>Privacy Policy</li>
-          <li>Terms &amp; Conditions</li>
-      </div>
-      <div class="col-md-3">
-        <h4>Reach us</h4>
-        <ul>
-          <li>Twitter</li>
-          <li>Facebook</li>
-        </ul>
-      </div>
-    </div>
+    <% if current_user %>
+      <%= render 'layouts/user' %>
+    <% else %>
+      <%= render 'layouts/guest' %>
+    <% end %>
 
     <div class="footer">
       <p>© Deebzy 2013</p>
