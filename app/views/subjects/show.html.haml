@@ -18,4 +18,12 @@
     &nbsp;
   %dd
     = @subject.is_active
+  %dt
+    Created at:
+  %dd
+    = @subject.created_at.in_time_zone("Kuala Lumpur")
+  %dt
+    Updated at:
+  %dd
+    = @subject.updated_at.in_time_zone("Kuala Lumpur")
 
