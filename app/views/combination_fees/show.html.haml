@@ -37,3 +37,4 @@
   %dd
     = l @combination_fee.updated_at.in_time_zone("Kuala Lumpur")
 
+= render 'combination_item_fees/list', combination_fee: @combination_fee, combination_item_fees: @combination_fee.combination_item_fees

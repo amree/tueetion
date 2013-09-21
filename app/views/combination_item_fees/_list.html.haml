@@ -1,21 +1,24 @@
-%h1 Listing combination_item_fees
+.section-title
+  = link_to "New Combination Item Fee", new_combination_fee_combination_item_fee_path(combination_fee), class: "btn btn-primary pull-right"
+  %h2 Combination Fee Subjects
 
-%table
-  %tr
-    %th Combination item fee
-    %th Subject
-    %th
-    %th
-    %th
-
-  - @combination_item_fees.each do |combination_item_fee|
+%table.table.table-hover
+  %thead
     %tr
-      %td= combination_item_fee.combination_fee
-      %td= combination_item_fee.subject
-      %td= link_to 'Show', [@combination_fee, combination_item_fee]
-      %td= link_to 'Edit', edit_combination_fee_combination_item_fee_path(@combination_fee, combination_item_fee)
-      %td= link_to 'Destroy', [@combination_fee, combination_item_fee], :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th #
+      %th Subject
+      %th Updated at
+      %th Added at
+      %th
+  %tbody
+  - combination_item_fees.each do |combination_item_fee|
+    %tr
+      %td #
+      %td= combination_item_fee.subject.name
+      %td= l combination_item_fee.updated_at.in_time_zone("Kuala Lumpur")
+      %td= l combination_item_fee.created_at.in_time_zone("Kuala Lumpur")
+      %td.text-right
+        = link_to 'Edit', edit_combination_fee_combination_item_fee_path(combination_fee, combination_item_fee)
+        \/
+        = link_to 'Destroy', [combination_fee, combination_item_fee], :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
-
-= link_to 'New Combination item fee', new_combination_fee_combination_item_fee_path(@combination_fee)

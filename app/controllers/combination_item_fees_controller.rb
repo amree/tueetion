@@ -1,11 +1,7 @@
 class CombinationItemFeesController < ApplicationController
   before_action :set_combination_fee
-  before_action :set_combination_item_fee, only: [:show, :edit, :update, :destroy]
-
-  # GET /combination_item_fees/1
-  # GET /combination_item_fees/1.json
-  def show
-  end
+  before_action :set_combination_item_fee, only: [:edit, :update, :destroy]
+  before_action :set_subjects_for_select, only: [:new, :edit]
 
   # GET /combination_item_fees/new
   def new
@@ -69,5 +65,9 @@ class CombinationItemFeesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def combination_item_fee_params
       params.require(:combination_item_fee).permit(:combination_fee_id, :subject_id)
+    end
+
+    def set_subjects_for_select
+      @subjects_for_select = current_center.subjects.to_a.collect { |s| [s.name, s.id] }
     end
 end

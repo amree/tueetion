@@ -10,7 +10,9 @@ class CombinationItemFeesControllerTest < ActionController::TestCase
 
   test "should get new" do
     get :new, { combination_fee_id: @combination_fee }
+
     assert_response :success
+    assert_not_nil assigns(:subjects_for_select)
   end
 
   test "should create combination_item_fee" do
@@ -22,14 +24,11 @@ class CombinationItemFeesControllerTest < ActionController::TestCase
     assert_redirected_to @combination_fee
   end
 
-  test "should show combination_item_fee" do
-    get :show, { combination_fee_id: @combination_fee, id: @combination_item_fee }
-    assert_response :success
-  end
-
   test "should get edit" do
     get :edit, { combination_fee_id: @combination_fee, id: @combination_item_fee }
+
     assert_response :success
+    assert_not_nil assigns(:subjects_for_select)
   end
 
   test "should update combination_item_fee" do

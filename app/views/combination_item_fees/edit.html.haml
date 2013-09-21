@@ -1,7 +1,14 @@
-%h1 Editing combination_item_fee
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li= link_to "Combination Fees", combination_fees_path
+    %li= link_to @combination_fee.name, @combination_fee
+    %li= link_to @combination_item_fee.subject.name, @combination_fee
+    %li.active Edit
+
+= render 'layouts/flash_messages'
+
+.section-title
+  %h2 Edit Combination Item Fee
 
 = render 'form'
-
-= link_to 'Show', [@combination_fee, @combination_item_fee]
-\|
-= link_to 'Back', @combination_fee
