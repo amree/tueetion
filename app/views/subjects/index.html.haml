@@ -1,23 +1,32 @@
-%h1 Listing subjects
+.breadcrumb-container
+  %ol.breadcrumb
+    %li
+      = link_to "Home", root_path
+    %li.active Subjects
 
-%table
-  %tr
-    %th Center
-    %th Name
-    %th Is active
-    %th
-    %th
-    %th
+= render 'layouts/flash_messages'
 
+.section-title
+  = link_to "New Subject", new_subject_path, class: "btn btn-primary pull-right"
+  %h2 Subjects
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th #
+      %th Name
+      %th Status
+      %th
+  %tbody
   - @subjects.each do |subject|
     %tr
-      %td= subject.center
+      %td #
       %td= subject.name
       %td= subject.is_active
-      %td= link_to 'Show', subject
-      %td= link_to 'Edit', edit_subject_path(subject)
-      %td= link_to 'Destroy', subject, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td.text-right
+        = link_to 'Show', subject
+        \/
+        = link_to 'Edit', edit_subject_path(subject)
+        \/
+        = link_to 'Destroy', subject, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
-
-= link_to 'New Subject', new_subject_path

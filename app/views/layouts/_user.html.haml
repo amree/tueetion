@@ -8,7 +8,7 @@
   .navbar-collapse.collapse
     %ul.nav.navbar-nav
       %li
-        %a{:href => "#"} Dashboard
+        %a{:href => "#"} Dashboards
       %li
         = link_to "Students", students_path
       %li.dropdown
@@ -37,16 +37,5 @@
           %li.divider
           %li
             = link_to "Sign out", destroy_user_session_path, method: :delete
-
-
-.breadcrumb-container
-  %ol.breadcrumb
-    %li
-      %a{:href => "#"} Home
-    %li
-      %a{:href => "#"} Library
-    %li.active Data
-
-= render 'layouts/flash_messages'
 
 = yield

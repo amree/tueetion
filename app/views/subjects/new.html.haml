@@ -1,5 +1,13 @@
-%h1 New subject
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li= link_to "Subjects", subjects_path
+    %li.active New Subject
+
+= render 'layouts/flash_messages'
+
+.section-title
+  %h2 New subject
 
 = render 'form'
 
-= link_to 'Back', subjects_path

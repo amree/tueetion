@@ -1,15 +1,21 @@
-%p#notice= notice
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li= link_to "Subjects", subjects_path
+    %li.active= @subject.name
 
-%p
-  %b Center:
-  = @subject.center
-%p
-  %b Name:
-  = @subject.name
-%p
-  %b Is active:
-  = @subject.is_active
+= render 'layouts/flash_messages'
 
-= link_to 'Edit', edit_subject_path(@subject)
-\|
-= link_to 'Back', subjects_path
+.section-title
+  %h2 Subject
+
+%dl.dl-horizontal
+  %dt
+    Name
+  %dd
+    = @subject.name
+  %dt
+    &nbsp;
+  %dd
+    = @subject.is_active
+
