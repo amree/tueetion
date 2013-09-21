@@ -1,26 +1,39 @@
-%p#notice= notice
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li= link_to "Combination Fees", combination_fees_path
+    %li.active= @combination_fee.id
 
-%p
-  %b Center:
-  = @combination_fee.center
-%p
-  %b Name:
-  = @combination_fee.name
-%p
-  %b Min subjects:
-  = @combination_fee.min_subjects
-%p
-  %b Max subjects:
-  = @combination_fee.max_subjects
-%p
-  %b Price:
-  = @combination_fee.price
-%p
-  %b Is active:
-  = @combination_fee.is_active
+= render 'layouts/flash_messages'
 
-= link_to 'Edit', edit_combination_fee_path(@combination_fee)
-\|
-= link_to 'Back', combination_fees_path
-\|
-= link_to 'New Combination Item Fee', new_combination_fee_combination_item_fee_path(@combination_fee)
+.section-title
+  %h2 Quantity Fee
+
+%dl.dl-horizontal
+  %dt
+    Name
+  %dd
+    = @combination_fee.name
+  %dt
+    Subjects (Min - Max)
+  %dd
+    = @combination_fee.min_subjects
+    \-
+    = @combination_fee.max_subjects
+  %dt
+    Price
+  %dd
+    = number_with_precision(@combination_fee.price, precision: 2)
+  %dt
+    Status
+  %dd
+    = @combination_fee.is_active
+  %dt
+    Created at:
+  %dd
+    = l @combination_fee.created_at.in_time_zone("Kuala Lumpur")
+  %dt
+    Updated at:
+  %dd
+    = l @combination_fee.updated_at.in_time_zone("Kuala Lumpur")
+

@@ -1,25 +1,35 @@
-= form_for @combination_fee do |f|
-  - if @combination_fee.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@combination_fee.errors.count, "error")} prohibited this combination_fee from being saved:"
-      %ul
-        - @combination_fee.errors.full_messages.each do |msg|
-          %li= msg
+= form_for @combination_fee, html: { class: "form-horizontal", role: "form" } do |f|
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :min_subjects
-    = f.number_field :min_subjects
-  .field
-    = f.label :max_subjects
-    = f.number_field :max_subjects
-  .field
-    = f.label :price
-    = f.text_field :price
-  .field
-    = f.label :is_active
-    = f.check_box :is_active
-  .actions
-    = f.submit 'Save'
+  .form-group
+    = f.label :name, class: "col-lg-2 control-label"
+    .col-lg-5
+      = f.text_field :name, class: "form-control", placeholder: "Name"
+
+  .form-group
+    = f.label :price, class: "col-lg-2 control-label"
+    .col-lg-2
+      = f.text_field :price, class: "form-control", value: number_with_precision(@combination_fee.price, precision: 2), placeholder: "10.00"
+
+  .form-group
+    = f.label :min_subjects, class: "col-lg-2 control-label"
+    .col-lg-1
+      = f.text_field :min_subjects, class: "form-control", placeholder: "1"
+
+  .form-group
+    = f.label :max_subjects, class: "col-lg-2 control-label"
+    .col-lg-1
+      = f.text_field :max_subjects, class: "form-control", placeholder: "1"
+
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      .checkbox
+        = f.check_box :is_active
+        Active
+
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      %button.btn.btn-primary{ type: "submit"}
+        Save
+      or
+      = link_to "Cancel", combination_fees_path
+

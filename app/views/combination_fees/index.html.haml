@@ -1,29 +1,39 @@
-%h1 Listing combination_fees
+.breadcrumb-container
+  %ol.breadcrumb
+    %li
+      = link_to "Home", root_path
+    %li.active Combination Fees
 
-%table
-  %tr
-    %th Center
-    %th Name
-    %th Min subjects
-    %th Max subjects
-    %th Price
-    %th Is active
-    %th
-    %th
-    %th
+= render 'layouts/flash_messages'
 
+.section-title
+  = link_to "New Combination Fee", new_combination_fee_path, class: "btn btn-primary pull-right"
+  %h2 Combination Fees
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th #
+      %th Name
+      %th Subjects (Min - Max)
+      %th Price
+      %th Status
+      %th
+  %tbody
   - @combination_fees.each do |combination_fee|
     %tr
-      %td= combination_fee.center
+      %td #
       %td= combination_fee.name
-      %td= combination_fee.min_subjects
-      %td= combination_fee.max_subjects
-      %td= combination_fee.price
+      %td
+        = combination_fee.min_subjects
+        \-
+        = combination_fee.max_subjects
+      %td= number_with_precision(combination_fee.price, precision: 2)
       %td= combination_fee.is_active
-      %td= link_to 'Show', combination_fee
-      %td= link_to 'Edit', edit_combination_fee_path(combination_fee)
-      %td= link_to 'Destroy', combination_fee, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td.text-right
+        = link_to 'Show', combination_fee
+        \/
+        = link_to 'Edit', edit_combination_fee_path(combination_fee)
+        \/
+        = link_to 'Destroy', combination_fee, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
-
-= link_to 'New Combination fee', new_combination_fee_path
