@@ -1,31 +1,43 @@
-%p#notice= notice
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li= link_to "Students", students_path
+    %li.active= @student.first_name
 
-%p
-  %b Ic:
-  = @student.ic
-%p
-  %b First name:
-  = @student.first_name
-%p
-  %b Last name:
-  = @student.last_name
-%p
-  %b Dob:
-  = @student.dob
-%p
-  %b Email:
-  = @student.email
-%p
-  %b Phone:
-  = @student.phone
-%p
-  %b School name:
-  = @student.school_name
+= render 'layouts/flash_messages'
 
-%p
-  %b Active:
-  = @student.is_active
+.section-title
+  %h2 Student
 
-= link_to 'Edit', edit_student_path(@student)
-\|
-= link_to 'Back', students_path
+%dl.dl-horizontal
+  %dt
+    Identity #
+  %dd
+    = @student.ic
+  %dt
+    First Name, Last Name
+  %dd
+    = succeed "," do
+      = @student.first_name
+    = @student.last_name
+  %dt
+    DOB
+  %dd
+    = @student.dob
+  %dt
+    Phone
+  %dd
+    = @student.phone
+  %dt
+    E-Mail:
+  %dd
+    = @student.email
+  %dt
+    School Name
+  %dd
+    = @student.school_name
+  %dt
+    Status
+  %dd
+    = @student.is_active
+

@@ -1,7 +1,14 @@
-%h1 Editing student
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li= link_to "Students", students_path
+    %li= link_to @student.first_name, @student
+    %li.active Edit
+
+= render 'layouts/flash_messages'
+
+.section-title
+  %h2 Edit Student
 
 = render 'form'
 
-= link_to 'Show', @student
-\|
-= link_to 'Back', students_path

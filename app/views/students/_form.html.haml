@@ -1,34 +1,50 @@
-= form_for @student do |f|
-  - if @student.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@student.errors.count, "error")} prohibited this student from being saved:"
-      %ul
-        - @student.errors.full_messages.each do |msg|
-          %li= msg
+= form_for @student, html: { class: "form-horizontal", role: "form" } do |f|
 
-  .field
-    = f.label :ic
-    = f.text_field :ic
-  .field
-    = f.label :first_name
-    = f.text_field :first_name
-  .field
-    = f.label :last_name
-    = f.text_field :last_name
-  .field
-    = f.label :dob
-    = f.date_select :dob
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :phone
-    = f.text_field :phone
-  .field
-    = f.label :school_name
-    = f.text_field :school_name
-  .field
-    = f.label :is_active
-    = f.check_box :is_active
-  .actions
-    = f.submit 'Save'
+  .form-group
+    = f.label :ic, "Identity #", class: "col-lg-2 control-label"
+    .col-lg-2
+      = f.text_field :ic, class: "form-control", placeholder: "Identity #"
+
+  .form-group
+    = f.label :first_name, class: "col-lg-2 control-label"
+    .col-lg-4
+      = f.text_field :first_name, class: "form-control", placeholder: "First Name"
+
+  .form-group
+    = f.label :last_name, class: "col-lg-2 control-label"
+    .col-lg-4
+      = f.text_field :last_name, class: "form-control", placeholder: "Last Name"
+
+  .form-group
+    = f.label :dob, class: "col-lg-2 control-label"
+    .col-lg-2
+      = f.date_select :dob, {}, class: "form-control"
+
+  .form-group
+    = f.label :email, class: "col-lg-2 control-label"
+    .col-lg-4
+      = f.text_field :email, class: "form-control", placeholder: "E-Mail"
+
+  .form-group
+    = f.label :phone, class: "col-lg-2 control-label"
+    .col-lg-2
+      = f.text_field :phone, class: "form-control", placeholder: "Phone #"
+
+  .form-group
+    = f.label :school_name, class: "col-lg-2 control-label"
+    .col-lg-4
+      = f.text_field :school_name, class: "form-control", placeholder: "School Name"
+
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      .checkbox
+        = f.check_box :is_active
+        Active
+
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      %button.btn.btn-primary{ type: "submit"}
+        Save
+      or
+      = link_to "Cancel", subjects_path
+

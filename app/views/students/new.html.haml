@@ -1,5 +1,13 @@
-%h1 New student
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li= link_to "Students", students_path
+    %li.active New Student
+
+= render 'layouts/flash_messages'
+
+.section-title
+  %h2 New Student
 
 = render 'form'
 
-= link_to 'Back', students_path
