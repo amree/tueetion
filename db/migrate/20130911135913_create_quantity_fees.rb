@@ -3,7 +3,7 @@ class CreateQuantityFees < ActiveRecord::Migration
     create_table :quantity_fees do |t|
       t.references :center, index: true
       t.references :subject, index: true
-      t.decimal :price, precision: 4, scale: 2
+      t.decimal :price, precision: 6, scale: 2
       t.boolean :is_active, default: true
 
       t.timestamps

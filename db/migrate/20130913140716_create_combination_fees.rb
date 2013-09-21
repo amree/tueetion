@@ -5,8 +5,8 @@ class CreateCombinationFees < ActiveRecord::Migration
       t.string :name
       t.integer :min_subjects
       t.integer :max_subjects
-      t.decimal :price, precision: 4, scale: 2
-      t.boolean :is_active
+      t.decimal :price, precision: 6, scale: 2
+      t.boolean :is_active, default: true
 
       t.timestamps
     end

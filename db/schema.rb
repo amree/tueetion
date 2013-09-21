@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 20130914114547) do
     t.string   "name"
     t.integer  "min_subjects"
     t.integer  "max_subjects"
-    t.decimal  "price",        precision: 4, scale: 2
-    t.boolean  "is_active"
+    t.decimal  "price",        precision: 6, scale: 2
+    t.boolean  "is_active",                            default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20130914114547) do
   create_table "quantity_fees", force: true do |t|
     t.integer  "center_id"
     t.integer  "subject_id"
-    t.decimal  "price",      precision: 4, scale: 2
+    t.decimal  "price",      precision: 6, scale: 2
     t.boolean  "is_active",                          default: true
     t.datetime "created_at"
     t.datetime "updated_at"
