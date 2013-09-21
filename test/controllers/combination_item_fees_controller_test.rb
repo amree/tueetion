@@ -8,12 +8,6 @@ class CombinationItemFeesControllerTest < ActionController::TestCase
     sign_in users(:user)
   end
 
-  test "should get index" do
-    get :index, combination_fee_id: @combination_fee
-    assert_response :success
-    assert_not_nil assigns(:combination_item_fees)
-  end
-
   test "should get new" do
     get :new, { combination_fee_id: @combination_fee }
     assert_response :success

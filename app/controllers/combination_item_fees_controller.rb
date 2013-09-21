@@ -2,12 +2,6 @@ class CombinationItemFeesController < ApplicationController
   before_action :set_combination_fee
   before_action :set_combination_item_fee, only: [:show, :edit, :update, :destroy]
 
-  # GET /combination_item_fees
-  # GET /combination_item_fees.json
-  def index
-    @combination_item_fees = @combination_fee.combination_item_fees.to_a
-  end
-
   # GET /combination_item_fees/1
   # GET /combination_item_fees/1.json
   def show
