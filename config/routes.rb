@@ -4,7 +4,7 @@ Tueetion::Application.routes.draw do
 
   resources :centers
   resources :combination_fees do
-    resources :combination_item_fees, except: [:index]
+    resources :combination_item_fees, except: [:index, :show]
   end
   resources :quantity_fees
   resources :students
