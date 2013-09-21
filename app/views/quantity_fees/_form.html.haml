@@ -1,19 +1,25 @@
-= form_for @quantity_fee do |f|
-  - if @quantity_fee.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@quantity_fee.errors.count, "error")} prohibited this quantity_fee from being saved:"
-      %ul
-        - @quantity_fee.errors.full_messages.each do |msg|
-          %li= msg
+= form_for @quantity_fee, html: { class: "form-horizontal", role: "form" } do |f|
 
-  .field
-    = f.label :subject
-    = f.text_field :subject
-  .field
-    = f.label :price
-    = f.text_field :price
-  .field
-    = f.label :is_active
-    = f.check_box :is_active
-  .actions
-    = f.submit 'Save'
+  .form-group
+    = f.label :subject_id, class: "col-lg-2 control-label"
+    .col-lg-5
+      = f.select :subject_id, @subjects_for_select, {}, { class: "form-control" }
+
+  .form-group
+    = f.label :price, class: "col-lg-2 control-label"
+    .col-lg-2
+      = f.text_field :price, class: "form-control", value: number_with_precision(@quantity_fee.price, precision: 2), placeholder: "10.00"
+
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      .checkbox
+        = f.check_box :is_active
+        Active
+
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      %button.btn.btn-primary{ type: "submit"}
+        Save
+      or
+      = link_to "Cancel", quantity_fees_path
+

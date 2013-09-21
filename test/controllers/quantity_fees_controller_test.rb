@@ -16,7 +16,9 @@ class QuantityFeesControllerTest < ActionController::TestCase
 
   test "should get new" do
     get :new
+
     assert_response :success
+    assert_not_nil assigns(:subjects_for_select)
   end
 
   test "should create quantity_fee" do
@@ -34,7 +36,9 @@ class QuantityFeesControllerTest < ActionController::TestCase
 
   test "should get edit" do
     get :edit, id: @quantity_fee
+
     assert_response :success
+    assert_not_nil assigns(:subjects_for_select)
   end
 
   test "should update quantity_fee" do

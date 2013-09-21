@@ -1,5 +1,6 @@
 class QuantityFeesController < ApplicationController
   before_action :set_quantity_fee, only: [:show, :edit, :update, :destroy]
+  before_action :set_subjects_for_select, only: [:new, :edit]
 
   # GET /quantity_fees
   # GET /quantity_fees.json
@@ -70,5 +71,9 @@ class QuantityFeesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def quantity_fee_params
       params.require(:quantity_fee).permit(:subject_id, :price, :is_active)
+    end
+
+    def set_subjects_for_select
+      @subjects_for_select = current_center.subjects.to_a.collect { |s| [s.name, s.id] }
     end
 end

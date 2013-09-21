@@ -1,5 +1,13 @@
-%h1 New quantity_fee
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li= link_to "Quantity Fees", quantity_fees_path
+    %li.active New Quantity Fee
+
+= render 'layouts/flash_messages'
+
+.section-title
+  %h2 New Quantity Fee
 
 = render 'form'
 
-= link_to 'Back', quantity_fees_path

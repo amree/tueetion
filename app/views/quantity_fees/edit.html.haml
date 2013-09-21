@@ -1,7 +1,14 @@
-%h1 Editing quantity_fee
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li= link_to "Quantity Fees", quantity_fees_path
+    %li= link_to @quantity_fee.id, @quantity_fee
+    %li.active Edit Quantity Fee
+
+= render 'layouts/flash_messages'
+
+.section-title
+  %h2 Edit Quantity Fee
 
 = render 'form'
 
-= link_to 'Show', @quantity_fee
-\|
-= link_to 'Back', quantity_fees_path

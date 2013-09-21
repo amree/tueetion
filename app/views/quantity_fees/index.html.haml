@@ -1,23 +1,34 @@
-%h1 Listing quantity_fees
+.breadcrumb-container
+  %ol.breadcrumb
+    %li
+      = link_to "Home", root_path
+    %li.active Quantity Fees
 
-%table
-  %tr
-    %th Subject
-    %th Price
-    %th Is active
-    %th
-    %th
-    %th
+= render 'layouts/flash_messages'
 
+.section-title
+  = link_to "New Quantity Fee", new_quantity_fee_path, class: "btn btn-primary pull-right"
+  %h2 Subjects
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th #
+      %th Subject
+      %th Price (RM)
+      %th Status
+      %th
+  %tbody
   - @quantity_fees.each do |quantity_fee|
     %tr
-      %td= quantity_fee.subject
-      %td= quantity_fee.price
+      %td #
+      %td= quantity_fee.subject.name
+      %td= number_with_precision(quantity_fee.price, precision: 2)
       %td= quantity_fee.is_active
-      %td= link_to 'Show', quantity_fee
-      %td= link_to 'Edit', edit_quantity_fee_path(quantity_fee)
-      %td= link_to 'Destroy', quantity_fee, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td
+        = link_to 'Show', quantity_fee
+        \/
+        = link_to 'Edit', edit_quantity_fee_path(quantity_fee)
+        \/
+        = link_to 'Destroy', quantity_fee, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
-
-= link_to 'New Quantity fee', new_quantity_fee_path

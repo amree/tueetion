@@ -1,15 +1,32 @@
-%p#notice= notice
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li= link_to "Quantity Fees", quantity_fees_path
+    %li.active= @quantity_fee.id
 
-%p
-  %b Subject:
-  = @quantity_fee.subject
-%p
-  %b Price:
-  = @quantity_fee.price
-%p
-  %b Is active:
-  = @quantity_fee.is_active
+= render 'layouts/flash_messages'
 
-= link_to 'Edit', edit_quantity_fee_path(@quantity_fee)
-\|
-= link_to 'Back', quantity_fees_path
+.section-title
+  %h2 Quantity Fee
+
+%dl.dl-horizontal
+  %dt
+    Subject
+  %dd
+    = @quantity_fee.subject.name
+  %dt
+    Price
+  %dd
+    = number_with_precision(@quantity_fee.price, precision: 2)
+  %dt
+    &nbsp;
+  %dd
+    = @quantity_fee.is_active
+  %dt
+    Created at:
+  %dd
+    = @quantity_fee.created_at.in_time_zone("Kuala Lumpur")
+  %dt
+    Updated at:
+  %dd
+    = @quantity_fee.updated_at.in_time_zone("Kuala Lumpur")
