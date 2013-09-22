@@ -11,5 +11,11 @@ class ApplicationController < ActionController::Base
     @current_center = current_user.center
   end
 
+  def require_admin
+    unless current_user.is_admin
+      redirect_to root_path
+    end
+  end
+
   helper_method :current_center
 end

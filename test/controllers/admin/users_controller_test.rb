@@ -16,5 +16,4 @@ class Admin::UsersControllerTest < ActionController::TestCase
     get :show, id: @user
     assert_response :success
   end
-
 end
