@@ -13,6 +13,10 @@ Tueetion::Application.routes.draw do
   get "dashboards/index"
   get "front_pages/index"
 
+  namespace :admin do
+    resources :users, only: [:index, :show]
+  end
+
   root "front_pages#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
