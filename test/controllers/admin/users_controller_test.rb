@@ -11,7 +11,9 @@ class Admin::UsersControllerTest < ActionController::TestCase
   end
 
   test "should get show" do
-    get :show
+    @user = users(:user)
+
+    get :show, id: @user
     assert_response :success
   end
 
