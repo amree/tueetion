@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130914114547) do
+ActiveRecord::Schema.define(version: 20130922213028) do
 
   create_table "centers", force: true do |t|
     t.integer  "user_id"
@@ -85,8 +85,8 @@ ActiveRecord::Schema.define(version: 20130914114547) do
   add_index "subjects", ["center_id"], name: "index_subjects_on_center_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 20130914114547) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.boolean  "is_admin",               default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
