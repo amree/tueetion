@@ -2,7 +2,7 @@
   %ol.breadcrumb
     %li= link_to "Home", root_path
     %li= link_to "Combination Fees", combination_fees_path
-    %li= link_to @combination_fee.id, @combination_fee
+    %li= link_to @combination_fee.name, @combination_fee
     %li.active Edit
 
 = render 'layouts/flash_messages'
