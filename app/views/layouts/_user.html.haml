@@ -31,6 +31,14 @@
           %li
             = link_to "Combination Based", combination_fees_path
     %ul.nav.navbar-nav.navbar-right
+      - if current_user.is_admin
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            Admin
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              = link_to "Users", admin_users_path
       %li
         %a{ href: "#" } Docs
       %li.dropdown
