@@ -1,0 +1,7 @@
+= form_for @student, url: student_quantity_fee_enrolls_path(@student), html: { class: "form-horizontal", role: "form" }, method: :post do |f|
+  = f.fields_for :enrolls do |builder|
+    %p
+      = builder.text_field :enrollable_id
+      = builder.hidden_field :enrollable_type
+
+  = f.submit

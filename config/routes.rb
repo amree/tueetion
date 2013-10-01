@@ -3,11 +3,16 @@ Tueetion::Application.routes.draw do
   devise_for :users
 
   resources :centers
+
   resources :combination_fees do
     resources :combination_item_fees, except: [:index, :show]
   end
   resources :quantity_fees
-  resources :students
+
+
+  resources :students do
+    resources :quantity_fee_enrolls, only: [:index, :create]
+  end
   resources :subjects
 
   get "dashboards/index"
