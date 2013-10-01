@@ -1,3 +1,8 @@
+bm_kami:
+  center: kami
+  name: Bahasa Melayu
+  is_active: true
+
 bm:
   center: pakar
   name: Bahasa Melayu

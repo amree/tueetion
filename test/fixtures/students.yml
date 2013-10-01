@@ -7,3 +7,13 @@ ali:
   email: ali@email.com
   phone: 0199000000
   school_name: Sekolah Kebangsaan (A) Falahiah
+
+adam:
+  center: kami
+  ic: 900302031234
+  first_name: Muhammad Adam
+  last_name: Mohd Amree
+  dob: 1988-03-02
+  email: adam@email.com
+  phone: 0111000000
+  school_name: Sekolah Rendah Kebangsaan Islah
