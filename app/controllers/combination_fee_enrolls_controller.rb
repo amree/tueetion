@@ -15,8 +15,6 @@ class CombinationFeeEnrollsController < ApplicationController
     @student.assign_attributes(enroll_params)
     @student.enrolls.last.enrollable_type = "CombinationFee"
 
-    debugger
-
     respond_to do |format|
       if @student.save
         format.html { redirect_to @student, notice: 'Student was successfully updated with the selected subjects.' }
