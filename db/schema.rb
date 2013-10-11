@@ -79,14 +79,6 @@ ActiveRecord::Schema.define(version: 20131006152340) do
   add_index "quantity_fees", ["center_id"], name: "index_quantity_fees_on_center_id", using: :btree
   add_index "quantity_fees", ["subject_id"], name: "index_quantity_fees_on_subject_id", using: :btree
 
-  create_table "student_subjects", force: true do |t|
-    t.integer "enroll_id"
-    t.integer "subject_id"
-  end
-
-  add_index "student_subjects", ["enroll_id"], name: "index_student_subjects_on_enroll_id", using: :btree
-  add_index "student_subjects", ["subject_id"], name: "index_student_subjects_on_subject_id", using: :btree
-
   create_table "students", force: true do |t|
     t.integer  "center_id"
     t.string   "ic"
