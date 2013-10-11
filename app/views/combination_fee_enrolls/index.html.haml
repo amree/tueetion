@@ -1,0 +1,21 @@
+= form_for @student, url: student_combination_fee_enrolls_path(@student), html: { class: "form-horizontal", role: "form" }, method: :post do |f|
+
+  = select_tag "student[enrollable_attributes][123][enrollable_id]", options_from_collection_for_select(@combination_fees, "id", "name")
+
+  - @combination_item_fees.each do |combo_item|
+    %p
+      = check_box_tag "student[enrolls_attributes][123][enroll_subjects_attributes][0][subject_id]", combo_item.subject.id
+      = combo_item.subject.name
+
+
+
+  -# = f.fields_for :enrolls do |enroll_form|
+  -#   = enroll_form.select :enrollable_id, CombinationFee.all.collect { |c| [ c.name, c.id ] }
+  -#   -# = enroll_form.fields_for :enroll_subjects do |subject_form|
+  -#     -# = subject_form.collection_check_boxes :subject_id, Subject.all, :id, :name
+  -# - @combination_item_fees.each do |combo_item|
+  -#   %p
+  -#     = check_box_tag "student[enrolls_attributes][0][enroll_subjects_attributes][subject_id][]", combo_item.subject.id
+  -#     = combo_item.subject.name
+
+  = f.submit
