@@ -3,8 +3,10 @@ require 'test_helper'
 class CombinationFeeEnrollsControllerTest < ActionController::TestCase
   setup do
     @ali = students(:ali)
+
     @combo1 = combination_fees(:combo1)
     @bm = subjects(:bm)
+    @bi = subjects(:bi)
 
     sign_in users(:user)
   end
@@ -17,21 +19,26 @@ class CombinationFeeEnrollsControllerTest < ActionController::TestCase
   end
 
   test "should insert new combination fee package to the student" do
-    rand = Time.now.object_id
+    rand = Time.now.object_id.to_s
 
     params = {
-      enrolls_attributes: [
+      "enrolls_attributes" => {
         rand => {
-          enrollable_id: @combo1.id,
-          enroll_subjects_attributes: [
-            rand => { subject_id: @bm.id }
-          ]
+          "enrollable_id" => @combo1.id,
+          "enroll_subjects_attributes" => {
+            "0" => {
+              "subject_id" => @bm.id
+            },
+            "1" => {
+              "subject_id" => @bi.id
+            }
+          }
         }
-      ]
+      }
     }
 
     assert_difference('Enroll.count') do
-      assert_difference('EnrollSubject.count') do
+      assert_difference('EnrollSubject.count', 2) do
         post :create, student_id: @ali, student: params
       end
     end
