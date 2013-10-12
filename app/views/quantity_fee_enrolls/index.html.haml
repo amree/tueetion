@@ -1,7 +1,5 @@
 = form_for @student, url: student_quantity_fee_enrolls_path(@student), html: { class: "form-horizontal", role: "form" }, method: :post do |f|
-  = f.fields_for :enrolls do |builder|
-    %p
-      = builder.text_field :enrollable_id
-      = builder.hidden_field :enrollable_type
+
+  = select_tag "student[enrolls_attributes][123][enrollable_id]", options_from_collection_for_select(@quantity_fees, "id", "name")
 
   = f.submit

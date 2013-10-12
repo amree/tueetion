@@ -3,16 +3,20 @@ class QuantityFeeEnrollsController < ApplicationController
 
   # GET /quantity_fee_enrolls/new
   def index
-    if @student.enrolls.size == 0
-      @student.enrolls.build
-    end
+    @quantity_fees = QuantityFee.joins(:subject)
+                                .select("quantity_fees.id, subjects.name")
+                                .to_a
   end
 
   # POST /quantity_fee_enrolls
   # POST /quantity_fee_enrolls.json
   def create
+    @student.assign_attributes(enroll_params)
+
+    update_student_data(@student)
+
     respond_to do |format|
-      if @student.update(enroll_params)
+      if @student.save
         format.html { redirect_to @student, notice: 'Student was successfully updated with the selected subjects.' }
         format.json { render action: 'show', status: :created, location: @student }
       else
@@ -29,6 +33,19 @@ class QuantityFeeEnrollsController < ApplicationController
   end
 
   def enroll_params
-    params.require(:student).permit(enrolls_attributes: [:enrollable_id, :enrollable_type])
+    params.require(:student).permit(enrolls_attributes: [:enrollable_id])
+  end
+
+  def update_student_data(student)
+    # For each record
+    student.enrolls.each do |enroll|
+      if enroll.id.nil?
+        enroll.enrollable_type = "QuantityFee"
+        subject_id = QuantityFee.find(enroll.enrollable_id).subject_id
+        enroll.enroll_subjects.build(subject_id: subject_id)
+        # debugger
+        # ""
+      end
+    end
   end
 end
