@@ -2,6 +2,7 @@ Tueetion::Application.routes.draw do
 
   devise_for :users
 
+  resources :bills
   resources :centers
 
   resources :combination_fees do

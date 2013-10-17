@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Center:
+  = @bill.center
+%p
+  %b Student:
+  = @bill.student
+%p
+  %b Number:
+  = @bill.number
+%p
+  %b Total amount:
+  = @bill.total_amount
+%p
+  %b Is overdue:
+  = @bill.is_overdue
+%p
+  %b Is paid:
+  = @bill.is_paid
+%p
+  %b Overdue at:
+  = @bill.overdue_at
+
+= link_to 'Edit', edit_bill_path(@bill)
+\|
+= link_to 'Back', bills_path

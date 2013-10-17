@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131006152340) do
+ActiveRecord::Schema.define(version: 20131017194659) do
+
+  create_table "bills", force: true do |t|
+    t.integer  "center_id"
+    t.integer  "student_id"
+    t.integer  "number"
+    t.integer  "month"
+    t.integer  "year"
+    t.decimal  "total_amount", precision: 5, scale: 2
+    t.boolean  "is_overdue",                           default: false
+    t.boolean  "is_paid",                              default: false
+    t.datetime "overdue_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bills", ["center_id"], name: "index_bills_on_center_id", using: :btree
+  add_index "bills", ["student_id"], name: "index_bills_on_student_id", using: :btree
 
   create_table "centers", force: true do |t|
     t.integer  "user_id"
