@@ -1,30 +1,43 @@
-%h1 Listing bills
+.breadcrumb-container
+  %ol.breadcrumb
+    %li
+      = link_to "Home", root_path
+    %li.active Bills
 
-%table
-  %tr
-    %th Center
-    %th Student
-    %th Number
-    %th Total amount
-    %th Is overdue
-    %th Is paid
-    %th Overdue at
-    %th
-    %th
-    %th
+= render 'layouts/flash_messages'
 
+.section-title
+  %h2 Bills
+
+%table.table.table-hover
+  %thead
+    %tr
+      %th #
+      %th Bill #
+      %th Student Name
+      %th Period
+      %th Total Amount
+      %th Status
+      %th
+  %tbody
   - @bills.each do |bill|
     %tr
-      %td= bill.center
-      %td= bill.student
+      %td #
       %td= bill.number
+      %td
+        = succeed "," do
+          = bill.student.first_name
+        = bill.student.last_name
+      %td
+        = bill.month
+        \/
+        = bill.year
       %td= bill.total_amount
-      %td= bill.is_overdue
-      %td= bill.is_paid
-      %td= bill.overdue_at
-      %td= link_to 'Show', bill
-      %td= link_to 'Destroy', bill, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td
+        = bill.is_paid
+        = bill.is_overdue
+      %td.text-right
+        = link_to 'Show', bill
+        \/
+        = link_to 'Destroy', bill, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
-
-= link_to 'New Bill', new_bill_path

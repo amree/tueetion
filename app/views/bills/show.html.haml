@@ -1,27 +1,32 @@
-%p#notice= notice
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li= link_to "Bills", bills_path
+    %li.active= @bill.number
 
-%p
-  %b Center:
-  = @bill.center
-%p
-  %b Student:
-  = @bill.student
-%p
-  %b Number:
-  = @bill.number
-%p
-  %b Total amount:
-  = @bill.total_amount
-%p
-  %b Is overdue:
-  = @bill.is_overdue
-%p
-  %b Is paid:
-  = @bill.is_paid
-%p
-  %b Overdue at:
-  = @bill.overdue_at
+= render 'layouts/flash_messages'
 
-= link_to 'Edit', edit_bill_path(@bill)
-\|
-= link_to 'Back', bills_path
+.section-title
+  %h2
+    Bill
+    = "##{@bill.number}"
+
+%dl.dl-horizontal
+  %dt
+    Student's Name
+  %dd
+    = @bill.student.first_name
+    = @bill.student.last_name
+  %dt
+    Total Amount
+  %dd
+    = @bill.total_amount
+  %dt
+    Overdue
+  %dd
+    = @bill.is_overdue
+  %dt
+    Paid
+  %dd
+    = @bill.is_paid
+
