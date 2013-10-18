@@ -1,0 +1,4 @@
+bill_item:
+  bill: bill
+  name: Payment for package
+  amount: 50

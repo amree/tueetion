@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131017194659) do
+ActiveRecord::Schema.define(version: 20131018062120) do
+
+  create_table "bill_items", force: true do |t|
+    t.integer  "bill_id"
+    t.string   "name"
+    t.decimal  "amount",     precision: 5, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bill_items", ["bill_id"], name: "index_bill_items_on_bill_id", using: :btree
 
   create_table "bills", force: true do |t|
     t.integer  "center_id"
