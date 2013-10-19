@@ -1,0 +1,4 @@
+payment:
+  bill: bill
+  amount: 500
+  paid_at: 2013-01-15 00:00:00
