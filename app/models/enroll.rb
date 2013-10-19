@@ -5,4 +5,12 @@ class Enroll < ActiveRecord::Base
   has_many :subjects, through: :enroll_subjects
 
   accepts_nested_attributes_for :enroll_subjects
+
+  def name
+    if enrollable_type == "QuantityFee"
+      enrollable.subject.name
+    elsif enrollable_type == "CombinationFee"
+      enrollable.name
+    end
+  end
 end
