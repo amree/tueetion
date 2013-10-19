@@ -7,7 +7,7 @@
 = render 'layouts/flash_messages'
 
 .section-title
-  %h2 Student
+  %h2 Profile
 
 %dl.dl-horizontal
   %dt
@@ -40,4 +40,19 @@
     Status
   %dd
     = @student.is_active
+
+.section-title
+  .btn-group.pull-right
+    = link_to "New Package", student_quantity_fee_enrolls_path(@student), class: "btn btn-primary"
+    = link_to "New Subject", student_combination_fee_enrolls_path(@student), class: "btn btn-primary"
+  %h2 Packages &amp; Subjects
+
+= render 'enrolls/list', student: @student
+
+
+.section-title
+  = link_to "Generate Bill", new_student_path, class: "btn btn-primary pull-right"
+  %h2 Bills
+
+= render 'bills/list', bills: @student.bills
 

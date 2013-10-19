@@ -1,0 +1,21 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th #
+      %th Package
+      %th Subjects
+      %th Price
+  %tbody
+  - Enroll.where(enrollable_type: "CombinationFee", student_id: student.id).each do |enroll|
+    %tr
+      %td #
+      %td= enroll.enrollable.name
+      %td= enroll.subjects.map(&:name).join(", ")
+      %td= enroll.enrollable.price
+
+  - Enroll.where(enrollable_type: "QuantityFee", student_id: student.id).each do |enroll|
+    %tr
+      %td #
+      %td= enroll.enrollable.subject.name
+      %td= enroll.enrollable.subject.name
+      %td= enroll.enrollable.price

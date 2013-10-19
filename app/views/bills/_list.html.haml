@@ -1,0 +1,25 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th #
+      %th Bill #
+      %th Period
+      %th Total Amount
+      %th Status
+      %th
+  %tbody
+  - bills.each do |bill|
+    %tr
+      %td #
+      %td= bill.number
+      %td
+        = bill.month
+        \/
+        = bill.year
+      %td= bill.total_amount
+      %td
+        = bill.is_paid
+        = bill.is_overdue
+      %td.text-right
+        = link_to 'Show', bill
+
