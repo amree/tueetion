@@ -1,11 +1,6 @@
 class BillItemsController < ApplicationController
   before_action :set_bill
-  before_action :set_bill_item, only: [:show, :edit, :update, :destroy]
-
-  # GET /bill_items/1
-  # GET /bill_items/1.json
-  def show
-  end
+  before_action :set_bill_item, only: [:edit, :update, :destroy]
 
   # GET /bill_items/new
   def new

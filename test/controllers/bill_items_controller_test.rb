@@ -22,12 +22,6 @@ class BillItemsControllerTest < ActionController::TestCase
     assert_redirected_to @bill
   end
 
-  test "should show bill_item" do
-    get :show, bill_id: @bill, id: @bill_item
-
-    assert_response :success
-  end
-
   test "should get edit" do
     get :edit, { bill_id: @bill, id: @bill_item }
 
