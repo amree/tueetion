@@ -30,3 +30,4 @@
   %dd
     = @bill.is_paid
 
+= render 'bill_items/list', bill: @bill, bill_items: @bill.bill_items

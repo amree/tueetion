@@ -1,16 +1,18 @@
-= form_for [@bill, @bill_item] do |f|
-  - if @bill_item.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@bill_item.errors.count, "error")} prohibited this bill_item from being saved:"
-      %ul
-        - @bill_item.errors.full_messages.each do |msg|
-          %li= msg
+= form_for [@bill, @bill_item], html: { class: "form-horizontal", role: "form" } do |f|
+  .form-group
+    = f.label :name, class: "col-lg-2 control-label"
+    .col-lg-6
+      = f.text_field :name, class: "form-control", placeholder: "Name"
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :amount
-    = f.text_field :amount
-  .actions
-    = f.submit 'Save'
+  .form-group
+    = f.label :amount, class: "col-lg-2 control-label"
+    .col-lg-2
+      = f.text_field :amount, class: "form-control", placeholder: "100"
+
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      %button.btn.btn-primary{ type: "submit"}
+        Save
+      or
+      = link_to "Cancel", @bill
+
