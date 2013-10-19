@@ -51,7 +51,7 @@
 
 
 .section-title
-  = link_to "Generate Bill", new_student_path, class: "btn btn-primary pull-right"
+  = link_to "Generate Bill", generate_bill_student_path, method: :post, class: "btn btn-primary pull-right"
   %h2 Bills
 
 = render 'bills/list', bills: @student.bills

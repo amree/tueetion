@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   before_action :verify_center
-  before_action :set_student, only: [:show, :edit, :update, :destroy]
+  before_action :set_student, only: [:show, :edit, :update, :destroy, :generate_bill]
 
   # GET /students
   # GET /students.json
@@ -59,6 +59,15 @@ class StudentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to students_url }
       format.json { head :no_content }
+    end
+  end
+
+  # POST /students/1/generate_bill
+  def generate_bill
+    if Bill::generate(@student)
+      redirect_to @student, notice: 'Bill was successfully generated.'
+    else
+      redirect_to @student, alert: 'Bill failed to be generated.'
     end
   end
 

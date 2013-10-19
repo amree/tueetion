@@ -83,4 +83,10 @@ class StudentsControllerTest < ActionController::TestCase
     delete :destroy, id: @ali
     assert_redirected_to centers_path
   end
+
+  test "should blah" do
+    post :generate_bill, id: @ali
+
+    assert_redirected_to @ali
+  end
 end
