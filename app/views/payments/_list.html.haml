@@ -1,0 +1,15 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th #
+      %th Bill #
+      %th Amount
+      %th Paid At
+  %tbody
+    - payments.each do |payment|
+      %tr
+        %td #
+        %td= payment.bill.number
+        %td= payment.amount
+        %td= payment.paid_at
+

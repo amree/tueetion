@@ -1,0 +1,14 @@
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li= link_to "Students", students_path
+    %li= link_to "?", @bill.student
+    %li= link_to "Bill #{@bill.number}", @bill
+    %li.active New Payment
+
+= render 'layouts/flash_messages'
+
+.section-title
+  %h2 New Payment
+
+= render 'form'

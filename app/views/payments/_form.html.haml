@@ -1,0 +1,19 @@
+= form_for [@bill, Payment.new], html: { class: "form-horizontal", role: "form" } do |f|
+
+  .form-group
+    = f.label :amount, "Amount", class: "col-lg-2 control-label"
+    .col-lg-2
+      = f.text_field :amount, class: "form-control", placeholder: "100"
+
+  .form-group
+    = f.label :paid_at, "Paid at", class: "col-lg-2 control-label"
+    .col-lg-2
+      = f.text_field :paid_at, class: "form-control"
+
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      %button.btn.btn-primary{ type: "submit"}
+        Save
+      or
+      = link_to "Cancel", @bill
+

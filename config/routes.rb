@@ -4,6 +4,7 @@ Tueetion::Application.routes.draw do
 
   resources :bills do
     resources :bill_items, only: [:edit, :update, :destroy]
+    resources :payments, only: [:new, :create, :destroy]
   end
   resources :centers
 
