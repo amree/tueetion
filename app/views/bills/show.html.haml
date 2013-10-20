@@ -1,12 +1,16 @@
 .breadcrumb-container
   %ol.breadcrumb
     %li= link_to "Home", root_path
-    %li= link_to "Bills", bills_path
+    %li= link_to "Students", students_path
+    %li= link_to "?", @bill.student
     %li.active= @bill.number
 
 = render 'layouts/flash_messages'
 
 .section-title
+  .btn-group.pull-right
+    = link_to "Add Bill Item", "#", class: "btn btn-primary"
+    = link_to "Make Payment", new_bill_payment_path(@bill), class: "btn btn-primary"
   %h2
     Bill
     = "##{@bill.number}"
@@ -31,3 +35,9 @@
     = @bill.is_paid
 
 = render 'bill_items/list', bill: @bill, bill_items: @bill.bill_items
+
+.section-title
+  %h2
+    Payments
+
+= render 'payments/list', payments: @bill.payments

@@ -11,6 +11,7 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
+    @payments = Payment.joins(bill: :student).where("students.id = ?", @student.id)
   end
 
   # GET /students/new

@@ -7,6 +7,10 @@
 = render 'layouts/flash_messages'
 
 .section-title
+  .btn-group.pull-right
+    = link_to "Enroll by Package", student_quantity_fee_enrolls_path(@student), class: "btn btn-primary"
+    = link_to "Enroll by Subject", student_combination_fee_enrolls_path(@student), class: "btn btn-primary"
+    = link_to "Generate Bill", generate_bill_student_path, method: :post, class: "btn btn-primary pull-right"
   %h2 Profile
 
 %dl.dl-horizontal
@@ -42,17 +46,18 @@
     = @student.is_active
 
 .section-title
-  .btn-group.pull-right
-    = link_to "New Package", student_quantity_fee_enrolls_path(@student), class: "btn btn-primary"
-    = link_to "New Subject", student_combination_fee_enrolls_path(@student), class: "btn btn-primary"
   %h2 Packages &amp; Subjects
 
 = render 'enrolls/list', student: @student
 
-
 .section-title
-  = link_to "Generate Bill", generate_bill_student_path, method: :post, class: "btn btn-primary pull-right"
-  %h2 Bills
+  %h2 Latest Bills
 
 = render 'bills/list', bills: @student.bills
+
+.section-title
+  %h2 Latest Payments
+
+= render 'payments/list', payments: @payments
+
 
