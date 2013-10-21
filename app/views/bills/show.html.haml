@@ -9,7 +9,7 @@
 
 .section-title
   .btn-group.pull-right
-    = link_to "Add Bill Item", "#", class: "btn btn-primary"
+    = link_to "Add Bill Item", new_bill_bill_item_path(@bill), class: "btn btn-primary"
     = link_to "Make Payment", new_bill_payment_path(@bill), class: "btn btn-primary"
   %h2
     Bill

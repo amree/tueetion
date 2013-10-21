@@ -3,7 +3,7 @@ Tueetion::Application.routes.draw do
   devise_for :users
 
   resources :bills do
-    resources :bill_items, only: [:edit, :update, :destroy]
+    resources :bill_items, only: [:new, :create, :edit, :update, :destroy]
     resources :payments, only: [:new, :create, :destroy]
   end
   resources :centers
