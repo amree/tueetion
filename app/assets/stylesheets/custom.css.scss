@@ -1,3 +1,6 @@
+// Override variables
+//
+
 // Override container width, make it smaller
 // Ref: http://stackoverflow.com/questions/19430217/
 $grid-gutter-width: 20px;
@@ -10,11 +13,41 @@ $body-bg: whitesmoke;
 // Breadcrumb background colour
 $breadcrumb-bg: white;
 
+// Navbar
+$navbar-inverse-bg: #016c43;
+$navbar-inverse-link-color: #ebecec;
+
 // Typography
 $font-family-sans-serif: 'Droid Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
+// Buttons
+$btn-primary-bg: #06C;
+
 @import "bootstrap";
 
+// Mixins
+//
+.panel-borderless {
+  @include panel-variant(transparent, black, transparent, transparent);
+}
+
+// Buttons
+@mixin button-shadow($colour) {
+  -webkit-box-shadow:0 1px 0 $colour;
+     -moz-box-shadow:0 1px 0 $colour;
+          box-shadow:0 1px 0 $colour;
+}
+.btn-default {
+  @include button-shadow(#ccc);
+}
+
+.btn-primary {
+  @include button-shadow(#105296);
+}
+
+
+// Custom
+//
 body {
   padding-top: 30px;
 }

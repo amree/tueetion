@@ -6,13 +6,12 @@
 
 = render 'layouts/flash_messages'
 
-.panel.panel-default
+.panel.panel-borderless
   .panel-body
     .section-title
       .btn-group.pull-right
-        %button.btn.btn-default{ type: "button" }
-          Action
         %button.btn.btn-default.dropdown-toggle{ :"data-toggle" => "dropdown", type: "button" }
+          Action
           %span.caret
         %ul.dropdown-menu{ role: "menu" }
           %li
@@ -59,21 +58,21 @@
       %dd
         = @student.is_active
 
-.panel.panel-default
+.panel.panel-borderless
   .panel-body
     .section-title
       %h2 Packages &amp; Subjects
 
     = render 'enrolls/list', student: @student
 
-.panel.panel-default
+.panel.panel-borderless
   .panel-body
     .section-title
       %h2 Latest Bills
 
     = render 'bills/list', bills: @student.bills
 
-.panel.panel-default
+.panel.panel-borderless
   .panel-body
     .section-title
       %h2 Latest Payments
