@@ -7,4 +7,14 @@ module ApplicationHelper
     when :alert then "alert-danger"
     end
   end
+
+  def form_group(conditions, attributes = {}, &block)
+    if conditions
+      attributes["class"] = "form-group"
+    else
+      attributes["class"] = "form-group has-error"
+    end
+
+    content_tag "div", attributes, &block
+  end
 end
