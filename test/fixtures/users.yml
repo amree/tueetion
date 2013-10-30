@@ -1,20 +1,24 @@
 user:
+  first_name: User
+  last_name: User
   email: user@mail.com
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
-  confirmed_at: <%= DateTime.now %>
 
 user_no_center:
+  first_name: User
+  last_name: No Center
   email: user_no_center@mail.com
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
-  confirmed_at: <%= DateTime.now %>
 
 another_user:
+  first_name: User
+  last_name: Another
   email: another.user@mail.com
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
-  confirmed_at: <%= DateTime.now %>
 
 admin:
+  first_name: User
+  last_name: Admin
   email: admin@mail.com
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
-  confirmed_at: <%= DateTime.now %>
   is_admin: true
