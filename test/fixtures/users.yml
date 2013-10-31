@@ -15,10 +15,11 @@ another_user:
   last_name: Another
   email: another.user@mail.com
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+  access_level: 10
 
 admin:
   first_name: User
   last_name: Admin
   email: admin@mail.com
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
-  is_admin: true
+  access_level: 100
