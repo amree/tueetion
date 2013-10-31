@@ -1,4 +1,6 @@
 class Settings::AccountsController < ApplicationController
+  before_action :set_user
+
   def edit
     @user= current_user
   end
@@ -6,7 +8,7 @@ class Settings::AccountsController < ApplicationController
   def update
     @user = User.find(current_user.id)
 
-    if @user.update_without_password(user_params)
+    if @user.update_without_password(user_params_without_password)
       redirect_to edit_settings_accounts_path, notice: "Account was successfully updated."
     else
       render "edit"
@@ -29,6 +31,14 @@ class Settings::AccountsController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = current_user
+  end
+
+  def user_params_without_password
+    params.require(:user).permit(:first_name, :last_name, :email)
+  end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password)
