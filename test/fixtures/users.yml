@@ -5,21 +5,21 @@ user:
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
 
 user_no_center:
-  first_name: User
-  last_name: No Center
+  first_name: No Center
+  last_name: User
   email: user_no_center@mail.com
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
 
-another_user:
-  first_name: User
-  last_name: Another
-  email: another.user@mail.com
+staff:
+  first_name: Staff
+  last_name: User
+  email: staff@mail.com
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
   access_level: 10
 
 admin:
-  first_name: User
-  last_name: Admin
+  first_name: Admin
+  last_name: User
   email: admin@mail.com
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
   access_level: 100
