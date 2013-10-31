@@ -34,7 +34,9 @@ Tueetion::Application.routes.draw do
     resources :accounts, only: [] do
       collection do
         get :edit
+        get :edit_password
         patch :update
+        patch :update_password
       end
     end
   end
