@@ -10,9 +10,9 @@ module ApplicationHelper
 
   def form_group(conditions, attributes = {}, &block)
     if conditions
-      attributes["class"] = "form-group"
-    else
       attributes["class"] = "form-group has-error"
+    else
+      attributes["class"] = "form-group"
     end
 
     content_tag "div", attributes, &block

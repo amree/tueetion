@@ -11,7 +11,7 @@
           %strong
             Reset your password
         = form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post } do |f|
-          = form_group resource.errors[:email].blank? do
+          = form_group resource.errors[:email].present? do
             = f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email"
             %span.help-block
               = resource.errors[:email].join(", ")
