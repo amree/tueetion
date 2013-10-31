@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+  def is_admin
+    access_level == 100
+  end
 end
