@@ -30,6 +30,15 @@ Tueetion::Application.routes.draw do
     resources :users, only: [:index, :show]
   end
 
+  namespace :settings do
+    resources :accounts, only: [] do
+      collection do
+        get :edit
+        patch :update
+      end
+    end
+  end
+
   root "front_pages#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

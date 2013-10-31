@@ -1,0 +1,55 @@
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li Settings
+    %li.active Profile
+
+= render 'layouts/flash_messages'
+
+.row
+  .col-md-3
+    .panel.panel-borderless
+      .panel-body.panel-body-sidebar
+        %ul.nav.nav-pills.nav-stacked
+          %li.active
+            = link_to "Profile", "#"
+          %li
+            = link_to "Password", "#"
+          %li
+            = link_to "Billing", "#"
+
+  .col-md-9
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            Edit Profile
+
+
+        = form_for @user, url: settings_accounts_path, html: { class: "form-horizontal", method: :patch } do |f|
+
+          = form_group @user.errors[:first_name].present? do
+            = f.label :first_name, "First Name", class: "col-lg-2 control-label"
+            .col-lg-5
+              = f.text_field :first_name, class: "form-control", autofocus: true, required: true
+              %span.help-block
+                = @user.errors[:first_name].join(", ")
+
+          = form_group @user.errors[:last_name].present? do
+            = f.label :last_name, "Last Name", class: "col-lg-2 control-label"
+            .col-lg-5
+              = f.text_field :last_name, class: "form-control", required: true
+              %span.help-block
+                = @user.errors[:last_name].join(", ")
+
+          = form_group @user.errors[:email].present? do
+            = f.label :email, "Email", class: "col-lg-2 control-label"
+            .col-lg-5
+              = f.text_field :email, class: "form-control", type: :email, required: true
+              %span.help-block
+                = @user.errors[:email].join(", ")
+
+          .form-group
+            .col-md-offset-2.col-md-10
+              = f.submit "Update", class: "btn btn-primary", data: { :"disable-with" => "Updating..." }
+

@@ -31,6 +31,10 @@ $btn-primary-bg: #06C;
   @include panel-variant(transparent, black, transparent, transparent);
 }
 
+.panel-body-sidebar {
+  padding: 8px;
+}
+
 // Buttons
 @mixin button-shadow($colour) {
   -webkit-box-shadow:0 1px 0 $colour;
