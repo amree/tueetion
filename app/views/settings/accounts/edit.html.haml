@@ -8,15 +8,7 @@
 
 .row
   .col-md-3
-    .panel.panel-borderless
-      .panel-body.panel-body-sidebar
-        %ul.nav.nav-pills.nav-stacked
-          %li.active
-            = link_to "Profile", "#"
-          %li
-            = link_to "Password", "#"
-          %li
-            = link_to "Billing", "#"
+    = render 'sidebar'
 
   .col-md-9
     .panel.panel-borderless
