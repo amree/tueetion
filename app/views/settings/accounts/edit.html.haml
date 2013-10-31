@@ -2,7 +2,8 @@
   %ol.breadcrumb
     %li= link_to "Home", root_path
     %li Settings
-    %li.active Profile
+    %li.active
+      = link_to "Subscriptions", settings_subscriptions_path
 
 = render 'layouts/flash_messages'
 
