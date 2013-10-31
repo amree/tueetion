@@ -24,7 +24,7 @@
           = form_group @user.errors[:first_name].present? do
             = f.label :first_name, "First Name", class: "col-lg-2 control-label"
             .col-lg-5
-              = f.text_field :first_name, class: "form-control", autofocus: true, required: true
+              = f.text_field :first_name, class: "form-control", required: true
               %span.help-block
                 = @user.errors[:first_name].join(", ")
 
