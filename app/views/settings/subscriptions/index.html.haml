@@ -1,0 +1,27 @@
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li Settings
+    %li.active
+      = link_to "Subscriptions", settings_subscriptions_path
+
+.row
+  .col-md-3
+    = render 'layouts/settings_sidebar'
+
+  .col-md-9
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            Current Subscriptions
+        Add resouce in admin
+
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            Payment History
+
+        Add resource in admin
+
