@@ -39,6 +39,8 @@ group :development, :test do
   gem 'haml-rails', '~> 0.4'
 end
 
+gem 'font-awesome-sass', '~> 4.0.1'
+
 # Pretty console print
 gem 'hirb'
 gem 'awesome_print'
