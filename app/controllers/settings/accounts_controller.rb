@@ -1,4 +1,5 @@
 class Settings::AccountsController < ApplicationController
+  before_action :check_center
   before_action :set_user
 
   def edit

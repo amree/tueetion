@@ -1,5 +1,4 @@
 class StudentsController < ApplicationController
-  before_action :verify_center
   before_action :set_student, only: [:show, :edit, :update, :destroy, :generate_bill]
 
   # GET /students
@@ -82,11 +81,5 @@ class StudentsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def student_params
     params.require(:student).permit(:ic, :first_name, :last_name, :dob, :email, :phone, :school_name, :is_active)
-  end
-
-  def verify_center
-    if current_center.nil?
-      redirect_to centers_url, alert: 'You need to set a tuition center first.'
-    end
   end
 end

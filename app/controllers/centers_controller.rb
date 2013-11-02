@@ -1,5 +1,8 @@
 class CentersController < ApplicationController
+  before_action :check_center, except: [:new, :create]
   before_action :set_center, only: [:show, :edit, :update, :destroy]
+
+  layout "single", only: [:new, :create]
 
   # GET /centers
   def index

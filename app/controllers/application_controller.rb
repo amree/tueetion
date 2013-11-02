@@ -35,5 +35,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def check_center
+    if current_user && current_center.nil?
+      redirect_to new_center_path
+    end
+  end
+
   helper_method :current_center
 end
