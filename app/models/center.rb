@@ -19,7 +19,7 @@ class Center < ActiveRecord::Base
 
   def verify_owner_count
     if owner_count > 0
-      errors.add(:base, "A user should have only one center")
+      errors.add(:name, "A user can have only one center")
     end
   end
 end
