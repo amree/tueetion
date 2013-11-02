@@ -9,13 +9,6 @@ class CentersControllerTest < ActionController::TestCase
     sign_in @user
   end
 
-  test "should get index" do
-    get :index
-
-    assert_response :success
-    assert_not_nil assigns(:centers)
-  end
-
   test "should get new" do
     sign_out @user
     sign_in  users(:user_no_center)

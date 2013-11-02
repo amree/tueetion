@@ -4,13 +4,6 @@ class CentersController < ApplicationController
 
   layout "single", only: [:new, :create]
 
-  # GET /centers
-  def index
-    # TODO: This is not a safe coding, it'll load every center
-    # not limited to the current user
-    @centers = Center.all
-  end
-
   # GET /centers/1
   def show
   end

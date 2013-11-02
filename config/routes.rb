@@ -6,7 +6,8 @@ Tueetion::Application.routes.draw do
     resources :bill_items, only: [:new, :create, :edit, :update, :destroy]
     resources :payments, only: [:new, :create, :destroy]
   end
-  resources :centers
+
+  resources :centers, except: [:index]
 
   resources :combination_fees do
     resources :combination_item_fees, except: [:index, :show]
