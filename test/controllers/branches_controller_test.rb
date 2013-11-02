@@ -29,7 +29,7 @@ class BranchesControllerTest < ActionController::TestCase
   end
 
   test "should update branch" do
-    patch :update, center_id: @center, branch: { name: @branch.name }
+    patch :update, center_id: @center, id: @branch, branch: { name: @branch.name }
 
     assert_redirected_to @center
   end
