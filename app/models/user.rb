@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_one :center
+  belongs_to :center
 
   # Include default devise modules. Others available are:
   # :token_authenticatable,
@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validates :center, presence: true, if: "center_id.present?"
 
   def is_admin
     access_level == 100

@@ -14,4 +14,13 @@ class UserTest < ActiveSupport::TestCase
     assert user.errors[:first_name].present?
     assert user.errors[:last_name].present?
   end
+
+  test "should have valid center" do
+    user = users(:user)
+
+    user.center_id = 123
+
+    assert user.invalid?
+    assert user.errors[:center].present?
+  end
 end

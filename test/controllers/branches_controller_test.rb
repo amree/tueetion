@@ -16,7 +16,7 @@ class BranchesControllerTest < ActionController::TestCase
 
   test "should create branch" do
     assert_difference('Branch.count') do
-      post :create, center_id: @center, branch: { name: @branch.name }
+      post :create, center_id: @center, branch: { name: "Other Branch" }
     end
 
     assert_redirected_to @center

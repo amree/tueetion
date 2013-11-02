@@ -33,33 +33,31 @@ class CentersControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to center_path(assigns(:center))
-    assert_equal @user_no_center.id, Center.last.user.id
+    assert_equal Center.last.id, User.find(@user_no_center.id).center_id
   end
 
   test "should show center" do
     get :show, id: @center
 
     assert_response :success
-    assert_equal @user.id, @center.user.id
+    assert_equal @center.id, @user.center_id
   end
 
   test "should get edit" do
     get :edit, id: @center
 
     assert_response :success
-    assert_equal @user.id, @center.user.id
+    assert_equal @center.id, @user.center_id
   end
 
   test "should update center" do
     patch :update, id: @center, center: { name: @center.name }
 
     assert_redirected_to center_path(assigns(:center))
-    assert_equal @user.id, @center.user.id
+    assert_equal @center.id, @user.center_id
   end
 
   test "should destroy center" do
-    assert_equal @user.id, @center.user.id
-
     assert_difference('Center.count', -1) do
       delete :destroy, id: @center
     end

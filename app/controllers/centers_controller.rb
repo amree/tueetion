@@ -24,9 +24,11 @@ class CentersController < ApplicationController
   # POST /centers
   def create
     @center = Center.new(center_params)
-    @center.user_id = current_user.id
 
     if @center.save
+      current_user.center_id = @center.id
+      current_user.save
+
       redirect_to @center, notice: 'Center was successfully created.'
     else
       render action: 'new'
@@ -52,7 +54,7 @@ class CentersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_center
-      @center = Center.where("id = ? and user_id = ?", params[:id], current_user.id).first
+      @center = current_user.center
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
