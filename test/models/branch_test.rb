@@ -1,7 +1,14 @@
 require 'test_helper'
 
 class BranchTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @branch = branches(:kb)
+  end
+
+  test "name should be unique by center" do
+    branch = @branch.dup
+    branch.valid?
+
+    assert branch.errors[:name].present?
+  end
 end
