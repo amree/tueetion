@@ -1,5 +1,6 @@
 Tueetion::Application.routes.draw do
 
+
   devise_for :users
 
   resources :bills do
@@ -7,7 +8,9 @@ Tueetion::Application.routes.draw do
     resources :payments, only: [:new, :create, :destroy]
   end
 
-  resources :centers, except: [:index]
+  resources :centers, except: [:index] do
+    resources :branches, except: [:index, :show]
+  end
 
   resources :combination_fees do
     resources :combination_item_fees, except: [:index, :show]

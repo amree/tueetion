@@ -1,6 +1,7 @@
 class Center < ActiveRecord::Base
   belongs_to :user
   has_many :bills
+  has_many :branches
   has_many :students
   has_many :subjects
   has_many :quantity_fees

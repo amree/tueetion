@@ -1,0 +1,24 @@
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li Setup
+    %li
+      = link_to "Center", center_path(@center)
+    %li
+      = link_to "New Branch", new_center_branch_path(@center)
+
+= render 'layouts/flash_messages'
+
+.row
+  .col-md-3
+    = render 'layouts/setup_sidebar'
+
+  .col-md-9
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            New Branch
+
+        = render 'form'
+
