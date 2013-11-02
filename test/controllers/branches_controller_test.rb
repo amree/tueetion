@@ -34,11 +34,11 @@ class BranchesControllerTest < ActionController::TestCase
     assert_redirected_to @center
   end
 
-  # test "should destroy branch" do
-  #   assert_difference('Branch.count', -1) do
-  #     delete :destroy, id: @branch
-  #   end
+  test "should destroy branch" do
+    assert_difference('Branch.count', -1) do
+      delete :destroy, center_id: @center, id: @branch
+    end
 
-  #   assert_redirected_to branches_path
-  # end
+    assert_redirected_to @center
+  end
 end

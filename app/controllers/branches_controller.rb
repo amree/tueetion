@@ -46,7 +46,7 @@ class BranchesController < ApplicationController
   def destroy
     @branch.destroy
     respond_to do |format|
-      format.html { redirect_to branches_url }
+      format.html { redirect_to @center, notice: "Branch #{@branch.name} deleted." }
       format.json { head :no_content }
     end
   end
