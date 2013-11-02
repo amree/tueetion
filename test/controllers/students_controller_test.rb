@@ -61,29 +61,6 @@ class StudentsControllerTest < ActionController::TestCase
     assert_redirected_to students_path
   end
 
-  test "should forward to center if it it's not set yet" do
-    sign_out users(:user)
-    sign_in users(:user_no_center)
-
-    get :index
-    assert_redirected_to centers_path
-
-    post :create
-    assert_redirected_to centers_path
-
-    get :show, id: @ali
-    assert_redirected_to centers_path
-
-    get :edit, id: @ali
-    assert_redirected_to centers_path
-
-    patch :update, id: @ali
-    assert_redirected_to centers_path
-
-    delete :destroy, id: @ali
-    assert_redirected_to centers_path
-  end
-
   test "should blah" do
     post :generate_bill, id: @ali
 
