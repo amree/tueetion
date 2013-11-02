@@ -25,8 +25,13 @@
     .panel.panel-borderless
       .panel-body
         .section-title
+          .pull-right
+            = link_to "New Branch", new_center_branch_path(@center), class: "btn btn-primary"
           %h2
             Branches
+
+        = render 'branches/index', center: @center, branches: @center.branches
+
 
     .panel.panel-borderless
       .panel-body
