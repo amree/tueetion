@@ -1,0 +1,20 @@
+%ul.nav.nav-pills.nav-stacked
+  %li
+    = link_to center_path(current_center.id) do
+      %i.fa.fa-building.fa-fw
+      Center
+  %li
+    = link_to subjects_path do
+      %i.fa.fa-book.fa-fw
+      Subjects
+
+%ul.nav.nav-pills.nav-stacked
+  %li
+    = link_to quantity_fees_path do
+      %i.fa.fa-money.fa-fw
+      Quantity Based Fee
+  %li
+    = link_to combination_fees_path do
+      %i.fa.fa-money.fa-fw
+      Combination Based Fee
+

@@ -1,9 +1,35 @@
-%p#notice= notice
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li Setup
+    %li.active
+      = link_to "Center", center_path(@center)
 
-%p
-  %b Name:
-  = @center.name
+= render 'layouts/flash_messages'
 
-= link_to 'Edit', edit_center_path(@center)
-\|
-= link_to 'Back', centers_path
+.row
+  .col-md-3
+    = render 'layouts/setup_sidebar'
+
+  .col-md-9
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          .pull-right
+            = link_to "Change the name", edit_center_path(@center), class: "btn btn-primary"
+          %h2
+            Center
+        %h4
+          = @center.name
+
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            Branches
+
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            Staffs

@@ -1,7 +1,22 @@
-%h1 Editing center
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li Setup
+    %li= link_to "Center", center_path(@center)
+    %li.active
+      = link_to "Edit Center", edit_center_path(@center)
 
-= render 'form'
+= render 'layouts/flash_messages'
 
-= link_to 'Show', @center
-\|
-= link_to 'Back', centers_path
+.row
+  .col-md-3
+    = render 'layouts/setup_sidebar'
+
+  .col-md-9
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            Edit Center
+
+        = render 'form'

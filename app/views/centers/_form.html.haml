@@ -1,21 +1,12 @@
 = form_for @center do |f|
-  .row
-    .large-6.large-centered.large-uncentered.columns
-      = f.label :name
-      = f.text_field :name
+  = form_group @center.errors[:name].present? do
 
-    .large-12.columns
-      = f.submit "Save", class: "button"
+    = f.label :name
+    = f.text_field :name, class: "form-control", required: true, autocomplete: "off"
+    %span.help-block
+      = @center.errors[:name].join(", ")
 
-  /- if @center.errors.any?
-  /  #error_explanation
-  /    %h2= "#{pluralize(@center.errors.count, "error")} prohibited this center from being saved:"
-  /    %ul
-  /      - @center.errors.full_messages.each do |msg|
-  /        %li= msg
+    = f.submit "Save", class: "btn btn-primary"
+    or
+    = link_to "Cancel", center_path(@center)
 
-  /.field
-  /  = f.label :name
-  /  = f.text_field :name
-  /.actions
-  /= f.submit 'Save'
