@@ -1,5 +1,25 @@
-%h1 New center
+.col-md-6.col-md-offset-3
+  %h1.text-center
+    Tueetion
+  .alert.alert-info
+    Congratulations for choosing Tueetion, but before proceeding further, you need to set your tuition's center name first.
 
-= render 'form'
+#box-sm.row
+  .col-md-12.hidden-xs.spacer
+  .col-md-6.col-md-offset-3
+    .panel.panel-default
+      .panel-body
 
-= link_to 'Back', centers_path
+        = render 'layouts/flash_messages'
+
+        = form_for @center do |f|
+          = form_group @center.errors[:name].present? do
+            = f.label :name, "Center's Name"
+            = f.text_field :name, class: "form-control", autofocus: true, required: true, autocomplete: "off"
+            %span.help-block
+              = @center.errors[:name].join(", ")
+
+            = f.submit "Save", class: "btn btn-primary"
+            or
+            = link_to "Logout", "#"
+
