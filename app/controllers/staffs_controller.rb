@@ -1,5 +1,5 @@
 class StaffsController < ApplicationController
-  before_filter :set_staff, only: [:lock]
+  before_filter :set_staff, only: [:lock, :unlock]
 
   # GET /staffs
   def index
@@ -14,6 +14,17 @@ class StaffsController < ApplicationController
       redirect_to staffs_url, notice: "Staff was successfully deactivated."
     else
       redirect_to staffs_url, notice: "Staff cannot be deactivated."
+    end
+  end
+
+  # GET /staffs/1/unlock
+  def unlock
+    @staff.is_active = true
+
+    if @staff.save
+      redirect_to staffs_url, notice: "Staff was successfully activated."
+    else
+      redirect_to staffs_url, notice: "Staff cannot be activated."
     end
   end
 

@@ -21,4 +21,13 @@ class StaffsControllerTest < ActionController::TestCase
     assert !@user.is_active
     assert_redirected_to staffs_url
   end
+
+  test "should unlock staff" do
+    get :unlock, id: @user
+
+    @user.reload
+
+    assert @user.is_active
+    assert_redirected_to staffs_url
+  end
 end

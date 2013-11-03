@@ -39,7 +39,7 @@
                       = link_to lock_staff_path(staff), class: "btn btn-default" do
                         %i.fa.fa-lock.fa-fw
                     - else
-                      = link_to "#", class: "btn btn-default" do
+                      = link_to unlock_staff_path(staff), class: "btn btn-default" do
                         %i.fa.fa-unlock-o.fa-fw
 
         - else
