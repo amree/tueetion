@@ -20,3 +20,8 @@
 
 # Ignore rbenv local
 /.ruby-version
+
+# Ignore environment specific env
+/.env.development
+/.env.test
+/.env.production

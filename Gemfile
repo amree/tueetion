@@ -40,6 +40,7 @@ group :development, :test do
 end
 
 gem 'font-awesome-sass', '~> 4.0.1'
+gem 'dotenv-rails', '~> 0.9.0'
 
 # Pretty console print
 gem 'hirb'
