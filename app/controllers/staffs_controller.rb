@@ -6,7 +6,7 @@ class StaffsController < ApplicationController
     @staffs = current_center.users.where("access_level > 10")
   end
 
-  # GET /staffs/1/lock
+  # PATCH /staffs/1/lock
   def lock
     @staff.is_active = false
 
@@ -17,7 +17,7 @@ class StaffsController < ApplicationController
     end
   end
 
-  # GET /staffs/1/unlock
+  # PATCH /staffs/1/unlock
   def unlock
     @staff.is_active = true
 

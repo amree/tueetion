@@ -4,8 +4,8 @@ Tueetion::Application.routes.draw do
 
   resources :staffs, only: [:index] do
     member do
-      get :lock
-      get :unlock
+      patch :lock
+      patch :unlock
     end
   end
 

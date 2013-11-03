@@ -14,7 +14,7 @@ class StaffsControllerTest < ActionController::TestCase
   end
 
   test "should lock staff" do
-    get :lock, id: @user
+    patch :lock, id: @user
 
     @user.reload
 
@@ -23,7 +23,7 @@ class StaffsControllerTest < ActionController::TestCase
   end
 
   test "should unlock staff" do
-    get :unlock, id: @user
+    patch :unlock, id: @user
 
     @user.reload
 
