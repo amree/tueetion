@@ -122,8 +122,8 @@ body {
   border-right: 1px solid #e5e5e5;
 }
 
-.text-middle {
-  vertical-align: middle !important;
+.table-text-middle > tbody > tr > td {
+  vertical-align: middle;
 }
 
 // Overrides

@@ -19,7 +19,7 @@
             Staffs
 
         - if @staffs.size > 0
-          %table.table.table-hover
+          %table.table.table-hover.table-text-middle
             %thead
               %th Name
               %th Email
@@ -28,13 +28,13 @@
             %tbody
               - @staffs.each do |staff|
                 %tr
-                  %td.text-middle
+                  %td
                     = staff.first_name
-                  %td.text-middle
+                  %td
                     = staff.email
-                  %td.text-middle
-                    = staff.is_active
-                  %td.text-right
+                  %td
+                    = status_label(staff.is_active)
+                  %td
                     - if staff.is_active
                       = link_to lock_staff_path(staff), method: :patch, class: "btn btn-default" do
                         %i.fa.fa-lock.fa-fw

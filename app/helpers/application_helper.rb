@@ -17,4 +17,20 @@ module ApplicationHelper
 
     content_tag "div", attributes, &block
   end
+
+  def status_label(status)
+    attributes = {}
+    content = nil
+
+    if status
+      attributes["class"] = "label label-success"
+      content = "ACTIVE"
+    else
+      attributes["class"] = "label label-default"
+      content = "INACTIVE"
+    end
+
+    # content_tag "span", attributes, content
+    content_tag :span, content, attributes
+  end
 end
