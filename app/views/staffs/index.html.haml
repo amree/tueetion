@@ -34,7 +34,7 @@
                     = staff.email
                   %td
                     = status_label(staff.is_active)
-                  %td
+                  %td.text-right
                     - if staff.is_active
                       = link_to lock_staff_path(staff), method: :patch, class: "btn btn-default" do
                         %i.fa.fa-lock.fa-fw
