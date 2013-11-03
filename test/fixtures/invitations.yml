@@ -1,0 +1,5 @@
+unused:
+  center: pakar
+  email: unused.invited@mail.com
+  key: <%= rand(36**10).to_s(36) %>
+  is_used: false

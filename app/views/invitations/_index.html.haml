@@ -1,0 +1,18 @@
+- if invitations.size > 0
+  %table.table.table-hover
+    %thead
+      %th Email
+      %th
+    %tbody
+      - invitations.each do |invitation|
+        %tr
+          %td.text-middle
+            = invitation.email
+          %td.text-right
+            -# = link_to edit_center_branch_path(center, branch), class: "btn btn-primary" do
+            -#   %i.fa.fa-pencil.fa-fw
+            -# = link_to center_branch_path(center, branch), method: :delete, class: "btn btn-danger" do
+            -#   %i.fa.fa-trash-o.fa-fw
+
+- else
+  You haven't invited any staff to join you.

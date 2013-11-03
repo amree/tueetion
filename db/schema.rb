@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131102223617) do
+ActiveRecord::Schema.define(version: 20131103003939) do
 
   create_table "bill_items", force: true do |t|
     t.integer  "bill_id"
@@ -100,6 +100,18 @@ ActiveRecord::Schema.define(version: 20131102223617) do
 
   add_index "enrolls", ["enrollable_id", "enrollable_type"], name: "index_enrolls_on_enrollable_id_and_enrollable_type", using: :btree
   add_index "enrolls", ["student_id"], name: "index_enrolls_on_student_id", using: :btree
+
+  create_table "invitations", force: true do |t|
+    t.integer  "center_id"
+    t.string   "email"
+    t.string   "key"
+    t.boolean  "is_used",    default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invitations", ["center_id"], name: "index_invitations_on_center_id", using: :btree
+  add_index "invitations", ["key"], name: "index_invitations_on_key", unique: true, using: :btree
 
   create_table "payments", force: true do |t|
     t.integer  "bill_id"

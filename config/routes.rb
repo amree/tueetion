@@ -1,5 +1,6 @@
 Tueetion::Application.routes.draw do
 
+  resources :invitations, only: [:new, :create, :destroy]
 
   devise_for :users
 

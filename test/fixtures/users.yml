@@ -19,6 +19,13 @@ staff:
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
   access_level: 10
 
+invited:
+  center: pakar
+  first_name: Invited
+  last_name: User
+  email: invited@mail.com
+  access_level: 10
+
 admin:
   first_name: Admin
   last_name: User
