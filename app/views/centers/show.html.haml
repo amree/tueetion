@@ -32,13 +32,3 @@
 
         = render 'branches/index', center: @center, branches: @center.branches
 
-
-    .panel.panel-borderless
-      .panel-body
-        .section-title
-          .pull-right
-            = link_to "New Staff", new_invitation_path, class: "btn btn-primary"
-          %h2
-            Staffs
-
-        = render 'invitations/index', invitations: @center.invitations

@@ -1,0 +1,49 @@
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li Setup
+    %li.active
+      = link_to "Staffs", invitations_path
+
+= render 'layouts/flash_messages'
+
+.row
+  .col-md-3
+    = render 'layouts/setup_sidebar'
+
+  .col-md-9
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          .pull-right
+            = link_to "New Staff", new_invitation_path, class: "btn btn-primary"
+          %h2
+            Staffs
+
+        - if @invitations.size > 0
+          %table.table.table-hover
+            %thead
+              %th Email
+              %th
+            %tbody
+              - @invitations.each do |invitation|
+                %tr
+                  %td.text-middle
+                    = invitation.email
+                  %td.text-right
+
+                    - if invitation.is_used
+                      - if User.find_by_email(invitation.email).try(:is_active)
+                        = link_to "#", class: "btn btn-default" do
+                          %i.fa.fa-lock.fa-fw
+                      - else
+                        = link_to "#", class: "btn btn-default" do
+                          %i.fa.fa-unlock-o.fa-fw
+                    - else
+                      = link_to "#", class: "btn btn-default" do
+                        %i.fa.fa-envelope.fa-fw
+                      = link_to invitation_path(invitation), method: :delete, class: "btn btn-danger" do
+                        %i.fa.fa-trash-o.fa-fw
+
+        - else
+          You haven't invited any staff to join you.

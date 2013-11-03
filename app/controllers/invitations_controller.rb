@@ -1,6 +1,11 @@
 class InvitationsController < ApplicationController
   before_action :set_invitation, only: [:edit, :update, :destroy]
 
+  # GET /invitations
+  def index
+    @invitations = current_center.invitations
+  end
+
   # GET /invitations/new
   def new
     @invitation = Invitation.new
@@ -13,8 +18,8 @@ class InvitationsController < ApplicationController
 
     respond_to do |format|
       if @invitation.save
-        format.html { redirect_to current_center, notice: 'Invitation was successfully sent.' }
-        format.json { render action: 'show', status: :created, location: current_center }
+        format.html { redirect_to invitations_path, notice: 'Invitation was successfully sent.' }
+        format.json { render action: 'show', status: :created, location: invitations_path }
       else
         format.html { render action: 'new' }
         format.json { render json: @invitation.errors, status: :unprocessable_entity }
@@ -28,7 +33,7 @@ class InvitationsController < ApplicationController
     @invitation.destroy
 
     respond_to do |format|
-      format.html { redirect_to current_center, notice: "Invitation was successfully deleted." }
+      format.html { redirect_to invitations_path, notice: "Invitation was successfully deleted." }
       format.json { head :no_content }
     end
   end
