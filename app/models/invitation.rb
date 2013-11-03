@@ -1,7 +1,7 @@
 class Invitation < ActiveRecord::Base
   belongs_to :center
 
-  before_validation :set_key
+  before_validation :set_key, on: :create
 
   validates :email, uniqueness: true
 

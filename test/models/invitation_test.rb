@@ -21,4 +21,12 @@ class InvitationTest < ActiveSupport::TestCase
     assert dup.invalid?
     assert dup.errors[:email].present?
   end
+
+  test "key should not be changed during update" do
+    key = @unused.key
+    @unused.is_used = true
+    @unused.save
+
+    assert key, @unused.key
+  end
 end
