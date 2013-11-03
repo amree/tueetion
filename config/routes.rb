@@ -1,6 +1,10 @@
 Tueetion::Application.routes.draw do
 
-  resources :invitations, only: [:index, :new, :create, :destroy]
+  resources :invitations, only: [:index, :new, :create, :destroy] do
+    member do
+      get :reinvite
+    end
+  end
 
   resources :staffs, only: [:index] do
     member do

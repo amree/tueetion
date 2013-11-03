@@ -1,5 +1,5 @@
 class InvitationsController < ApplicationController
-  before_action :set_invitation, only: [:edit, :update, :destroy]
+  before_action :set_invitation, only: [:edit, :update, :destroy, :reinvite]
 
   # GET /invitations
   def index
@@ -18,6 +18,7 @@ class InvitationsController < ApplicationController
 
     respond_to do |format|
       if @invitation.save
+        UserMailer.invitation(@invitation).deliver
         format.html { redirect_to invitations_path, notice: 'Invitation was successfully sent.' }
         format.json { render action: 'show', status: :created, location: invitations_path }
       else
@@ -36,6 +37,12 @@ class InvitationsController < ApplicationController
       format.html { redirect_to invitations_path, notice: "Invitation was successfully deleted." }
       format.json { head :no_content }
     end
+  end
+
+  def reinvite
+    UserMailer.invitation(@invitation).deliver
+
+    redirect_to invitations_path, notice: "Invitation was successfully resent."
   end
 
   private

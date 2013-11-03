@@ -31,7 +31,7 @@
                   %td
                     = invitation.email
                   %td.text-right
-                    = link_to "#", class: "btn btn-default" do
+                    = link_to reinvite_invitation_path(invitation), class: "btn btn-default" do
                       %i.fa.fa-envelope.fa-fw
                     = link_to invitation_path(invitation), method: :delete, class: "btn btn-danger" do
                       %i.fa.fa-trash-o.fa-fw

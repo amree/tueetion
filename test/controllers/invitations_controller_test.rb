@@ -34,4 +34,10 @@ class InvitationsControllerTest < ActionController::TestCase
 
     assert_redirected_to invitations_path
   end
+
+  test "should get reinvite" do
+    get :reinvite, id: @invitation
+
+    assert_redirected_to invitations_path
+  end
 end
