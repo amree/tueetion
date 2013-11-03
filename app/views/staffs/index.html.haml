@@ -1,0 +1,46 @@
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li Setup
+    %li.active
+      = link_to "Staffs", staffs_path
+
+= render 'layouts/flash_messages'
+
+.row
+  .col-md-3
+    = render 'layouts/setup_sidebar'
+
+  .col-md-9
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            Staffs
+
+        - if @staffs.size > 0
+          %table.table.table-hover
+            %thead
+              %th Name
+              %th Email
+              %th Status
+              %th
+            %tbody
+              - @staffs.each do |staff|
+                %tr
+                  %td.text-middle
+                    = staff.first_name
+                  %td.text-middle
+                    = staff.email
+                  %td.text-middle
+                    = staff.is_active
+                  %td.text-right
+                    - if staff.is_active
+                      = link_to "#", class: "btn btn-default" do
+                        %i.fa.fa-lock.fa-fw
+                    - else
+                      = link_to "#", class: "btn btn-default" do
+                        %i.fa.fa-unlock-o.fa-fw
+
+        - else
+          No invitations to be displayed.

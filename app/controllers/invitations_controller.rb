@@ -3,7 +3,7 @@ class InvitationsController < ApplicationController
 
   # GET /invitations
   def index
-    @invitations = current_center.invitations
+    @invitations = current_center.invitations.where(is_used: false)
   end
 
   # GET /invitations/new
