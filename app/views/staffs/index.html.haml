@@ -36,7 +36,7 @@
                     = staff.is_active
                   %td.text-right
                     - if staff.is_active
-                      = link_to "#", class: "btn btn-default" do
+                      = link_to lock_staff_path(staff), class: "btn btn-default" do
                         %i.fa.fa-lock.fa-fw
                     - else
                       = link_to "#", class: "btn btn-default" do

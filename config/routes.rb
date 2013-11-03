@@ -2,7 +2,11 @@ Tueetion::Application.routes.draw do
 
   resources :invitations, only: [:index, :new, :create, :destroy]
 
-  resources :staffs, only: [:index]
+  resources :staffs, only: [:index] do
+    member do
+      get :lock
+    end
+  end
 
   devise_for :users
 
