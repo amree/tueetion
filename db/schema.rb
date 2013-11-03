@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131103003939) do
+ActiveRecord::Schema.define(version: 20131103032217) do
 
   create_table "bill_items", force: true do |t|
     t.integer  "bill_id"
@@ -163,11 +163,11 @@ ActiveRecord::Schema.define(version: 20131103003939) do
 
   create_table "users", force: true do |t|
     t.integer  "center_id"
-    t.string   "email",                  default: "", null: false
+    t.string   "email",                  default: "",   null: false
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "access_level",           default: 50
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -176,6 +176,7 @@ ActiveRecord::Schema.define(version: 20131103003939) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "is_active",              default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
