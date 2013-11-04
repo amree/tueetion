@@ -23,4 +23,24 @@ class UserTest < ActiveSupport::TestCase
     assert user.invalid?
     assert user.errors[:center].present?
   end
+
+  test "should create the correct staff" do
+    invitation = invitations(:unused)
+
+    user = User.new
+    user.first_name = "First Name"
+    user.last_name = "Last Name"
+    user.password = "thisisapassword"
+    user.password_confirmation = "thisisapassword"
+    user.key = invitation.key
+
+    assert user.save
+    assert user.email == invitation.email
+    assert user.access_level == 10,
+           "User should be created as a staff when given a key"
+    assert user.center_id = invitation.center_id,
+           "Center is not associated correctly"
+
+    assert Invitation.find(invitation.id).is_used
+  end
 end

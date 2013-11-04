@@ -6,15 +6,24 @@
       .panel-body
         = devise_error_messages!
         = form_for resource, :as => resource_name, :url => registration_path(resource_name) do |f|
+
+          - resource.key = params[:key] || resource.key
+
+          - if resource.key.present?
+            = f.hidden_field :key
+
           .form-group
             = f.label :first_name
             = f.text_field :first_name, class: "form-control", autofocus: true
           .form-group
             = f.label :last_name
             = f.text_field :last_name, class: "form-control"
-          .form-group
-            = f.label :email
-            = f.email_field :email, class: "form-control"
+
+          - if resource.key.blank?
+            .form-group
+              = f.label :email
+              = f.email_field :email, class: "form-control"
+
           .form-group
             = f.label :password
             = f.password_field :password, class: "form-control"
