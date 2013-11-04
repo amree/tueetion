@@ -1,0 +1,24 @@
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li Setup
+    %li
+      = link_to "Groups", groups_path
+    %li
+      = link_to "Edit Group", edit_group_path(@group)
+
+= render 'layouts/flash_messages'
+
+.row
+  .col-md-3
+    = render 'layouts/setup_sidebar'
+
+  .col-md-9
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            Edit Group
+
+        = render 'form'
+

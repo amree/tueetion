@@ -8,6 +8,7 @@ class Center < ActiveRecord::Base
   has_many :quantity_fees
   has_many :combination_fees
   has_many :invitations
+  has_many :groups
 
   validates :name, presence: true
   validates :name, uniqueness: true

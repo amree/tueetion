@@ -17,6 +17,8 @@ Tueetion::Application.routes.draw do
     resources :combination_item_fees, except: [:index, :show]
   end
 
+  resources :groups, except: [:show]
+
   resources :invitations, only: [:index, :new, :create, :destroy] do
     member do
       get :reinvite
