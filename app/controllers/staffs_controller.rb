@@ -3,7 +3,7 @@ class StaffsController < ApplicationController
 
   # GET /staffs
   def index
-    @staffs = current_center.users.where("access_level > 10")
+    @staffs = current_center.users.where("access_level < 50")
   end
 
   # PATCH /staffs/1/lock
