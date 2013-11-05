@@ -74,6 +74,6 @@ class QuantityFeesController < ApplicationController
     end
 
     def set_subjects_for_select
-      @subjects_for_select = current_center.subjects.to_a.collect { |s| [s.name, s.id] }
+      @subjects_for_select = current_center.subjects.active.by_name.to_a.collect { |s| [s.name, s.id] }
     end
 end

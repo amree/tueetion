@@ -5,7 +5,7 @@ class SubjectsController < ApplicationController
   # GET /subjects
   # GET /subjects.json
   def index
-    @subjects = current_center.subjects.to_a
+    @subjects = current_center.subjects.by_name.to_a
   end
 
   # GET /subjects/1
