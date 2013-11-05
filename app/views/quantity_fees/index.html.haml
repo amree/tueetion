@@ -23,10 +23,12 @@
             %thead
               %tr
                 %th #
+                %th Name
                 %th Subject
                 %th.text-right
                   Price (RM)
-                %th Status
+                %th.text-center
+                  Status
                 %th
             %tbody
             - i = 0
@@ -34,10 +36,12 @@
               %tr
                 %td= i = i + 1
                 %td
+                  = quantity_fee.name
+                %td
                   = quantity_fee.subject.name
                 %td.text-right
                   = number_with_precision(quantity_fee.price, precision: 2)
-                %td
+                %td.text-center
                   = status_label(quantity_fee.is_active)
                 %td.text-right
                   = link_to quantity_fee, class: "btn btn-default" do

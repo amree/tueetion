@@ -4,7 +4,7 @@
     %li Setup
     %li= link_to "Quantity Fees", quantity_fees_path
     %li.active
-      = @quantity_fee.subject.name
+      = @quantity_fee.name
 
 = render 'layouts/flash_messages'
 
@@ -33,6 +33,10 @@
             %h2 Quantity Fee
 
           %dl.dl-horizontal
+            %dt
+              Name
+            %dd
+              = @quantity_fee.name
             %dt
               Subject
             %dd
