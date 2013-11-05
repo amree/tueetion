@@ -4,10 +4,11 @@
     = f.label :email, class: "col-lg-2 control-label"
     .col-lg-6
       = f.text_field :email, class: "form-control", type: "email", required: true, autofocus: true
-      %span.help-block
-        = @invitation.errors[:email].join(", ")
+      = form_errors @invitation, :email
 
   .form-group
     .col-md-offset-2.col-md-10
       = f.submit class: "btn btn-primary", data: { :"disable-with" => "Submitting..." }
 
+      or
+      = link_to "Cancel", invitations_path

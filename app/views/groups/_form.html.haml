@@ -4,10 +4,12 @@
     = f.label :name, class: "col-lg-2 control-label"
     .col-lg-6
       = f.text_field :name, class: "form-control", required: true, autofocus: true
-      %span.help-block
-        = @group.errors[:name].join(", ")
+      = form_errors @group, :name, :is_active
 
   .form-group
     .col-md-offset-2.col-md-10
       = f.submit class: "btn btn-primary", data: { :"disable-with" => "Submitting..." }
+
+      or
+      = link_to "Cancel", groups_path
 
