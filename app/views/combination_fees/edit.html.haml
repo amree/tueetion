@@ -1,14 +1,23 @@
 .breadcrumb-container
   %ol.breadcrumb
     %li= link_to "Home", root_path
+    %li Setup
     %li= link_to "Combination Fees", combination_fees_path
     %li= link_to @combination_fee.name, @combination_fee
     %li.active Edit
 
 = render 'layouts/flash_messages'
 
-.section-title
-  %h2 Edit Combination Fee
+.row
+  .col-md-3
+    = render 'layouts/setup_sidebar'
 
-= render 'form'
+  .col-md-9
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            Edit Combination Fee
+
+        = render 'form'
 

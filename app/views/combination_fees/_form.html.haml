@@ -1,33 +1,33 @@
 = form_for @combination_fee, html: { class: "form-horizontal", role: "form" } do |f|
 
   .form-group
-    = f.label :name, class: "col-lg-2 control-label"
+    = f.label :name, class: "col-lg-3 control-label"
     .col-lg-5
       = f.text_field :name, class: "form-control", placeholder: "Name"
 
   .form-group
-    = f.label :price, class: "col-lg-2 control-label"
+    = f.label :price, class: "col-lg-3 control-label"
     .col-lg-2
       = f.text_field :price, class: "form-control", value: number_with_precision(@combination_fee.price, precision: 2), placeholder: "10.00"
 
   .form-group
-    = f.label :min_subjects, class: "col-lg-2 control-label"
-    .col-lg-1
+    = f.label :min_subjects, class: "col-lg-3 control-label"
+    .col-lg-2
       = f.text_field :min_subjects, class: "form-control", placeholder: "1"
 
   .form-group
-    = f.label :max_subjects, class: "col-lg-2 control-label"
-    .col-lg-1
+    = f.label :max_subjects, class: "col-lg-3 control-label"
+    .col-lg-2
       = f.text_field :max_subjects, class: "form-control", placeholder: "1"
 
   .form-group
-    .col-lg-offset-2.col-lg-10
+    .col-lg-offset-3.col-lg-9
       .checkbox
         = f.check_box :is_active
         Active
 
   .form-group
-    .col-lg-offset-2.col-lg-10
+    .col-lg-offset-3.col-lg-9
       %button.btn.btn-primary{ type: "submit"}
         Save
       or

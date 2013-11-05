@@ -1,39 +1,46 @@
 .breadcrumb-container
   %ol.breadcrumb
-    %li
-      = link_to "Home", root_path
+    %li= link_to "Home", root_path
+    %li Setup
     %li.active Combination Fees
 
 = render 'layouts/flash_messages'
 
-.section-title
-  = link_to "New Combination Fee", new_combination_fee_path, class: "btn btn-primary pull-right"
-  %h2 Combination Fees
+.row
+  .col-md-3
+    = render 'layouts/setup_sidebar'
 
-%table.table.table-hover
-  %thead
-    %tr
-      %th #
-      %th Name
-      %th Subjects (Min - Max)
-      %th Price
-      %th Status
-      %th
-  %tbody
-  - @combination_fees.each do |combination_fee|
-    %tr
-      %td #
-      %td= combination_fee.name
-      %td
-        = combination_fee.min_subjects
-        \-
-        = combination_fee.max_subjects
-      %td= number_with_precision(combination_fee.price, precision: 2)
-      %td= combination_fee.is_active
-      %td.text-right
-        = link_to 'Show', combination_fee
-        \/
-        = link_to 'Edit', edit_combination_fee_path(combination_fee)
-        \/
-        = link_to 'Destroy', combination_fee, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  .col-md-9
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          = link_to "New Combination Fee", new_combination_fee_path, class: "btn btn-primary pull-right"
+          %h2 Combination Fees
 
+        - if @combination_fees.size
+          %table.table.table-hover.table-text-middle
+            %thead
+              %tr
+                %th #
+                %th Name
+                %th.text-right
+                  Price (RM)
+                %th.text-center
+                  Status
+                %th
+            %tbody
+            - i = 0
+            - @combination_fees.each do |combination_fee|
+              %tr
+                %td= i = i + 1
+                %td
+                  = combination_fee.name
+                %td.text-right
+                  = number_with_precision(combination_fee.price, precision: 2)
+                %td.text-center
+                  = status_label(combination_fee.is_active)
+                %td.text-right
+                  = link_to combination_fee, class: "btn btn-default" do
+                    %i.fa.fa-eye.fa-fw
+        - else
+          No item to be displayed.
