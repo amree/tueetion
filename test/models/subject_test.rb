@@ -11,4 +11,13 @@ class SubjectTest < ActiveSupport::TestCase
     assert dup.invalid?
     assert dup.errors[:name].present?
   end
+
+  test "name should not be blank" do
+    dup = @bm.dup
+    dup.name = nil
+
+    dup.invalid?
+
+    assert dup.errors[:name].present?
+  end
 end

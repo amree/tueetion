@@ -5,5 +5,6 @@ class Subject < ActiveRecord::Base
   scope :by_name, -> { order(:name) }
   scope :active,  -> { where(is_active: true) }
 
+  validates :name, presence: true
   validates :name, uniqueness: { scope: :center_id }
 end

@@ -3,6 +3,7 @@ class Invitation < ActiveRecord::Base
 
   before_validation :set_key, on: :create
 
+  validates :email, presence: true
   validates :email, uniqueness: true
 
   protected

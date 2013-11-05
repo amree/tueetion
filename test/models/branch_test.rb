@@ -11,4 +11,12 @@ class BranchTest < ActiveSupport::TestCase
 
     assert branch.errors[:name].present?
   end
+
+  test "name should not be blank" do
+    branch = @branch.dup
+    branch.name = nil
+    branch.valid?
+
+    assert branch.errors[:name].present?
+  end
 end

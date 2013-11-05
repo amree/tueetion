@@ -11,4 +11,12 @@ class GroupTest < ActiveSupport::TestCase
 
     assert dup.errors[:name].present?, "Name should be unique"
   end
+
+  test "name should not be blank" do
+    dup = @group.dup
+    dup.name = nil
+    dup.valid?
+
+    assert dup.errors["name"].present?
+  end
 end

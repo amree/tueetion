@@ -29,4 +29,12 @@ class InvitationTest < ActiveSupport::TestCase
 
     assert key, @unused.key
   end
+
+  test "email should not be blank" do
+    invitation = Invitation.new
+    invitation.center_id = @center.id
+    invitation.valid?
+
+    assert invitation.errors[:email].present?
+  end
 end
