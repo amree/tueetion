@@ -26,7 +26,8 @@
               %tr
                 %th #
                 %th Name
-                %th Status
+                %th.text-center
+                  Status
                 %th
             %tbody
             - i = 0
@@ -34,7 +35,8 @@
               %tr
                 %td= i = i + 1
                 %td= subject.name
-                %td= status_label(subject.is_active)
+                %td.text-center
+                  = status_label(subject.is_active)
                 %td.text-right
                   = link_to subject, class: "btn btn-default" do
                     %i.fa.fa-eye.fa-fw

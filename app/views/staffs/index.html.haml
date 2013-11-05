@@ -23,7 +23,8 @@
             %thead
               %th Name
               %th Email
-              %th Status
+              %th.text-center
+                Status
               %th
             %tbody
               - @staffs.each do |staff|
@@ -32,7 +33,7 @@
                     = staff.first_name
                   %td
                     = staff.email
-                  %td
+                  %td.text-center
                     = status_label(staff.is_active)
                   %td.text-right
                     - if staff.is_active
