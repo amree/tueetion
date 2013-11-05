@@ -1,7 +1,14 @@
 require 'test_helper'
 
 class SubjectTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @bm = subjects(:bm)
+  end
+
+  test "name should be unique" do
+    dup = @bm.dup
+
+    assert dup.invalid?
+    assert dup.errors[:name].present?
+  end
 end
