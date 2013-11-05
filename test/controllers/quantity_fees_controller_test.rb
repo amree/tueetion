@@ -3,7 +3,7 @@ require 'test_helper'
 class QuantityFeesControllerTest < ActionController::TestCase
   setup do
     @user = users(:user)
-    @quantity_fee = quantity_fees(:bm_price)
+    @quantity_fee = quantity_fees(:bm_pakar)
 
     sign_in @user
   end

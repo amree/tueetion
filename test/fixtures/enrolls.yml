@@ -1,4 +1,4 @@
 ali_quantity_fee:
   student: ali
-  enrollable: bm_price (QuantityFee)
+  enrollable: bm_pakar (QuantityFee)
 
