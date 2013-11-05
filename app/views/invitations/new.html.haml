@@ -3,9 +3,9 @@
     %li= link_to "Home", root_path
     %li Setup
     %li
-      = link_to "Center", center_path(@center)
-    %li
-      = link_to "New Staff", new_invitation_path
+      = link_to "Invitations", invitations_path
+    %li.active
+      New Invitation
 
 = render 'layouts/flash_messages'
 
