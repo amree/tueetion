@@ -70,7 +70,7 @@ class QuantityFeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quantity_fee_params
-      params.require(:quantity_fee).permit(:subject_id, :price, :is_active)
+      params.require(:quantity_fee).permit(:subject_id, :name, :price, :is_active)
     end
 
     def set_subjects_for_select

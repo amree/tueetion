@@ -23,7 +23,7 @@ class QuantityFeesControllerTest < ActionController::TestCase
 
   test "should create quantity_fee" do
     assert_difference('QuantityFee.count') do
-      post :create, quantity_fee: { is_active: @quantity_fee.is_active, price: @quantity_fee.price, subject_id: @quantity_fee.subject_id }
+      post :create, quantity_fee: { name: "Nama", is_active: @quantity_fee.is_active, price: @quantity_fee.price, subject_id: @quantity_fee.subject_id }
     end
 
     assert_redirected_to quantity_fee_path(assigns(:quantity_fee))
@@ -42,7 +42,7 @@ class QuantityFeesControllerTest < ActionController::TestCase
   end
 
   test "should update quantity_fee" do
-    patch :update, id: @quantity_fee, quantity_fee: { is_active: @quantity_fee.is_active, price: @quantity_fee.price, subject_id: @quantity_fee.subject_id }
+    patch :update, id: @quantity_fee, quantity_fee: { name: "Nama", is_active: @quantity_fee.is_active, price: @quantity_fee.price, subject_id: @quantity_fee.subject_id }
     assert_redirected_to quantity_fee_path(assigns(:quantity_fee))
   end
 

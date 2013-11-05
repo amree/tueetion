@@ -1,5 +1,11 @@
 = form_for @quantity_fee, html: { class: "form-horizontal", role: "form" } do |f|
 
+  = form_group @quantity_fee.errors[:name].present? do
+    = f.label :name, class: "col-lg-2 control-label"
+    .col-lg-5
+      = f.text_field :name, class: "form-control"
+      = form_errors @quantity_fee, :name
+
   = form_group @quantity_fee.errors[:subject_id].present? || @quantity_fee.errors[:subject].present? do
     = f.label :subject_id, class: "col-lg-2 control-label"
     .col-lg-5
