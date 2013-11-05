@@ -20,7 +20,7 @@ class SubjectsControllerTest < ActionController::TestCase
 
   test "should create subject" do
     assert_difference('Subject.count') do
-      post :create, subject: { center_id: @subject.center_id, is_active: @subject.is_active, name: @subject.name }
+      post :create, subject: { center_id: @subject.center_id, is_active: @subject.is_active, name: "Random name" }
     end
 
     assert_redirected_to subject_path(assigns(:subject))
