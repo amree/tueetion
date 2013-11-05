@@ -18,6 +18,20 @@ module ApplicationHelper
     content_tag "div", attributes, &block
   end
 
+  # Generate span to display error text
+  def form_errors(form, *elems)
+    msg = ''
+    elems.each do |elem|
+      unless msg.strip.blank?
+        msg = msg + ", "
+      end
+
+      msg = msg + form.errors[elem].join(", ")
+    end
+
+    content_tag "span", msg, class: "help-block"
+  end
+
   def status_label(status)
     attributes = {}
     content = nil
