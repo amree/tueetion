@@ -1,14 +1,10 @@
 .breadcrumb-container
   %ol.breadcrumb
-    %li
-      = link_to "Home", root_path
+    %li= link_to "Home", root_path
     %li Setup
-    %li
-      = link_to "Quantity Fees", quantity_fees_path
-    %li
-      = link_to @quantity_fee.name, @quantity_fee
-    %li.active
-      Edit
+    %li= link_to "Quantity Fees", quantity_fees_path
+    %li= link_to @quantity_fee.name, @quantity_fee
+    %li.active Edit
 
 = render 'layouts/flash_messages'
 

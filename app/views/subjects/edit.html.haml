@@ -2,12 +2,9 @@
   %ol.breadcrumb
     %li= link_to "Home", root_path
     %li Setup
-    %li
-      = link_to "Subjects", subjects_path
-    %li
-      = link_to @subject.name, @subject
-    %li.active
-      Edit Subject
+    %li= link_to "Subjects", subjects_path
+    %li= link_to @subject.name, @subject
+    %li.active Edit Subject
 
 = render 'layouts/flash_messages'
 

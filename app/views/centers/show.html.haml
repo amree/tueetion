@@ -2,8 +2,7 @@
   %ol.breadcrumb
     %li= link_to "Home", root_path
     %li Setup
-    %li.active
-      = link_to "Center", center_path(@center)
+    %li.active= link_to "Center", center_path(@center)
 
 = render 'layouts/flash_messages'
 
