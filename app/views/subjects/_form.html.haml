@@ -1,9 +1,10 @@
 = form_for @subject, html: { class: "form-horizontal", role: "form" } do |f|
 
-  .form-group
+  = form_group @subject.errors[:name].present? || @subject.errors[:is_active].present? do
     = f.label :name, class: "col-lg-2 control-label"
     .col-lg-6
       = f.text_field :name, class: "form-control", placeholder: "Name"
+      = form_errors(@subject, :name, :is_active)
 
   .form-group
     .col-lg-offset-2.col-lg-10
@@ -12,9 +13,11 @@
         Active
 
   .form-group
-    .col-lg-offset-2.col-lg-10
-      %button.btn.btn-primary{ type: "submit"}
-        Save
+    .col-md-offset-2.col-md-10
+      = f.submit class: "btn btn-primary", data: { :"disable-with" => "Submitting..." }
       or
-      = link_to "Cancel", subjects_path
+      - if @subject.new_record?
+        = link_to "Cancel", subjects_path
+      - else
+        = link_to "Cancel", @subject
 

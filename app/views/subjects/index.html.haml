@@ -1,32 +1,41 @@
 .breadcrumb-container
   %ol.breadcrumb
-    %li
-      = link_to "Home", root_path
-    %li.active Subjects
+    %li= link_to "Home", root_path
+    %li Setup
+    %li.active
+      = link_to "Subjects", subjects_path
 
 = render 'layouts/flash_messages'
 
-.section-title
-  = link_to "New Subject", new_subject_path, class: "btn btn-primary pull-right"
-  %h2 Subjects
+.row
+  .col-md-3
+    = render 'layouts/setup_sidebar'
 
-%table.table.table-hover
-  %thead
-    %tr
-      %th #
-      %th Name
-      %th Status
-      %th
-  %tbody
-  - @subjects.each do |subject|
-    %tr
-      %td #
-      %td= subject.name
-      %td= subject.is_active
-      %td.text-right
-        = link_to 'Show', subject
-        \/
-        = link_to 'Edit', edit_subject_path(subject)
-        \/
-        = link_to 'Destroy', subject, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  .col-md-9
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          .pull-right
+            = link_to "New Subject", new_subject_path, class: "btn btn-primary"
+          %h2
+            Subjects
+
+        - if @subjects.size > 0
+          %table.table.table-hover.table-text-middle
+            %thead
+              %tr
+                %th #
+                %th Name
+                %th Status
+                %th
+            %tbody
+            - i = 0
+            - @subjects.each do |subject|
+              %tr
+                %td= i = i + 1
+                %td= subject.name
+                %td= status_label(subject.is_active)
+                %td.text-right
+                  = link_to subject, class: "btn btn-default" do
+                    %i.fa.fa-eye.fa-fw
 
