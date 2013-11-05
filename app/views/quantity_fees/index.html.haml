@@ -1,34 +1,48 @@
 .breadcrumb-container
   %ol.breadcrumb
-    %li
-      = link_to "Home", root_path
+    %li= link_to "Home", root_path
+    %li Setup
     %li.active Quantity Fees
 
 = render 'layouts/flash_messages'
 
-.section-title
-  = link_to "New Quantity Fee", new_quantity_fee_path, class: "btn btn-primary pull-right"
-  %h2 Quantity Fees
 
-%table.table.table-hover
-  %thead
-    %tr
-      %th #
-      %th Subject
-      %th Price (RM)
-      %th Status
-      %th
-  %tbody
-  - @quantity_fees.each do |quantity_fee|
-    %tr
-      %td #
-      %td= quantity_fee.subject.name
-      %td= number_with_precision(quantity_fee.price, precision: 2)
-      %td= quantity_fee.is_active
-      %td
-        = link_to 'Show', quantity_fee
-        \/
-        = link_to 'Edit', edit_quantity_fee_path(quantity_fee)
-        \/
-        = link_to 'Destroy', quantity_fee, :method => :delete, :data => { :confirm => 'Are you sure?' }
+.row
+  .col-md-3
+    = render 'layouts/setup_sidebar'
+
+  .col-md-9
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          = link_to "New Quantity Fee", new_quantity_fee_path, class: "btn btn-primary pull-right"
+          %h2 Quantity Fees
+
+        - if @quantity_fees.size
+          %table.table.table-hover
+            %thead
+              %tr
+                %th #
+                %th Subject
+                %th.text-right
+                  Price (RM)
+                %th Status
+                %th
+            %tbody
+            - i = 0
+            - @quantity_fees.each do |quantity_fee|
+              %tr
+                %td= i = i + 1
+                %td
+                  = quantity_fee.subject.name
+                %td.text-right
+                  = number_with_precision(quantity_fee.price, precision: 2)
+                %td
+                  = status_label(quantity_fee.is_active)
+                %td.text-right
+                  = link_to quantity_fee, class: "btn btn-default" do
+                    %i.fa.fa-eye.fa-fw
+
+        - else
+          No Quantity Fee has been added.
 

@@ -1,14 +1,27 @@
 .breadcrumb-container
   %ol.breadcrumb
-    %li= link_to "Home", root_path
-    %li= link_to "Quantity Fees", quantity_fees_path
-    %li= link_to @quantity_fee.subject.name, @quantity_fee
-    %li.active Edit
+    %li
+      = link_to "Home", root_path
+    %li Setup
+    %li
+      = link_to "Quantity Fees", quantity_fees_path
+    %li
+      = link_to @quantity_fee.subject.name, @quantity_fee
+    %li.active
+      Edit
 
 = render 'layouts/flash_messages'
 
-.section-title
-  %h2 Edit Quantity Fee
+.row
+  .col-md-3
+    = render 'layouts/setup_sidebar'
 
-= render 'form'
+  .col-md-9
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            Edit Quantity Fee
+
+        = render 'form'
 

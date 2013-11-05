@@ -1,14 +1,16 @@
 = form_for @quantity_fee, html: { class: "form-horizontal", role: "form" } do |f|
 
-  .form-group
+  = form_group @quantity_fee.errors[:subject_id].present? || @quantity_fee.errors[:subject].present? do
     = f.label :subject_id, class: "col-lg-2 control-label"
     .col-lg-5
       = f.select :subject_id, @subjects_for_select, {}, { class: "form-control" }
+      = form_errors @quantity_fee, :subject_id, :subject
 
-  .form-group
+  = form_group @quantity_fee.errors[:price].present? do
     = f.label :price, class: "col-lg-2 control-label"
     .col-lg-2
       = f.text_field :price, class: "form-control", value: number_with_precision(@quantity_fee.price, precision: 2), placeholder: "10.00"
+      = form_errors @quantity_fee, :price
 
   .form-group
     .col-lg-offset-2.col-lg-10
