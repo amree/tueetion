@@ -1,7 +1,7 @@
 class CombinationItemFeesController < ApplicationController
   before_action :set_combination_fee
   before_action :set_combination_item_fee, only: [:edit, :update, :destroy]
-  before_action :set_subjects_for_select, only: [:new, :edit]
+  before_action :set_subjects_for_select, only: [:new, :create, :edit, :update]
 
   # GET /combination_item_fees/new
   def new

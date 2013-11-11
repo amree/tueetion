@@ -1,9 +1,10 @@
 = form_for [@combination_fee, @combination_item_fee], html: { class: "form-horizontal", role: "form" } do |f|
 
-  .form-group
+  = form_group @combination_item_fee.errors[:subject_id].present? || @combination_item_fee.errors[:subject].present? do
     = f.label :subject_id, class: "col-lg-2 control-label"
     .col-lg-5
       = f.select :subject_id, @subjects_for_select, {}, { class: "form-control" }
+      = form_errors @combination_item_fee, :subject_id, :subject
 
   .form-group
     .col-lg-offset-2.col-lg-10
