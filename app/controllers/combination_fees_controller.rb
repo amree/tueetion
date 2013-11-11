@@ -69,6 +69,6 @@ class CombinationFeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def combination_fee_params
-      params.require(:combination_fee).permit(:name, :min_subjects, :max_subjects, :price, :is_active)
+      params.require(:combination_fee).permit(:name, :price, :is_active)
     end
 end

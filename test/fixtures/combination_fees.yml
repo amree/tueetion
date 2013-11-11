@@ -1,7 +1,5 @@
 combo1:
   center: pakar
   name: Combo 1
-  min_subjects: 1
-  max_subjects: 2
   price: 50.00
   is_active: true

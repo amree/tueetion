@@ -20,7 +20,7 @@ class CombinationFeesControllerTest < ActionController::TestCase
 
   test "should create combination_fee" do
     assert_difference('CombinationFee.count') do
-      post :create, combination_fee: { center_id: @combination_fee.center_id, is_active: @combination_fee.is_active, max_subjects: @combination_fee.max_subjects, min_subjects: @combination_fee.min_subjects, name: @combination_fee.name, price: @combination_fee.price }
+      post :create, combination_fee: { center_id: @combination_fee.center_id, is_active: @combination_fee.is_active, name: @combination_fee.name, price: @combination_fee.price }
     end
 
     assert_redirected_to combination_fee_path(assigns(:combination_fee))
@@ -37,7 +37,7 @@ class CombinationFeesControllerTest < ActionController::TestCase
   end
 
   test "should update combination_fee" do
-    patch :update, id: @combination_fee, combination_fee: { center_id: @combination_fee.center_id, is_active: @combination_fee.is_active, max_subjects: @combination_fee.max_subjects, min_subjects: @combination_fee.min_subjects, name: @combination_fee.name, price: @combination_fee.price }
+    patch :update, id: @combination_fee, combination_fee: { center_id: @combination_fee.center_id, is_active: @combination_fee.is_active, name: @combination_fee.name, price: @combination_fee.price }
     assert_redirected_to combination_fee_path(assigns(:combination_fee))
   end
 
