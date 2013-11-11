@@ -19,6 +19,8 @@ class CombinationFeesControllerTest < ActionController::TestCase
   end
 
   test "should create combination_fee" do
+    @combination_fee.name = "something else"
+
     assert_difference('CombinationFee.count') do
       post :create, combination_fee: { center_id: @combination_fee.center_id, is_active: @combination_fee.is_active, name: @combination_fee.name, price: @combination_fee.price }
     end
