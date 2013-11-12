@@ -1,41 +1,47 @@
 .breadcrumb-container
   %ol.breadcrumb
-    %li
-      = link_to "Home", root_path
+    %li= link_to "Home", root_path
     %li.active Students
 
 = render 'layouts/flash_messages'
 
-.section-title
-  = link_to "New Student", new_student_path, class: "btn btn-primary pull-right"
-  %h2 Students
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          .pull-right
+            = link_to "New Student", new_student_path, class: "btn btn-primary"
+          %h2
+            Students
 
-%table.table.table-hover
-  %thead
-    %tr
-      %th #
-      %th Identity #
-      %th First Name, Last Name
-      %th E-Mail
-      %th Phone #
-      %th Status
-      %th
-  %tbody
-  - @students.each do |student|
-    %tr
-      %td #
-      %td= student.ic
-      %td
-        = succeed "," do
-          = student.first_name
-        = student.last_name
-      %td= student.email
-      %td= student.phone
-      %td= student.is_active
-      %td.text-right
-        = link_to 'Show', student
-        \/
-        = link_to 'Edit', edit_student_path(student)
-        \/
-        = link_to 'Destroy', student, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        - if @students.size > 0
+          %table.table.table-hover.table-text-middle
+            %thead
+              %tr
+                %th #
+                %th Identity #
+                %th Name
+                %th Phone #
+                %th.text-center
+                  Status
+                %th
+            %tbody
+              - i = 0
+              - @students.each do |student|
+                %tr
+                  %td= i = i + 1
+                  %td= student.ic
+                  %td
+                    = student.first_name
+                    = student.last_name
+                  %td= student.phone
+                  %td.text-center
+                    = status_label(student.is_active)
+                  %td.text-right
+                    = link_to student, class: "btn btn-default" do
+                      %i.fa.fa-eye.fa-fw
+
+        - else
+          No students registered yet.
 

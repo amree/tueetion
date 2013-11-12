@@ -1,50 +1,58 @@
 = form_for @student, html: { class: "form-horizontal", role: "form" } do |f|
 
-  .form-group
+  = form_group @student.errors[:ic].present? do
     = f.label :ic, "Identity #", class: "col-lg-2 control-label"
     .col-lg-2
       = f.text_field :ic, class: "form-control", placeholder: "Identity #"
+      = form_errors @student, :ic
 
-  .form-group
+  = form_group @student.errors[:first_name].present? do
     = f.label :first_name, class: "col-lg-2 control-label"
     .col-lg-4
       = f.text_field :first_name, class: "form-control", placeholder: "First Name"
+      = form_errors @student, :first_name
 
-  .form-group
+  = form_group @student.errors[:last_name].present? do
     = f.label :last_name, class: "col-lg-2 control-label"
     .col-lg-4
       = f.text_field :last_name, class: "form-control", placeholder: "Last Name"
+      = form_errors @student, :last_name
 
-  .form-group
-    = f.label :dob, class: "col-lg-2 control-label"
+  = form_group @student.errors[:dob].present? do
+    = f.label :dob, "DOB", class: "col-lg-2 control-label"
     .col-lg-2
       = f.date_select :dob, {}, class: "form-control"
+      = form_errors @student, :dob
 
-  .form-group
+  = form_group @student.errors[:email].present? do
     = f.label :email, class: "col-lg-2 control-label"
     .col-lg-4
       = f.text_field :email, class: "form-control", placeholder: "E-Mail"
+      = form_errors @student, :email
 
-  .form-group
+  = form_group @student.errors[:phone].present? do
     = f.label :phone, class: "col-lg-2 control-label"
     .col-lg-2
       = f.text_field :phone, class: "form-control", placeholder: "Phone #"
+      = form_errors @student, :phone
 
-  .form-group
+  = form_group @student.errors[:school_name].present? do
     = f.label :school_name, class: "col-lg-2 control-label"
     .col-lg-4
       = f.text_field :school_name, class: "form-control", placeholder: "School Name"
+      = form_errors @student, :school_name
 
-  .form-group
+  = form_group @student.errors[:is_active].present? do
     .col-lg-offset-2.col-lg-10
       .checkbox
         = f.check_box :is_active
         Active
+      = form_errors @student, :is_active
 
   .form-group
     .col-lg-offset-2.col-lg-10
       %button.btn.btn-primary{ type: "submit"}
         Save
       or
-      = link_to "Cancel", subjects_path
+      = link_to "Cancel", students_path
 

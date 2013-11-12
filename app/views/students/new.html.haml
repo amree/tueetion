@@ -6,8 +6,13 @@
 
 = render 'layouts/flash_messages'
 
-.section-title
-  %h2 New Student
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            New Student
 
-= render 'form'
+        = render 'form'
 

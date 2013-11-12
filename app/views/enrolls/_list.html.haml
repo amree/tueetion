@@ -1,21 +1,26 @@
-%table.table.table-hover.table-striped
+%table.table.table-hover
   %thead
     %tr
       %th #
       %th Package
       %th Subjects
-      %th Price
+      %th.text-right
+        Price (RM)
   %tbody
-  - Enroll.where(enrollable_type: "CombinationFee", student_id: student.id).each do |enroll|
-    %tr
-      %td #
-      %td= enroll.enrollable.name
-      %td= enroll.subjects.map(&:name).join(", ")
-      %td= enroll.enrollable.price
+    - i = 0
+    - Enroll.where(enrollable_type: "CombinationFee", student_id: student.id).each do |enroll|
+      %tr
+        %td= i = i + 1
+        %td= enroll.enrollable.name
+        %td= enroll.subjects.map(&:name).join(", ")
+        %td.text-right
+          = number_with_precision(enroll.enrollable.price, precision: 2)
 
-  - Enroll.where(enrollable_type: "QuantityFee", student_id: student.id).each do |enroll|
-    %tr
-      %td #
-      %td= enroll.enrollable.subject.name
-      %td= enroll.enrollable.subject.name
-      %td= enroll.enrollable.price
+    - Enroll.where(enrollable_type: "QuantityFee", student_id: student.id).each do |enroll|
+      %tr
+        %td= i = i + 1
+        %td= enroll.enrollable.name
+        %td= enroll.enrollable.subject.name
+        %td.text-right
+          = number_with_precision(enroll.enrollable.price, precision: 2)
+
