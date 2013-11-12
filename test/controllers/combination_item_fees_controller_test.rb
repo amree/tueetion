@@ -4,6 +4,7 @@ class CombinationItemFeesControllerTest < ActionController::TestCase
   setup do
     @combination_fee = combination_fees(:combo1)
     @combination_item_fee = combination_item_fees(:combo1_bi)
+    @subject = subjects(:math)
 
     sign_in users(:user)
   end
@@ -18,7 +19,7 @@ class CombinationItemFeesControllerTest < ActionController::TestCase
   test "should create combination_item_fee" do
     assert_difference('CombinationItemFee.count') do
 
-      post :create, combination_fee_id: @combination_fee, combination_item_fee: { combination_fee_id: @combination_item_fee.combination_fee_id, subject_id: @combination_item_fee.subject_id }
+      post :create, combination_fee_id: @combination_fee, combination_item_fee: { combination_fee_id: @combination_item_fee.combination_fee_id, subject_id: @subject.id }
     end
 
     assert_redirected_to @combination_fee
