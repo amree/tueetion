@@ -1,5 +1,7 @@
 = form_for @student, html: { class: "form-horizontal", role: "form" } do |f|
 
+  / TODO: Display association/base error
+
   = form_group @student.errors[:ic].present? do
     = f.label :ic, "Identity #", class: "col-lg-2 control-label"
     .col-lg-2
