@@ -46,4 +46,18 @@ class StudentTest < ActiveSupport::TestCase
 
     assert @ali.errors[:phone].present?
   end
+
+  test "branch should be valid if inserted" do
+    @ali.branch_id = 1000
+    @ali.valid?
+
+    assert @ali.errors[:branch].present?
+  end
+
+  test "group should be valid if inserted" do
+    @ali.group_id = 1000
+    @ali.valid?
+
+    assert @ali.errors[:group].present?
+  end
 end

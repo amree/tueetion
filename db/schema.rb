@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111145500) do
+ActiveRecord::Schema.define(version: 20131112173456) do
 
   create_table "bill_items", force: true do |t|
     t.integer  "bill_id"
@@ -145,6 +145,8 @@ ActiveRecord::Schema.define(version: 20131111145500) do
 
   create_table "students", force: true do |t|
     t.integer  "center_id"
+    t.integer  "branch_id"
+    t.integer  "group_id"
     t.string   "ic"
     t.string   "first_name"
     t.string   "last_name"
@@ -157,7 +159,9 @@ ActiveRecord::Schema.define(version: 20131111145500) do
     t.datetime "updated_at"
   end
 
+  add_index "students", ["branch_id"], name: "index_students_on_branch_id", using: :btree
   add_index "students", ["center_id"], name: "index_students_on_center_id", using: :btree
+  add_index "students", ["group_id"], name: "index_students_on_group_id", using: :btree
 
   create_table "subjects", force: true do |t|
     t.integer  "center_id"

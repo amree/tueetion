@@ -1,5 +1,7 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy, :generate_bill]
+  before_action :set_branches, only: [:new, :create, :edit, :update]
+  before_action :set_groups, only: [:new, :create, :edit, :update]
 
   # GET /students
   # GET /students.json
@@ -82,4 +84,13 @@ class StudentsController < ApplicationController
   def student_params
     params.require(:student).permit(:ic, :first_name, :last_name, :dob, :email, :phone, :school_name, :is_active)
   end
+
+  def set_branches
+    @branches = Branch.by_name.to_a.collect { |b| [b.name, b.id] }
+  end
+
+  def set_groups
+    @groups = Group.by_name.collect { |g| [g.name, g.id] }
+  end
 end
+
