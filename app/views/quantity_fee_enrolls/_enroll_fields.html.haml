@@ -1,9 +1,12 @@
-.form-group.nested-fields
-  = f.hidden_field :enrollable_type, value: "QuantityFee"
-  = f.label :enrollable_id, "Subject", class: "col-lg-2 control-label"
-  .col-lg-10
-    .col-lg-6
-      = f.select :enrollable_id, @quantity_fee_subjects, {}, { class: "form-control" }
-    .col-lg-2
-      = link_to_remove_association "Remove", f, class: "btn btn-danger"
+.nested-fields
+  = form_group f.object.errors[:enrollable_id].present? do
+    = f.hidden_field :enrollable_type, value: "QuantityFee"
+    = f.label :enrollable_id, "Subject", class: "col-lg-2 control-label"
+    .col-lg-10
+      .col-lg-6
+        = f.select :enrollable_id, @quantity_fee_subjects, {}, { class: "form-control" }
+        = form_errors f.object, :enrollable_id
+
+      .col-lg-2
+        = link_to_remove_association "Remove", f, class: "btn btn-danger"
 

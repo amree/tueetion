@@ -19,5 +19,12 @@ class EnrollTest < ActiveSupport::TestCase
     assert_equal dup.enrollable.subject_id,
                  EnrollSubject.find_by_enroll_id(dup.id).subject_id
   end
+
+  test "subject should be unique by student for QuantityFee" do
+    enroll = @quantity_fee.dup
+    enroll.valid?
+
+    assert enroll.errors[:enrollable_id].present?
+  end
 end
 

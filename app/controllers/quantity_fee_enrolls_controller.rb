@@ -1,13 +1,9 @@
 class QuantityFeeEnrollsController < ApplicationController
   before_action :set_student
+  before_action :set_quantity_fee_subjects
 
   # GET /quantity_fee_enrolls/new
   def index
-    @quantity_fee_subjects = QuantityFee.joins(:subject)
-                              .select("quantity_fees.id, subjects.name")
-                              .order(:name)
-                              .to_a
-                              .collect { |q| [q.name, q.id] }
 
     if @student.enrolls.size == 0
       @student.enrolls.build
@@ -24,7 +20,7 @@ class QuantityFeeEnrollsController < ApplicationController
         format.html { redirect_to @student, notice: 'Student was successfully updated with the selected subjects.' }
         format.json { render action: 'show', status: :created, location: @student }
       else
-        format.html { render action: 'new' }
+        format.html { render action: 'index' }
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
     end
@@ -38,6 +34,14 @@ class QuantityFeeEnrollsController < ApplicationController
 
   def enroll_params
     params.require(:student).permit(enrolls_attributes: [:id, :enrollable_id, :enrollable_type, :_destroy])
+  end
+
+  def set_quantity_fee_subjects
+    @quantity_fee_subjects = QuantityFee.joins(:subject)
+                              .select("quantity_fees.id, subjects.name")
+                              .order(:name)
+                              .to_a
+                              .collect { |q| [q.name, q.id] }
   end
 end
 
