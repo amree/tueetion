@@ -45,6 +45,10 @@ $btn-primary-bg: #06C;
   @include button-shadow(#105296);
 }
 
+.btn-danger {
+  @include button-shadow(#971139);
+}
+
 
 // Custom
 //
