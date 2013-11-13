@@ -3,6 +3,7 @@ require 'test_helper'
 class QuantityFeeEnrollsControllerTest < ActionController::TestCase
   setup do
     @ali = students(:ali)
+    @ali_quantity_fee = enrolls(:ali_quantity_fee)
 
     @bm_quantity_fee = quantity_fees(:bm_quantity_fee)
     @bi_quantity_fee = quantity_fees(:bi_quantity_fee)
