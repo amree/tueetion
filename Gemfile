@@ -41,6 +41,7 @@ end
 
 gem 'font-awesome-sass', '~> 4.0.1'
 gem 'dotenv-rails', '~> 0.9.0'
+gem 'cocoon', '~> 1.2.1'
 
 # Pretty console print
 gem 'hirb'
