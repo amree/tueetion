@@ -37,7 +37,7 @@ class QuantityFeeEnrollsController < ApplicationController
   end
 
   def enroll_params
-    params.require(:student).permit(enrolls_attributes: [:id, :enrollable_id, :enrollable_type])
+    params.require(:student).permit(enrolls_attributes: [:id, :enrollable_id, :enrollable_type, :_destroy])
   end
 end
 

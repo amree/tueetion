@@ -5,7 +5,7 @@ class Student < ActiveRecord::Base
   has_many :bills
   has_many :enrolls
 
-  accepts_nested_attributes_for :enrolls
+  accepts_nested_attributes_for :enrolls, allow_destroy: true
 
   validates :center, presence: true
   validates :branch, presence: true, if: "branch_id.present?"
