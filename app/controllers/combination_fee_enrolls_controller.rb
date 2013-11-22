@@ -16,8 +16,7 @@ class CombinationFeeEnrollsController < ApplicationController
         format.html { redirect_to @student, notice: 'Student was successfully updated with the selected subjects.' }
         format.json { render action: 'show', status: :created, location: @student }
       else
-        debugger
-        format.html { render action: 'new' }
+        format.html { render action: 'index' }
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
     end

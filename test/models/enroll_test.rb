@@ -10,16 +10,6 @@ class EnrollTest < ActiveSupport::TestCase
     assert @quantity_fee.name, "Bahasa Melayu"
   end
 
-  test "should create the correct enroll subjects" do
-    dup = @quantity_fee.dup
-    dup.enrollable = @bi
-
-    assert dup.save
-    assert EnrollSubject.find_by_enroll_id(dup.id).present?
-    assert_equal dup.enrollable.subject_id,
-                 EnrollSubject.find_by_enroll_id(dup.id).subject_id
-  end
-
   test "subject should be unique by student for QuantityFee" do
     enroll = @quantity_fee.dup
     enroll.valid?
