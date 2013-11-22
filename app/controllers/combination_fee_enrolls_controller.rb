@@ -1,9 +1,8 @@
 class CombinationFeeEnrollsController < ApplicationController
   before_action :set_student
+  before_action :set_combination_fees
 
   def index
-    @combination_fees = current_center.combination_fees.to_a.collect { |c| [c.name, c.id] }
-
     unless @student.combination_fee_enrolls.size > 0
       @student.combination_fee_enrolls.build
     end
@@ -26,11 +25,15 @@ class CombinationFeeEnrollsController < ApplicationController
 
   private
 
+  def enroll_params
+    params.require(:student).permit(combination_fee_enrolls_attributes: [:id, :enrollable_id, :_destroy])
+  end
+
   def set_student
     @student = current_center.students.find(params[:student_id])
   end
 
-  def enroll_params
-    params.require(:student).permit(combination_fee_enrolls_attributes: [:id, :enrollable_id, :_destroy])
+  def set_combination_fees
+    @combination_fees = current_center.combination_fees.to_a.collect { |c| [c.name, c.id] }
   end
 end
