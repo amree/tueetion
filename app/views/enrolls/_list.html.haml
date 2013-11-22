@@ -8,19 +8,10 @@
         Price (RM)
   %tbody
     - i = 0
-    - Enroll.where(enrollable_type: "CombinationFee", student_id: student.id).each do |enroll|
+    - student.enrolls.each do |enroll|
       %tr
         %td= i = i + 1
         %td= enroll.enrollable.name
         %td= enroll.subjects.map(&:name).join(", ")
         %td.text-right
           = number_with_precision(enroll.enrollable.price, precision: 2)
-
-    - Enroll.where(enrollable_type: "QuantityFee", student_id: student.id).each do |enroll|
-      %tr
-        %td= i = i + 1
-        %td= enroll.enrollable.name
-        %td= enroll.enrollable.subject.name
-        %td.text-right
-          = number_with_precision(enroll.enrollable.price, precision: 2)
-
