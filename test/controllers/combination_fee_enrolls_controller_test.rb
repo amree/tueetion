@@ -22,17 +22,9 @@ class CombinationFeeEnrollsControllerTest < ActionController::TestCase
     rand = Time.now.object_id.to_s
 
     params = {
-      "enrolls_attributes" => {
+      "combination_fee_enrolls_attributes" => {
         rand => {
-          "enrollable_id" => @combo1.id,
-          "enroll_subjects_attributes" => {
-            "0" => {
-              "subject_id" => @bm.id
-            },
-            "1" => {
-              "subject_id" => @bi.id
-            }
-          }
+          "enrollable_id" => @combo1.id
         }
       }
     }

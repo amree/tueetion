@@ -2,3 +2,7 @@ ali_quantity_fee:
   student: ali
   enrollable: bm_pakar (QuantityFee)
 
+ali_combination_fee:
+  student: ali
+  enrollable: combo1 (CombinationFee)
+

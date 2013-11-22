@@ -1,0 +1,13 @@
+.nested-fields
+  = form_group f.object.errors[:enrollable_id].present? do
+
+    = f.label :enrollable_id, "Package", class: "col-lg-2 control-label"
+
+    .col-lg-10
+      .col-lg-6
+        = f.select :enrollable_id, @combination_fees, {}, { class: "form-control" }
+        = form_errors f.object, :enrollable_id
+
+      .col-lg-2
+        = link_to_remove_association "Remove", f, class: "btn btn-danger"
+

@@ -2,18 +2,15 @@ class CombinationFeeEnrollsController < ApplicationController
   before_action :set_student
 
   def index
-    # For CombinationFee select box selection
-    @combination_fees = current_center.combination_fees.to_a
+    @combination_fees = current_center.combination_fees.to_a.collect { |c| [c.name, c.id] }
 
-    # For CombinationFee's subject list
-    # TODO: AJAX
-    @combination_item_fees = CombinationFee.first.combination_item_fees
+    unless @student.combination_fee_enrolls.size > 0
+      @student.combination_fee_enrolls.build
+    end
   end
 
   def create
     @student.assign_attributes(enroll_params)
-    # Manually set
-    @student.enrolls.last.enrollable_type = "CombinationFee"
 
     respond_to do |format|
       if @student.save
@@ -34,7 +31,6 @@ class CombinationFeeEnrollsController < ApplicationController
   end
 
   def enroll_params
-    enroll_subjects_params = { :enroll_subjects_attributes => [:subject_id]}
-    params.require(:student).permit(enrolls_attributes: [:enrollable_id, enroll_subjects_params])
+    params.require(:student).permit(combination_fee_enrolls_attributes: [:id, :enrollable_id, :_destroy])
   end
 end
