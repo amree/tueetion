@@ -1,6 +1,5 @@
 .nested-fields
   = form_group f.object.errors[:enrollable_id].present? do
-    = f.hidden_field :enrollable_type, value: "QuantityFee"
     = f.label :enrollable_id, "Subject", class: "col-lg-2 control-label"
     .col-lg-10
       .col-lg-6

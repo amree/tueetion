@@ -4,9 +4,8 @@ class QuantityFeeEnrollsController < ApplicationController
 
   # GET /quantity_fee_enrolls/new
   def index
-
-    if @student.enrolls.size == 0
-      @student.enrolls.build
+    if @student.quantity_fee_enrolls.size == 0
+      @student.quantity_fee_enrolls.build
     end
   end
 
@@ -33,11 +32,13 @@ class QuantityFeeEnrollsController < ApplicationController
   end
 
   def enroll_params
-    params.require(:student).permit(enrolls_attributes: [:id, :enrollable_id, :enrollable_type, :_destroy])
+    params.require(:student).permit(quantity_fee_enrolls_attributes: [:id, :enrollable_id, :_destroy])
   end
 
   def set_quantity_fee_subjects
-    @quantity_fee_subjects = QuantityFee.joins(:subject)
+    @quantity_fee_subjects = current_center
+                              .quantity_fees
+                              .joins(:subject)
                               .select("quantity_fees.id, subjects.name")
                               .order(:name)
                               .to_a

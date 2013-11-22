@@ -4,9 +4,10 @@ class Student < ActiveRecord::Base
   belongs_to :group
   has_many :bills
   has_many :enrolls
+  has_many :quantity_fee_enrolls, -> { where("enrollable_type = 'QuantityFee'") }
   has_many :combination_fee_enrolls, -> { where("enrollable_type = 'CombinationFee'") }
 
-  accepts_nested_attributes_for :enrolls, allow_destroy: true
+  accepts_nested_attributes_for :quantity_fee_enrolls, allow_destroy: true
   accepts_nested_attributes_for :combination_fee_enrolls, allow_destroy: true
 
   validates :center, presence: true
