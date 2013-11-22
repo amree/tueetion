@@ -15,14 +15,14 @@
         .panel-body
           .section-title
             .pull-right
-              = link_to_add_association "Add", f, :quantity_fee_enrolls, class: "btn btn-primary", data: { :"association-insertion-method" => "append", :"association-insertion-node" => "#enroll_fields_target" }
+              = link_to_add_association "Add", f, :quantity_fee_enrolls, class: "btn btn-primary", data: { :"association-insertion-method" => "append", :"association-insertion-node" => "#quantity_fee_enrolls_target" }
             %h2
               Enroll Subjects
 
           = f.fields_for :quantity_fee_enrolls do |builder|
             = render "quantity_fee_enroll_fields", f: builder
 
-          #enroll_fields_target
+          #quantity_fee_enrolls_target
 
           .form-group
             .col-lg-12
