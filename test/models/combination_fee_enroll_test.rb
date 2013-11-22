@@ -4,10 +4,12 @@ class CombinationFeeEnrollTest < ActiveSupport::TestCase
   setup do
     @ali_combination_fee = enrolls(:ali_combination_fee)
     @combination_fee = combination_fees(:combo1)
+    @bi = quantity_fees(:bi_quantity_fee)
   end
 
   test "should be able to create enroll of combination fee" do
     dup = @ali_combination_fee.dup
+    dup.enrollable_id = @bi.id
 
     assert dup.save
   end
