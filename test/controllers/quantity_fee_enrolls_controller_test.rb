@@ -15,14 +15,15 @@ class QuantityFeeEnrollsControllerTest < ActionController::TestCase
     get :index, student_id: @ali
 
     assert_response :success
-    assert_not_nil assigns(:quantity_fees)
+    assert_not_nil assigns(:quantity_fee_subjects)
     assert_not_nil assigns(:student)
   end
 
   test "should update quantity_fee_enroll" do
     params = {
-      "enrolls_attributes" => {
+      "quantity_fee_enrolls_attributes" => {
         "123" => {
+          "id" => @ali_quantity_fee.id,
           "enrollable_id" => @bm_quantity_fee.id,
         },
         "321" => {
@@ -30,8 +31,9 @@ class QuantityFeeEnrollsControllerTest < ActionController::TestCase
         }
       }
     }
-    assert_difference('Enroll.count', 2) do
-      assert_difference('EnrollSubject.count', 2) do
+
+    assert_difference('EnrollSubject.count') do
+      assert_difference("Enroll.count") do
         post :create, student_id: @ali, student: params
       end
     end
