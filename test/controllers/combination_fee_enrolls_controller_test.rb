@@ -4,7 +4,7 @@ class CombinationFeeEnrollsControllerTest < ActionController::TestCase
   setup do
     @ali = students(:ali)
 
-    @combo1 = combination_fees(:combo1)
+    @combo2 = combination_fees(:combo2)
     @bm = subjects(:bm)
     @bi = subjects(:bi)
 
@@ -24,13 +24,13 @@ class CombinationFeeEnrollsControllerTest < ActionController::TestCase
     params = {
       "combination_fee_enrolls_attributes" => {
         rand => {
-          "enrollable_id" => @combo1.id
+          "enrollable_id" => @combo2.id
         }
       }
     }
 
     assert_difference('Enroll.count') do
-      assert_difference('EnrollSubject.count', 2) do
+      assert_difference('EnrollSubject.count') do
         post :create, student_id: @ali, student: params
       end
     end

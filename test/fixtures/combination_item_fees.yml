@@ -6,3 +6,7 @@ combo1_bi:
   combination_fee: combo1
   subject: bi
 
+combo2_math:
+  combination_fee: combo2
+  subject: math
+
