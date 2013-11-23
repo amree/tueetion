@@ -77,12 +77,18 @@
         .section-title
           %h2 Packages &amp; Subjects
 
-        = render 'enrolls/list', student: @student
+        - if @student.enrolls.count > 0
+          = render 'enrolls/list', enrolls: @student.enrolls
+        - else
+          No enrollment yet.
 
     .panel.panel-borderless
       .panel-body
         .section-title
           %h2 Latest Bills
 
-        = render 'bills/list', bills: @student.bills
+        - if @student.bills.count > 0
+          = render 'bills/list', bills: @student.bills
+        - else
+          No bill yet.
 
