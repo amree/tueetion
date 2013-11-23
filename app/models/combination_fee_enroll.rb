@@ -1,4 +1,6 @@
 class CombinationFeeEnroll < Enroll
+  validates :student_id, uniqueness: { scope: [:enrollable_id, :enrollable_type] }
+
   before_validation :set_enrollable_type
   after_save :generate_enrolled_subjects
 

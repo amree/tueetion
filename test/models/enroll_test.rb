@@ -1,5 +1,6 @@
 require 'test_helper'
 
+# TODO: More test on uniqueness
 class EnrollTest < ActiveSupport::TestCase
   setup do
     @quantity_fee = enrolls(:ali_quantity_fee)

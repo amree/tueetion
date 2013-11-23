@@ -1,4 +1,6 @@
 class QuantityFeeEnroll < Enroll
+  validates :enrollable_id, uniqueness: { scope: [:student_id, :enrollable_type] }
+
   before_validation :set_enrollable_type
   after_save :generate_enrolled_subjects
 

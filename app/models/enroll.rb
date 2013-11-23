@@ -6,9 +6,6 @@ class Enroll < ActiveRecord::Base
 
   accepts_nested_attributes_for :enroll_subjects
 
-  validates :enrollable_id, uniqueness: { scope: :student_id }
-
-
   def name
     if enrollable_type == "QuantityFee"
       enrollable.subject.name
