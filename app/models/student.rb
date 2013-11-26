@@ -6,6 +6,7 @@ class Student < ActiveRecord::Base
   has_many :enrolls
   has_many :quantity_fee_enrolls, -> { where("enrollable_type = 'QuantityFee'") }
   has_many :combination_fee_enrolls, -> { where("enrollable_type = 'CombinationFee'") }
+  has_many :enroll_subjects, through: :enrolls
 
   accepts_nested_attributes_for :quantity_fee_enrolls, allow_destroy: true
   accepts_nested_attributes_for :combination_fee_enrolls, allow_destroy: true
