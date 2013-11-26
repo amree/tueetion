@@ -1,4 +1,4 @@
-%table.table.table-hover
+%table.table.table-hover.table-text-middle
   %thead
     %tr
       %th #
@@ -6,6 +6,7 @@
       %th Subjects
       %th.text-right
         Price (RM)
+      %th.text-right
   %tbody
     - i = 0
     - enrolls.each do |enroll|
@@ -15,3 +16,7 @@
         %td= enroll.subjects.map(&:name).join(", ")
         %td.text-right
           = number_with_precision(enroll.enrollable.price, precision: 2)
+        %td.text-right
+          - if enroll.enrollable_type == "CombinationFee"
+            = link_to edit_student_combination_fee_enroll_subject_path(@student, enroll), class: "btn btn-default" do
+              %i.fa.fa-pencil.fa-fw
