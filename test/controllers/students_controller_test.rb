@@ -61,9 +61,11 @@ class StudentsControllerTest < ActionController::TestCase
     assert_redirected_to students_path
   end
 
-  test "should blah" do
-    post :generate_bill, id: @ali
+  test "should generate bill" do
+    Bill.any_instance.stubs(:check_current_month_bill).returns(true)
 
-    assert_redirected_to @ali
+    assert_difference('Bill.count') do
+      post :generate_bill, id: @ali
+    end
   end
 end

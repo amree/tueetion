@@ -66,10 +66,12 @@ class StudentsController < ApplicationController
 
   # POST /students/1/generate_bill
   def generate_bill
-    if Bill::generate(@student)
+    bill = Bill.generate(@student)
+
+    if bill.save
       redirect_to @student, notice: 'Bill was successfully generated.'
     else
-      redirect_to @student, alert: 'Bill failed to be generated.'
+      redirect_to @student, alert: 'Bill failed to be generated. Reasons: ' + bill.errors.messages[:base].join(",")
     end
   end
 

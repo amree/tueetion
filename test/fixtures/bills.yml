@@ -2,9 +2,9 @@ bill:
   center: pakar
   student: ali
   number: 1
-  month: 1
-  year: 2013
-  total_amount: 500.00
+  month: <%= Date.today.strftime("%m") %>
+  year: <%= Date.today.strftime("%Y") %>
+  total_amount: 100
   is_overdue: false
   is_paid: false
   overdue_at: 2013-01-15 00:00:00
