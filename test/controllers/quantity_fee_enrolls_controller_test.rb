@@ -19,15 +19,12 @@ class QuantityFeeEnrollsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:student)
   end
 
-  test "should update quantity_fee_enroll" do
+  test "should create quantity_fee_enroll" do
     params = {
       "quantity_fee_enrolls_attributes" => {
-        "123" => {
-          "id" => @ali_quantity_fee.id,
-          "enrollable_id" => @bm_quantity_fee.id,
-        },
         "321" => {
           "enrollable_id" => @bi_quantity_fee.id,
+          "_destroy" => false
         }
       }
     }
@@ -39,6 +36,55 @@ class QuantityFeeEnrollsControllerTest < ActionController::TestCase
     end
 
     assert_equal Enroll.last.enrollable_type, "QuantityFee"
+    assert_redirected_to student_path(@ali)
+  end
+
+  test "should be able to add quantity_fee_enroll" do
+    params = {
+      "quantity_fee_enrolls_attributes" => {
+        "123" => {
+          "id" => @ali_quantity_fee.id,
+          "enrollable_id" => @bm_quantity_fee.id,
+          "_destroy" => false
+        },
+        "321" => {
+          "enrollable_id" => @bi_quantity_fee.id,
+          "_destroy" => false
+        }
+      }
+    }
+
+    assert_difference('EnrollSubject.count') do
+      assert_difference("Enroll.count") do
+        post :create, student_id: @ali, student: params
+      end
+    end
+
+    Enroll.where(enrollable_type: "QuantityFee").each do |enroll|
+      assert_equal enroll.enroll_subjects.size, 1
+    end
+
+    assert_equal Enroll.last.enrollable_type, "QuantityFee"
+    assert_redirected_to student_path(@ali)
+  end
+
+  test "should be able to delete quantity_fee_enroll" do
+    params = {
+      "quantity_fee_enrolls_attributes" => {
+        "123" => {
+          "id" => @ali_quantity_fee.id,
+          "enrollable_id" => @bm_quantity_fee.id,
+          "_destroy" => true
+        }
+      }
+    }
+
+    assert_difference('EnrollSubject.count', -1) do
+      assert_difference("Enroll.count", -1) do
+        post :create, student_id: @ali, student: params
+      end
+    end
+
     assert_redirected_to student_path(@ali)
   end
 end
