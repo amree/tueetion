@@ -62,8 +62,6 @@ class StudentsControllerTest < ActionController::TestCase
   end
 
   test "should generate bill" do
-    Bill.any_instance.stubs(:check_current_month_bill).returns(true)
-
     assert_difference('Bill.count') do
       post :generate_bill, id: @ali
     end

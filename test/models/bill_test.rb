@@ -6,16 +6,15 @@ class BillTest < ActiveSupport::TestCase
   end
 
   test "should not generate bill for the same month" do
-    # There's already a bill for the current month in the fixture
-    bill = Bill.generate(@ali)
+    Timecop.freeze(Date.parse("2013-01-01")) do
+      bill = Bill.generate(@ali)
 
-    assert bill.invalid?
-    assert bill.errors[:base].present?
+      assert bill.invalid?
+      assert bill.errors[:base].present?
+    end
   end
 
   test "should generate bill" do
-    Bill.any_instance.stubs(:check_current_month_bill).returns(true)
-
     bill = Bill.generate(@ali)
 
     current_month = Date.today.strftime("%m")
