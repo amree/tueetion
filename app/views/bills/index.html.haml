@@ -1,43 +1,47 @@
 .breadcrumb-container
   %ol.breadcrumb
-    %li
-      = link_to "Home", root_path
+    %li= link_to "Home", root_path
     %li.active Bills
 
 = render 'layouts/flash_messages'
 
-.section-title
-  %h2 Bills
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            Bills
 
-%table.table.table-hover
-  %thead
-    %tr
-      %th #
-      %th Bill #
-      %th Student Name
-      %th Period
-      %th Total Amount
-      %th Status
-      %th
-  %tbody
-  - @bills.each do |bill|
-    %tr
-      %td #
-      %td= bill.number
-      %td
-        = succeed "," do
-          = bill.student.first_name
-        = bill.student.last_name
-      %td
-        = bill.month
-        \/
-        = bill.year
-      %td= bill.total_amount
-      %td
-        = bill.is_paid
-        = bill.is_overdue
-      %td.text-right
-        = link_to 'Show', bill
-        \/
-        = link_to 'Destroy', bill, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        - if @bills.size > 0
+          %table.table.table-hover.table-text-middle
+            %thead
+              %tr
+                %th #
+                %th Bill #
+                %th Student Name
+                %th Period
+                %th.text-right Amounts (RM)
+                %th Status
+                %th
+            %tbody
+              - i = 0
+              - @bills.each do |bill|
+                %tr
+                  %td= i = i + 1
+                  %td= bill.real_number
+                  %td
+                    = link_to bill.student.first_name, bill.student
+                  %td
+                    = I18n.t("date.month_names")[bill.month]
+                    = bill.year
+                  %td.text-right
+                    = number_with_precision(bill.total_amount, precision: 2)
+                  %td
+                    = all_bill_status(bill)
+                  %td.text-right
+                    = link_to bill, class: "btn btn-default" do
+                      %i.fa.fa-eye.fa-fw
+        - else
+          No bill yet.
 

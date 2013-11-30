@@ -21,7 +21,7 @@
           = bill.year
         %td.text-right
           = number_with_precision(bill.total_amount, precision: 2)
-        %td.text-center
+        %td
           = all_bill_status(bill)
         %td.text-right
           = link_to bill, class: "btn btn-default" do
