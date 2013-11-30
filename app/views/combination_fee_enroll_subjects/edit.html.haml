@@ -25,15 +25,6 @@
                   = check_box_tag "combination_fee_enroll[subject_ids][]", subject.id, @combination_fee_enroll.subject_ids.include?(subject.id), id: dom_id(subject)
                   = label_tag dom_id(subject), subject.name
 
-          -# .form-group
-            .col-lg-offset-2.col-lg-10
-              - @combination_fee_enroll.enrollable.subjects.active.each do |subject|
-                .checkbox
-                  = hidden_field_tag "combination_fee_enroll[enroll_subject_ids][]", nil
-                  = check_box_tag "combination_fee_enroll[enroll_subject_ids][]", subject.id, @combination_fee_enroll.subject_ids.include?(subject.id), id: dom_id(subject)
-                  = label_tag dom_id(subject), subject.name
-
-
           .form-group
             .col-lg-12
               .col-lg-offset-2.col-lg-10
