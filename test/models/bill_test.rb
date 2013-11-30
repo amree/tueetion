@@ -43,4 +43,17 @@ class BillTest < ActiveSupport::TestCase
 
     assert @bill.save
   end
+
+  test "should be able to generate bill when there's an inactive bill available" do
+    bill1 = Bill.generate(@ali)
+
+    # Save and deactivate current month's bill
+    bill1.save
+    bill1.is_active = false
+    bill1.save
+
+    bill2 = Bill.generate(@ali)
+
+    assert bill2.save
+  end
 end

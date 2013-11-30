@@ -4,6 +4,8 @@ class Bill < ActiveRecord::Base
   has_many :bill_items
   has_many :payments
 
+  scope :active, -> { where(is_active: true) }
+
   before_validation :set_default_values, if: "self.new_record?"
   validate :check_current_month_bill, if: "self.new_record?"
 
@@ -30,7 +32,7 @@ class Bill < ActiveRecord::Base
   end
 
   def check_current_month_bill
-    if Center.find(self.center_id).bills.where("created_at between ? and ?", Date.today.at_beginning_of_month, Date.today.end_of_month + 1).count >= 1
+    if Center.find(self.center_id).bills.where("created_at between ? and ?", Date.today.at_beginning_of_month, Date.today.end_of_month + 1).active.count >= 1
       errors.add(:base, "Bill for #{I18n.t("date.month_names")[self.month]} #{self.year} already exits.")
     end
   end
