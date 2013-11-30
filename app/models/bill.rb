@@ -5,7 +5,7 @@ class Bill < ActiveRecord::Base
   has_many :payments
 
   before_validation :set_default_values, if: "self.new_record?"
-  validate :check_current_month_bill
+  validate :check_current_month_bill, if: "self.new_record?"
 
   def real_number
     "#{year}#{month}#{number.to_s.rjust(5, '0')}"

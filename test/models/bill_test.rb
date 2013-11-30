@@ -3,6 +3,8 @@ require 'test_helper'
 class BillTest < ActiveSupport::TestCase
   setup do
     @ali = students(:ali)
+
+    @bill = bills(:bill)
   end
 
   test "should not generate bill for the same month" do
@@ -28,5 +30,17 @@ class BillTest < ActiveSupport::TestCase
     assert_equal 2, bill.number
     assert_equal "#{current_year}#{current_month}00002", bill.real_number
     assert_equal 100, bill.total_amount
+  end
+
+  test "should be able to deactivate bill" do
+    @bill.is_active = false
+
+    assert @bill.save
+  end
+
+  test "should be able to activate deactivated bill" do
+    @bill.is_active = true
+
+    assert @bill.save
   end
 end
