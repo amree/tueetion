@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112173456) do
+ActiveRecord::Schema.define(version: 20131130021715) do
 
   create_table "bill_items", force: true do |t|
     t.integer  "bill_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20131112173456) do
     t.boolean  "is_overdue",                           default: false
     t.boolean  "is_paid",                              default: false
     t.datetime "overdue_at"
+    t.boolean  "is_active",                            default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
