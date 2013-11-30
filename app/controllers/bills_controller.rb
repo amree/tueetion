@@ -1,6 +1,6 @@
 class BillsController < ApplicationController
-  before_action :set_bill, only: [:index, :show, :destroy]
-  before_action :set_student, only: [:index, :show, :destroy]
+  before_action :set_bill, except: [:index]
+  before_action :set_student, except: [:index]
 
   # GET /bills
   # GET /bills.json
@@ -20,6 +20,28 @@ class BillsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to bills_url }
       format.json { head :no_content }
+    end
+  end
+
+  # PATCH /bills/1/activate
+  def activate
+    @bill.is_active = true
+
+    if @bill.save
+      redirect_to @bill, notice: "Bill was successfully activated."
+    else
+      redirect_to @bill, notice: "Bill was unsuccessfully activated. Reasons: " + @bill.errors[:base].join(",")
+    end
+  end
+
+  # PATCH /bills/1/deactivate
+  def deactivate
+    @bill.is_active = false
+
+    if @bill.save
+      redirect_to @bill, notice: "Bill was successfully deactivated."
+    else
+      redirect_to @bill, notice: "Bill was unsuccessfully deactivated. Reasons: " + @bill.errors[:base].join(",")
     end
   end
 

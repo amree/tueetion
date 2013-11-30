@@ -7,6 +7,10 @@ Tueetion::Application.routes.draw do
   resources :bills do
     resources :bill_items, only: [:new, :create, :edit, :update, :destroy]
     resources :payments, only: [:new, :create, :destroy]
+    member do
+      patch :activate
+      patch :deactivate
+    end
   end
 
   resources :centers, except: [:index] do

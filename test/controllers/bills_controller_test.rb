@@ -9,6 +9,7 @@ class BillsControllerTest < ActionController::TestCase
 
   test "should get index" do
     get :index
+
     assert_response :success
     assert_not_nil assigns(:bills)
   end
@@ -24,5 +25,21 @@ class BillsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to bills_path
+  end
+
+  test "should deactivate bill" do
+    patch :deactivate, id: @bill
+
+    @bill.reload
+
+    assert !@bill.is_active
+  end
+
+  test "should activate bill" do
+    patch :activate, id: @bill.id
+
+    @bill.reload
+
+    assert @bill.is_active
   end
 end
