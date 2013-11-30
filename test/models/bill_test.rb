@@ -23,6 +23,10 @@ class BillTest < ActiveSupport::TestCase
     current_year  = Date.today.strftime("%Y")
 
     assert bill.save
+
+    # So that count_total_amount would work
+    bill.reload
+
     assert_equal @ali.id, bill.student_id
     assert_equal @ali.center_id, bill.center_id
     assert_equal current_month, bill.month.to_s

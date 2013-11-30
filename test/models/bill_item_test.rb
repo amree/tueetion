@@ -15,4 +15,11 @@ class BillItemTest < ActiveSupport::TestCase
     assert @bill_item.invalid?
     assert @bill_item.errors[:base].present?
   end
+
+  test "should update Bill's total amount when changed" do
+    @bill_item.amount = 100
+    @bill_item.save
+
+    assert 150, @bill_item.bill.total_amount.to_int
+  end
 end
