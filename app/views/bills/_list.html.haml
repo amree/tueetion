@@ -22,9 +22,7 @@
         %td.text-right
           = number_with_precision(bill.total_amount, precision: 2)
         %td.text-center
-          = bill_status_label(bill.is_paid, "PAID", "UNPAID")
-          - if bill.is_overdue
-            = bill_status_label(bill.is_overdue, "", "OVERDUE")
+          = all_bill_status(bill)
         %td.text-right
           = link_to bill, class: "btn btn-default" do
             %i.fa.fa-eye.fa-fw

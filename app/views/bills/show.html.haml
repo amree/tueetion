@@ -43,9 +43,7 @@
           %dt
             Status
           %dd
-            = bill_status_label(@bill.is_paid, "PAID", "UNPAID")
-            - if @bill.is_overdue
-              = bill_status_label(@bill.is_overdue, "", "OVERDUE")
+            = all_bill_status(@bill)
 
     .panel.panel-borderless
       .panel-body
