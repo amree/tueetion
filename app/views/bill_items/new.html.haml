@@ -2,8 +2,19 @@
   %ol.breadcrumb
     %li= link_to "Home", root_path
     %li= link_to "Students", students_path
-    %li= link_to "?", @bill.student
-    %li= link_to @bill.number, @bill
+    %li= link_to @bill.student.first_name, @student
+    %li= link_to @bill.real_number, @bill
     %li.active New Bill Item
 
-= render 'form'
+= render 'layouts/flash_messages'
+
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            New Bill Item
+
+        = render 'form'
+

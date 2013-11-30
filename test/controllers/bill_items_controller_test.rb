@@ -18,7 +18,6 @@ class BillItemsControllerTest < ActionController::TestCase
       post :create, bill_id: @bill, bill_item: { amount: @bill_item.amount, name: @bill_item.name }
     end
 
-    # assert_redirected_to bill_item_path(assigns(:bill_item))
     assert_redirected_to @bill
   end
 

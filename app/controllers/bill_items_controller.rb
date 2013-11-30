@@ -53,17 +53,18 @@ class BillItemsController < ApplicationController
   end
 
   private
-    def set_bill
-      @bill = current_center.bills.find(params[:bill_id])
-    end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_bill_item
-      @bill_item = @bill.bill_items.find(params[:id])
-    end
+  def set_bill
+    @bill = current_center.bills.find(params[:bill_id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def bill_item_params
-      params.require(:bill_item).permit(:name, :amount)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_bill_item
+    @bill_item = @bill.bill_items.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def bill_item_params
+    params.require(:bill_item).permit(:name, :amount)
+  end
 end

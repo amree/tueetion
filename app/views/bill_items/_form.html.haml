@@ -1,10 +1,10 @@
 = form_for [@bill, @bill_item], html: { class: "form-horizontal", role: "form" } do |f|
-  .form-group
+  = form_group @bill_item.errors[:name].present? do
     = f.label :name, class: "col-lg-2 control-label"
     .col-lg-6
       = f.text_field :name, class: "form-control", placeholder: "Name"
 
-  .form-group
+  = form_group @bill_item.errors[:amount].present? do
     = f.label :amount, class: "col-lg-2 control-label"
     .col-lg-2
       = f.text_field :amount, class: "form-control", placeholder: "100"
