@@ -11,7 +11,6 @@ module BillsHelper
       content = false_val
     end
 
-    # content_tag "span", attributes, content
     content_tag :span, content, attributes
   end
 end

@@ -1,22 +1,25 @@
-.section-title
-  %h2
-    Bill Items
-
-%table.table.table-hover
+%table.table.table-hover.table-text-middle
   %thead
     %tr
       %th #
       %th Name
-      %th Amount
+      %th Updated at
+      %th Created at
+      %th.text-right
+        Amount (RM)
       %th
   %tbody
+  - i = 0
   - bill_items.each do |bill_item|
     %tr
-      %td #
+      %td= i = i + 1
       %td= bill_item.name
-      %td= bill_item.amount
+      %td= l bill.updated_at.in_time_zone("Kuala Lumpur"), format: :date
+      %td= l bill.created_at.in_time_zone("Kuala Lumpur"), format: :date
       %td.text-right
-        = link_to 'Edit', edit_bill_bill_item_path(bill, bill_item)
-        \/
-        = link_to 'Destroy', [bill, bill_item], :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+        = number_with_precision(bill_item.amount, precision: 2)
+      %td.text-right
+        = link_to edit_bill_bill_item_path(bill, bill_item), class: "btn btn-primary" do
+          %i.fa.fa-pencil.fa-fw
+        = link_to [bill, bill_item], class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure you want to delete this group?" } do
+          %i.fa.fa-trash-o.fa-fw

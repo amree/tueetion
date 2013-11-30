@@ -1,5 +1,6 @@
 class BillsController < ApplicationController
-  before_action :set_bill, only: [:show, :edit, :update, :destroy]
+  before_action :set_bill, only: [:index, :show, :destroy]
+  before_action :set_student, only: [:index, :show, :destroy]
 
   # GET /bills
   # GET /bills.json
@@ -24,8 +25,12 @@ class BillsController < ApplicationController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_bill
-      @bill = current_center.bills.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_bill
+    @bill = current_center.bills.find(params[:id])
+  end
+
+  def set_student
+    @student = current_center.students.find(@bill.student_id)
+  end
 end
