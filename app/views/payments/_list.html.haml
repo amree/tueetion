@@ -1,15 +1,23 @@
-%table.table.table-hover.table-striped
+%table.table.table-hover.table-text-middle
   %thead
     %tr
       %th #
       %th Bill #
-      %th Amount
       %th Paid At
+      %th.text-right
+        Amounts (RM)
+      %th
   %tbody
+    - i = 0
     - payments.each do |payment|
       %tr
-        %td #
-        %td= payment.bill.number
-        %td= payment.amount
-        %td= payment.paid_at
-
+        %td= i = i + 1
+        %td= payment.bill.real_number
+        %td= l payment.paid_at.in_time_zone("Kuala Lumpur")
+        %td.text-right
+          = number_with_precision(payment.amount, precision: 2)
+        %td.text-right
+          = link_to '#', class: "btn btn-primary" do
+            %i.fa.fa-print.fa-fw
+          = link_to [@bill, payment], class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure you want to delete this payment?" } do
+            %i.fa.fa-trash-o.fa-fw

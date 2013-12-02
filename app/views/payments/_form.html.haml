@@ -1,14 +1,14 @@
-= form_for [@bill, Payment.new], html: { class: "form-horizontal", role: "form" } do |f|
+= form_for [@bill, @payment], html: { class: "form-horizontal", role: "form" } do |f|
 
-  .form-group
-    = f.label :amount, "Amount", class: "col-lg-2 control-label"
+  = form_group @payment.errors[:amount].present? do
+    = f.label :amount, "Amount (RM)", class: "col-lg-2 control-label"
     .col-lg-2
       = f.text_field :amount, class: "form-control", placeholder: "100"
 
-  .form-group
+  = form_group @payment.errors[:paid_at].present? do
     = f.label :paid_at, "Paid at", class: "col-lg-2 control-label"
     .col-lg-2
-      = f.text_field :paid_at, class: "form-control"
+      = f.datetime_select :paid_at, {}, class: "form-control"
 
   .form-group
     .col-lg-offset-2.col-lg-10
