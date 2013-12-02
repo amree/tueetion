@@ -2,7 +2,7 @@ require 'test_helper'
 
 class BillItemTest < ActiveSupport::TestCase
   setup do
-    @bill_item = bill_items(:bill_item)
+    @bill_item = bill_items(:bill_item1)
   end
 
   test "should not be able to edit if it's paid" do

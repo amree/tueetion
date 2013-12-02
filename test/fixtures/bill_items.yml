@@ -1,4 +1,9 @@
-bill_item:
+bill_item1:
   bill: bill
-  name: Payment for package
+  name: Payment for package (First)
+  amount: 50
+
+bill_item2:
+  bill: bill
+  name: Payment for package (Second)
   amount: 50

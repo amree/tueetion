@@ -3,7 +3,7 @@ require 'test_helper'
 class BillItemsControllerTest < ActionController::TestCase
   setup do
     @bill = bills(:bill)
-    @bill_item = bill_items(:bill_item)
+    @bill_item = bill_items(:bill_item1)
 
     sign_in users(:user)
   end
