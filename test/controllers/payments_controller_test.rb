@@ -19,7 +19,7 @@ class PaymentsControllerTest < ActionController::TestCase
       post :create, bill_id: @bill, payment: { amount: 100, paid_at: DateTime.now }
     end
 
-    assert_redirected_to @bill.student
+    assert_redirected_to @bill
   end
 
   test "should destroy payment" do
@@ -27,7 +27,7 @@ class PaymentsControllerTest < ActionController::TestCase
       delete :destroy, bill_id: @bill, id: @payment.id
     end
 
-    assert_redirected_to @bill.student
+    assert_redirected_to @bill
   end
 
 end
