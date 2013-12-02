@@ -4,11 +4,13 @@
     = f.label :amount, "Amount (RM)", class: "col-lg-2 control-label"
     .col-lg-2
       = f.text_field :amount, class: "form-control", placeholder: "100"
+    = form_errors @payment, :amount
 
   = form_group @payment.errors[:paid_at].present? do
     = f.label :paid_at, "Paid at", class: "col-lg-2 control-label"
-    .col-lg-2
+    .col-lg-3
       = f.datetime_select :paid_at, {}, class: "form-control"
+    = form_errors @payment, :paid_at
 
   .form-group
     .col-lg-offset-2.col-lg-10
