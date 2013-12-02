@@ -60,4 +60,8 @@ class BillTest < ActiveSupport::TestCase
 
     assert bill2.save
   end
+
+  test "should count total paid correctly" do
+    assert_equal 30, @bill.total_amount_paid.to_i
+  end
 end

@@ -23,6 +23,10 @@ class Bill < ActiveRecord::Base
     self.total_amount = total_amount
   end
 
+  def total_amount_paid
+    self.payments.sum(:amount)
+  end
+
   def self.generate(student)
     bill = Bill.new
     bill.student_id = student.id
