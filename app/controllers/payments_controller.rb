@@ -9,9 +9,9 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    payment = @bill.payments.new(payment_params)
+    @payment = @bill.payments.new(payment_params)
 
-    if payment.save
+    if @payment.save
       redirect_to @bill, notice: 'Payment was successfully made.'
     else
       render action: 'new'
