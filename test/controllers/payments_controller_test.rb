@@ -16,7 +16,7 @@ class PaymentsControllerTest < ActionController::TestCase
 
   test "should create payment" do
     assert_difference('Payment.count') do
-      post :create, bill_id: @bill, payment: { amount: 100, paid_at: DateTime.now }
+      post :create, bill_id: @bill, payment: { amount: 10, paid_at: DateTime.now }
     end
 
     assert_redirected_to @bill
