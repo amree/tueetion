@@ -1,7 +1,12 @@
 class Payment < ActiveRecord::Base
   belongs_to :bill
 
-  validate :less_than_bill_balance
+  validates :paid_at, presence: true
+  validates :amount, presence: true
+  validates :amount, numericality: { greater_than_or_equal_to: 0 }, if: "amount.present?"
+
+  validate :less_than_bill_balance, if: "amount.present? && amount >= 0"
+  validate :paid_at_should_not_be_from_the_future, if: "paid_at.present?"
 
   after_create  :update_bill_paid_status
   after_destroy :update_bill_paid_status
@@ -21,6 +26,12 @@ class Payment < ActiveRecord::Base
     else
       self.bill.is_paid = false
       self.bill.save
+    end
+  end
+
+  def paid_at_should_not_be_from_the_future
+    if DateTime.now < self.paid_at
+      errors.add(:paid_at, "Should not be from the future")
     end
   end
 end
