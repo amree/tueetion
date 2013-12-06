@@ -1,4 +1,70 @@
+.breadcrumb-container
+  %ol.breadcrumb
+    %li.active Home
+
 = render 'layouts/flash_messages'
 
-%h1 Dashboards#index
-%p Find me in app/views/dashboards/index.html.haml
+.row
+  .col-md-3
+    .panel.panel-borderless
+      .panel-body.panel-status
+        %h3
+          300
+        %p
+          Students
+
+  .col-md-3
+    .panel.panel-borderless
+      .panel-body.panel-status
+        %h3
+          400
+        %p
+          SMS left
+
+  .col-md-3
+    .panel.panel-borderless
+      .panel-body.panel-status
+        %h3
+          500
+        %p
+          Unpaid Bills
+
+  .col-md-3
+    .panel.panel-borderless
+      .panel-body.panel-status
+        %h3
+          600
+        %p
+          Overdue Bills
+
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        - data = payments_chart_data
+        #dashboard-chart{ data: { month: "December", categories: "#{(1..data.length).to_a}", values: "#{data}" } }
+
+.row
+  .col-md-6
+    .row
+      .col-md-12
+        .panel.panel-borderless
+          .panel-body
+            .section-title
+              %h3
+                Latest Payments
+
+            = render 'payments/latest_payment_list', payments: @payments
+
+
+
+  .col-md-6
+    .row
+      .col-md-12
+        .panel.panel-borderless
+          .panel-body
+            .section-title
+              %h3
+                Latest Overdue Bills
+
+            = render 'bills/latest_overdue_list', bills: @overdue_bills
