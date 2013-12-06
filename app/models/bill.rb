@@ -5,6 +5,7 @@ class Bill < ActiveRecord::Base
   has_many :payments
 
   scope :active, -> { where(is_active: true) }
+  scope :overdue, -> { where(is_overdue: true) }
 
   before_validation :set_default_values, if: "self.new_record?"
   validate :check_current_month_bill, if: "self.new_record?"
