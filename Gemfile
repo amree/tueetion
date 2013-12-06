@@ -16,7 +16,7 @@ gem 'cocoon', '~> 1.2.1'
 gem 'timecop', '~> 0.6.3'
 gem 'hirb'
 gem 'awesome_print'
-
+gem 'highcharts-rails', '~> 3.0.7'
 
 group :doc do
   gem 'sdoc', require: false
