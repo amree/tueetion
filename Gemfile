@@ -17,6 +17,7 @@ gem 'timecop', '~> 0.6.3'
 gem 'hirb'
 gem 'awesome_print'
 gem 'highcharts-rails', '~> 3.0.7'
+gem 'resque', '~> 1.25.1'
 
 group :doc do
   gem 'sdoc', require: false
