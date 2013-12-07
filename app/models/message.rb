@@ -10,6 +10,8 @@ class Message < ActiveRecord::Base
   before_validation :validate_phone_number
   before_validation :validate_content
 
+  after_create :enqueue_in_resque
+
   protected
 
   def set_phone_number
@@ -44,6 +46,10 @@ class Message < ActiveRecord::Base
     if self.content.nil?
       set_failed_messages("Content is invalid")
     end
+  end
+
+  def enqueue_in_resque
+    Resque.enqueue(SmsWorker, self.id)
   end
 
   private
