@@ -124,8 +124,10 @@ ActiveRecord::Schema.define(version: 20131207030910) do
   create_table "messages", force: true do |t|
     t.integer  "center_id"
     t.integer  "student_id"
+    t.string   "sid"
     t.string   "phone_number"
     t.string   "content"
+    t.string   "failed_messages"
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
