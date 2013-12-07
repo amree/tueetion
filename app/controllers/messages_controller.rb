@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all
+    @messages = Message.order("created_at DESC")
   end
 
   # GET /messages/1
@@ -38,8 +38,9 @@ class MessagesController < ApplicationController
   # DELETE /messages/1.json
   def destroy
     @message.destroy
+
     respond_to do |format|
-      format.html { redirect_to messages_url }
+      format.html { redirect_to messages_url, notice: 'Message was successfully deleted.' }
       format.json { head :no_content }
     end
   end

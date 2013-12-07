@@ -20,7 +20,7 @@
           %dt
             Student's Name
           %dd
-            = @message.student.first_name
+            = link_to @message.student.first_name, @message.student
           %dt
             Phone #
           %dd
@@ -32,7 +32,12 @@
           %dt
             Status
           %dd
-            = @message.status
+            = message_status_label(@message.status)
+          - if @message.status == "invalid"
+            %dt
+              &nbsp;
+            %dd
+              = @message.failed_messages
           %dt
             Created at:
           %dd

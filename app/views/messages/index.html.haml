@@ -32,7 +32,7 @@
                   %td
                     = link_to message.student.first_name, message.student
                   %td= message.phone_number
-                  %td= message.status
+                  %td= message_status_label(message.status)
                   %td.text-right
                     = link_to message, class: "btn btn-default" do
                       %i.fa.fa-eye.fa-fw
