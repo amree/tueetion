@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 20131207030910) do
   add_index "invitations", ["key"], name: "index_invitations_on_key", unique: true, using: :btree
 
   create_table "messages", force: true do |t|
+    t.integer  "center_id"
     t.integer  "student_id"
     t.string   "phone_number"
     t.string   "content"
@@ -130,6 +131,7 @@ ActiveRecord::Schema.define(version: 20131207030910) do
     t.datetime "updated_at"
   end
 
+  add_index "messages", ["center_id"], name: "index_messages_on_center_id", using: :btree
   add_index "messages", ["student_id"], name: "index_messages_on_student_id", using: :btree
 
   create_table "payments", force: true do |t|
