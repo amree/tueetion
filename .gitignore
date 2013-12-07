@@ -17,6 +17,7 @@
 
 # Ignore configs
 /config/database.yml
+/config/twilio.yml
 
 # Ignore rbenv local
 /.ruby-version
