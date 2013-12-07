@@ -29,7 +29,7 @@ Tueetion::Application.routes.draw do
     end
   end
 
-  resources :messages
+  resources :messages, only: [:index, :new, :create, :destroy, :show]
 
   resources :quantity_fees
 

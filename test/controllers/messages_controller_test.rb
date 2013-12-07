@@ -34,18 +34,6 @@ class MessagesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit, id: @message
-
-    assert_response :success
-  end
-
-  test "should update message" do
-    patch :update, id: @message, message: { content: @message.content, phone_number: @message.phone_number, student_id: @message.student_id }
-
-    assert_redirected_to message_path(assigns(:message))
-  end
-
   test "should destroy message" do
     assert_difference('Message.count', -1) do
       delete :destroy, id: @message
