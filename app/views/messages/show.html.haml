@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Student:
+  = @message.student
+%p
+  %b Phone number:
+  = @message.phone_number
+%p
+  %b Content:
+  = @message.content
+
+= link_to 'Edit', edit_message_path(@message)
+\|
+= link_to 'Back', messages_path

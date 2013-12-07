@@ -1,0 +1,23 @@
+new_message:
+  student: ali
+  phone_number: 0199171765
+  content: The message is new
+  status: new
+
+queued_message:
+  student: ali
+  phone_number: 0199171765
+  content: The message is in queue
+  status: queued
+
+sending_message:
+  student: ali
+  phone_number: 0199171765
+  content: The message is being sent
+  status: sending
+
+sent_message:
+  student: ali
+  phone_number: 0199171765
+  content: The message has already been sent
+  status: sent

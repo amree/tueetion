@@ -29,6 +29,8 @@ Tueetion::Application.routes.draw do
     end
   end
 
+  resources :messages
+
   resources :quantity_fees
 
   namespace :settings do
