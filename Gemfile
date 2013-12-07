@@ -18,6 +18,7 @@ gem 'hirb'
 gem 'awesome_print'
 gem 'highcharts-rails', '~> 3.0.7'
 gem 'resque', '~> 1.25.1'
+gem 'twilio-ruby', '~> 3.11.4'
 
 group :doc do
   gem 'sdoc', require: false
