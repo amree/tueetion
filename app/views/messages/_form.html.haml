@@ -8,9 +8,11 @@
 
   = form_group @message.errors[:content].present? do
     = f.label :content, class: "col-lg-2 control-label"
-    .col-lg-6
-      = f.text_area :content, class: "form-control", placeholder: "Content"
+    .col-lg-5
+      = f.text_area :content, class: "form-control", placeholder: "Content", required: :required, rows: 5
       = form_errors @message, :content
+    .col-lg-5
+      = text_area_tag :content_preview, '', class: "form-control", placeholder: "Content preview", rows: 5, disabled: :disabled
 
   .form-group
     .col-md-offset-2.col-md-10
