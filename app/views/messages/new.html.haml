@@ -1,5 +1,19 @@
-%h1 New message
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li= link_to "Messages", messages_path
+    %li.active New Message
 
-= render 'form'
 
-= link_to 'Back', messages_path
+= render 'layouts/flash_messages'
+
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            New Message
+
+        = render 'form'
+

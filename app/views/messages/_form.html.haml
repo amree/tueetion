@@ -1,19 +1,20 @@
-= form_for @message do |f|
-  - if @message.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@message.errors.count, "error")} prohibited this message from being saved:"
-      %ul
-        - @message.errors.full_messages.each do |msg|
-          %li= msg
+= form_for @message, html: { class: "form-horizontal", role: "form" } do |f|
 
-  .field
-    = f.label :student
-    = f.text_field :student
-  .field
-    = f.label :phone_number
-    = f.text_field :phone_number
-  .field
-    = f.label :content
-    = f.text_field :content
-  .actions
-    = f.submit 'Save'
+  = form_group @message.errors[:student_id].present? do
+    = f.label :student_id, "Students", class: "col-lg-2 control-label"
+    .col-lg-3
+      = f.text_field :student_id, class: "form-control", placeholder: "Student"
+      = form_errors @message, :student_id
+
+  = form_group @message.errors[:content].present? do
+    = f.label :content, class: "col-lg-2 control-label"
+    .col-lg-6
+      = f.text_area :content, class: "form-control", placeholder: "Content"
+      = form_errors @message, :content
+
+  .form-group
+    .col-md-offset-2.col-md-10
+      = f.submit class: "btn btn-primary", data: { :"disable-with" => "Sending..." }
+      or
+      = link_to "Cancel", messages_path
+
