@@ -1,15 +1,44 @@
-%p#notice= notice
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li= link_to "Messages", messages_path
+    %li.active Message
 
-%p
-  %b Student:
-  = @message.student
-%p
-  %b Phone number:
-  = @message.phone_number
-%p
-  %b Content:
-  = @message.content
+= render 'layouts/flash_messages'
 
-= link_to 'Edit', edit_message_path(@message)
-\|
-= link_to 'Back', messages_path
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          .pull-right
+            = link_to "Delete", @message, class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure you want to delete this message?" }
+          %h2
+            Message
+
+        %dl.dl-horizontal
+          %dt
+            Student's Name
+          %dd
+            = @message.student.first_name
+          %dt
+            Phone #
+          %dd
+            = @message.phone_number
+          %dt
+            Content
+          %dd
+            = @message.content
+          %dt
+            Status
+          %dd
+            = @message.status
+          %dt
+            Created at:
+          %dd
+            = l @message.created_at.in_time_zone("Kuala Lumpur")
+          %dt
+            Updated at:
+          %dd
+            = l @message.updated_at.in_time_zone("Kuala Lumpur")
+
