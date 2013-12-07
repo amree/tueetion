@@ -3,6 +3,7 @@ class Center < ActiveRecord::Base
 
   has_many :bills
   has_many :branches
+  has_many :messages
   has_many :students
   has_many :subjects
   has_many :quantity_fees

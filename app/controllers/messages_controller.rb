@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.order("created_at DESC")
+    @messages = current_center.messages.order("created_at DESC")
   end
 
   # GET /messages/1
@@ -48,7 +48,7 @@ class MessagesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_message
-      @message = Message.find(params[:id])
+      @message = current_center.messages.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
