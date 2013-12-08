@@ -30,8 +30,11 @@
                 %tr
                   %td= i = i + 1
                   %td
-                    = link_to message.student.first_name, message.student
-                  %td= message.phone_number
+                    - if message.student.present?
+                      = link_to message.student.first_name, message.student
+                    - else
+                      Invalid
+                  %td= message.phone_number || "Invalid"
                   %td= message_status_label(message.status)
                   %td.text-right
                     = link_to message, class: "btn btn-default" do

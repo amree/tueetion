@@ -20,15 +20,18 @@
           %dt
             Student's Name
           %dd
-            = link_to @message.student.first_name, @message.student
+            - if @message.student.present?
+              = link_to @message.student.first_name, @message.student
+            - else
+              Invalid
           %dt
             Phone #
           %dd
-            = @message.phone_number
+            = @message.phone_number || "Invalid"
           %dt
             Content
           %dd
-            = @message.content
+            = @message.content || "Invalid"
           %dt
             Status
           %dd
