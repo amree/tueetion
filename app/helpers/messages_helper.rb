@@ -4,6 +4,8 @@ module MessagesHelper
 
    if status == "invalid" || status == "failed"
      attributes["class"] = "label label-danger"
+   elsif status == "sent"
+     attributes["class"] = "label label-success"
    else
      attributes["class"] = "label label-default"
    end
