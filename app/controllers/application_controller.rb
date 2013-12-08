@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :key
   end
 
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
+
   private
 
   def current_center
