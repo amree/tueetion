@@ -8,7 +8,7 @@ class SmsWorker
     body = message.content
 
     client = Twilio::REST::Client.new TWILIO_CONFIG['sid'], TWILIO_CONFIG['token']
-    rs = client.account.messages.create from: TWILIO_CONFIG['from'], to: to, body: body
+    rs =  client.account.messages.create from: TWILIO_CONFIG['from'], to: to, body: body, status_callback: "http://#{TWILIO_CONFIG['callback_host']}/callbacks/twilio"
 
     message.sid = rs.sid
     message.save
