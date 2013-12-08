@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(version: 20131207030910) do
     t.string   "sid"
     t.string   "phone_number"
     t.string   "content"
+    t.string   "sent_content"
     t.string   "failed_messages"
     t.string   "status"
     t.datetime "created_at"
