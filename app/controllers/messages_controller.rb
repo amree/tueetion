@@ -45,6 +45,20 @@ class MessagesController < ApplicationController
     end
   end
 
+  # GET /messages/1/update_status
+  def update_status
+    @message = current_center.messages.find(params[:message_id])
+
+    client = Twilio::REST::Client.new TWILIO_CONFIG['sid'], TWILIO_CONFIG['token']
+    res = client.account.messages.get @message.sid
+
+    if res.status.present? && @message.update_attributes(status: res.status)
+      redirect_to @message, notice: "Message's status was successfully updated."
+    else
+      redirect_to @message, alert: "Message's status cannot be updated."
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_message

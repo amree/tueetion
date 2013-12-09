@@ -31,7 +31,9 @@ Tueetion::Application.routes.draw do
     end
   end
 
-  resources :messages, only: [:index, :new, :create, :destroy, :show]
+  resources :messages, only: [:index, :new, :create, :destroy, :show] do
+    get :update_status
+  end
 
   resources :quantity_fees
 

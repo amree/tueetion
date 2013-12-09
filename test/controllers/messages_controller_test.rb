@@ -41,4 +41,9 @@ class MessagesControllerTest < ActionController::TestCase
 
     assert_redirected_to messages_path
   end
+
+  test "should update message status" do
+    # TODO: Mock Twilio API request
+    get :update_status, id: @message
+  end
 end
