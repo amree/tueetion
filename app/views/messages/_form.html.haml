@@ -6,13 +6,33 @@
       = f.text_field :student_id, class: "form-control", placeholder: "Student"
       = form_errors @message, :student_id
 
-  = form_group @message.errors[:content].present? do
+  .form-group
     = f.label :content, class: "col-lg-2 control-label"
-    .col-lg-5
+    .col-lg-10
+      .btn-group
+        = link_to "First Name", "#insert_first_name", class: "btn btn-default"
+        = link_to "Last Name", "#insert_last_name", class: "btn btn-default"
+        = link_to "Unpaid Amount", "#insert_unpaid_amount", class: "btn btn-default"
+        = link_to "Unpaid Bill Count", "#insert_unpaid_bill_count", class: "btn btn-default"
+
+
+  = form_group @message.errors[:content].present? do
+    %label.col-lg-2.control-label
+    .col-lg-10
       = f.text_area :content, class: "form-control", placeholder: "Content", required: :required, rows: 5
+
+      %span.help-block.text-right
+        Character Count (Estimation):
+        %span#content_character_count
+          0
+
       = form_errors @message, :content
-    .col-lg-5
-      = text_area_tag :content_preview, '', class: "form-control", placeholder: "Content preview", rows: 5, disabled: :disabled
+
+  .form-group
+    %label.col-lg-2.control-label
+      &nbsp;
+    .col-lg-10
+      = text_area_tag :message_content_preview, '', class: "form-control", placeholder: "Content preview", rows: 5, disabled: :disabled
 
   .form-group
     .col-md-offset-2.col-md-10

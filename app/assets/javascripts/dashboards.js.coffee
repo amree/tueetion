@@ -2,39 +2,43 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ ->
-  $("#dashboard-chart").highcharts
-    chart:
-      type: "column"
+ready = ->
+  if $('#dashboard-chart').length.length > 0
+    $("#dashboard-chart").highcharts
+      chart:
+        type: "column"
 
-    title:
-      text: "Total Payments Received (" + $('#dashboard-chart').data('month') + ")"
-
-    xAxis:
-      categories: $('#dashboard-chart').data('categories')
-
-    yAxis:
-      min: 0
       title:
-        enabled: false
-      labels:
-        format: "{value:.2f}"
+        text: "Total Payments Received (" + $('#dashboard-chart').data('month') + ")"
 
-    tooltip:
-      headerFormat: "<span style=\"font-size:10px\">{point.key} " + $('#dashboard-chart').data('month') + "</span><table>"
-      pointFormat: "<tr><td style=\"padding:0\"><b>RM {point.y}</b></td></tr>"
-      footerFormat: "</table>"
-      shared: true
-      useHTML: true
+      xAxis:
+        categories: $('#dashboard-chart').data('categories')
 
-    plotOptions:
-      column:
-        pointPadding: 0
-        borderWidth: 2
-        showInLegend: false
+      yAxis:
+        min: 0
+        title:
+          enabled: false
+        labels:
+          format: "{value:.2f}"
 
-    series: [
-      name: 'Payments Received',
-      data: $('#dashboard-chart').data('values')
-      color: "#356AA0"
-    ]
+      tooltip:
+        headerFormat: "<span style=\"font-size:10px\">{point.key} " + $('#dashboard-chart').data('month') + "</span><table>"
+        pointFormat: "<tr><td style=\"padding:0\"><b>RM {point.y}</b></td></tr>"
+        footerFormat: "</table>"
+        shared: true
+        useHTML: true
+
+      plotOptions:
+        column:
+          pointPadding: 0
+          borderWidth: 2
+          showInLegend: false
+
+      series: [
+        name: 'Payments Received',
+        data: $('#dashboard-chart').data('values')
+        color: "#356AA0"
+      ]
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
