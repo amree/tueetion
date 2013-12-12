@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
-  if $('#dashboard-chart').length.length > 0
+  if $('#dashboard-chart').length > 0
     $("#dashboard-chart").highcharts
       chart:
         type: "column"
