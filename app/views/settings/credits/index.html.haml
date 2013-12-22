@@ -1,0 +1,29 @@
+%h1 Listing settings_credits
+
+%table
+  %tr
+    %th Center
+    %th Count
+    %th Amount
+    %th Transaction number
+    %th Payment method
+    %th Paid at
+    %th
+    %th
+    %th
+
+  - @settings_credits.each do |settings_credit|
+    %tr
+      %td= settings_credit.center
+      %td= settings_credit.count
+      %td= settings_credit.amount
+      %td= settings_credit.transaction_number
+      %td= settings_credit.payment_method
+      %td= settings_credit.paid_at
+      %td= link_to 'Show', settings_credit
+      %td= link_to 'Edit', edit_settings_credit_path(settings_credit)
+      %td= link_to 'Destroy', settings_credit, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Credit', new_settings_credit_path

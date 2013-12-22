@@ -1,5 +1,9 @@
 Tueetion::Application.routes.draw do
 
+  namespace :settings do
+    resources :credits
+  end
+
   namespace :admin do
     resources :users, only: [:index, :show]
   end

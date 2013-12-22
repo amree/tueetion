@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Center:
+  = @settings_credit.center
+%p
+  %b Count:
+  = @settings_credit.count
+%p
+  %b Amount:
+  = @settings_credit.amount
+%p
+  %b Transaction number:
+  = @settings_credit.transaction_number
+%p
+  %b Payment method:
+  = @settings_credit.payment_method
+%p
+  %b Paid at:
+  = @settings_credit.paid_at
+
+= link_to 'Edit', edit_settings_credit_path(@settings_credit)
+\|
+= link_to 'Back', settings_credits_path
