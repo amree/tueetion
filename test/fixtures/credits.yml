@@ -1,0 +1,8 @@
+credit_pakar:
+  center: pakar
+  buy_count: 1000
+  usage_count: 0
+  amount: 120.00
+  transaction_number: A1234567
+  payment_method: Maybank
+  paid_at: 2013-12-22 15:26:09

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131221142652) do
+ActiveRecord::Schema.define(version: 20131222072609) do
 
   create_table "bill_items", force: true do |t|
     t.integer  "bill_id"
@@ -78,6 +78,20 @@ ActiveRecord::Schema.define(version: 20131221142652) do
 
   add_index "combination_item_fees", ["combination_fee_id"], name: "index_combination_item_fees_on_combination_fee_id", using: :btree
   add_index "combination_item_fees", ["subject_id"], name: "index_combination_item_fees_on_subject_id", using: :btree
+
+  create_table "credits", force: true do |t|
+    t.integer  "center_id"
+    t.integer  "amount",                                     default: 0
+    t.integer  "used",                                       default: 0
+    t.decimal  "cost",               precision: 5, scale: 2
+    t.string   "transaction_number"
+    t.string   "payment_method"
+    t.datetime "paid_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "credits", ["center_id"], name: "index_credits_on_center_id", using: :btree
 
   create_table "enroll_subjects", force: true do |t|
     t.integer  "enroll_id"

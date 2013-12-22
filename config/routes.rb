@@ -1,9 +1,4 @@
 Tueetion::Application.routes.draw do
-
-  namespace :settings do
-    resources :credits
-  end
-
   namespace :admin do
     resources :users, only: [:index, :show]
   end
@@ -50,6 +45,7 @@ Tueetion::Application.routes.draw do
         patch :update_password
       end
     end
+    resources :credits, only: [:index, :show]
     resources :subscriptions, only: [:index]
   end
 

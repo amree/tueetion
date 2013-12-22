@@ -1,24 +1,42 @@
-%p#notice= notice
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li Settings
+    %li= link_to "SMS Credits", settings_credits_path
+    %li.active= link_to(l(@credit.paid_at), settings_credit_path(@credit))
 
-%p
-  %b Center:
-  = @settings_credit.center
-%p
-  %b Count:
-  = @settings_credit.count
-%p
-  %b Amount:
-  = @settings_credit.amount
-%p
-  %b Transaction number:
-  = @settings_credit.transaction_number
-%p
-  %b Payment method:
-  = @settings_credit.payment_method
-%p
-  %b Paid at:
-  = @settings_credit.paid_at
+.row
+  .col-md-3
+    = render 'layouts/settings_sidebar'
 
-= link_to 'Edit', edit_settings_credit_path(@settings_credit)
-\|
-= link_to 'Back', settings_credits_path
+  .col-md-9
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            Credit
+
+        %dl.dl-horizontal
+          %dt
+            Usage
+          %dd
+            = @credit.used
+            \/
+            = @credit.amount
+          %dt
+            Cost
+          %dd
+            RM
+            = number_with_precision @credit.cost, precision: 2
+          %dt
+            Payment Method
+          %dd
+            = @credit.payment_method
+          %dt
+            Transaction #
+          %dd
+            = @credit.transaction_number
+          %dt
+            Paid at
+          %dd
+            = l @credit.paid_at

@@ -1,29 +1,42 @@
-%h1 Listing settings_credits
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li Settings
+    %li.active= link_to "SMS Credits", settings_credits_path
 
-%table
-  %tr
-    %th Center
-    %th Count
-    %th Amount
-    %th Transaction number
-    %th Payment method
-    %th Paid at
-    %th
-    %th
-    %th
+.row
+  .col-md-3
+    = render 'layouts/settings_sidebar'
 
-  - @settings_credits.each do |settings_credit|
-    %tr
-      %td= settings_credit.center
-      %td= settings_credit.count
-      %td= settings_credit.amount
-      %td= settings_credit.transaction_number
-      %td= settings_credit.payment_method
-      %td= settings_credit.paid_at
-      %td= link_to 'Show', settings_credit
-      %td= link_to 'Edit', edit_settings_credit_path(settings_credit)
-      %td= link_to 'Destroy', settings_credit, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  .col-md-9
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            Credits
 
-%br
+        - if @credits.size > 0
+          %table.table.table-hover.table-text-middle
+            %thead
+              %th #
+              %th Bought At
+              %th Usage
+              %th
+            %tbody
+              - i = 0
+              - @credits.each do |credit|
+                %tr
+                  %td
+                    = i += 1
+                  %td
+                    = l credit.paid_at
+                  %td
+                    = credit.used
+                    \/
+                    = credit.amount
+                  %td.text-right
+                    = link_to settings_credit_path(credit), class: "btn btn-default" do
+                      %i.fa.fa-eye.fa-fw
 
-= link_to 'New Credit', new_settings_credit_path
+        - else
+          No SMS credit purchases has been recorded.
