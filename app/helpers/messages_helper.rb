@@ -2,7 +2,7 @@ module MessagesHelper
   def message_status_label(status)
    attributes = {}
 
-   if status == "invalid" || status == "failed"
+   if status == "invalid" || status == "failed" || status == "no credit"
      attributes["class"] = "label label-danger"
    elsif status == "sent"
      attributes["class"] = "label label-success"
