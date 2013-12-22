@@ -33,6 +33,10 @@
           %dd
             = @message.content || "Invalid"
           %dt
+            Sent Content
+          %dd
+            = @message.sent_content || "-"
+          %dt
             Status
           %dd
             = message_status_label(@message.status)
