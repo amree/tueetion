@@ -1,3 +1,4 @@
+# status: new | invalid | sent
 class Message < ActiveRecord::Base
   belongs_to :center
   belongs_to :student
