@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207030910) do
+ActiveRecord::Schema.define(version: 20131221142652) do
 
   create_table "bill_items", force: true do |t|
     t.integer  "bill_id"
@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(version: 20131207030910) do
     t.string   "sid"
     t.string   "phone_number"
     t.string   "content"
+    t.string   "processed_content"
     t.string   "sent_content"
     t.string   "failed_messages"
     t.string   "status"
