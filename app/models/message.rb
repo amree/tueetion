@@ -1,4 +1,4 @@
-# status: new | invalid | sent | no credit
+# status: new | in progress | invalid | sent | no credit
 class Message < ActiveRecord::Base
   belongs_to :center
   belongs_to :student
@@ -13,6 +13,7 @@ class Message < ActiveRecord::Base
   before_validation :validate_content
 
   after_create :enqueue_in_resque
+  after_update :destroy_credit_usages, if: "self.status_changed? && self.status == 'failed'"
 
   protected
 
@@ -53,6 +54,12 @@ class Message < ActiveRecord::Base
   def enqueue_in_resque
     unless self.status == "invalid"
       Resque.enqueue(SmsWorker, self.id)
+    end
+  end
+
+  def destroy_credit_usages
+    self.credit_usages.each do |usage|
+      usage.destroy
     end
   end
 

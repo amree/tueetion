@@ -36,6 +36,7 @@ class MessageSender
                 status_callback: "http://#{TWILIO_CONFIG['callback_host']}/callbacks/twilio")
 
         @message.sid = rs.sid
+        @message.status = 'in progress'
 
         ActiveRecord::Base.transaction do
           credit.save

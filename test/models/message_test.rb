@@ -66,4 +66,21 @@ class MessageTest < ActiveSupport::TestCase
     assert message.failed_messages.match 'Content is invalid'
     assert "invalid", message.status
   end
+
+  test "should delete credit usages when a message was marked as failed" do
+    message = messages(:processed_message)
+    credit  = message.credit_usages.first.credit
+
+    used   = credit.used
+    usages = message.credit_usages.count
+
+    message.status = 'failed'
+    message.save
+
+    message.reload
+    credit.reload
+
+    assert_equal used - 1, credit.used
+    assert_equal 0, message.credit_usages.count
+  end
 end

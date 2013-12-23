@@ -13,7 +13,7 @@ processed_message:
   phone_number: 0199171765
   content: "{{first_name}} {{last_name}} {{unpaid_amount}} {{unpaid_bill_count}}"
   processed_content: Muhammad Ali Muhammad Hassan 30.00 1
-  status: new
+  status: in progress
 
 
 invalid_message:

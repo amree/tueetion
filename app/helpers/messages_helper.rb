@@ -6,6 +6,8 @@ module MessagesHelper
      attributes["class"] = "label label-danger"
    elsif status == "sent"
      attributes["class"] = "label label-success"
+   elsif status == "in progress"
+     attributes["class"] = "label label-warning"
    else
      attributes["class"] = "label label-default"
    end
