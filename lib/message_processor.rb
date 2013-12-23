@@ -1,7 +1,13 @@
 require 'bill_calculator'
 
+# You can get:
+# @content : Parsed content
+# @content_length  : Message's character length
+# @sms_count   : How much SMS's credit needed
 class MessageProcessor
   attr_reader :content
+  attr_reader :content_length
+  attr_reader :sms_count
 
   def initialize(message)
     @student = message.student
@@ -39,7 +45,7 @@ class MessageProcessor
   end
 
   def calculate_size
-    @length = @content.length
-    @size   = (@length / 60.0).ceil
+    @content_length = @content.length
+    @sms_count   = (@content_length / 60.0).ceil
   end
 end

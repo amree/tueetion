@@ -12,5 +12,7 @@ class MessageProcessorTest < ActiveSupport::TestCase
     text = "Muhammad Ali Muhammad Hassan 30.00 1"
 
     assert_equal text, mp.content
+    assert_equal text.length, mp.content_length
+    assert_equal 1, mp.sms_count
   end
 end
