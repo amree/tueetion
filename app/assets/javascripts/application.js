@@ -16,4 +16,5 @@
 //= require bootstrap
 //= require highcharts
 //= require cocoon
+//= require select2
 //= require_tree .

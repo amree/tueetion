@@ -19,6 +19,7 @@ gem 'awesome_print'
 gem 'highcharts-rails', '~> 3.0.7'
 gem 'resque', '~> 1.25.1'
 gem 'twilio-ruby', '~> 3.11.4'
+gem 'select2-rails', '~> 3.5.2'
 
 group :doc do
   gem 'sdoc', require: false
