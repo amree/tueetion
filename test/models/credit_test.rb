@@ -1,4 +1,4 @@
 require 'test_helper'
 
-class Settings::CreditTest < ActiveSupport::TestCase
+class CreditTest < ActiveSupport::TestCase
 end

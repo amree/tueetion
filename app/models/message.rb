@@ -1,7 +1,8 @@
-# status: new | invalid | sent
+# status: new | invalid | sent | no credit
 class Message < ActiveRecord::Base
   belongs_to :center
   belongs_to :student
+  has_many :credit_usages
 
   before_validation :set_phone_number, if: "self.student.present?"
   before_validation :set_status_to_new, if: "self.new_record?"
