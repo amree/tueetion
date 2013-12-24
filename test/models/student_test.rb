@@ -47,6 +47,13 @@ class StudentTest < ActiveSupport::TestCase
     assert @ali.errors[:phone_number].present?
   end
 
+  test "phone code should exists" do
+    @ali.phone_code = nil
+    @ali.valid?
+
+    assert @ali.errors[:phone_code].present?
+  end
+
   test "branch should be valid if inserted" do
     @ali.branch_id = 1000
     @ali.valid?

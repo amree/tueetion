@@ -35,6 +35,9 @@
   = form_group @student.errors[:phone_number].present? do
     = f.label :phone_number, class: "col-lg-2 control-label"
     .col-lg-2
+      = f.select :phone_code, ["Malaysia (60)", 60], {}, class: "form-control"
+      = form_errors @student, :phone_number
+    .col-lg-2
       = f.text_field :phone_number, class: "form-control", placeholder: "Phone #"
       = form_errors @student, :phone_number
 

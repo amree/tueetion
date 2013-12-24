@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131224115756) do
+ActiveRecord::Schema.define(version: 20131224234039) do
 
   create_table "bill_items", force: true do |t|
     t.integer  "bill_id"
@@ -194,6 +194,7 @@ ActiveRecord::Schema.define(version: 20131224115756) do
     t.string   "last_name"
     t.date     "dob"
     t.string   "email"
+    t.string   "phone_code"
     t.string   "phone_number"
     t.string   "school_name"
     t.boolean  "is_active",    default: true
