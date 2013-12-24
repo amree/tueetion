@@ -2,8 +2,9 @@
 
   = form_group @message.errors[:student_id].present? do
     = f.label :student_id, "Students", class: "col-lg-2 control-label"
-    .col-lg-3
-      = f.text_field :student_id, class: "form-control", placeholder: "Student"
+    .col-lg-10
+      #message_student_ids{ style: "width: 100%" }
+      = hidden_field_tag :student_ids
       = form_errors @message, :student_id
 
   .form-group

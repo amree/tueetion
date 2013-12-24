@@ -20,17 +20,23 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(message_params)
-    @message.center = current_center
+    # Build arrays of data
+    arr = Array.new
+    params[:student_ids].split(",").each do |id|
+      h = params[:message].merge("student_id" => id, "center_id" => current_center.id)
+      h.permit!
 
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @message }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
+      arr << h
+    end
+
+    # new_params = ActionController::Parameters.new(data: arr)
+    # new_params.permit(data: [:content, :student_id, :center_id])
+    # new_params.permit!
+
+    if Message.create(arr)
+      redirect_to new_message_path, notice: 'Message was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
@@ -67,6 +73,9 @@ class MessagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def message_params
-      params.require(:message).permit(:student_id, :phone_number, :content)
+      # params.require(:student_ids)
+      # params.require(:message).permit([:student_id, :center_id, :content])
+      # params.permit([:content], [:content])
+      # params.permit!
     end
 end
