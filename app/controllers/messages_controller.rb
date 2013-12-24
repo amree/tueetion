@@ -34,7 +34,7 @@ class MessagesController < ApplicationController
     # new_params.permit!
 
     if Message.create(arr)
-      redirect_to new_message_path, notice: 'Message was successfully created.'
+      redirect_to new_message_path, notice: 'Message was successfully queued. Please see messages list to get the latest status.'
     else
       render action: 'new'
     end

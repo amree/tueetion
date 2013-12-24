@@ -13,7 +13,12 @@ class MessageSender
 
       # Search for free credit
       credit = Credit.available(@message.center_id).first
-      credit_balance = credit.amount - credit.used
+
+      credit_balance = if credit
+                         credit.amount - credit.used
+                       else
+                         -1
+                       end
 
       # Only send if there are enough credits available
       if credit && credit_balance >= processed_message.sms_count
