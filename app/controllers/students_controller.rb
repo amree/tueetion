@@ -6,7 +6,13 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = current_center.students.to_a
+
+    if params[:q]
+      q = "%#{params[:q]}%"
+      @students = current_center.students.where("first_name like ? or last_name like ? or ic like ?", q, q, q).to_a
+    else
+      @students = current_center.students.to_a
+    end
   end
 
   # GET /students/1

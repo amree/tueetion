@@ -39,7 +39,39 @@ replaceTemplateMessage = (content, preview, values) ->
 
   $(preview).val(currentText)
 
+
 ready =->
+  # Select Student
+  #
+  input  = $('form#new_message div#message_student_ids')
+  output = $('form#new_message input#student_ids')
+
+  $(input).select2
+    placeholder: "Search for students"
+    multiple: true
+    minimumInputLength: 3
+    ajax:
+      url: "/students.json"
+      dataType: "json"
+      data: (term, page) ->
+        q: term
+        page_limit: 10
+
+      results: (data, page) ->
+        results: data
+
+    formatSelection: (item) ->
+      item.first_name + " " + item.last_name
+
+    formatResult: (item) ->
+      item.first_name + " " + item.last_name
+
+  $(input).on('change', (e) ->
+    $(output).val(e.val)
+  )
+
+  # Template
+  #
   container = $('#new_message')
 
   templates = [['first_name', 'John'], ['last_name', 'Doe'], ['unpaid_amount', '200'], ['unpaid_bill_count', 5]]
@@ -52,7 +84,7 @@ ready =->
     length = value.length
     $('#content_character_count').text(length)
 
-  # Add data templlate
+  # Add data template
   $.each templates, (index, value) ->
     $("a[href='#insert_" + value[0] + "']", container).click ->
       putTemplateMessage($(this), value, templates)
