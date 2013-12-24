@@ -18,8 +18,8 @@ class Message < ActiveRecord::Base
   protected
 
   def set_phone_number
-    if self.student.phone.present?
-      self.phone_number = self.student.phone
+    if self.student.phone_number.present?
+      self.phone_number = self.student.phone_number
     end
   end
 

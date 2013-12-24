@@ -22,10 +22,10 @@ class MessagesControllerTest < ActionController::TestCase
 
   test "should create message" do
     assert_difference('Message.count') do
-      post :create, message: { content: @message.content, phone_number: @message.phone_number, student_id: @message.student_id }
+      post :create, message: { content: @message.content }, student_ids: @message.student_id
     end
 
-    assert_redirected_to message_path(assigns(:message))
+    assert_redirected_to new_message_path
   end
 
   test "should show message" do
@@ -40,10 +40,5 @@ class MessagesControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to messages_path
-  end
-
-  test "should update message status" do
-    # TODO: Mock Twilio API request
-    get :update_status, id: @message
   end
 end

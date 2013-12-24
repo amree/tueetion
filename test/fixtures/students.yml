@@ -3,12 +3,12 @@ ali:
   ic: 880302031234
   first_name: Muhammad Ali
   last_name: Muhammad Hassan
-  phone: 0199171765
+  phone_number: 0199171765
 
 adam:
   center: kami
   ic: 900302031234
   first_name: Muhammad Adam
   last_name: Mohd Amree
-  phone: 0199171765
+  phone_number: 0199171765
 

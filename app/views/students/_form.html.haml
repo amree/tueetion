@@ -32,11 +32,11 @@
       = f.text_field :email, class: "form-control", placeholder: "E-Mail"
       = form_errors @student, :email
 
-  = form_group @student.errors[:phone].present? do
-    = f.label :phone, class: "col-lg-2 control-label"
+  = form_group @student.errors[:phone_number].present? do
+    = f.label :phone_number, class: "col-lg-2 control-label"
     .col-lg-2
-      = f.text_field :phone, class: "form-control", placeholder: "Phone #"
-      = form_errors @student, :phone
+      = f.text_field :phone_number, class: "form-control", placeholder: "Phone #"
+      = form_errors @student, :phone_number
 
   = form_group @student.errors[:school_name].present? do
     = f.label :school_name, class: "col-lg-2 control-label"
