@@ -1,3 +1,11 @@
 ali_quantity_fee_subjects:
   enroll: ali_quantity_fee
   subject: bm
+
+ali_combination_fee_subject_bm:
+  enroll: ali_combination_fee
+  subject: bm
+
+ali_combination_fee_subject_bi:
+  enroll: ali_combination_fee
+  subject: bi
