@@ -53,4 +53,16 @@ class CombinationFeeTest < ActiveSupport::TestCase
 
     assert @combo.errors[:price].blank?
   end
+
+  test "destroying CombinationFee will also destroy associated enrolls" do
+    @combo.destroy
+
+    assert CombinationFeeEnroll.where(enrollable_id: @combo.id).blank?
+  end
+
+  test "destroying CombinationFee will also destroy associated combination item fees" do
+    @combo.destroy
+
+    assert CombinationItemFee.where(combination_fee_id: @combo.id).blank?
+  end
 end
