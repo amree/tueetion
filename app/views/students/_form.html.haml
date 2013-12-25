@@ -23,7 +23,7 @@
   = form_group @student.errors[:dob].present? do
     = f.label :dob, "DOB", class: "col-lg-2 control-label"
     .col-lg-2
-      = f.date_select :dob, {}, class: "form-control"
+      = f.text_field :dob, class: "form-control", placeholder: "1/1/2000"
       = form_errors @student, :dob
 
   = form_group @student.errors[:email].present? do
