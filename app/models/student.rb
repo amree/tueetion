@@ -20,4 +20,8 @@ class Student < ActiveRecord::Base
   validates :last_name, presence: true
   validates :phone_code, presence: true
   validates :phone_number, presence: true
+
+  def full_phone_number
+    phone_code + phone_number
+  end
 end

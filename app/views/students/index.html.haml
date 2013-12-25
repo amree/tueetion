@@ -35,7 +35,7 @@
                   %td
                     = student.first_name
                     = student.last_name
-                  %td= student.phone_number
+                  %td= full_phone_number(student)
                   %td.text-center
                     = status_label(student.is_active)
                   %td.text-right

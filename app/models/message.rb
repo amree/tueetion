@@ -19,7 +19,7 @@ class Message < ActiveRecord::Base
 
   def set_phone_number
     if self.student.phone_number.present?
-      self.phone_number = self.student.phone_number
+      self.phone_number = self.student.full_phone_number
     end
   end
 

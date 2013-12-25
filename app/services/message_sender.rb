@@ -29,7 +29,7 @@ class MessageSender
         end
 
         # Prepare for @message sending
-        to = @message.phone_number
+        to = @message.full_phone_number
         body = @message.processed_content
 
         client = Twilio::REST::Client.new(TWILIO_CONFIG['sid'], TWILIO_CONFIG['token'])
