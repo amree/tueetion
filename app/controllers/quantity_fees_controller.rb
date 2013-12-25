@@ -1,6 +1,6 @@
 class QuantityFeesController < ApplicationController
   before_action :set_quantity_fee, only: [:show, :edit, :update, :destroy]
-  before_action :set_subjects_for_select, only: [:new, :edit]
+  before_action :set_subjects_for_select, only: [:new, :create, :edit, :update]
 
   # GET /quantity_fees
   # GET /quantity_fees.json
