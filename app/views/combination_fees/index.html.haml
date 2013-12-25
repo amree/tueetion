@@ -17,7 +17,7 @@
           = link_to "New Combination Fee", new_combination_fee_path, class: "btn btn-primary pull-right"
           %h2 Combination Fees
 
-        - if @combination_fees.size
+        - if @combination_fees.size > 0
           %table.table.table-hover.table-text-middle
             %thead
               %tr

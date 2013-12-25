@@ -17,7 +17,7 @@
           = link_to "New Quantity Fee", new_quantity_fee_path, class: "btn btn-primary pull-right"
           %h2 Quantity Fees
 
-        - if @quantity_fees.size
+        - if @quantity_fees.size > 0
           %table.table.table-hover.table-text-middle
             %thead
               %tr
