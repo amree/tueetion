@@ -67,4 +67,22 @@ class StudentTest < ActiveSupport::TestCase
 
     assert @ali.errors[:group].present?
   end
+
+  test "destroying student will also destroy his/her bills" do
+    @ali.destroy
+
+    assert Bill.where(student_id: @ali.id).blank?
+  end
+
+  test "destroying student will also destroy his/her enrolls" do
+    @ali.destroy
+
+    assert Enroll.where(student_id: @ali.id).blank?
+  end
+
+  test "destroying student will also destroy his/her messages" do
+    @ali.destroy
+
+    assert Message.where(student_id: @ali.id).blank?
+  end
 end

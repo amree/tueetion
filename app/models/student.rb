@@ -2,11 +2,12 @@ class Student < ActiveRecord::Base
   belongs_to :center
   belongs_to :branch
   belongs_to :group
-  has_many :bills
-  has_many :enrolls
+  has_many :bills, dependent: :destroy
+  has_many :enrolls, dependent: :destroy
   has_many :quantity_fee_enrolls, -> { where("enrollable_type = 'QuantityFee'") }
   has_many :combination_fee_enrolls, -> { where("enrollable_type = 'CombinationFee'") }
   has_many :enroll_subjects, through: :enrolls
+  has_many :messages, dependent: :destroy
 
   accepts_nested_attributes_for :quantity_fee_enrolls, allow_destroy: true
   accepts_nested_attributes_for :combination_fee_enrolls, allow_destroy: true
