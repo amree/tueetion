@@ -17,5 +17,5 @@
 //= require highcharts
 //= require cocoon
 //= require select2
-//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
 //= require_tree .
