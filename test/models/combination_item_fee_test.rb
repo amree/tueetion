@@ -27,4 +27,12 @@ class CombinationItemFeeTest < ActiveSupport::TestCase
 
     assert dup.errors[:combination_fee].present?
   end
+
+  test "destroing combination item fee will also destroy related enroll subject" do
+    # debugger
+    @combo_item.destroy
+
+    # assert EnrollSubject.where(enroll_id: @combo_item.combination_fee_id).where(subject_id: @combo_item.subject_id).blank?
+    assert EnrollSubject.where(subject_id: @combo_item.subject_id).joins(:enroll).where(enrolls: {enrollable_id: @combo_item.combination_fee_id}).blank?
+  end
 end
