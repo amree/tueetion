@@ -19,4 +19,12 @@ class BranchTest < ActiveSupport::TestCase
 
     assert branch.errors[:name].present?
   end
+
+  test "destroying branch should nullify user's branch" do
+    student = students(:ali)
+    @branch.destroy
+    student.reload
+
+    assert student.branch_id.nil?
+  end
 end
