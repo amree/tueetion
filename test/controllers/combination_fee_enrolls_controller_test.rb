@@ -56,8 +56,10 @@ class CombinationFeeEnrollsControllerTest < ActionController::TestCase
       }
     }
 
+    # Enroll doesn't change since it's still enroll in a Combination Fee
+    # Changed by -1 since Combo2 has only 1 subject
     assert_difference('Enroll.count', 0) do
-      assert_difference('EnrollSubject.count') do
+      assert_difference('EnrollSubject.count', -1) do
         post :create, student_id: @ali, student: params
       end
     end
