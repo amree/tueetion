@@ -20,4 +20,22 @@ class SubjectTest < ActiveSupport::TestCase
 
     assert dup.errors[:name].present?
   end
+
+  test "destroying subject will also destroy associated quantity fees" do
+    @bm.destroy
+
+    assert QuantityFee.where(subject_id: @bm.id).blank?
+  end
+
+  test "destroying subject will also destroy associated combination item fees" do
+    @bm.destroy
+
+    assert CombinationItemFee.where(subject_id: @bm.id).blank?
+  end
+
+  test "destroying subject will also destroy associated enroll subjects" do
+    @bm.destroy
+
+    assert EnrollSubject.where(subject_id: @bm.id).blank?
+  end
 end
