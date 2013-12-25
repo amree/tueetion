@@ -19,4 +19,12 @@ class GroupTest < ActiveSupport::TestCase
 
     assert dup.errors["name"].present?
   end
+
+  test "removing group should nullify it in Student" do
+    student = students(:ali)
+    @group.destroy
+    student.reload
+
+    assert student.group_id.nil?
+  end
 end
