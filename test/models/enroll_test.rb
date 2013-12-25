@@ -3,10 +3,11 @@ require 'test_helper'
 class EnrollTest < ActiveSupport::TestCase
   setup do
     @ali = students(:ali)
-    @quantity_fee_enroll = enrolls(:ali_quantity_fee)
-    @bm_quantity_fee = quantity_fees(:bm_quantity_fee)
 
-    @combo2 = combination_fees(:combo2)
+    @quantity_fee_enroll = enrolls(:ali_quantity_fee)
+    @combination_fee_enroll = enrolls(:ali_combination_fee)
+
+    @bm_quantity_fee = quantity_fees(:bm_quantity_fee)
   end
 
   test "should generate the correct name" do
@@ -20,6 +21,18 @@ class EnrollTest < ActiveSupport::TestCase
     enroll.valid?
 
     assert enroll.errors[:enrollable_id].present?
+  end
+
+  test "destroying enroll should destroy associated enroll subjects (quantity)" do
+    @quantity_fee_enroll.destroy
+
+    assert EnrollSubject.where(enroll_id: @quantity_fee_enroll.id).blank?
+  end
+
+  test "destroying enroll should destroy associated enroll subjects (combination)" do
+    @combination_fee_enroll.destroy
+
+    assert EnrollSubject.where(enroll_id: @combination_fee_enroll.id).blank?
   end
 end
 
