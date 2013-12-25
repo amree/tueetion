@@ -1,14 +1,45 @@
-%h2 Change your password
-= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
-  = devise_error_messages!
-  = f.hidden_field :reset_password_token
-  %div
-    = f.label :password, "New password"
-    %br/
-    = f.password_field :password, :autofocus => true
-  %div
-    = f.label :password_confirmation, "Confirm new password"
-    %br/
-    = f.password_field :password_confirmation
-  %div= f.submit "Change my password"
-= render "devise/shared/links"
+#box-sm.row
+  .col-md-12.hidden-xs.spacer
+  .col-md-4.col-md-offset-4
+    %h1.text-center
+      Tueetion
+    .panel.panel-default
+      .panel-body
+        = render 'layouts/flash_messages'
+
+        = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+
+          %p
+            = devise_error_messages!
+
+          = f.hidden_field :reset_password_token
+
+          %p
+            %strong
+              New password
+
+            = form_group resource.errors[:password].present? do
+              = f.password_field :password, autofocus: true, class: "form-control"
+              %span.help-block
+                = resource.errors[:password].join(", ")
+
+          %p
+            %strong
+              Password Confirmation
+
+            = form_group resource.errors[:password_confirmation].present? do
+              = f.password_field :password_confirmation, class: "form-control"
+              %span.help-block
+                = resource.errors[:password_confirmation].join(", ")
+
+          = f.submit "Change my password", class: "btn btn-primary", :"data-disable-with" => "Changing..."
+          or
+          = link_to "Sign in", new_user_session_path
+
+.row
+  .col-md-4.col-md-offset-4
+    %h6.text-center
+      Still have trouble signing in?
+    %h6.text-center
+      = link_to "mailto:hello@tueetion.com" do
+        Send us an e-mail
