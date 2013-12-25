@@ -2,7 +2,7 @@ require 'test_helper'
 
 class QuantityFeeTest < ActiveSupport::TestCase
   setup do
-    @bm = quantity_fees(:bm_pakar)
+    @bm = quantity_fees(:bm_quantity_fee)
   end
 
   test "name should not be blank" do
@@ -55,5 +55,11 @@ class QuantityFeeTest < ActiveSupport::TestCase
     @bm.valid?
 
     assert @bm.errors[:price].blank?
+  end
+
+  test "destroying quantity fee will also destroy associated enrolls" do
+    @bm.destroy
+
+    assert QuantityFeeEnroll.where(enrollable_id: @bm.id).blank?
   end
 end
