@@ -8,12 +8,6 @@ class InvitationsControllerTest < ActionController::TestCase
     sign_in users(:user)
   end
 
-  test "should get index" do
-    get :index
-
-    assert_response :success
-  end
-
   test "should get new" do
     get :new
     assert_response :success
@@ -24,7 +18,7 @@ class InvitationsControllerTest < ActionController::TestCase
       post :create, invitation: { email: "random@mail.com" }
     end
 
-    assert_redirected_to invitations_path
+    assert_redirected_to staffs_path
   end
 
   test "should destroy invitation" do

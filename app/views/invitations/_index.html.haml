@@ -1,0 +1,18 @@
+- if invitations.size > 0
+  %table.table.table-hover.table-text-middle
+    %thead
+      %th Email
+      %th
+    %tbody
+      - invitations.each do |invitation|
+        %tr
+          %td
+            = invitation.email
+          %td.text-right
+            = link_to reinvite_invitation_path(invitation), class: "btn btn-default" do
+              %i.fa.fa-envelope.fa-fw
+            = link_to invitation_path(invitation), method: :delete, class: "btn btn-danger", data: { confirm: "Are sure you want to remove this invitation?" } do
+              %i.fa.fa-trash-o.fa-fw
+
+- else
+  No invitations to be displayed.

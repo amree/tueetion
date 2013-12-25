@@ -19,7 +19,7 @@ class InvitationsController < ApplicationController
     respond_to do |format|
       if @invitation.save
         UserMailer.invitation(@invitation).deliver
-        format.html { redirect_to invitations_path, notice: 'Invitation was successfully sent.' }
+        format.html { redirect_to staffs_path, notice: 'Invitation was successfully sent.' }
         format.json { render action: 'show', status: :created, location: invitations_path }
       else
         format.html { render action: 'new' }

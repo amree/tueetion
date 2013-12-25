@@ -4,6 +4,7 @@ class StaffsController < ApplicationController
   # GET /staffs
   def index
     @staffs = current_center.users.where("access_level < 50")
+    @invitations = current_center.invitations.where(is_used: false)
   end
 
   # PATCH /staffs/1/lock

@@ -44,3 +44,14 @@
 
         - else
           No invitations to be displayed.
+
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          .pull-right
+            = link_to "New Invitation", new_invitation_path, class: "btn btn-primary"
+          %h2
+            Invitations
+
+        = render 'invitations/index', invitations: @invitations
+
