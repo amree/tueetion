@@ -1,3 +1,7 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+ready =->
+  $('#payment_paid_at').datepicker
+    todayBtn: "linked"
+    format: "dd/mm/yyyy"
+
+$(document).ready(ready)
+$(document).on('page:load', ready)

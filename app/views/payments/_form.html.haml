@@ -8,8 +8,8 @@
 
   = form_group @payment.errors[:paid_at].present? do
     = f.label :paid_at, "Paid at", class: "col-lg-2 control-label"
-    .col-lg-3
-      = f.datetime_select :paid_at, {}, class: "form-control"
+    .col-lg-2
+      = f.text_field :paid_at, class: "form-control", placeholder: "1/1/2000"
     = form_errors @payment, :paid_at
 
   .form-group
