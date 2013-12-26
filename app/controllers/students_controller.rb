@@ -2,17 +2,14 @@ class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy, :generate_bill]
   before_action :set_branches, only: [:new, :create, :edit, :update]
   before_action :set_groups, only: [:new, :create, :edit, :update]
+  before_action :set_group_selections, only: [:index]
+  before_action :set_branch_selections, only: [:index]
 
   # GET /students
   # GET /students.json
   def index
-
-    if params[:q]
-      q = "%#{params[:q]}%"
-      @students = current_center.students.where("first_name like ? or last_name like ? or ic like ?", q, q, q).to_a
-    else
-      @students = current_center.students.to_a
-    end
+    @q = Student.search params[:q]
+    @students = @q.result(distinct: true)
   end
 
   # GET /students/1
@@ -99,6 +96,14 @@ class StudentsController < ApplicationController
 
   def set_groups
     @groups = Group.by_name.collect { |g| [g.name, g.id] }
+  end
+
+  def set_group_selections
+    @group_selections = Center.first.groups.order(:name).collect { |g| [ g.name, g.id ] }
+  end
+
+  def set_branch_selections
+    @branch_selections = Center.first.branches.order(:name).collect { |b| [ b.name, b.id ] }
   end
 end
 
