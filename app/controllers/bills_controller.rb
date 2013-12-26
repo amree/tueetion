@@ -5,7 +5,7 @@ class BillsController < ApplicationController
   # GET /bills
   # GET /bills.json
   def index
-    @bills = current_center.bills.to_a
+    @bills = current_center.bills.by_latest.to_a
   end
 
   # GET /bills/1
