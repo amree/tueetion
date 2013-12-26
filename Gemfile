@@ -21,6 +21,7 @@ gem 'resque', '~> 1.25.1'
 gem 'twilio-ruby', '~> 3.11.4'
 gem 'select2-rails', '~> 3.5.2'
 gem 'bootstrap-datepicker-rails', '~> 1.1.1.11'
+gem 'whenever', '~> 0.9.0'
 
 group :doc do
   gem 'sdoc', require: false
