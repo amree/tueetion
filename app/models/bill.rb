@@ -4,9 +4,10 @@ class Bill < ActiveRecord::Base
   has_many :bill_items, dependent: :destroy
   has_many :payments, dependent: :destroy
 
-  scope :active, -> { where(is_active: true) }
-  scope :unpaid, -> { where(is_paid: false) }
-  scope :overdue, -> { where(is_overdue: true) }
+  scope :active,    -> { where(is_active: true) }
+  scope :unpaid,    -> { where(is_paid: false) }
+  scope :overdue,   -> { where(is_overdue: true) }
+  scope :by_latest, -> { order("created_at desc") }
 
   before_validation :set_default_values, if: "self.new_record?"
   validate :check_current_month_bill, if: "self.new_record?"
