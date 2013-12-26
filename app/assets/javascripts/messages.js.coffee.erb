@@ -54,8 +54,7 @@ ready =->
       url: "/students.json"
       dataType: "json"
       data: (term, page) ->
-        q: term
-        page_limit: 10
+        q: { "first_name_or_last_name_cont": term }
 
       results: (data, page) ->
         results: data
