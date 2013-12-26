@@ -9,6 +9,8 @@ class Student < ActiveRecord::Base
   has_many :enroll_subjects, through: :enrolls
   has_many :messages, dependent: :destroy
 
+  scope :active, -> { where(is_active: true) }
+
   accepts_nested_attributes_for :quantity_fee_enrolls, allow_destroy: true
   accepts_nested_attributes_for :combination_fee_enrolls, allow_destroy: true
 
