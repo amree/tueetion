@@ -64,4 +64,16 @@ class BillTest < ActiveSupport::TestCase
   test "should count total paid correctly" do
     assert_equal 30, @bill.total_amount_paid.to_i
   end
+
+  test "should destroy bill items when bill destroyed" do
+    @bill.destroy
+
+    assert BillItem.where(bill_id: @bill.id).blank?
+  end
+
+  test "should destroy payments when bill destroyed" do
+    @bill.destroy
+
+    assert Payment.where(bill_id: @bill.id).blank?
+  end
 end

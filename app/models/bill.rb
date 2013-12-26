@@ -1,8 +1,8 @@
 class Bill < ActiveRecord::Base
   belongs_to :center
   belongs_to :student
-  has_many :bill_items
-  has_many :payments
+  has_many :bill_items, dependent: :destroy
+  has_many :payments, dependent: :destroy
 
   scope :active, -> { where(is_active: true) }
   scope :overdue, -> { where(is_overdue: true) }
