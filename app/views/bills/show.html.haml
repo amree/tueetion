@@ -38,9 +38,13 @@
             = @bill.student.first_name
             = @bill.student.last_name
           %dt
-            Total Amount (RM)
+            Total (RM)
           %dd
             = number_with_precision(@bill.total_amount, precision: 2)
+          %dt
+            Total Paid (RM)
+          %dd
+            = number_with_precision(@bill.total_amount_paid, precision: 2)
           %dt
             Status
           %dd
