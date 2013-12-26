@@ -5,6 +5,7 @@ class Bill < ActiveRecord::Base
   has_many :payments, dependent: :destroy
 
   scope :active, -> { where(is_active: true) }
+  scope :unpaid, -> { where(is_paid: false) }
   scope :overdue, -> { where(is_overdue: true) }
 
   before_validation :set_default_values, if: "self.new_record?"

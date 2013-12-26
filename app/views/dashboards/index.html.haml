@@ -9,7 +9,9 @@
     .panel.panel-borderless
       .panel-body.panel-status
         %h3
-          300
+          = @student_used_counts
+          \/
+          = @student_credit_counts
         %p
           Students
 
@@ -17,15 +19,17 @@
     .panel.panel-borderless
       .panel-body.panel-status
         %h3
-          400
+          = @sms_used_counts
+          \/
+          = @sms_credit_counts
         %p
-          SMS left
+          SMS
 
   .col-md-3
     .panel.panel-borderless
       .panel-body.panel-status
         %h3
-          500
+          = @unpaid_bill_counts
         %p
           Unpaid Bills
 
@@ -33,7 +37,7 @@
     .panel.panel-borderless
       .panel-body.panel-status
         %h3
-          600
+          = @overdue_bill_counts
         %p
           Overdue Bills
 
