@@ -27,5 +27,8 @@ module Tueetion
     config.action_view.field_error_proc = Proc.new { |html_tag, instance|
       "#{html_tag}".html_safe
     }
+
+    # Silence locale warning
+    config.i18n.enforce_available_locales = true
   end
 end
