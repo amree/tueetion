@@ -24,6 +24,7 @@ gem 'bootstrap-datepicker-rails', '~> 1.1.1.11'
 gem 'whenever', '~> 0.9.0'
 gem 'ransack', '~> 1.1.0'
 gem 'haml-rails', '~> 0.4'
+gem 'unicorn', '~> 4.7.0'
 
 group :doc do
   gem 'sdoc', require: false
