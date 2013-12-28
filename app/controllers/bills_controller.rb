@@ -5,7 +5,9 @@ class BillsController < ApplicationController
   # GET /bills
   # GET /bills.json
   def index
-    @bills = current_center.bills.by_latest.to_a
+    @q = current_center.bills.by_latest.search params[:q]
+
+    @bills = @q.result
   end
 
   # GET /bills/1
