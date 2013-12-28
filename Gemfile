@@ -23,13 +23,13 @@ gem 'select2-rails', '~> 3.5.2'
 gem 'bootstrap-datepicker-rails', '~> 1.1.1.11'
 gem 'whenever', '~> 0.9.0'
 gem 'ransack', '~> 1.1.0'
+gem 'haml-rails', '~> 0.4'
 
 group :doc do
   gem 'sdoc', require: false
 end
 
 group :development, :test do
-  gem 'haml-rails', '~> 0.4'
   gem 'debugger'
   gem 'mocha', require: false
 end
