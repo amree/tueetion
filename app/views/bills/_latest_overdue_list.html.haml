@@ -10,7 +10,7 @@
       - i = 0
       - bills.each do |bill|
         %tr
-          %td= bill.real_number
+          %td= bill.full_number
           %td
             = I18n.t("date.month_names")[bill.month]
             = bill.year

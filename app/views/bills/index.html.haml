@@ -29,7 +29,7 @@
               - @bills.each do |bill|
                 %tr
                   %td= i = i + 1
-                  %td= bill.real_number
+                  %td= bill.full_number
                   %td
                     = link_to bill.student.first_name, bill.student
                   %td

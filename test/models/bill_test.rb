@@ -41,7 +41,7 @@ class BillTest < ActiveSupport::TestCase
     assert_equal current_month, bill.month.to_s
     assert_equal current_year, bill.year.to_s
     assert_equal 2, bill.number
-    assert_equal "#{current_year}#{current_month}00002", bill.real_number
+    assert_equal "#{current_year}#{current_month}00002", bill.full_number
     assert_equal 100, bill.total_amount
   end
 

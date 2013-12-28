@@ -3,7 +3,7 @@
     %li= link_to "Home", root_path
     %li= link_to "Students", students_path
     %li= link_to @student.first_name, @student
-    %li.active= @bill.real_number
+    %li.active= @bill.full_number
 
 = render 'layouts/flash_messages'
 
@@ -29,7 +29,7 @@
                 - else
                   = link_to "Activate Bill", activate_bill_path(@bill), method: :patch
 
-          %h2= @bill.real_number
+          %h2= @bill.full_number
 
         %dl.dl-horizontal
           %dt

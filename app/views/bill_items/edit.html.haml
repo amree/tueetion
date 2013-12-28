@@ -3,7 +3,7 @@
     %li= link_to "Home", root_path
     %li= link_to "Students", students_path
     %li= link_to @bill.student.first_name, @student
-    %li= link_to @bill.real_number, @bill
+    %li= link_to @bill.full_number, @bill
     %li.active Edit Bill Item
 
 = render 'layouts/flash_messages'
