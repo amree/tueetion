@@ -13,7 +13,7 @@ class DashboardsController < ApplicationController
     @sms_used_counts = 0
     @sms_credit_counts = 0
 
-    Credit.available(current_center).each do |credit|
+    current_center.credits.available.each do |credit|
       @sms_credit_counts += credit.amount
       @sms_used_counts += credit.used
     end

@@ -12,7 +12,7 @@ class MessageSender
       @message.processed_content = processed_message.content
 
       # Search for free credit
-      credit = Credit.available(@message.center_id).first
+      credit = Center.find(@message.center_id).credits.try(:available).first
 
       credit_balance = if credit
                          credit.amount - credit.used
