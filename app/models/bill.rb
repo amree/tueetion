@@ -12,10 +12,6 @@ class Bill < ActiveRecord::Base
   before_validation :set_default_values, if: "self.new_record?"
   validate :check_current_month_bill, if: "self.new_record?"
 
-  def real_number
-    "#{year}#{month}#{number.to_s.rjust(5, '0')}"
-  end
-
   def count_total_amount
     total_amount = 0
 
@@ -45,6 +41,7 @@ class Bill < ActiveRecord::Base
     self.year = Date.today.strftime("%Y")
 
     generate_latest_number
+    generate_full_number
     generate_bill_items
   end
 
@@ -58,6 +55,10 @@ class Bill < ActiveRecord::Base
 
   def generate_latest_number
     self.number = (Center.find(self.center_id).bills.where("created_at between ? and ?", Date.today.at_beginning_of_year, Date.today.end_of_year + 1).maximum(:number) || 0) + 1
+  end
+
+  def generate_full_number
+    self.full_number = "#{self.year}#{self.month.to_s.rjust(2, '0')}#{self.number.to_s.rjust(5, '0')}"
   end
 
   def generate_bill_items

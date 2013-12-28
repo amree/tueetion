@@ -1,6 +1,7 @@
 bill:
   center: pakar
   student: ali
+  full_number: 20130100001
   number: 1
   month: 1
   year: 2013

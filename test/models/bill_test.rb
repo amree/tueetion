@@ -16,6 +16,15 @@ class BillTest < ActiveSupport::TestCase
     end
   end
 
+  test "should generate the right full number" do
+    Timecop.freeze(Date.parse("2014-01-01")) do
+      bill = Bill.generate(@ali)
+      bill.save
+
+      assert_equal "20140100001", bill.full_number
+    end
+  end
+
   test "should generate bill" do
     bill = Bill.generate(@ali)
 
