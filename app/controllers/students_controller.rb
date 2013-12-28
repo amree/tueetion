@@ -8,7 +8,8 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @q = Student.search params[:q]
+    @q = current_center.students.search params[:q]
+
     @students = @q.result(distinct: true)
   end
 
