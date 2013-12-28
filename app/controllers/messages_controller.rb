@@ -14,7 +14,11 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
-    @message = Message.new
+    if current_center.credits.try(:available).blank?
+      redirect_to messages_path, notice: "You don't have any message credit in your account. Please contact support for further information."
+    else
+      @message = Message.new
+    end
   end
 
   # POST /messages
