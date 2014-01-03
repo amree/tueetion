@@ -41,6 +41,15 @@
       = f.text_field :phone_number, class: "form-control", placeholder: "Phone #"
       = form_errors @student, :phone_number
 
+  = form_group @student.errors[:backup_phone_number].present? do
+    = f.label :backup_phone_number, class: "col-lg-2 control-label"
+    .col-lg-2
+      = f.select :backup_phone_code, [["Malaysia (+60)", "+60"]], {}, class: "form-control"
+      = form_errors @student, :backup_phone_number
+    .col-lg-2
+      = f.text_field :backup_phone_number, class: "form-control", placeholder: "Phone #"
+      = form_errors @student, :backup_phone_number
+
   = form_group @student.errors[:school_name].present? do
     = f.label :school_name, class: "col-lg-2 control-label"
     .col-lg-4

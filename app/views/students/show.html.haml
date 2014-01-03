@@ -60,7 +60,11 @@
               %dt
                 Phone
               %dd
-                = full_phone_number(@student)
+                = full_phone_number(@student.phone_code, @student.phone_number)
+              %dt
+                Backup Phone
+              %dd
+                = full_phone_number(@student.backup_phone_code, @student.backup_phone_number)
               %dt
                 E-Mail:
               %dd

@@ -7,6 +7,8 @@ ali:
   last_name: Muhammad Hassan
   phone_code: 60
   phone_number: 0199171765
+  backup_phone_code: 60
+  backup_phone_number: 0129171765
 
 adam:
   center: kami
