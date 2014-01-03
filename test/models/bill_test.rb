@@ -26,6 +26,9 @@ class BillTest < ActiveSupport::TestCase
   end
 
   test "should generate bill" do
+    # Mock the time since fixture has one bill in 2013
+    Timecop.freeze(Time.local(2013, 7, 2, 8, 0, 0))
+
     bill = Bill.generate(@ali)
 
     current_month = Date.today.strftime("%m")
@@ -38,11 +41,13 @@ class BillTest < ActiveSupport::TestCase
 
     assert_equal @ali.id, bill.student_id
     assert_equal @ali.center_id, bill.center_id
-    assert_equal current_month, bill.month.to_s
+    assert_equal current_month.to_i.to_s, bill.month.to_s
     assert_equal current_year, bill.year.to_s
     assert_equal 2, bill.number
     assert_equal "#{current_year}#{current_month}00002", bill.full_number
     assert_equal 100, bill.total_amount
+
+    Timecop.return
   end
 
   test "should be able to deactivate bill" do
