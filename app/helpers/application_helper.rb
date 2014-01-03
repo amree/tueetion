@@ -47,4 +47,12 @@ module ApplicationHelper
     # content_tag "span", attributes, content
     content_tag :span, content, attributes
   end
+
+  def dash_if_blank(var)
+    if var.blank?
+      "-"
+    else
+      var
+    end
+  end
 end
