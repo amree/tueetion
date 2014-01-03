@@ -40,37 +40,53 @@
                   Generate Bill
           %h2 Profile
 
-        %dl.dl-horizontal
-          %dt
-            Identity #
-          %dd
-            = @student.ic
-          %dt
-            First Name, Last Name
-          %dd
-            = succeed "," do
-              = @student.first_name
-            = @student.last_name
-          %dt
-            DOB
-          %dd
-            = @student.dob
-          %dt
-            Phone
-          %dd
-            = full_phone_number(@student)
-          %dt
-            E-Mail:
-          %dd
-            = @student.email
-          %dt
-            School Name
-          %dd
-            = @student.school_name
-          %dt
-            Status
-          %dd
-            = status_label(@student.is_active)
+        .row
+          .col-md-6
+            %dl.dl-horizontal
+              %dt
+                Identity #
+              %dd
+                = @student.ic
+              %dt
+                First Name, Last Name
+              %dd
+                = succeed "," do
+                  = @student.first_name
+                = @student.last_name
+              %dt
+                DOB
+              %dd
+                = @student.dob
+              %dt
+                Phone
+              %dd
+                = full_phone_number(@student)
+              %dt
+                E-Mail:
+              %dd
+                = @student.email
+              %dt
+                School Name
+              %dd
+                = @student.school_name
+              %dt
+                Status
+              %dd
+                = status_label(@student.is_active)
+          .col-md-6
+            %dl.dl-horizontal
+              %dt
+                Notes (1)
+              %dd
+                = dash_if_blank @student.note1
+              %dt
+                Notes (2)
+              %dd
+                = dash_if_blank @student.note2
+              %dt
+                Notes (3)
+              %dd
+                = dash_if_blank @student.note3
 
     .panel.panel-borderless
       .panel-body

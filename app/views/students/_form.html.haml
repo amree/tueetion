@@ -66,6 +66,24 @@
         Active
       = form_errors @student, :is_active
 
+  = form_group @student.errors[:note1].present? do
+    = f.label :note1, "Note 1", class: "col-lg-2 control-label"
+    .col-lg-5
+      = f.text_field :note1, class: "form-control", placeholder: "Note 1"
+      = form_errors @student, :note1
+
+  = form_group @student.errors[:note2].present? do
+    = f.label :note2, "Note 2", class: "col-lg-2 control-label"
+    .col-lg-5
+      = f.text_field :note2, class: "form-control", placeholder: "Note 2"
+      = form_errors @student, :note2
+
+  = form_group @student.errors[:note3].present? do
+    = f.label :note3, "Note 3", class: "col-lg-2 control-label"
+    .col-lg-5
+      = f.text_field :note3, class: "form-control", placeholder: "Note 3"
+      = form_errors @student, :note3
+
   .form-group
     .col-lg-offset-2.col-lg-10
       %button.btn.btn-primary{ type: "submit"}
