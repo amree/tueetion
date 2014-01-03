@@ -24,7 +24,7 @@ class Student < ActiveRecord::Base
   validates :phone_code, presence: true
   validates :phone_number, presence: true
 
-  def full_phone_number
+  def main_phone_number
     phone_code + phone_number
   end
 end
