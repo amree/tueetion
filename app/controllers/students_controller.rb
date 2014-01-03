@@ -73,7 +73,7 @@ class StudentsController < ApplicationController
     bill = Bill.generate(@student)
 
     if bill.save
-      redirect_to @student, notice: 'Bill was successfully generated.'
+      redirect_to bill, notice: 'Bill was successfully generated.'
     else
       redirect_to @student, alert: 'Bill failed to be generated. Reasons: ' + bill.errors.messages[:base].join(",")
     end

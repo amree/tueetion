@@ -65,5 +65,7 @@ class StudentsControllerTest < ActionController::TestCase
     assert_difference('Bill.count') do
       post :generate_bill, id: @ali
     end
+
+    assert_redirected_to Bill.last
   end
 end
