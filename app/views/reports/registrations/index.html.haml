@@ -1,2 +1,15 @@
-%h1 Reports::Registrations#index
-%p Find me in app/views/reports/registrations/index.html.haml
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li Reports
+    %li.active Registrations
+
+= render 'layouts/flash_messages'
+
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        - data = registrations_chart_data
+        #reports-registrations-chart{ data: { categories: "#{(1..data.length).to_a}", values: "#{data}" } }
+
