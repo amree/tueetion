@@ -11,5 +11,5 @@
     .panel.panel-borderless
       .panel-body
         - data = registrations_chart_data
-        #reports-registrations-chart{ data: { categories: "#{(1..data.length).to_a}", values: "#{data}" } }
+        #reports-registrations-chart{ data: { year: @current_year, categories: "#{(1..data.length).to_a}", values: "#{data}" } }
 

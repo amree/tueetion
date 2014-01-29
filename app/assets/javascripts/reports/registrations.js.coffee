@@ -5,7 +5,7 @@ ready = ->
         type: "column"
 
       title:
-        text: "Registrations"
+        text: "Monthly Registrations in " + $('#reports-registrations-chart').data('year')
 
       xAxis:
         categories: $('#reports-registrations-chart').data('categories')
