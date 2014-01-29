@@ -21,5 +21,7 @@ class DashboardsController < ApplicationController
     @unpaid_bill_counts = current_center.bills.active.unpaid.count
 
     @overdue_bill_counts = current_center.bills.active.overdue.count
+
+    @current_month = Time.zone.now.strftime '%B'
   end
 end
