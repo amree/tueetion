@@ -1,0 +1,14 @@
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li Reports
+    %li.active Subjects
+
+= render 'layouts/flash_messages'
+
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        #reports-subjects-chart{ data: { year: @current_year, values: "#{subject_enrollment_chart_data}" } }
+
