@@ -1,7 +1,9 @@
 Tueetion::Application.routes.draw do
+  get "packages/index"
   namespace :reports do
     resources :registrations, only: [:index]
     resources :subjects, only: [:index]
+    resources :packages, only: [:index]
   end
 
   namespace :admin do

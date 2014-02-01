@@ -1,0 +1,14 @@
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li Reports
+    %li.active Packages
+
+= render 'layouts/flash_messages'
+
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        #reports-packages-chart{ data: { year: @current_year, values: "#{package_enrollment_chart_data}" } }
+
