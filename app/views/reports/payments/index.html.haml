@@ -1,0 +1,14 @@
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li Reports
+    %li.active Payments
+
+= render 'layouts/flash_messages'
+
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        #reports-yearly-payments-chart{ data: { year: @current_year, categories: "#{(1..12).to_a}", values: "#{yearly_payments_chart_data}" } }
+

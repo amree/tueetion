@@ -1,5 +1,6 @@
 Tueetion::Application.routes.draw do
   namespace :reports do
+    resources :payments, only: [:index]
     resources :registrations, only: [:index]
     resources :subjects, only: [:index]
     resources :packages, only: [:index]
