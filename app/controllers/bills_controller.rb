@@ -13,6 +13,14 @@ class BillsController < ApplicationController
   # GET /bills/1
   # GET /bills/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: params[:id],
+               orientation: 'Landscape',
+               page_size: 'A5'
+      end
+    end
   end
 
   # DELETE /bills/1

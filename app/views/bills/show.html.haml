@@ -23,6 +23,9 @@
                 %li
                   = link_to "Make Payment", new_bill_payment_path(@bill)
                 %li.divider
+                %li
+                  = link_to "Print", bill_path(@bill, format: :pdf)
+                %li.divider
               %li
                 - if @bill.is_active
                   = link_to "Deactivate Bill", deactivate_bill_path(@bill), method: :patch
