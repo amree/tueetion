@@ -25,6 +25,8 @@ gem 'whenever', '~> 0.9.0'
 gem 'ransack', '~> 1.1.0'
 gem 'haml-rails', '~> 0.4'
 gem 'unicorn', '~> 4.7.0'
+gem 'wkhtmltopdf-binary', '~> 0.9.9.1'
+gem 'wicked_pdf', '~> 0.9.10'
 
 group :doc do
   gem 'sdoc', require: false
