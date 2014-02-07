@@ -37,12 +37,13 @@
         %p
           Overdue Bills
 
-.row
-  .col-md-12
-    .panel.panel-borderless
-      .panel-body
-        - data = payments_chart_data
-        #dashboard-chart{ data: { month: @current_month, categories: "#{(1..data.length).to_a}", values: "#{data}" } }
+- if current_user.is_owner?
+  .row
+    .col-md-12
+      .panel.panel-borderless
+        .panel-body
+          - data = payments_chart_data
+          #dashboard-chart{ data: { month: @current_month, categories: "#{(1..data.length).to_a}", values: "#{data}" } }
 
 .row
   .col-md-6

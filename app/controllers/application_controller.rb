@@ -40,6 +40,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_owner
+    unless current_user.is_owner?
+      redirect_to root_path, alert: 'You do not have sufficient privilege'
+    end
+  end
+
   def check_center
     if current_user && current_center.nil?
       redirect_to new_center_path

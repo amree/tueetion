@@ -13,41 +13,42 @@
         = link_to "Bills", bills_path
       %li
         = link_to "Message", messages_path
-      %li.dropdown
-        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-          Reports
-          %b.caret
-        %ul.dropdown-menu
-          %li
-            = link_to "Payments", reports_payments_path
-          %li
-            = link_to "Registrations", reports_registrations_path
-          %li
-            = link_to "Subjects", reports_subjects_path
-          %li
-            = link_to "Packages", reports_packages_path
-      %li.dropdown
-        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-          Setup
-          %b.caret
-        %ul.dropdown-menu
-          %li
-            = link_to "Center", center_path(current_center.id)
-          %li
-            = link_to "Staffs", staffs_path
-          %li
-            = link_to "Invitations", invitations_path
-          %li.divider
-          %li
-            = link_to "Groups", groups_path
-          %li
-            = link_to "Subjects", subjects_path
-          %li.divider
-          %li.dropdown-header Fees
-          %li
-            = link_to "Quantity Based", quantity_fees_path
-          %li
-            = link_to "Combination Based", combination_fees_path
+      - if current_user.is_owner?
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            Reports
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              = link_to "Payments", reports_payments_path
+            %li
+              = link_to "Registrations", reports_registrations_path
+            %li
+              = link_to "Subjects", reports_subjects_path
+            %li
+              = link_to "Packages", reports_packages_path
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            Setup
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              = link_to "Center", center_path(current_center.id)
+            %li
+              = link_to "Staffs", staffs_path
+            %li
+              = link_to "Invitations", invitations_path
+            %li.divider
+            %li
+              = link_to "Groups", groups_path
+            %li
+              = link_to "Subjects", subjects_path
+            %li.divider
+            %li.dropdown-header Fees
+            %li
+              = link_to "Quantity Based", quantity_fees_path
+            %li
+              = link_to "Combination Based", combination_fees_path
     %ul.nav.navbar-nav.navbar-right
       - if current_user.is_admin?
         %li.dropdown
