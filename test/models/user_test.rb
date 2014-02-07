@@ -4,6 +4,16 @@ class UserTest < ActiveSupport::TestCase
   setup do
   end
 
+  test "access_level should be correct" do
+    admin = users(:admin)
+    owner = users(:user)
+    staff = users(:staff)
+
+    assert 100, admin.access_level
+    assert 50, owner.access_level
+    assert 10, staff.access_level
+  end
+
   test "first and last name must not be nil" do
     user = User.new
     user.email = "otheremail@mail.com"
