@@ -16,9 +16,18 @@ class User < ActiveRecord::Base
   before_validation :set_staff_values, if: "key.present?"
   after_create :mark_invitation_used, if: "key.present?"
 
-  def is_admin
+  def is_admin?
     access_level == 100
   end
+
+  def is_owner?
+    access_level == 50
+  end
+
+  def is_staff?
+    access_level == 10
+  end
+
 
   protected
 

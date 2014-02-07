@@ -12,6 +12,10 @@ class UserTest < ActiveSupport::TestCase
     assert 100, admin.access_level
     assert 50, owner.access_level
     assert 10, staff.access_level
+
+    assert admin.is_admin?
+    assert owner.is_owner?
+    assert staff.is_staff?
   end
 
   test "first and last name must not be nil" do
