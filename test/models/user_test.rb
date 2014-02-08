@@ -57,4 +57,17 @@ class UserTest < ActiveSupport::TestCase
 
     assert Invitation.find(invitation.id).is_used
   end
+
+  test "should generate a unique key" do
+    user = User.new
+
+    user.first_name = 'First Name'
+    user.last_name = 'Last Name'
+    user.email = 'user@email.com'
+    user.password = 'password'
+
+    user.save
+
+    assert_not_nil user.public_key
+  end
 end

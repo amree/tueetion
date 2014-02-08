@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140103032244) do
+ActiveRecord::Schema.define(version: 20140208041737) do
 
   create_table "bill_items", force: true do |t|
     t.integer  "bill_id"
@@ -228,6 +228,7 @@ ActiveRecord::Schema.define(version: 20140103032244) do
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "access_level",           default: 50
+    t.string   "public_key"
     t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -244,6 +245,7 @@ ActiveRecord::Schema.define(version: 20140103032244) do
 
   add_index "users", ["center_id"], name: "index_users_on_center_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["public_key"], name: "index_users_on_public_key", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
