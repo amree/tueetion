@@ -1,4 +1,10 @@
 Tueetion::Application.routes.draw do
+  namespace :public do
+    resources :students, only: [:show] do
+      resources :bills, only: [:show]
+    end
+  end
+
   namespace :reports do
     resources :payments, only: [:index]
     resources :registrations, only: [:index]

@@ -3,6 +3,7 @@ ali:
   branch: kb
   group: menengah
   ic: 880302031234
+  public_key: abcde
   first_name: Muhammad Ali
   last_name: Muhammad Hassan
   phone_code: 60

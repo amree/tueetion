@@ -1,0 +1,25 @@
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2 Profile
+
+        .row
+          .col-md-12
+            %p
+              = status_label(@student.is_active)
+              &nbsp;
+              = @student.first_name
+              = @student.last_name
+
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2 Bills
+
+        - if @student.bills.count > 0
+          = render 'bills', bills: @student.bills.by_latest, student: @student
+        - else
+          No bill yet.
+

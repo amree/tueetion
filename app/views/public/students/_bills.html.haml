@@ -1,0 +1,29 @@
+%table.table.table-hover.table-text-middle
+  %thead
+    %tr
+      %th #
+      %th Bill #
+      %th Created at
+      %th Period
+      %th.text-right
+        Amounts (RM)
+      %th.text-center Status
+      %th
+  %tbody
+    - i = 0
+    - bills.each do |bill|
+      %tr
+        %td= i = i + 1
+        %td= bill.full_number
+        %td= l bill.created_at.in_time_zone("Kuala Lumpur"), format: :date
+        %td
+          = I18n.t("date.month_names")[bill.month]
+          = bill.year
+        %td.text-right
+          = number_with_precision(bill.total_amount, precision: 2)
+        %td.text-right
+          = all_bill_status(bill)
+        %td.text-right
+          = link_to public_student_bill_path(student.public_key, bill, format: :pdf), class: "btn btn-default" do
+            %i.fa.fa-eye.fa-fw
+
