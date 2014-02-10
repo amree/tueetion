@@ -24,6 +24,6 @@
         %td.text-right
           = all_bill_status(bill)
         %td.text-right
-          = link_to '#', class: "btn btn-default" do
+          = link_to public_student_bill_path(student.public_key, bill, format: :pdf), class: "btn btn-default" do
             %i.fa.fa-eye.fa-fw
 

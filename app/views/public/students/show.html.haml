@@ -19,7 +19,7 @@
           %h2 Bills
 
         - if @student.bills.count > 0
-          = render 'bills', bills: @student.bills.by_latest
+          = render 'bills', bills: @student.bills.by_latest, student: @student
         - else
           No bill yet.
 
