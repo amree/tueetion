@@ -1,13 +1,15 @@
 .header
-  %ul.nav.nav-pills.pull-right
-    %li
-      %a{:href => "#"} Benefits
-    %li
-      %a{:href => "#"} Pricing
-    %li
-      %a{:href => "#"} Contact
-    %li
-      %a{:href => new_user_session_path} Sign in
+  - unless params[:controller] == 'public/students'
+    %ul.nav.nav-pills.pull-right
+      %li
+        %a{:href => "#"} Benefits
+      %li
+        %a{:href => "#"} Pricing
+      %li
+        %a{:href => "#"} Contact
+      %li
+        %a{:href => new_user_session_path} Sign in
+
   %h3.text-muted
     = link_to "Tueetion", root_path
 

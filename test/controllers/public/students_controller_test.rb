@@ -9,6 +9,6 @@ class Public::StudentsControllerTest < ActionController::TestCase
     get :show, id: @ali.public_key
 
     assert_response :success
-    assert assigns(:student)
+    assert_not_nil assigns(:student)
   end
 end
