@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
   validates :center, presence: true, if: "center_id.present?"
 
   before_validation :set_staff_values, if: "key.present?"
-  before_create :set_public_key
   after_create :mark_invitation_used, if: "key.present?"
 
   def is_admin?
@@ -50,18 +49,5 @@ class User < ActiveRecord::Base
     invitation.is_used = true
 
     invitation.save
-  end
-
-  def set_public_key
-    self.public_key = generate_public_key
-    while User.find_by_public_key(self.public_key) do
-      self.public_key = generate_public_key
-    end
-  end
-
-  private
-
-  def generate_public_key
-    Array.new(5){[*'a'..'z'].sample}.join
   end
 end

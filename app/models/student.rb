@@ -24,7 +24,22 @@ class Student < ActiveRecord::Base
   validates :phone_code, presence: true
   validates :phone_number, presence: true
 
+  before_create :set_public_key
+
   def main_phone_number
     phone_code + phone_number
+  end
+
+  def set_public_key
+    self.public_key = generate_public_key
+    while Student.find_by_public_key(self.public_key) do
+      self.public_key = generate_public_key
+    end
+  end
+
+  private
+
+  def generate_public_key
+    Array.new(5){[*'a'..'z'].sample}.join
   end
 end

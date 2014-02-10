@@ -26,6 +26,13 @@ class StudentTest < ActiveSupport::TestCase
     assert @ali.errors[:ic].present?
   end
 
+  test "should generate a unique key during creation" do
+    student = @ali.dup
+    student.save
+
+    assert_not_nil student.public_key
+  end
+
   test "first_name should exists" do
     @ali.first_name = nil
     @ali.valid?

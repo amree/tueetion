@@ -191,6 +191,7 @@ ActiveRecord::Schema.define(version: 20140208041737) do
     t.integer  "branch_id"
     t.integer  "group_id"
     t.string   "ic"
+    t.string   "public_key"
     t.string   "first_name"
     t.string   "last_name"
     t.date     "dob"
@@ -211,6 +212,7 @@ ActiveRecord::Schema.define(version: 20140208041737) do
   add_index "students", ["branch_id"], name: "index_students_on_branch_id", using: :btree
   add_index "students", ["center_id"], name: "index_students_on_center_id", using: :btree
   add_index "students", ["group_id"], name: "index_students_on_group_id", using: :btree
+  add_index "students", ["public_key"], name: "index_students_on_public_key", unique: true, using: :btree
 
   create_table "subjects", force: true do |t|
     t.integer  "center_id"
@@ -228,7 +230,6 @@ ActiveRecord::Schema.define(version: 20140208041737) do
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "access_level",           default: 50
-    t.string   "public_key"
     t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -245,7 +246,6 @@ ActiveRecord::Schema.define(version: 20140208041737) do
 
   add_index "users", ["center_id"], name: "index_users_on_center_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["public_key"], name: "index_users_on_public_key", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
