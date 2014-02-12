@@ -92,19 +92,19 @@ class StudentsController < ApplicationController
   end
 
   def set_branches
-    @branches = Branch.by_name.to_a.collect { |b| [b.name, b.id] }
+    @branches = current_center.branches.by_name.to_a.collect { |b| [b.name, b.id] }
   end
 
   def set_groups
-    @groups = Group.by_name.collect { |g| [g.name, g.id] }
+    @groups = current_center.groups.by_name.collect { |g| [g.name, g.id] }
   end
 
   def set_group_selections
-    @group_selections = Center.first.groups.order(:name).collect { |g| [ g.name, g.id ] }
+    @group_selections = current_center.groups.order(:name).collect { |g| [ g.name, g.id ] }
   end
 
   def set_branch_selections
-    @branch_selections = Center.first.branches.order(:name).collect { |b| [ b.name, b.id ] }
+    @branch_selections = current_center.branches.order(:name).collect { |b| [ b.name, b.id ] }
   end
 end
 
