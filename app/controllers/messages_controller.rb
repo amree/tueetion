@@ -34,7 +34,7 @@ class MessagesController < ApplicationController
       arr << h
     end
 
-    group = current_center.groups.find(params[:group_id])
+    group = current_center.groups.where(id: params[:group_id])
 
     if group.present?
       group.students.each do |student|
