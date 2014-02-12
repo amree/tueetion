@@ -7,6 +7,12 @@
       = hidden_field_tag :student_ids
       = form_errors @message, :student_id
 
+  = form_group @message.errors[:group_id].present? do
+    = f.label :group_id, "Group", class: "col-lg-2 control-label"
+    .col-lg-10
+      = select_tag "group_id", options_from_collection_for_select(@groups, "id", "name"), include_blank: true, class: "form-control"
+      = form_errors @message, :group_id
+
   .form-group
     = f.label :content, class: "col-lg-2 control-label"
     .col-lg-10

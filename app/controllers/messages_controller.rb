@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :set_message, only: [:show, :destroy]
+  before_action :set_groups, only: [:new, :create]
 
   # GET /messages
   # GET /messages.json
@@ -27,11 +28,26 @@ class MessagesController < ApplicationController
     # Build arrays of data
     arr = Array.new
     params[:student_ids].split(",").each do |id|
-      h = params[:message].merge("student_id" => id, "center_id" => current_center.id)
+      h = params[:message].merge("student_id" => id.to_i, "center_id" => current_center.id.to_i)
       h.permit!
 
       arr << h
     end
+
+    group = current_center.groups.find(params[:group_id])
+
+    if group.present?
+      group.students.each do |student|
+
+        hash = params[:message].merge("student_id" => student.id, "center_id" => current_center.id)
+        hash.permit!
+
+        arr << hash
+      end
+    end
+
+    # Remove duplicates
+    arr = arr.index_by { |r| r[:student_id] }.values
 
     # new_params = ActionController::Parameters.new(data: arr)
     # new_params.permit(data: [:content, :student_id, :center_id])
@@ -75,7 +91,12 @@ class MessagesController < ApplicationController
       @message = current_center.messages.find(params[:id])
     end
 
+    def set_groups
+      @groups = current_center.groups.by_name
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
+    # TODO: Strong Parameters
     def message_params
       # params.require(:student_ids)
       # params.require(:message).permit([:student_id, :center_id, :content])
