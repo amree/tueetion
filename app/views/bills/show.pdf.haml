@@ -73,7 +73,8 @@
           No payment has been made.
 
     .row
-      .col-md-12
-        This bill can be accessed at:
+      .col-md-3.pull-left
         = "http://tueetion.com/public/students/#{@bill.student.public_key}"
+      .col-md-6.pull-right.text-right
+        = l Time.now.in_time_zone("Kuala Lumpur")
 
