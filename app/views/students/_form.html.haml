@@ -3,19 +3,19 @@
   / TODO: Display association/base error
 
   = form_group @student.errors[:ic].present? do
-    = f.label :ic, "Identity #", class: "col-lg-2 control-label"
+    = f.label :ic, "Identity #", class: "col-lg-2 control-label required"
     .col-lg-2
       = f.text_field :ic, class: "form-control", placeholder: "Identity #"
       = form_errors @student, :ic
 
   = form_group @student.errors[:first_name].present? do
-    = f.label :first_name, class: "col-lg-2 control-label"
+    = f.label :first_name, class: "col-lg-2 control-label required"
     .col-lg-4
       = f.text_field :first_name, class: "form-control", placeholder: "First Name"
       = form_errors @student, :first_name
 
   = form_group @student.errors[:last_name].present? do
-    = f.label :last_name, class: "col-lg-2 control-label"
+    = f.label :last_name, class: "col-lg-2 control-label required"
     .col-lg-4
       = f.text_field :last_name, class: "form-control", placeholder: "Last Name"
       = form_errors @student, :last_name
@@ -33,7 +33,7 @@
       = form_errors @student, :email
 
   = form_group @student.errors[:phone_number].present? do
-    = f.label :phone_number, class: "col-lg-2 control-label"
+    = f.label :phone_number, class: "col-lg-2 control-label required"
     .col-lg-2
       = f.select :phone_code, [["Malaysia (+60)", "+60"]], {}, class: "form-control"
       = form_errors @student, :phone_number
@@ -57,13 +57,13 @@
       = form_errors @student, :school_name
 
   = form_group @student.errors[:branch].present? do
-    = f.label :branch_id, class: "col-lg-2 control-label"
+    = f.label :branch_id, class: "col-lg-2 control-label required"
     .col-lg-4
       = f.select :branch_id, @branches, { include_blank: true }, { class: "form-control" }
       = form_errors @student, :branch
 
   = form_group @student.errors[:group].present? do
-    = f.label :group_id, class: "col-lg-2 control-label"
+    = f.label :group_id, class: "col-lg-2 control-label required"
     .col-lg-4
       = f.select :group_id, @groups, { include_blank: true }, { class: "form-control" }
       = form_errors @student, :group
