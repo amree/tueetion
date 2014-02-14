@@ -74,9 +74,10 @@
               %dd
                 = @student.school_name
               %dt
-                Status
+                URL
               %dd
-                = status_label(@student.is_active)
+                = link_to "http://tueetion.com/public/students/#{@student.public_key}"
+
           .col-md-6
             %dl.dl-horizontal
               %dt
@@ -91,6 +92,10 @@
                 Notes (3)
               %dd
                 = dash_if_blank @student.note3
+              %dt
+                Status
+              %dd
+                = status_label(@student.is_active)
 
     .panel.panel-borderless
       .panel-body

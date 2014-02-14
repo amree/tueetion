@@ -71,3 +71,9 @@
                     = number_with_precision(payment.amount, precision: 2)
         - else
           No payment has been made.
+
+    .row
+      .col-md-12
+        This bill can be accessed at:
+        = "http://tueetion.com/public/students/#{@bill.student.public_key}"
+
