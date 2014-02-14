@@ -56,7 +56,7 @@
               %dt
                 DOB
               %dd
-                = @student.dob
+                = dash_if_blank @student.dob
               %dt
                 Phone
               %dd
@@ -68,11 +68,11 @@
               %dt
                 E-Mail:
               %dd
-                = @student.email
+                = dash_if_blank @student.email
               %dt
                 School Name
               %dd
-                = @student.school_name
+                = dash_if_blank @student.school_name
               %dt
                 URL
               %dd
