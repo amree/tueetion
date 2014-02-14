@@ -16,6 +16,9 @@
       .panel-body
         .section-title
           .btn-group.pull-right
+            = link_to combination_fees_path, class: "btn btn-default" do
+              %i.fa.fa-th-list.fa-fw
+              List
             %button.btn.btn-default.dropdown-toggle{ :"data-toggle" => "dropdown", type: "button" }
               Actions
               %span.caret
