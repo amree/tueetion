@@ -1,2 +1,41 @@
-%h1 Admin::Users#index
-%p Find me in app/views/admin/users/index.html.haml
+= render 'layouts/flash_messages'
+
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            Users
+
+        - if @users.size > 0
+          %table.table.table-hover.table-text-middle
+            %thead
+              %tr
+                %th #
+                %th Name
+                %th Center
+                %th Last Sign In
+                %th Registered At
+                %th
+            %tbody
+              - i = 0
+              - @users.each do |user|
+                %tr
+                  %td= i = i + 1
+                  %td
+                    = user.first_name
+                    = user.last_name
+                  %td
+                    = user.center.name
+                  %td
+                    = l user.created_at
+                  %td
+                    = l user.last_sign_in_at unless user.last_sign_in_at.nil?
+                  %td.text-right
+                    = link_to admin_user_path(user), class: "btn btn-default" do
+                      %i.fa.fa-eye.fa-fw
+
+        - else
+          No result.
+
