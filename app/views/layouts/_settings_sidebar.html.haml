@@ -7,13 +7,15 @@
     = link_to edit_password_settings_accounts_path do
       %i.fa.fa-key.fa-fw
       Change Password
-  %li
-    = link_to settings_subscriptions_path do
-      %i.fa.fa-dollar.fa-fw
-      Subscriptions
 
-  %li
-    = link_to settings_credits_path do
-      %i.fa.fa-mobile.fa-fw
-      SMS Credits
+  - if current_user.is_owner?
+    %li
+      = link_to settings_subscriptions_path do
+        %i.fa.fa-dollar.fa-fw
+        Subscriptions
+
+    %li
+      = link_to settings_credits_path do
+        %i.fa.fa-mobile.fa-fw
+        SMS Credits
 
