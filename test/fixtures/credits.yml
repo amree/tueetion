@@ -2,7 +2,4 @@ credit_pakar:
   center: pakar
   amount: 1000
   used: 1
-  cost: 120.00
-  transaction_number: A1234567
-  payment_method: Maybank
-  paid_at: 2013-12-22 15:26:09
+
