@@ -11,6 +11,8 @@ class Center < ActiveRecord::Base
   has_many :combination_fees
   has_many :invitations
   has_many :groups
+  has_many :subscriptions
+  has_many :credits
 
   validates :name, presence: true
   validates :name, uniqueness: true
