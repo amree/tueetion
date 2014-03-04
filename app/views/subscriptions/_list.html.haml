@@ -1,0 +1,23 @@
+- if subscriptions.size > 0
+  %table.table.table-hover.table-text-middle
+    %thead
+      %tr
+        %th #
+        %th Quantity
+        %th Start
+        %th End
+        %th
+    %tbody
+      - i = 0
+      - subscriptions.order("created_at DESC").each do |subscription|
+        %tr
+          %td= i = i + 1
+          %td
+            = subscription.quantity
+          %td
+            = l subscription.start_at.in_time_zone("Kuala Lumpur")
+          %td
+            = l subscription.end_at.in_time_zone("Kuala Lumpur")
+- else
+  You don't have any subscription yet.
+

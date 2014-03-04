@@ -14,13 +14,6 @@
         .section-title
           %h2
             Current Subscriptions
-        Add resouce in admin
 
-    .panel.panel-borderless
-      .panel-body
-        .section-title
-          %h2
-            Payment History
-
-        Add resource in admin
+        = render 'subscriptions/list', subscriptions: current_center.subscriptions
 
