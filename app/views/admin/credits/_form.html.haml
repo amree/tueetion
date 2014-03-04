@@ -12,27 +12,7 @@
       = f.text_field :amount, class: "form-control"
 
   = f.fields_for :transactions do |builder|
-    %hr
-
-    = form_group false do
-      = builder.label :reference_number, "Reference #", class: "col-lg-2 control-label"
-      .col-lg-2
-        = builder.text_field :reference_number, class: "form-control"
-
-    = form_group false do
-      = builder.label :merchant, "Merchant Name", class: "col-lg-2 control-label"
-      .col-lg-2
-        = builder.text_field :merchant, class: "form-control"
-
-    = form_group false do
-      = builder.label :value, "Value (RM)", class: "col-lg-2 control-label"
-      .col-lg-1
-        = builder.text_field :value, class: "form-control"
-
-    = form_group false do
-      = builder.label :paid_at, class: "col-lg-2 control-label"
-      .col-lg-2
-        = builder.text_field :paid_at, class: "form-control"
+    = render "admin/transactions/transaction", f: builder
 
   .form-group
     .col-lg-offset-2.col-lg-10
