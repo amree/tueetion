@@ -1,0 +1,43 @@
+= form_for [:admin, @credit], html: { class: "form-horizontal", role: "form" } do |f|
+
+  = form_group @credit.errors[:center_id].present? do
+    = f.label :center_id, "Center", class: "col-lg-2 control-label"
+    .col-lg-4
+      = f.select :center_id, @centers, {}, class: "form-control"
+      = form_errors @credit, :center_id
+
+  = form_group @credit.errors[:amount].present? do
+    = f.label :amount, class: "col-lg-2 control-label"
+    .col-lg-1
+      = f.text_field :amount, class: "form-control"
+
+  %hr
+
+  = f.fields_for :transactions do |builder|
+    = form_group false do
+      = builder.label :reference_number, "Reference #", class: "col-lg-2 control-label"
+      .col-lg-2
+        = builder.text_field :reference_number, class: "form-control"
+
+    = form_group false do
+      = builder.label :merchant, "Merchant Name", class: "col-lg-2 control-label"
+      .col-lg-2
+        = builder.text_field :merchant, class: "form-control"
+
+    = form_group false do
+      = builder.label :value, "Value (RM)", class: "col-lg-2 control-label"
+      .col-lg-1
+        = builder.text_field :value, class: "form-control"
+
+    = form_group false do
+      = builder.label :paid_at, class: "col-lg-2 control-label"
+      .col-lg-2
+        = builder.text_field :paid_at, class: "form-control"
+
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      %button.btn.btn-primary{ type: "submit"}
+        Save
+      or
+      = link_to "Cancel", admin_credits_path
+

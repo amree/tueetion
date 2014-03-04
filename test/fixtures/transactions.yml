@@ -1,0 +1,7 @@
+credit_payment:
+  transactable: credit_pakar (Credit)
+  reference_number: "12345"
+  merchant: "Maybank"
+  value: 100.00
+  paid_at: 2014-01-01 11:22:33
+

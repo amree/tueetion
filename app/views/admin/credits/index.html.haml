@@ -1,0 +1,48 @@
+= render 'layouts/flash_messages'
+
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          .pull-right
+            = link_to "New Credit", new_admin_credit_path, class: "btn btn-primary"
+          %h2
+            Credits
+
+        - if @credits.size > 0
+          %table.table.table-hover.table-text-middle
+            %thead
+              %tr
+                %th #
+                %th Center
+                %th.text-right
+                  Usage
+                %th.text-right
+                  Balance
+                %th
+            %tbody
+              - i = 0
+              - @credits.each do |credit|
+                %tr
+                  %td= i = i + 1
+                  %td
+                    = credit.center.name
+                  %td.text-right
+                    = credit.used
+                    \/
+                    = credit.amount
+                  %td.text-right
+                    = credit.amount - credit.used
+                  %td.text-right
+                    .btn-group
+                      = link_to admin_credit_path(credit), class: "btn btn-default" do
+                        %i.fa.fa-eye.fa-fw
+                      = link_to edit_admin_credit_path(credit), class: "btn btn-default" do
+                        %i.fa.fa-pencil.fa-fw
+                      = link_to [:admin, credit], class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure you want to delete this credit?" } do
+                        %i.fa.fa-trash-o.fa-fw
+
+        - else
+          No result.
+
