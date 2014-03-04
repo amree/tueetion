@@ -11,9 +11,9 @@
     .col-lg-1
       = f.text_field :amount, class: "form-control"
 
-  %hr
-
   = f.fields_for :transactions do |builder|
+    %hr
+
     = form_group false do
       = builder.label :reference_number, "Reference #", class: "col-lg-2 control-label"
       .col-lg-2
