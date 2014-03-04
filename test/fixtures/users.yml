@@ -28,6 +28,7 @@ invited:
   access_level: 10
 
 admin:
+  center: pakar
   first_name: Admin
   last_name: User
   email: admin@mail.com
