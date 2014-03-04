@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Center:
+  = @subscription.center
+%p
+  %b Quantity:
+  = @subscription.quantity
+%p
+  %b Start at:
+  = @subscription.start_at
+%p
+  %b End at:
+  = @subscription.end_at
+
+= link_to 'Edit', edit_admin_subscription_path(@subscription)
+\|
+= link_to 'Back', admin_subscriptions_path

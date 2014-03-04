@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140303102220) do
+ActiveRecord::Schema.define(version: 20140304103935) do
 
   create_table "bill_items", force: true do |t|
     t.integer  "bill_id"
@@ -219,6 +219,17 @@ ActiveRecord::Schema.define(version: 20140303102220) do
   end
 
   add_index "subjects", ["center_id"], name: "index_subjects_on_center_id", using: :btree
+
+  create_table "subscriptions", force: true do |t|
+    t.integer  "center_id"
+    t.integer  "quantity"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subscriptions", ["center_id"], name: "index_subscriptions_on_center_id", using: :btree
 
   create_table "transactions", force: true do |t|
     t.integer  "transactable_id"

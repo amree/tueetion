@@ -1,0 +1,49 @@
+= render 'layouts/flash_messages'
+
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          .pull-right
+            = link_to "New Subscription", new_admin_subscription_path, class: "btn btn-primary"
+          %h2
+            Subscription
+
+        - if @subscriptions.size > 0
+          %table.table.table-hover.table-text-middle
+            %thead
+              %tr
+                %th #
+                %th Center
+                %th Start
+                %th End
+                %th.text-right
+                  Quantity
+                %th
+            %tbody
+              - i = 0
+              - @subscriptions.each do |subscription|
+                %tr
+                  %td= i = i + 1
+                  %td
+                    = subscription.center.name
+                  %td
+                    = l subscription.start_at.in_time_zone("Kuala Lumpur")
+
+                  %td
+                    = l subscription.end_at.in_time_zone("Kuala Lumpur")
+                  %td.text-right
+                    = subscription.quantity
+                  %td.text-right
+                    .btn-group
+                      = link_to admin_subscription_path(subscription), class: "btn btn-default" do
+                        %i.fa.fa-eye.fa-fw
+                      = link_to edit_admin_subscription_path(subscription), class: "btn btn-default" do
+                        %i.fa.fa-pencil.fa-fw
+                      = link_to [:admin, subscription], class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure you want to delete this subscription?" } do
+                        %i.fa.fa-trash-o.fa-fw
+
+        - else
+          No result.
+

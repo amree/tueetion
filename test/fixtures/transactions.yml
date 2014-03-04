@@ -5,3 +5,10 @@ credit_payment:
   value: 100.00
   paid_at: 2014-01-01 11:22:33
 
+subscription_payment:
+  transactable: pakar_subscription (Subscription)
+  reference_number: "1000"
+  merchant: "CIMB"
+  value: 400.00
+  paid_at: 2014-02-01 11:22:33
+

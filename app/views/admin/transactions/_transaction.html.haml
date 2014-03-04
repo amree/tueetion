@@ -1,0 +1,21 @@
+%hr
+
+= form_group f.object.errors[:reference_number].present? do
+  = f.label :reference_number, "Reference #", class: "col-lg-2 control-label"
+  .col-lg-2
+    = f.text_field :reference_number, class: "form-control"
+
+= form_group f.object.errors[:merchant].present? do
+  = f.label :merchant, "Merchant Name", class: "col-lg-2 control-label"
+  .col-lg-2
+    = f.text_field :merchant, class: "form-control"
+
+= form_group f.object.errors[:value].present? do
+  = f.label :value, "Value (RM)", class: "col-lg-2 control-label"
+  .col-lg-1
+    = f.text_field :value, class: "form-control"
+
+= form_group f.object.errors[:paid_at].present? do
+  = f.label :paid_at, class: "col-lg-2 control-label"
+  .col-lg-2
+    = f.text_field :paid_at, class: "form-control"

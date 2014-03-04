@@ -1,0 +1,33 @@
+= form_for [:admin, @subscription], html: { class: "form-horizontal", role: "form" } do |f|
+
+  = form_group @subscription.errors[:center_id].present? do
+    = f.label :center_id, "Center", class: "col-lg-2 control-label"
+    .col-lg-4
+      = f.select :center_id, @centers, {}, class: "form-control"
+      = form_errors @subscription, :center_id
+
+  = form_group @subscription.errors[:quantity].present? do
+    = f.label :quantity, class: "col-lg-2 control-label"
+    .col-lg-1
+      = f.text_field :quantity, class: "form-control"
+
+  = form_group @subscription.errors[:start_at].present? do
+    = f.label :start_at, class: "col-lg-2 control-label"
+    .col-lg-2
+      = f.text_field :start_at, class: "form-control"
+
+  = form_group @subscription.errors[:end_at].present? do
+    = f.label :end_at, class: "col-lg-2 control-label"
+    .col-lg-2
+      = f.text_field :end_at, class: "form-control"
+
+  = f.fields_for :transactions do |builder|
+    = render "admin/transactions/transaction", f: builder
+
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      %button.btn.btn-primary{ type: "submit"}
+        Save
+      or
+      = link_to "Cancel", admin_subscriptions_path
+
