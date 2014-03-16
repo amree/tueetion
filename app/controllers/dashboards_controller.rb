@@ -6,8 +6,9 @@ class DashboardsController < ApplicationController
 
     @overdue_bills = current_center.bills.active.overdue.order("created_at desc").limit(10)
 
-    @student_used_counts = current_center.students.count
-    @student_credit_counts = current_center.students.count
+    subscription_usage = SubscriptionUsage.new(current_center)
+    @subscription_used = subscription_usage.current
+    @subscription_total = subscription_usage.max
 
     # Get available SMS
     @sms_used_counts = 0

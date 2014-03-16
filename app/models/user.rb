@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   belongs_to :center
 
+  scope :active, -> { where(is_active: true) }
+
   attr_accessor :key
 
   # Include default devise modules. Others available are:
