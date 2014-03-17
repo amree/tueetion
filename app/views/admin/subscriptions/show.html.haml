@@ -1,18 +1,56 @@
-%p#notice= notice
+= render 'layouts/flash_messages'
 
-%p
-  %b Center:
-  = @subscription.center
-%p
-  %b Quantity:
-  = @subscription.quantity
-%p
-  %b Start at:
-  = @subscription.start_at
-%p
-  %b End at:
-  = @subscription.end_at
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          .btn-group.pull-right
+            %button.btn.btn-default.dropdown-toggle{ :"data-toggle" => "dropdown", type: "button" }
+              Actions
+              %span.caret
+            %ul.dropdown-menu{ role: "menu" }
+              %li
+                = link_to "Edit", edit_admin_subscription_path(@subscription)
+              %li.divider
+              %li
+                = link_to "Delete", [:admin, @subscription], method: :delete, data: { confirm: "Are you sure you want to delete this subscription?" }
 
-= link_to 'Edit', edit_admin_subscription_path(@subscription)
-\|
-= link_to 'Back', admin_subscriptions_path
+          %h2 Subscription
+
+        %dl.dl-horizontal
+          %dt
+            Center
+          %dd
+            = @subscription.center.name
+          %dt
+            Start at
+          %dd
+            = l @subscription.start_at.in_time_zone("Kuala Lumpur")
+          %dt
+            End at
+          %dd
+            = l @subscription.end_at.in_time_zone("Kuala Lumpur")
+
+          - @subscription.transactions.each do |transaction|
+
+            %hr
+
+            %dt
+              Reference #
+            %dd
+              = transaction.reference_number
+            %dt
+              Merchant
+            %dd
+              = transaction.merchant
+            %dt
+              Cost
+            %dd
+              RM
+              = number_with_precision transaction.value, precision: 2
+            %dt
+              Paid At
+            %dd
+              = l transaction.paid_at
+
