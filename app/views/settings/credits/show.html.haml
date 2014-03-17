@@ -23,16 +23,25 @@
             = @credit.used
             \/
             = @credit.amount
-          %dt
-            Cost
-          %dd
-            RM
-            = number_with_precision @credit.transactions.first.value, precision: 2
-          %dt
-            Reference #
-          %dd
-            = @credit.transactions.first.reference_number
-          %dt
-            Paid at
-          %dd
-            = l @credit.transactions.first.paid_at
+
+          - @credit.transactions.each do |transaction|
+
+            %hr
+
+            %dt
+              Reference #
+            %dd
+              = transaction.reference_number
+            %dt
+              Merchant
+            %dd
+              = transaction.merchant
+            %dt
+              Cost
+            %dd
+              RM
+              = number_with_precision transaction.value, precision: 2
+            %dt
+              Paid At
+            %dd
+              = l transaction.paid_at

@@ -3,7 +3,7 @@ class Settings::CreditsController < ApplicationController
 
   # GET /settings/credits
   def index
-    @credits = Credit.all
+    @credits = current_center.credits
   end
 
   # GET /settings/credits/1

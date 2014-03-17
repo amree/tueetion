@@ -29,7 +29,7 @@
                   %td
                     = i += 1
                   %td
-                    = l credit.transactions.first.paid_at
+                    = credit.transactions.map { |t| l t.created_at }.join(',')
                   %td
                     = credit.used
                     \/
@@ -39,4 +39,4 @@
                       %i.fa.fa-eye.fa-fw
 
         - else
-          No SMS credit purchases has been recorded.
+          No credit purchases has been made.
