@@ -2,13 +2,11 @@ class Settings::CreditsController < ApplicationController
   before_action :set_credit, only: [:show]
 
   # GET /settings/credits
-  # GET /settings/credits.json
   def index
     @credits = Credit.all
   end
 
   # GET /settings/credits/1
-  # GET /settings/credits/1.json
   def show
   end
 
