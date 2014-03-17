@@ -61,7 +61,7 @@ Tueetion::Application.routes.draw do
       end
     end
     resources :credits, only: [:index, :show]
-    resources :subscriptions, only: [:index]
+    resources :subscriptions, only: [:index, :show]
   end
 
   resources :staffs, only: [:index] do
