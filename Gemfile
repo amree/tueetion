@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.3'
-gem 'mysql2'
+gem 'rails', '4.0.4'
+gem 'mysql2', '~> 0.3.15'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -14,7 +14,7 @@ gem 'font-awesome-sass', '~> 4.0.1'
 gem 'dotenv-rails', '~> 0.9.0'
 gem 'cocoon', '~> 1.2.1'
 gem 'timecop', '~> 0.6.3'
-gem 'hirb'
+gem 'hirb', '~> 0.7.1'
 gem 'awesome_print'
 gem 'highcharts-rails', '~> 3.0.7'
 gem 'resque', '~> 1.25.1'
@@ -33,7 +33,7 @@ group :doc do
 end
 
 group :development, :test do
-  gem 'debugger'
-  gem 'mocha', require: false
+  gem 'debugger', '~> 1.6.6'
+  gem 'mocha', '~> 1.0.0', require: false
 end
 
