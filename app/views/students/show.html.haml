@@ -76,7 +76,8 @@
               %dt
                 URL
               %dd
-                = link_to "http://tueetion.com/public/students/#{@student.public_key}"
+                = link_to public_student_url(@student.public_key), public_student_path(@student.public_key)
+
 
           .col-md-6
             %dl.dl-horizontal
