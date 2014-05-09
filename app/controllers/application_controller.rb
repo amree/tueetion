@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_user!
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :set_google_analytics_id
 
   protected
 
@@ -22,6 +23,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :first_name
     devise_parameter_sanitizer.for(:sign_up) << :last_name
     devise_parameter_sanitizer.for(:sign_up) << :key
+  end
+
+  def set_google_analytics_id
+    if Rails.env.production?
+      unless current_user.is_admin?
+        @ga_id = ENV["GOOGLE_ANALYTICS_ID"]
+      end
+    end
   end
 
   def not_found
