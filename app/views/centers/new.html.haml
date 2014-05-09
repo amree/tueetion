@@ -1,25 +1,27 @@
 .col-md-6.col-md-offset-3
   %h1.text-center
     Tueetion
-  .alert.alert-info
-    Congratulations for choosing Tueetion, but before proceeding further, you need to set your tuition's center name first.
 
 #box-sm.row
   .col-md-12.hidden-xs.spacer
   .col-md-6.col-md-offset-3
+    .alert.alert-success
+      Congratulations for choosing Tueetion, but before proceeding further, you need to set your tuition's center name first.
+
+    = render 'layouts/flash_messages'
     .panel.panel-default
       .panel-body
 
-        = render 'layouts/flash_messages'
-
-        = form_for @center do |f|
+        = form_for @center, html: { class: "form-horizontal" } do |f|
           = form_group @center.errors[:name].present? do
-            = f.label :name, "Center's Name"
-            = f.text_field :name, class: "form-control", autofocus: true, required: true, autocomplete: "off"
-            %span.help-block
-              = @center.errors[:name].join(", ")
+            = f.label :name, "Center's Name", class: "col-md-3 control-label"
+            .col-md-9
+              = f.text_field :name, class: "form-control", autofocus: true, required: true, autocomplete: "off"
+              = form_errors @center, :name
 
-            = f.submit "Save", class: "btn btn-primary"
-            or
-            = link_to "Logout", "#"
+          .form-group
+            .col-md-offset-3.col-md-9
+              = f.submit "Save", class: "btn btn-primary"
+              or
+              = link_to "Logout", "#"
 
