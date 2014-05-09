@@ -94,6 +94,10 @@
               %dd
                 = dash_if_blank @student.note3
               %dt
+                Branch
+              %dd
+                = dash_if_blank @student.branch.try(:name)
+              %dt
                 Status
               %dd
                 = status_label(@student.is_active)
