@@ -1,11 +1,14 @@
-= form_for @center do |f|
+= form_for @center, html: { class: "form-horizontal" } do |f|
+
   = form_group @center.errors[:name].present? do
+    = f.label :name, class: "col-lg-2 control-label"
+    .col-lg-6
+      = f.text_field :name, class: "form-control", required: true, autocomplete: "off"
+      = form_errors @center, :name
 
-    = f.label :name
-    = f.text_field :name, class: "form-control", required: true, autocomplete: "off"
-    = form_errors @center, :name
-
-    = f.submit "Save", class: "btn btn-primary"
-    or
-    = link_to "Cancel", center_path(@center)
+  .form-group
+    .col-md-offset-2.col-md-10
+      = f.submit "Save", class: "btn btn-primary"
+      or
+      = link_to "Cancel", center_path(@center)
 
