@@ -18,4 +18,5 @@
 //= require cocoon
 //= require select2
 //= require bootstrap-datepicker/core
+//= require google_analytics
 //= require_tree .
