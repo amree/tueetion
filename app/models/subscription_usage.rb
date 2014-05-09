@@ -10,7 +10,7 @@ class SubscriptionUsage
   end
 
   def current
-    User.where(center: @center).active.count
+    Student.where(center: @center).active.count
   end
 
   def balance
