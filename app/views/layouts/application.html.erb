@@ -1,6 +1,6 @@
 <%= render 'layouts/header' %>
 
-<body data-ga="<%= @ga_id %>">
+<body>
   <div class="container">
 
     <% if current_user %>
@@ -17,5 +17,6 @@
       <p>&copy; 2014 Deebzy</p>
     </div>
   </div>
+  <%= render 'layouts/google_analytics' if Rails.env.production? %>
 </body>
 </html>
