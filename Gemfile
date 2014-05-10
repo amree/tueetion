@@ -27,6 +27,10 @@ gem 'haml-rails', '~> 0.4'
 gem 'unicorn', '~> 4.7.0'
 gem 'wkhtmltopdf-binary', '~> 0.9.9.1'
 gem 'wicked_pdf', '~> 0.9.10'
+gem 'capistrano', '~> 3.2.1'
+gem 'capistrano-rails', '~> 1.1.1'
+gem 'capistrano-bundler', '~> 1.1.2'
+gem 'capistrano-rbenv', '~> 2.0.2'
 
 group :doc do
   gem 'sdoc', require: false
