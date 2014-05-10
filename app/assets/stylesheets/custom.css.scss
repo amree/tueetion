@@ -1,12 +1,6 @@
 // Override variables
 //
 
-// Override container width, make it smaller
-// Ref: http://stackoverflow.com/questions/19430217/
-$grid-gutter-width: 20px;
-$container-desktop: 940px;
-$container-lg-desktop: $container-desktop;
-
 // Body background
 $body-bg: whitesmoke;
 
@@ -52,34 +46,113 @@ $btn-primary-bg: #06C;
 
 // Custom
 //
-body {
-  padding-top: 30px;
+.required:after {
+  content: '*';
 }
 
-.header {
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
+// Front Page
+.front-page {
+  .navbar {
+    margin-bottom: 0px;
+    border-color: transparent;
+  }
+}
+
+#headerwrap {
+  background: url('') no-repeat center top;
+  padding-top: 20px;
+  background-attachment: relative;
+  background-position: center center;
+  min-height: 500px;
+  width: 100%;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.inner {
+  height: 170px;
+}
+
+#intro {
+  // overflow: hidden;
+  // position: relative;
+
+  .inner {
+    height: 170px;
+    padding-bottom: 14%;
+    padding-top: 14%;
+    z-index: 1;
+
+    .intro-lead {
+      background: rgba(0,0,0,0.4);
+      border-radius: 6px;
+      padding: 20px 25px 25px;
+      position: absolute;
+
+      h1 {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #fff;
+        margin-bottom: 25px;
+        text-indent: -3px;
+      }
+
+      .sub-h1 {
+        font-size: 28px;
+        text-indent: 0;
+      }
+    }
   }
 }
 
 .marketing {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-  padding-bottom: 25px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  .learn-more {
+    padding-top: 50px;
+  }
 }
 
-.footer {
-  padding-top: 18px;
-  padding-bottom: 10px;
-  color: #777;
+.try-now {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+
+  span {
+    font-size: 180%;
+    padding: 0 15px 0 15px;
+  }
 }
 
-.required:after {
-  content: '*';
+.about {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background: #3a3a3a;
+  color: #999;
+
+  .about-nav {
+    strong {
+      border-bottom: 1px solid #444;
+      display: block;
+      margin-bottom: 10px;
+      font-size: 110%;
+    }
+
+    a {
+      color: #777;
+      display: block;
+    }
+  }
 }
+
 
 // Components
 
