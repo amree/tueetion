@@ -1,22 +1,15 @@
 <%= render 'layouts/header' %>
 
 <body>
-  <div class="container">
-
-    <% if current_user %>
-      <% if current_user.access_level > User::OWNER_LEVEL %>
-        <%= render 'layouts/admin' %>
-      <% else %>
-        <%= render 'layouts/user' %>
-      <% end %>
-    <% else %>
-      <%= render 'layouts/guest' %>
-    <% end %>
-
-    <div class="footer">
-      <p>&copy; 2014 Deebzy</p>
-    </div>
-  </div>
+  <% if current_user %>
+    <% if current_user.access_level > User::OWNER_LEVEL %>
+    <%= render 'layouts/admin' %>
+  <% else %>
+    <%= render 'layouts/user' %>
+  <% end %>
+  <% else %>
+    <%= render 'layouts/guest' %>
+  <% end %>
   <%= render 'layouts/google_analytics' if Rails.env.production? %>
 </body>
 </html>
