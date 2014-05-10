@@ -1,8 +1,8 @@
 .row
   .col-md-6.col-md-offset-3
-    %h1
-      Sign Up
     .panel.panel-default
+      .panel-heading
+        %h4 Sign Up
       .panel-body
         = devise_error_messages!
         = form_for resource, :as => resource_name, :url => registration_path(resource_name) do |f|
