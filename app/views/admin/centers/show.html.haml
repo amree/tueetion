@@ -1,0 +1,111 @@
+= render 'layouts/flash_messages'
+
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            = @center.name
+
+        .row
+          .col-md-4
+            %dl.dl-horizontal
+              %dt
+                Name
+              %dd
+                = @center.name
+              %dt
+                Last Update
+              %dd
+                = l @center.updated_at
+              %dt
+                Created At
+              %dd
+                = l @center.created_at
+
+          .col-md-4
+            %dl.dl-horizontal
+              %dt
+                Bills
+              %dd
+                = @center.bills.count
+              %dt
+                Branches
+              %dd
+                = @center.branches.count
+              %dt
+                Credits
+              %dd
+                nil
+
+          .col-md-4
+            %dl.dl-horizontal
+              %dt
+                Messages
+              %dd
+                = @center.messages.count
+              %dt
+                Students
+              %dd
+                = @center.students.count
+              %dt
+                Subjects
+              %dd
+                = @center.subjects.count
+
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            Users
+
+        .row
+          .col-md-12
+            - if @center.users.size > 0
+              %table.table.table-hover.table-text-middle
+                %thead
+                  %tr
+                    %th Name
+                    %th Email
+                    %th Created At
+                    %th
+                %tbody
+                  - @center.users.each do |user|
+                    %tr
+                      %td
+                        = user.first_name
+                        = user.last_name
+                      %td= user.email
+                      %td= l user.created_at
+                      %td.text-right
+                        = link_to admin_user_path(user), class: "btn btn-default" do
+                          %i.fa.fa-eye.fa-fw
+
+            - else
+              No result.
+
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            Subscriptions
+
+        = render 'subscriptions/list', subscriptions: @center.subscriptions
+
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            SMS Credits
+
+        .row
+          .col-md-12
+            To be done
+

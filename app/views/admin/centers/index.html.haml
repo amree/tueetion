@@ -1,0 +1,39 @@
+= render 'layouts/flash_messages'
+
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            Centers
+
+        - if @centers.size > 0
+          %table.table.table-hover.table-text-middle
+            %thead
+              %tr
+                %th #
+                %th Name
+                %th Branches
+                %th Users
+                %th Students
+                %th Created At
+                %th
+            %tbody
+              - i = 0
+              - @centers.each do |center|
+                %tr
+                  %td= i = i + 1
+                  %td= center.name
+                  %td= center.branches.count
+                  %td= center.users.count
+                  %td= center.students.count
+                  %td
+                    = l center.created_at
+                  %td.text-right
+                    = link_to admin_center_path(center), class: "btn btn-default" do
+                      %i.fa.fa-eye.fa-fw
+
+        - else
+          No result.
+
