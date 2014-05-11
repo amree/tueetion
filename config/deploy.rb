@@ -30,7 +30,7 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 # set :pty, true
 
 # Default value for :linked_files is []
-# set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml config/twilio.yml}
 
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
@@ -47,6 +47,7 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set(:config_files, %w(
   nginx.conf
   database.example.yml
+  twilio.example.yml
   unicorn.rb
   unicorn_init.sh
 ))
@@ -98,7 +99,7 @@ namespace :deploy do
 
   # Restart monit so it will pick up any monit configurations
   # we've added
-  after 'deploy:setup_config', 'monit:restart'
+  # after 'deploy:setup_config', 'monit:restart'
 
   # As of Capistrano 3.1, the `deploy:restart` task is not called
   # automatically.
