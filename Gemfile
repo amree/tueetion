@@ -36,6 +36,10 @@ group :doc do
   gem 'sdoc', '~> 0.4.0'
 end
 
+group :development do
+  gem 'spring', '1.1.3'
+end
+
 group :development, :test do
   gem 'debugger', '~> 1.6.6'
   gem 'mocha', '~> 1.0.0', require: false
