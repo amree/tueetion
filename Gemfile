@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.4'
+gem 'rails', '4.1.1'
 gem 'mysql2', '~> 0.3.15'
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
@@ -33,7 +33,7 @@ gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano-rbenv', '~> 2.0.2'
 
 group :doc do
-  gem 'sdoc', require: false
+  gem 'sdoc', '~> 0.4.0'
 end
 
 group :development, :test do
