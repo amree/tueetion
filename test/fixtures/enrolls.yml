@@ -6,3 +6,11 @@ ali_combination_fee:
   student: ali
   enrollable: combo1 (CombinationFee)
 
+amna_quantity_fee:
+  student: amna
+  enrollable: bm_quantity_fee (QuantityFee)
+
+amna_combination_fee:
+  student: amna
+  enrollable: combo1 (CombinationFee)
+

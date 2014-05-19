@@ -2,8 +2,8 @@ require 'test_helper'
 
 class BillTest < ActiveSupport::TestCase
   setup do
-    @ali = students(:ali)
-
+    @ali  = students(:ali)
+    @amna = students(:amna)
     @bill = bills(:bill)
   end
 
@@ -46,6 +46,17 @@ class BillTest < ActiveSupport::TestCase
     assert_equal 2, bill.number
     assert_equal "#{current_year}#{current_month}00002", bill.full_number
     assert_equal 100, bill.total_amount
+
+    Timecop.return
+  end
+
+  test "should be able to generate bill for other student
+        in the same center in the same month" do
+
+    # Mock the time to use the same month as the available bill
+    Timecop.freeze(Time.local(2013, 1, 1, 8, 0, 0))
+
+    assert Bill.generate(@amna).save
 
     Timecop.return
   end
