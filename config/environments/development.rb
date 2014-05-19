@@ -27,6 +27,8 @@ Tueetion::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  config.action_mailer.preview_path = "#{Rails.root}/lib/mailer_previews"
+
   # Devise config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
