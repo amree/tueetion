@@ -75,7 +75,9 @@ class MessagesController < ApplicationController
   def update_status
     @message = current_center.messages.find(params[:message_id])
 
-    client = Twilio::REST::Client.new TWILIO_CONFIG['sid'], TWILIO_CONFIG['token']
+    client = Twilio::REST::Client.new Rails.application.secrets.twilio_sid,
+                                      Rails.application.secrets.twilio_token
+
     res = client.account.messages.get @message.sid
 
     if res.status.present? && @message.update_attributes(status: res.status)

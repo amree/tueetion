@@ -16,16 +16,11 @@
 /tmp
 
 # Ignore configs
+/config/secrets.yml
 /config/database.yml
-/config/twilio.yml
 
 # Ignore rbenv local
 /.ruby-version
-
-# Ignore environment specific env
-/.env.development
-/.env.test
-/.env.production
 
 # Ignore ctag file
 /tags

@@ -32,14 +32,15 @@ class MessageSender
         to = @message.phone_number
         body = @message.processed_content
 
-        client = Twilio::REST::Client.new(TWILIO_CONFIG['sid'], TWILIO_CONFIG['token'])
+        client = Twilio::REST::Client.new(Rails.application.secrets.twilio_sid,
+                                          Rails.application.secrets.twilio_token)
 
         begin
           rs =  client.account.messages.create(
-                  from: TWILIO_CONFIG['from'],
+                  from: Rails.application.secrets.twilio_from,
                   to: to,
                   body: body,
-                  status_callback: "http://#{TWILIO_CONFIG['callback_host']}/callbacks/twilio")
+                  status_callback: "http://#{Rails.application.secrets.twilio_callback_host}/callbacks/twilio")
 
           @message.sid = rs.sid
           @message.status = 'in progress'
