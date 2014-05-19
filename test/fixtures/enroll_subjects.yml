@@ -9,3 +9,8 @@ ali_combination_fee_subject_bm:
 ali_combination_fee_subject_bi:
   enroll: ali_combination_fee
   subject: bi
+
+amna_quantity_fee_subject:
+  enroll: amna_quantity_fee
+  subject: bm
+
