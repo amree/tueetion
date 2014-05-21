@@ -34,6 +34,19 @@ class PaymentsTest < ActiveSupport::TestCase
     assert !@bill.is_paid
   end
 
+  test "should mark bill as unpaid if paid bill was refunded" do
+    @valid_data[:amount] = -70
+    payment = Payment.new(@valid_data)
+
+    assert payment.save
+    assert !payment.bill.is_paid
+
+    payment.destroy
+    @bill.reload
+
+    assert !@bill.is_paid
+  end
+
   test "paid_at should be present" do
     payment = Payment.new(@valid_data)
     payment.paid_at = nil

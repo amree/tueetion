@@ -3,7 +3,7 @@ class Payment < ActiveRecord::Base
 
   validates :paid_at, presence: true
   validates :amount, presence: true
-  validates :amount, numericality: { greater_than_or_equal_to: 0 }, if: "amount.present?"
+  validates :amount, numericality: true
 
   validate :less_than_bill_balance, if: "amount.present? && amount >= 0"
   validate :paid_at_should_not_be_from_the_future, if: "paid_at.present?"
