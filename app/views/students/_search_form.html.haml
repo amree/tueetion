@@ -2,12 +2,19 @@
   .row
     .col-md-3
       = f.text_field :first_name_or_last_name_cont, placeholder: "First or Last Name", class: "form-control"
-    .col-md-2
+    .col-md-3
       = f.text_field :ic_eq, placeholder: "Identity #", class: "form-control"
-    .col-md-4
+    .col-md-3
       = f.select :group_id_eq, @group_selections, { include_blank: true }, { class: "form-control" }
     .col-md-3
       = f.select :branch_id_eq, @branch_selections, { include_blank: true }, { class: "form-control" }
+
+  .row.top-buffer
+    .col-md-3
+      = f.select :enrolls_enrollable_type_eq, @enrollable_type_selections, { include_blank: true }, { class: "form-control" }
+    .col-md-3
+      = f.select :enrolls_enrollable_id_eq, grouped_options_for_select(@enrollable_id_selections), { include_blank: true }, { class: "form-control" }
+
   .row.top-buffer
     .col-md-12
       = f.submit class: "btn btn-default"

@@ -4,6 +4,8 @@ class StudentsController < ApplicationController
   before_action :set_groups, only: [:new, :create, :edit, :update]
   before_action :set_group_selections, only: [:index]
   before_action :set_branch_selections, only: [:index]
+  before_action :set_enrollable_type_selections, only: [:index]
+  before_action :set_enrollable_id_selections, only: [:index]
 
   # GET /students
   # GET /students.json
@@ -105,6 +107,16 @@ class StudentsController < ApplicationController
 
   def set_branch_selections
     @branch_selections = current_center.branches.order(:name).collect { |b| [ b.name, b.id ] }
+  end
+
+  def set_enrollable_type_selections
+    @enrollable_type_selections = [["Quantity Fee", "QuantityFee"], ["Combination Fee", "CombinationFee"]]
+  end
+
+  def set_enrollable_id_selections
+    @enrollable_id_selections = Hash.new
+    @enrollable_id_selections["Combination Fee"] = current_center.combination_fees.order(:name).collect { |q| [q.name, q.id] }
+    @enrollable_id_selections["Quantity Fee"] = current_center.quantity_fees.order(:name).collect { |q| [q.name, q.id] }
   end
 end
 
