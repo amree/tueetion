@@ -10,6 +10,7 @@ class PaymentsController < ApplicationController
 
   def create
     @payment = @bill.payments.new(payment_params)
+    @payment.user_id = current_user.id
 
     if @payment.save
       redirect_to @bill, notice: 'Payment was successfully made.'

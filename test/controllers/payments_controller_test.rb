@@ -19,6 +19,7 @@ class PaymentsControllerTest < ActionController::TestCase
       post :create, bill_id: @bill, payment: { amount: 10, paid_at: DateTime.now }
     end
 
+    assert Payment.last.user_id.present?
     assert_redirected_to @bill
   end
 
