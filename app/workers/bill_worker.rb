@@ -2,7 +2,7 @@ class BillWorker
   @queue = :bill
 
   def self.perform(id)
-    student = Student.find(id)
+    student = Student.active.find(id)
 
     if student.present?
       bill = Bill.new
