@@ -12,3 +12,31 @@
       .panel-body
         #reports-yearly-payments-chart{ data: { year: @current_year, categories: "#{(1..12).to_a}", values: "#{yearly_payments_chart_data}" } }
 
+.row
+  .col-md-12
+    .panel.panel-borderless
+      .panel-body
+        %table.table.table-hover.table-text-middle
+          %thead
+            %tr
+              %th #
+              %th Bill #
+              %th Received By
+              %th Paid At
+              %th.text-right
+                Amounts (RM)
+              %th
+          %tbody
+            - i = 0
+            - @payments.each do |payment|
+              %tr
+                %td= i = i + 1
+                %td= payment.bill.full_number
+                %td= payment.user.first_name
+                %td= l payment.paid_at.in_time_zone("Kuala Lumpur")
+                %td.text-right
+                  = number_with_precision(payment.amount, precision: 2)
+                %td.text-right
+                  = link_to payment.bill, class: "btn btn-default" do
+                    %i.fa.fa-eye.fa-fw
+
