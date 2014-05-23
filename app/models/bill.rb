@@ -26,14 +26,6 @@ class Bill < ActiveRecord::Base
     self.payments.sum(:amount)
   end
 
-  def self.generate(student)
-    bill = Bill.new
-    bill.student_id = student.id
-    bill.center_id  = student.center_id
-
-    bill
-  end
-
   protected
 
   def set_default_values

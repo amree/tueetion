@@ -9,7 +9,9 @@ class BillTest < ActiveSupport::TestCase
 
   test "should not generate bill for the same month" do
     Timecop.freeze(Date.parse("2013-01-01")) do
-      bill = Bill.generate(@ali)
+      bill = Bill.new
+      bill.student = @ali
+      bill.center = @ali.center
 
       assert bill.invalid?
       assert bill.errors[:base].present?
@@ -18,7 +20,9 @@ class BillTest < ActiveSupport::TestCase
 
   test "should generate the right full number" do
     Timecop.freeze(Date.parse("2014-01-01")) do
-      bill = Bill.generate(@ali)
+      bill = Bill.new
+      bill.student = @ali
+      bill.center = @ali.center
       bill.save
 
       assert_equal "20140100001", bill.full_number
@@ -29,7 +33,9 @@ class BillTest < ActiveSupport::TestCase
     # Mock the time since fixture has one bill in 2013
     Timecop.freeze(Time.local(2013, 7, 2, 8, 0, 0))
 
-    bill = Bill.generate(@ali)
+    bill = Bill.new
+    bill.student = @ali
+    bill.center = @ali.center
 
     current_month = Date.today.strftime("%m")
     current_year  = Date.today.strftime("%Y")
@@ -56,7 +62,11 @@ class BillTest < ActiveSupport::TestCase
     # Mock the time to use the same month as the available bill
     Timecop.freeze(Time.local(2013, 1, 1, 8, 0, 0))
 
-    assert Bill.generate(@amna).save
+    bill = Bill.new
+    bill.student = @amna
+    bill.center = @amna.center
+
+    assert bill.save
 
     Timecop.return
   end
@@ -74,14 +84,18 @@ class BillTest < ActiveSupport::TestCase
   end
 
   test "should be able to generate bill when there's an inactive bill available" do
-    bill1 = Bill.generate(@ali)
+    bill1 = Bill.new
+    bill1.student = @ali
+    bill1.center = @ali.center
 
     # Save and deactivate current month's bill
     bill1.save
     bill1.is_active = false
     bill1.save
 
-    bill2 = Bill.generate(@ali)
+    bill2 = Bill.new
+    bill2.student = @ali
+    bill2.center = @ali.center
 
     assert bill2.save
   end

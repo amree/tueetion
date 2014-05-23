@@ -5,7 +5,10 @@ class BillWorker
     student = Student.find(id)
 
     if student.present?
-      Bill.generate(student).save
+      bill = Bill.new
+      bill.student = student
+      bill.center = student.center
+      bill.save
     end
   end
 end

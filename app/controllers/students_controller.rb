@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: [:show, :edit, :update, :destroy, :generate_bill]
+  before_action :set_student, only: [:show, :edit, :update, :destroy, :create_bill]
   before_action :set_branches, only: [:new, :create, :edit, :update]
   before_action :set_groups, only: [:new, :create, :edit, :update]
   before_action :set_group_selections, only: [:index]
@@ -70,14 +70,16 @@ class StudentsController < ApplicationController
     end
   end
 
-  # POST /students/1/generate_bill
-  def generate_bill
-    bill = Bill.generate(@student)
+  # POST /students/1/create_bill
+  def create_bill
+    bill = Bill.new
+    bill.student_id = @student.id
+    bill.center_id = current_center.id
 
     if bill.save
-      redirect_to bill, notice: 'Bill was successfully generated.'
+      redirect_to bill, notice: 'Bill was successfully created.'
     else
-      redirect_to @student, alert: 'Bill failed to be generated. Reasons: ' + bill.errors.messages[:base].join(",")
+      redirect_to @student, alert: 'Bill failed to be created. Reasons: ' + bill.errors.messages[:base].join(",")
     end
   end
 

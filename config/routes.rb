@@ -77,7 +77,7 @@ Tueetion::Application.routes.draw do
     resources :combination_fee_enrolls, only: [:index, :create]
     resources :combination_fee_enroll_subjects, only: [:edit, :update]
     member do
-      post :generate_bill
+      post :create_bill
     end
   end
   resources :subjects
