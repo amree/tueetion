@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :center
+  has_many :bills
 
   scope :active, -> { where(is_active: true) }
 
