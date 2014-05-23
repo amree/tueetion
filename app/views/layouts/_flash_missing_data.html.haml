@@ -1,40 +1,35 @@
-- if current_center.branches.empty?
-  .alert.alert-warning.alert-dismissable
-    %button{ type: "button", class: "close", :"data-dismiss" => "alert", :"aria-hidden" => true } &times;
-    %strong Warning!
-    You haven't created any branches. If you'd like to do so, you can create a branch
-    = succeed "." do
-      = link_to "here", current_center
+- if current_center.branches.empty?  || current_center.groups.empty?  || current_center.subjects.empty?  || current_center.quantity_fees.empty?  || current_center.combination_fees.empty?
 
-- if current_center.groups.empty?
   .alert.alert-warning.alert-dismissable
     %button{ type: "button", class: "close", :"data-dismiss" => "alert", :"aria-hidden" => true } &times;
     %strong Warning!
-    You haven't created any groups for the student. If you'd like to do so, you can create a group
-    = succeed "." do
-      = link_to "here", groups_path
+    %ul
+      - if current_center.branches.empty?
+        %li
+          You haven't created any branches. You can create a branch
+          = succeed "." do
+            = link_to "here", current_center
+      - if current_center.groups.empty?
+        %li
+          You haven't created any groups for the student. You can create a group
+          = succeed "." do
+            = link_to "here", groups_path
 
-- if current_center.subjects.empty?
-  .alert.alert-warning.alert-dismissable
-    %button{ type: "button", class: "close", :"data-dismiss" => "alert", :"aria-hidden" => true } &times;
-    %strong Warning!
-    You haven't created any subjects. If you'd like to do so, you can create a subject
-    = succeed "." do
-      = link_to "here", subjects_path
+      - if current_center.subjects.empty?
+        %li
+          You haven't created any subjects. You can create a subject
+          = succeed "." do
+            = link_to "here", subjects_path
 
-- if current_center.quantity_fees.empty?
-  .alert.alert-warning.alert-dismissable
-    %button{ type: "button", class: "close", :"data-dismiss" => "alert", :"aria-hidden" => true } &times;
-    %strong Warning!
-    You haven't created any quantity fee. If you'd like to do so, you can create a quantity fee rule
-    = succeed "." do
-      = link_to "here", quantity_fees_path
+      - if current_center.quantity_fees.empty?
+        %li
+          You haven't created any quantity fee. You can create a quantity fee rule
+          = succeed "." do
+            = link_to "here", quantity_fees_path
 
-- if current_center.combination_fees.empty?
-  .alert.alert-warning.alert-dismissable
-    %button{ type: "button", class: "close", :"data-dismiss" => "alert", :"aria-hidden" => true } &times;
-    %strong Warning!
-    You haven't created any subjects. If you'd like to do so, you can create a combination fee rule
-    = succeed "." do
-      = link_to "here", combination_fees_path
+      - if current_center.combination_fees.empty?
+        %li
+          You haven't created any subjects. You can create a combination fee rule
+          = succeed "." do
+            = link_to "here", combination_fees_path
 
