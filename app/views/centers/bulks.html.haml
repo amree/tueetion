@@ -16,7 +16,17 @@
       .panel-heading
         Create Bills
       .panel-body
-        This will create bills for all students in the current month.
+        Create bills for all of the active students in the current month.
       .panel-footer
         = link_to "Run", create_bills_centers_path, class: "btn btn-default" 
+
+
+  .col-md-9
+    .panel.panel-default
+      .panel-heading
+        Deactivate Bills
+      .panel-body
+        Deactivate bills for all of the active students in the current month.
+      .panel-footer
+        = link_to "Run", deactivate_bills_centers_path, class: "btn btn-default" 
 

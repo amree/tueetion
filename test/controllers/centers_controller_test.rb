@@ -76,4 +76,10 @@ class CentersControllerTest < ActionController::TestCase
 
     assert_redirected_to bulks_centers_path
   end
+
+  test "should get bulk_deactivate_bills" do
+    get :deactivate_bills
+
+    assert_redirected_to bulks_centers_path
+  end
 end

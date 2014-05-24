@@ -66,6 +66,18 @@ class CentersController < ApplicationController
                          The bills will be automatically shown when they're ready"
   end
 
+  def deactivate_bills
+    time = Date.new(Date.today.year, Date.today.month).to_time
+    current_center.bills.by_month(time).each do |bill|
+      Resque.enqueue(BillDeactivatorWorker, bill.id)
+    end
+
+    redirect_to bulks_centers_path,
+                notice: "Deactivating bills job has been queued.
+                         The bills will be automatically marked as deactivated
+                         when they're finished."
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_center
@@ -77,3 +89,4 @@ class CentersController < ApplicationController
       params.require(:center).permit(:name)
     end
 end
+
