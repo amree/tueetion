@@ -1,4 +1,4 @@
-class BillWorker
+class BillCreatorWorker
   @queue = :bill
 
   def self.perform(id)

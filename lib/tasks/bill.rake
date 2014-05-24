@@ -3,7 +3,7 @@ namespace :bill do
   task :create_all => :environment do
 
     Student.active.each do |student|
-      Resque.enqueue(BillWorker, student.id)
+      Resque.enqueue(BillCreatorWorker, student.id)
     end
   end
 end

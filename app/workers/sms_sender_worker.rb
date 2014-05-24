@@ -1,6 +1,6 @@
 require 'message_processor'
 
-class SmsWorker
+class SmsSenderWorker
   @queue = :sms
 
   def self.perform(id)

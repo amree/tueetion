@@ -53,7 +53,7 @@ class Message < ActiveRecord::Base
 
   def enqueue_in_resque
     unless self.status == "invalid"
-      Resque.enqueue(SmsWorker, self.id)
+      Resque.enqueue(SmsSenderWorker, self.id)
     end
   end
 

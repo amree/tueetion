@@ -58,7 +58,7 @@ class CentersController < ApplicationController
   # GET /center/create_bills
   def create_bills
     current_center.students.active.each do |student|
-      Resque.enqueue(BillWorker, student.id)
+      Resque.enqueue(BillCreatorWorker, student.id)
     end
 
     redirect_to bulks_centers_path,
