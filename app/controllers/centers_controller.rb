@@ -51,6 +51,21 @@ class CentersController < ApplicationController
     redirect_to centers_url
   end
 
+  # GET /center/bulk_actions
+  def bulks
+  end
+
+  # GET /center/create_bills
+  def create_bills
+    current_center.students.active.each do |student|
+      Resque.enqueue(BillWorker, student.id)
+    end
+
+    redirect_to bulks_centers_path,
+                notice: "Creating bills job has been queued.
+                         The bills will be automatically shown when they're ready"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_center

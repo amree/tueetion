@@ -64,4 +64,16 @@ class CentersControllerTest < ActionController::TestCase
 
     assert_redirected_to centers_path
   end
+
+  test "should get bulks" do
+    get :bulks
+
+    assert_response :success
+  end
+
+  test "should get bulk_create_bills" do
+    get :create_bills
+
+    assert_redirected_to bulks_centers_path
+  end
 end

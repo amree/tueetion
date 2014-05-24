@@ -1,0 +1,22 @@
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li.active Setup
+    %li= link_to "Center", current_center
+    %li.active Bulks
+
+= render 'layouts/flash_messages'
+
+.row
+  .col-md-3
+    = render 'layouts/setup_sidebar'
+
+  .col-md-9
+    .panel.panel-default
+      .panel-heading
+        Create Bills
+      .panel-body
+        This will create bills for all students in the current month.
+      .panel-footer
+        = link_to "Run", create_bills_centers_path, class: "btn btn-default" 
+

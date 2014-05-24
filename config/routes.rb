@@ -33,6 +33,10 @@ Tueetion::Application.routes.draw do
   post '/callbacks/twilio', to: "callbacks#twilio"
 
   resources :centers, except: [:index] do
+    collection do
+      get :bulks
+      get :create_bills
+    end
     resources :branches, except: [:index, :show]
   end
 
