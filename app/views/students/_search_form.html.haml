@@ -14,7 +14,17 @@
       = f.select :enrolls_enrollable_type_eq, @enrollable_type_selections, { include_blank: true }, { class: "form-control" }
     .col-md-3
       = f.select :enrolls_enrollable_id_eq, grouped_options_for_select(@enrollable_id_selections), { include_blank: true }, { class: "form-control" }
+    .col-md-6
+      .checkbox
+        %label.right-form-buffer
+          = f.check_box :is_active_true
+          Active
 
-  .row.top-buffer
+        %label.right-form-buffer
+          = f.check_box :is_active_false
+          Inactive
+
+
+  .row
     .col-md-12
       = f.submit class: "btn btn-default"
