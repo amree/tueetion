@@ -1,0 +1,13 @@
+= form_for @option, html: { class: "form-horizontal", role: "form" } do |f|
+
+  = form_group @option.errors[:time_zone].present? do
+    = f.label :time_zone, class: "col-lg-2 control-label"
+    .col-lg-4
+      = f.time_zone_select :time_zone, nil, {}, class: "form-control"
+      = form_errors @option, :time_zone
+
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      %button.btn.btn-primary{ type: "submit"}
+        Save
+

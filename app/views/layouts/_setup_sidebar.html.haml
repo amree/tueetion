@@ -4,6 +4,10 @@
       %i.fa.fa-building-o.fa-fw
       Center
   %li
+    = link_to edit_option_path(current_center.option) do
+      %i.fa.fa-gears.fa-fw
+      Options
+  %li
     = link_to staffs_path do
       %i.fa.fa-user.fa-fw
       Staffs

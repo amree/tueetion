@@ -13,6 +13,7 @@ class Center < ActiveRecord::Base
   has_many :groups
   has_many :subscriptions
   has_many :credits
+  has_one  :option
 
   validates :name, presence: true
   validates :name, uniqueness: true

@@ -1,6 +1,7 @@
 require "resque_web"
 
 Tueetion::Application.routes.draw do
+
   namespace :public do
     resources :students, only: [:show] do
       resources :bills, only: [:show]
@@ -58,6 +59,8 @@ Tueetion::Application.routes.draw do
   end
 
   resources :quantity_fees
+
+  resources :options, only: [:edit, :update]
 
   namespace :settings do
     resources :accounts, only: [] do

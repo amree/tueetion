@@ -1,0 +1,20 @@
+.breadcrumb-container
+  %ol.breadcrumb
+    %li= link_to "Home", root_path
+    %li.active Setup
+    %li= link_to "Options", edit_option_path(current_center.option)
+
+= render 'layouts/flash_messages'
+
+.row
+  .col-md-3
+    = render 'layouts/setup_sidebar'
+
+  .col-md-9
+    .panel.panel-borderless
+      .panel-body
+        .section-title
+          %h2
+            Options
+
+        = render 'form'
