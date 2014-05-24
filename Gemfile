@@ -42,7 +42,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'debugger', '~> 1.6.6'
+  gem 'byebug', '~> 3.1.2'
   gem 'mocha', '~> 1.0.0', require: false
 end
 
