@@ -28,8 +28,10 @@ class CentersControllerTest < ActionController::TestCase
     sign_out @user
     sign_in  @user_no_center
 
-    assert_difference('Center.count') do
-      post :create, center: { name: "New name" }
+    assert_difference('Option.count') do
+      assert_difference('Center.count') do
+        post :create, center: { name: "New name" }
+      end
     end
 
     assert_redirected_to center_path(assigns(:center))

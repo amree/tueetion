@@ -29,6 +29,10 @@ class CentersController < ApplicationController
       current_user.center_id = @center.id
       current_user.save
 
+      option = @center.build_option
+      option.time_zone = 'Kuala Lumpur'
+      option.save
+
       redirect_to @center, notice: 'Center was successfully created.'
     else
       render action: 'new'
