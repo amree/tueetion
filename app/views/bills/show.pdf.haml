@@ -40,8 +40,8 @@
               %tr
                 %td= i = i + 1
                 %td= bill_item.name
-                %td= l @bill.updated_at.in_time_zone("Kuala Lumpur"), format: :date
-                %td= l @bill.created_at.in_time_zone("Kuala Lumpur"), format: :date
+                %td= l @bill.updated_at, format: :default
+                %td= l @bill.created_at, format: :default
                 %td.text-right
                   = number_with_precision(bill_item.amount, precision: 2)
         - else
@@ -66,7 +66,7 @@
                 %tr
                   %td= i = i + 1
                   %td= payment.bill.full_number
-                  %td= l payment.paid_at.in_time_zone("Kuala Lumpur")
+                  %td= l payment.paid_at, format: :default
                   %td.text-right
                     = number_with_precision(payment.amount, precision: 2)
         - else
@@ -76,5 +76,5 @@
       .col-md-3.pull-left
         = "http://tueetion.com/public/students/#{@bill.student.public_key}"
       .col-md-6.pull-right.text-right
-        = l Time.now.in_time_zone("Kuala Lumpur")
+        = l Time.now, format: :default
 

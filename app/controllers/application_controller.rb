@@ -8,8 +8,19 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :set_google_analytics_id
+  around_filter :set_time_zone
 
   protected
+
+  def set_time_zone(&block)
+    time_zone = 'Kuala Lumpur'
+
+    if @current_center.present?
+      time_zone = @current_center.option.time_zone
+    end
+
+    Time.use_zone(time_zone, &block)
+  end
 
   def layout_by_resource
     if devise_controller?
@@ -40,7 +51,7 @@ class ApplicationController < ActionController::Base
   private
 
   def current_center
-    @current_center = current_user.center
+    @current_center = current_user.try(:center)
   end
 
   def require_admin

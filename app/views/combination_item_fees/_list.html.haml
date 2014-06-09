@@ -17,8 +17,8 @@
       %tr
         %td= i = i + 1
         %td= combination_item_fee.subject.name
-        %td= l combination_item_fee.updated_at.in_time_zone("Kuala Lumpur")
-        %td= l combination_item_fee.created_at.in_time_zone("Kuala Lumpur")
+        %td= l combination_item_fee.updated_at, format: :default
+        %td= l combination_item_fee.created_at, format: :default
         %td.text-right
           = link_to edit_combination_fee_combination_item_fee_path(combination_fee, combination_item_fee), class: "btn btn-primary" do
             %i.fa.fa-pencil.fa-fw

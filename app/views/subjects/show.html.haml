@@ -47,9 +47,9 @@
           %dt
             Created at:
           %dd
-            = l @subject.created_at.in_time_zone("Kuala Lumpur")
+            = l @subject.created_at, format: :default
           %dt
             Updated at:
           %dd
-            = l @subject.updated_at.in_time_zone("Kuala Lumpur")
+            = l @subject.updated_at, format: :default
 

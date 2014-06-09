@@ -49,11 +49,11 @@
           %dt
             Created at:
           %dd
-            = l @combination_fee.created_at.in_time_zone("Kuala Lumpur")
+            = l @combination_fee.created_at, format: :default
           %dt
             Updated at:
           %dd
-            = l @combination_fee.updated_at.in_time_zone("Kuala Lumpur")
+            = l @combination_fee.updated_at, format: :default
 
     .panel.panel-borderless
       .panel-body

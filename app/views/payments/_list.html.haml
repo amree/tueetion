@@ -15,7 +15,7 @@
         %td= i = i + 1
         %td= payment.bill.full_number
         %td= payment.user.first_name
-        %td= l payment.paid_at.in_time_zone("Kuala Lumpur")
+        %td= l payment.paid_at, format: :default
         %td.text-right
           = number_with_precision(payment.amount, precision: 2)
         %td.text-right

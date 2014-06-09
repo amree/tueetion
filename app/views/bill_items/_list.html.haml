@@ -14,8 +14,8 @@
     %tr
       %td= i = i + 1
       %td= bill_item.name
-      %td= l bill.updated_at.in_time_zone("Kuala Lumpur"), format: :date
-      %td= l bill.created_at.in_time_zone("Kuala Lumpur"), format: :date
+      %td= l bill.updated_at, format: :default
+      %td= l bill.created_at, format: :default
       %td.text-right
         = number_with_precision(bill_item.amount, precision: 2)
       %td.text-right

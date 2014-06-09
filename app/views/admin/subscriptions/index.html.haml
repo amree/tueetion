@@ -29,10 +29,10 @@
                   %td
                     = subscription.center.name
                   %td
-                    = l subscription.start_at.in_time_zone("Kuala Lumpur")
+                    = l subscription.start_at, format: :default
 
                   %td
-                    = l subscription.end_at.in_time_zone("Kuala Lumpur")
+                    = l subscription.end_at, format: :default
                   %td.text-right
                     = subscription.quantity
                   %td.text-right

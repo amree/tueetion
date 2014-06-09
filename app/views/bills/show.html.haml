@@ -49,6 +49,14 @@
           %dd
             = number_with_precision(@bill.total_amount_paid, precision: 2)
           %dt
+            Last Updated At
+          %dd
+            = l @bill.updated_at
+          %dt
+            Created At
+          %dd
+            = l @bill.created_at
+          %dt
             Status
           %dd
             = all_bill_status(@bill)

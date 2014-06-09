@@ -15,7 +15,7 @@
       %tr
         %td= i = i + 1
         %td= bill.full_number
-        %td= l bill.created_at.in_time_zone("Kuala Lumpur"), format: :date
+        %td= l bill.created_at, format: :date
         %td
           = I18n.t("date.month_names")[bill.month]
           = bill.year

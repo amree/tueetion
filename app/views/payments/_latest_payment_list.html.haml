@@ -11,7 +11,7 @@
       - payments.each do |payment|
         %tr
           %td= payment.bill.full_number
-          %td= l payment.paid_at.in_time_zone("Kuala Lumpur")
+          %td= l payment.paid_at, format: :default
           %td.text-right
             = number_with_precision(payment.amount, precision: 2)
 

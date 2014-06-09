@@ -48,9 +48,9 @@
           %dt
             Created at:
           %dd
-            = l @message.created_at.in_time_zone("Kuala Lumpur")
+            = l @message.created_at, format: :default
           %dt
             Updated at:
           %dd
-            = l @message.updated_at.in_time_zone("Kuala Lumpur")
+            = l @message.updated_at, format: :default
 
