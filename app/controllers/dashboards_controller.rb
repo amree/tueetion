@@ -2,27 +2,31 @@ class DashboardsController < ApplicationController
   before_filter :check_center
 
   def index
-    @payments = Payment.joins(:bill).where(bills: { center_id: current_center.id }).order("created_at desc").limit(10)
+    if current_user.is_admin?
+      redirect_to admin_centers_path
+    else
+      @payments = Payment.joins(:bill).where(bills: { center_id: current_center.id }).order("created_at desc").limit(10)
 
-    @overdue_bills = current_center.bills.active.overdue.order("created_at desc").limit(10)
+      @overdue_bills = current_center.bills.active.overdue.order("created_at desc").limit(10)
 
-    subscription_usage = SubscriptionUsage.new(current_center)
-    @subscription_used = subscription_usage.current
-    @subscription_total = subscription_usage.max
+      subscription_usage = SubscriptionUsage.new(current_center)
+      @subscription_used = subscription_usage.current
+      @subscription_total = subscription_usage.max
 
-    # Get available SMS
-    @sms_used_counts = 0
-    @sms_credit_counts = 0
+      # Get available SMS
+      @sms_used_counts = 0
+      @sms_credit_counts = 0
 
-    current_center.credits.available.each do |credit|
-      @sms_credit_counts += credit.amount
-      @sms_used_counts += credit.used
+      current_center.credits.available.each do |credit|
+        @sms_credit_counts += credit.amount
+        @sms_used_counts += credit.used
+      end
+
+      @unpaid_bill_counts = current_center.bills.active.unpaid.count
+
+      @overdue_bill_counts = current_center.bills.active.overdue.count
+
+      @current_month = Time.zone.now.strftime '%B'
     end
-
-    @unpaid_bill_counts = current_center.bills.active.unpaid.count
-
-    @overdue_bill_counts = current_center.bills.active.overdue.count
-
-    @current_month = Time.zone.now.strftime '%B'
   end
 end

@@ -10,4 +10,12 @@ class DashboardsControllerTest < ActionController::TestCase
 
     assert_response :success
   end
+
+  test "should be forwarded to admin_centers_path if admin" do
+    sign_in users(:admin)
+
+    get :index
+
+    assert_redirected_to admin_centers_path
+  end
 end
