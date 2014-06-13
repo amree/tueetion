@@ -3,7 +3,7 @@
   = form_group @combination_fee.errors[:name].present? do
     = f.label :name, class: "col-lg-3 control-label"
     .col-lg-5
-      = f.text_field :name, class: "form-control", placeholder: "Name"
+      = f.text_field :name, class: "form-control", placeholder: "Name", autofocus: true
       = form_errors @combination_fee, :name
 
   = form_group @combination_fee.errors[:price].present? do

@@ -3,7 +3,7 @@
   = form_group @center.errors[:name].present? do
     = f.label :name, class: "col-lg-2 control-label"
     .col-lg-6
-      = f.text_field :name, class: "form-control", required: true, autocomplete: "off"
+      = f.text_field :name, class: "form-control", required: true, autocomplete: "off", autofocus: true
       = form_errors @center, :name
 
   .form-group

@@ -3,7 +3,7 @@
   = form_group @quantity_fee.errors[:name].present? do
     = f.label :name, class: "col-lg-2 control-label"
     .col-lg-5
-      = f.text_field :name, class: "form-control"
+      = f.text_field :name, class: "form-control", autofocus: true
       = form_errors @quantity_fee, :name
 
   = form_group @quantity_fee.errors[:subject_id].present? || @quantity_fee.errors[:subject].present? do

@@ -3,7 +3,7 @@
   = form_group @subject.errors[:name].present? || @subject.errors[:is_active].present? do
     = f.label :name, class: "col-lg-2 control-label"
     .col-lg-6
-      = f.text_field :name, class: "form-control", placeholder: "Name"
+      = f.text_field :name, class: "form-control", placeholder: "Name", autofocus: true
       = form_errors @subject, :name, :is_active
 
   .form-group
