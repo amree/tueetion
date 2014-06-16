@@ -2,11 +2,15 @@
 set -e
 
 # Feel free to change any of the following variables for your app:
+USER=amree
 TIMEOUT=${TIMEOUT-60}
 APP_ROOT=<%= current_path %>
+RBENV_ROOT="/home/$USER/.rbenv"
+PATH="$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH"
+SET_PATH="PATH=$PATH; rbenv rehash"
 PID_DIR=$APP_ROOT/tmp/pids
 PID=$PID_DIR/unicorn.pid
-CMD="cd $APP_ROOT;  bundle exec unicorn -D -c <%= "#{shared_path}/config/unicorn.rb" %> -E <%= fetch(:rails_env) %>"
+CMD="$SET_PATH; cd $APP_ROOT;  bundle exec unicorn -D -c <%= "#{shared_path}/config/unicorn.rb" %> -E <%= fetch(:rails_env) %>"
 AS_USER=<%= fetch(:deploy_user) %>
 set -u
 
