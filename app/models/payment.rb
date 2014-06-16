@@ -31,7 +31,7 @@ class Payment < ActiveRecord::Base
   end
 
   def paid_at_should_not_be_from_the_future
-    if DateTime.now < self.paid_at
+    if Time.zone.now < self.paid_at
       errors.add(:paid_at, "Should not be from the future")
     end
   end

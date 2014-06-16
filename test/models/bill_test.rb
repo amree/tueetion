@@ -37,8 +37,8 @@ class BillTest < ActiveSupport::TestCase
     bill.student = @ali
     bill.center = @ali.center
 
-    current_month = Date.today.strftime("%m")
-    current_year  = Date.today.strftime("%Y")
+    current_month = Time.zone.now.strftime("%m")
+    current_year  = Time.zone.now.strftime("%Y")
 
     assert bill.save
 

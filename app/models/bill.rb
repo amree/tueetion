@@ -31,8 +31,8 @@ class Bill < ActiveRecord::Base
   protected
 
   def set_default_values
-    self.month = Date.today.strftime("%m")
-    self.year = Date.today.strftime("%Y")
+    self.month = Time.zone.now.strftime("%m")
+    self.year = Time.zone.now.strftime("%Y")
 
     generate_latest_number
     generate_full_number
@@ -43,8 +43,8 @@ class Bill < ActiveRecord::Base
     if Center.find(self.center_id)
              .bills
              .where("created_at between ? and ?",
-                    Date.today.at_beginning_of_month,
-                    Date.today.end_of_month + 1)
+                    Time.zone.now.at_beginning_of_month,
+                    Time.zone.now.end_of_month + 1)
              .where("student_id = ?",
                     self.student_id)
              .active
@@ -57,7 +57,7 @@ class Bill < ActiveRecord::Base
   private
 
   def generate_latest_number
-    self.number = (Center.find(self.center_id).bills.where("created_at between ? and ?", Date.today.at_beginning_of_year, Date.today.end_of_year + 1).maximum(:number) || 0) + 1
+    self.number = (Center.find(self.center_id).bills.where("created_at between ? and ?", Time.zone.now.at_beginning_of_year, Time.zone.now.end_of_year + 1).maximum(:number) || 0) + 1
   end
 
   def generate_full_number

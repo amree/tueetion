@@ -71,7 +71,8 @@ class CentersController < ApplicationController
   end
 
   def deactivate_bills
-    time = Date.new(Date.today.year, Date.today.month).to_time
+    time = Time.zone.now.beginning_of_month
+
     current_center.bills.by_month(time).each do |bill|
       Resque.enqueue(BillDeactivatorWorker, bill.id)
     end
