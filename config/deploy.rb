@@ -37,10 +37,11 @@ set :tests, []
 # for details of operations
 set(:config_files, %w(
   nginx.conf
-  database.example.yml
-  twilio.example.yml
+  database.yml
+  twilio.yml
   unicorn.rb
   unicorn_init.sh
+  secret.yml
 ))
 
 # which config files should be made executable after copying
