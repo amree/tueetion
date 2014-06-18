@@ -24,7 +24,7 @@
                   = link_to "Add Payment", new_bill_payment_path(@bill)
                 %li.divider
                 %li
-                  = link_to "Print", bill_path(@bill, format: :pdf)
+                  = link_to "Print", bill_path(@bill, format: :pdf), target: "_blank"
                 %li.divider
               %li
                 - if @bill.is_active
