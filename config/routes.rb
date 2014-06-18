@@ -98,7 +98,6 @@ Tueetion::Application.routes.draw do
   get "front_pages/index"
 
   mount ResqueWeb::Engine => "/rq"
-  ResqueWeb::Engine.eager_load!
 
   root "front_pages#index"
 end
