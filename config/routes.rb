@@ -2,18 +2,12 @@ require "resque_web"
 
 Tueetion::Application.routes.draw do
 
-  namespace :public do
-    resources :students, only: [:show] do
-      resources :bills, only: [:show]
-    end
-  end
+  devise_for :users
 
-  namespace :reports do
-    resources :payments, only: [:index]
-    resources :registrations, only: [:index]
-    resources :subjects, only: [:index]
-    resources :packages, only: [:index]
-  end
+  get "dashboards/index"
+  get "fronts/index"
+
+  mount ResqueWeb::Engine => "/rq"
 
   namespace :admin do
     resources :users, only: [:index, :show]
@@ -58,9 +52,22 @@ Tueetion::Application.routes.draw do
     get :update_status
   end
 
+  resources :options, only: [:edit, :update]
+
+  namespace :public do
+    resources :students, only: [:show] do
+      resources :bills, only: [:show]
+    end
+  end
+
   resources :quantity_fees
 
-  resources :options, only: [:edit, :update]
+  namespace :reports do
+    resources :payments, only: [:index]
+    resources :registrations, only: [:index]
+    resources :subjects, only: [:index]
+    resources :packages, only: [:index]
+  end
 
   namespace :settings do
     resources :accounts, only: [] do
@@ -90,14 +97,8 @@ Tueetion::Application.routes.draw do
       post :create_bill
     end
   end
+
   resources :subjects
-
-  devise_for :users
-
-  get "dashboards/index"
-  get "fronts/index"
-
-  mount ResqueWeb::Engine => "/rq"
 
   root "fronts#index"
 end
