@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FrontPagesControllerTest < ActionController::TestCase
+class FrontsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
 

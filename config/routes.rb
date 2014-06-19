@@ -95,9 +95,9 @@ Tueetion::Application.routes.draw do
   devise_for :users
 
   get "dashboards/index"
-  get "front_pages/index"
+  get "fronts/index"
 
   mount ResqueWeb::Engine => "/rq"
 
-  root "front_pages#index"
+  root "fronts#index"
 end

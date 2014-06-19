@@ -1,4 +1,4 @@
-class FrontPagesController < ApplicationController
+class FrontsController < ApplicationController
   before_action :verify_sign_in
   skip_before_filter :authenticate_user!
 
