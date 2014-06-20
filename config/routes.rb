@@ -4,9 +4,6 @@ Tueetion::Application.routes.draw do
 
   devise_for :users
 
-  get "dashboards/index"
-  get "fronts/index"
-
   mount ResqueWeb::Engine => "/rq"
 
   namespace :admin do
@@ -40,6 +37,10 @@ Tueetion::Application.routes.draw do
     resources :combination_item_fees, except: [:index, :show]
   end
 
+  get "dashboards/index"
+
+  get 'fronts/index'
+
   resources :groups, except: [:show]
 
   resources :invitations, only: [:index, :new, :create, :destroy] do
@@ -53,6 +54,8 @@ Tueetion::Application.routes.draw do
   end
 
   resources :options, only: [:edit, :update]
+
+  match 'privacy-policy', to: 'fronts#privacy_policy', via: [:get]
 
   namespace :public do
     resources :students, only: [:show] do

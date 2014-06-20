@@ -5,6 +5,9 @@ class FrontsController < ApplicationController
   def index
   end
 
+  def privacy_policy
+  end
+
   private
 
   def verify_sign_in
