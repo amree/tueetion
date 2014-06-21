@@ -5,6 +5,7 @@ Tueetion::Application.routes.draw do
   devise_for :users
 
   mount ResqueWeb::Engine => "/rq"
+  ResqueWeb::Engine.eager_load!
 
   namespace :admin do
     resources :users, only: [:index, :show]
