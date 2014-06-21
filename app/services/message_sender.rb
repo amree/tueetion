@@ -43,7 +43,7 @@ class MessageSender
                   status_callback: "http://#{Rails.application.secrets.twilio_callback_host}/callbacks/twilio")
 
           @message.sid = rs.sid
-          @message.status = 'in progress'
+          @message.status = rs.status
 
         rescue Twilio::REST::RequestError => e
           @message.status = 'invalid'
