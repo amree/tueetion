@@ -4,7 +4,7 @@ class Message < ActiveRecord::Base
   belongs_to :student
   has_many :credit_usages
 
-  before_validation :set_phone_number, if: "self.student.present?"
+  before_validation :set_phone_code_and_number, if: "self.student.present?"
   before_validation :set_status_to_new, if: "self.new_record?"
 
   before_validation :validate_center
@@ -17,9 +17,10 @@ class Message < ActiveRecord::Base
 
   protected
 
-  def set_phone_number
-    if self.student.phone_number.present?
-      self.phone_number = self.student.main_phone_number
+  def set_phone_code_and_number
+    if self.student.phone_number.present? && self.student.phone_code.present?
+      self.phone_code = self.student.phone_code
+      self.phone_number = self.student.phone_number
     end
   end
 
@@ -40,7 +41,7 @@ class Message < ActiveRecord::Base
   end
 
   def validate_phone_number
-    if self.phone_number.nil?
+    if self.phone_number.nil? || self.phone_code.nil?
       set_failed_messages("Phone number is invalid")
     end
   end

@@ -13,6 +13,7 @@ class MessageTest < ActiveSupport::TestCase
 
     message.save
 
+    assert_not_nil message.phone_code
     assert_not_nil message.phone_number
   end
 
