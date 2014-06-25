@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140621104052) do
+ActiveRecord::Schema.define(version: 20140625061703) do
 
   create_table "bill_items", force: true do |t|
     t.integer  "bill_id"
@@ -92,8 +92,8 @@ ActiveRecord::Schema.define(version: 20140621104052) do
 
   create_table "credits", force: true do |t|
     t.integer  "center_id"
-    t.integer  "amount",     default: 0
-    t.integer  "used",       default: 0
+    t.decimal  "amount",     precision: 8, scale: 4, default: 0.0
+    t.decimal  "used",       precision: 8, scale: 4, default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -152,6 +152,7 @@ ActiveRecord::Schema.define(version: 20140621104052) do
     t.string   "processed_content"
     t.string   "sent_content"
     t.string   "failed_messages"
+    t.decimal  "price",             precision: 6, scale: 4
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
