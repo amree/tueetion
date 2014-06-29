@@ -57,13 +57,13 @@
       = form_errors @student, :school_name
 
   = form_group @student.errors[:branch].present? do
-    = f.label :branch_id, class: "col-lg-2 control-label required"
+    = f.label :branch_id, class: "col-lg-2 control-label"
     .col-lg-4
       = f.select :branch_id, @branches, { include_blank: true }, { class: "form-control" }
       = form_errors @student, :branch
 
   = form_group @student.errors[:group].present? do
-    = f.label :group_id, class: "col-lg-2 control-label required"
+    = f.label :group_id, class: "col-lg-2 control-label"
     .col-lg-4
       = f.select :group_id, @groups, { include_blank: true }, { class: "form-control" }
       = form_errors @student, :group
