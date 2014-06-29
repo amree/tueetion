@@ -15,8 +15,9 @@
   .form-group
     .col-lg-offset-3.col-lg-9
       .checkbox
-        = f.check_box :is_active
-        Active
+        %label
+          = f.check_box :is_active
+          Active
 
   .form-group
     .col-lg-offset-3.col-lg-9

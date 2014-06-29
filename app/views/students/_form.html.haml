@@ -71,8 +71,9 @@
   = form_group @student.errors[:is_active].present? do
     .col-lg-offset-2.col-lg-10
       .checkbox
-        = f.check_box :is_active
-        Active
+        %label
+          = f.check_box :is_active
+          Active
       = form_errors @student, :is_active
 
   = form_group @student.errors[:note1].present? do
