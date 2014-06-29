@@ -1,0 +1,32 @@
+= form_for [:admin, @country], html: { class: "form-horizontal", role: "form" } do |f|
+
+  = form_group @country.errors[:name].present? do
+    = f.label :name, class: "col-sm-2 control-label"
+    .col-sm-5
+      = f.text_field :name, class: "form-control"
+
+  = form_group @country.errors[:calling_code].present? do
+    = f.label :calling_code, class: "col-sm-2 control-label"
+    .col-sm-2
+      = f.text_field :calling_code, class: "form-control"
+
+  = form_group @country.errors[:sms_rate].present? do
+    = f.label :sms_rate, "SMS Rate (USD)", class: "col-sm-2 control-label"
+    .col-sm-2
+      = f.text_field :sms_rate, class: "form-control"
+
+  = form_group @country.errors[:is_active].present? do
+    .col-sm-offset-2.col-sm-10
+      .checkbox
+        %label
+          = f.check_box :is_active
+          Active
+      = form_errors @country, :is_active
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      %button.btn.btn-primary{ type: "submit"}
+        Save
+      or
+      = link_to "Cancel", admin_countries_path
+

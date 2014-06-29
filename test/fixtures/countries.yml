@@ -1,0 +1,5 @@
+malaysia:
+  name: Malaysia
+  calling_code: +60
+  sms_rate: 0.027
+  is_active: true

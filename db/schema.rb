@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625061703) do
+ActiveRecord::Schema.define(version: 20140625071710) do
 
   create_table "bill_items", force: true do |t|
     t.integer  "bill_id"
@@ -79,6 +79,15 @@ ActiveRecord::Schema.define(version: 20140625061703) do
 
   add_index "combination_item_fees", ["combination_fee_id"], name: "index_combination_item_fees_on_combination_fee_id", using: :btree
   add_index "combination_item_fees", ["subject_id"], name: "index_combination_item_fees_on_subject_id", using: :btree
+
+  create_table "countries", force: true do |t|
+    t.string   "name"
+    t.string   "calling_code"
+    t.decimal  "sms_rate",     precision: 6, scale: 4
+    t.boolean  "is_active",                            default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "credit_usages", force: true do |t|
     t.integer  "message_id"

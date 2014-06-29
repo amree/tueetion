@@ -10,6 +10,7 @@ Tueetion::Application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :show]
     resources :centers, only: [:index, :show]
+    resources :countries
     resources :credits
     resources :subscriptions
   end
