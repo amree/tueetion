@@ -10,6 +10,7 @@ class MessageSender
       # Parse @message first
       processed_message = MessageProcessor.new(@message)
       @message.processed_content = processed_message.content
+      @message.price = processed_message.price
 
       # Search for free credit
       credit = Center.find(@message.center_id).credits.try(:available).first

@@ -8,16 +8,19 @@ class MessageProcessor
   attr_reader :content
   attr_reader :content_length
   attr_reader :sms_count
+  attr_reader :price
 
   def initialize(message)
-    @student = message.student
-    @content = message.content
+    @message = message
+    @student = @message.student
+    @content = @message.content
 
     set_first_name
     set_last_name
     set_unpaid_amount
     set_unpaid_bill_count
     calculate_size
+    set_price
   end
 
   private
@@ -42,6 +45,10 @@ class MessageProcessor
   def set_unpaid_bill_count
     @content.gsub! /{{unpaid_bill_count}}/,
                    (BillCalculator.new(@student).get_unpaid_bill_count.to_s || "0")
+  end
+
+  def set_price
+    @price = Country.find_by_calling_code(@message.phone_code).try(:sms_rate) || 0.1
   end
 
   def calculate_size

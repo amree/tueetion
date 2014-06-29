@@ -2,6 +2,7 @@ new_message:
   center: pakar
   student: ali
   sid: SM5936d04d72d949dea7424b763843e354
+  phone_code: +60
   phone_number: 0199171765
   content: "{{first_name}} {{last_name}} {{unpaid_amount}} {{unpaid_bill_count}}"
   status: new
@@ -10,6 +11,7 @@ processed_message:
   center: pakar
   student: ali
   sid: SM5936d04d72d949dea7424b763843e354
+  phone_code: +60
   phone_number: 0199171765
   content: "{{first_name}} {{last_name}} {{unpaid_amount}} {{unpaid_bill_count}}"
   processed_content: Muhammad Ali Muhammad Hassan 30.00 1
@@ -19,6 +21,7 @@ processed_message:
 invalid_message:
   center: pakar
   student: ali
+  phone_code: +60
   phone_number: 0199171765
   content: The message is in queue
   status: invalid
@@ -26,6 +29,7 @@ invalid_message:
 no_credit_message:
   center: pakar
   student: ali
+  phone_code: +60
   phone_number: 0199171765
   content: The message is being sent
   status: no credit
@@ -33,6 +37,7 @@ no_credit_message:
 sent_message:
   center: pakar
   student: ali
+  phone_code: +60
   phone_number: 0199171765
   content: The message has already been sent
   status: sent

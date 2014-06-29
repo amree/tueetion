@@ -14,6 +14,7 @@ class MessageProcessorTest < ActiveSupport::TestCase
     assert_equal text, mp.content
     assert_equal text.length, mp.content_length
     assert_equal 1, mp.sms_count
+    assert_equal 0.027, mp.price
   end
 
   # TODO: Test when all credit used
