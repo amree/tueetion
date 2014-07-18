@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625071710) do
+ActiveRecord::Schema.define(version: 20140718095011) do
 
   create_table "bill_items", force: true do |t|
     t.integer  "bill_id"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20140625071710) do
 
   create_table "centers", force: true do |t|
     t.string   "name"
+    t.decimal  "credit_balance", precision: 8, scale: 4, default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
