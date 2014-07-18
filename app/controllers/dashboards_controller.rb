@@ -13,14 +13,7 @@ class DashboardsController < ApplicationController
       @subscription_used = subscription_usage.current
       @subscription_total = subscription_usage.max
 
-      # Get available SMS
-      @sms_used_counts = 0
-      @sms_credit_counts = 0
-
-      current_center.credits.available.each do |credit|
-        @sms_credit_counts += credit.amount
-        @sms_used_counts += credit.used
-      end
+      @credit_balance = current_center.credit_balance
 
       @unpaid_bill_counts = current_center.bills.active.unpaid.count
 

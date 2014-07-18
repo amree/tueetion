@@ -15,8 +15,8 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
-    if current_center.credits.try(:available).blank?
-      redirect_to messages_path, notice: "You don't have any message credit in your account. Please contact support for further information."
+    unless current_center.credit_balance > 0
+      redirect_to messages_path, alert: "You don't have any message credit in your account. Please contact support for further information."
     else
       @message = Message.new
     end

@@ -15,11 +15,9 @@
     .panel.panel-borderless
       .panel-body.panel-status
         %h3
-          = @sms_used_counts
-          \/
-          = @sms_credit_counts
+          = number_to_currency(@credit_balance, locale: :ms)
         %p
-          SMS
+          Credits
 
   .col-md-3
     .panel.panel-borderless
