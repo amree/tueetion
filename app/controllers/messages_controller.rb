@@ -73,16 +73,22 @@ class MessagesController < ApplicationController
 
   # GET /messages/1/update_status
   def update_status
-    @message = current_center.messages.find(params[:message_id])
+    begin
+      @message = current_center.messages.find(params[:message_id])
 
-    client = Twilio::REST::Client.new Rails.application.secrets.twilio_sid,
-                                      Rails.application.secrets.twilio_token
+      client = Twilio::REST::Client.new Rails.application.secrets.twilio_sid,
+                                        Rails.application.secrets.twilio_token
 
-    res = client.account.messages.get @message.sid
+      res = client.account.messages.get @message.sid
 
-    if res.status.present? && @message.update_attributes(status: res.status)
-      redirect_to @message, notice: "Message's status was successfully updated."
-    else
+      if res.status
+        if @message.update_attributes(status: res.status)
+          redirect_to @message, notice: "Message's status was successfully updated."
+        end
+      else
+        redirect_to @message, alert: "Message's status cannot be updated."
+      end
+    rescue Twilio::REST::RequestError => e
       redirect_to @message, alert: "Message's status cannot be updated."
     end
   end
