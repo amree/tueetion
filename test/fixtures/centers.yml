@@ -1,5 +1,6 @@
 pakar:
   name: Pusat Tuisyen Pakar
+  credit_balance: 1000
 
 kami:
   name: Pusat Tuisyen Kami
