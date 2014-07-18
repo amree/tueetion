@@ -15,6 +15,10 @@ class Message < ActiveRecord::Base
   after_create :enqueue_in_resque
   after_update :destroy_credit_usages, if: "self.status_changed? && self.status == 'failed'"
 
+  def full_phone_number
+    phone_code + phone_number
+  end
+
   protected
 
   def set_phone_code_and_number

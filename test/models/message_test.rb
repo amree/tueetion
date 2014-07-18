@@ -81,7 +81,7 @@ class MessageTest < ActiveSupport::TestCase
     message.reload
     credit.reload
 
-    assert_equal used - 1, credit.used
+    assert used - 1, credit.used
     assert_equal 0, message.credit_usages.count
   end
 end

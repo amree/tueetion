@@ -3,60 +3,50 @@ require 'message_processor'
 class MessageSender
   def initialize(message)
     @message = message
+    @center  = @message.center
   end
 
   def send
-    if @message.status != 'sent'
-      # Parse @message first
-      processed_message = MessageProcessor.new(@message)
-      @message.processed_content = processed_message.content
-      @message.price = processed_message.price
+    ActiveRecord::Base.transaction do
+      unless @message.status == 'sent'
+        # Parse @message first
+        processed_message = MessageProcessor.new(@message)
+        @message.processed_content = processed_message.content
+        @message.price = processed_message.price
 
-      # Search for free credit
-      credit = Center.find(@message.center_id).credits.try(:available).first
+        if @center.credit_balance >= @message.price
 
-      credit_balance = if credit
-                         credit.amount - credit.used
-                       else
-                         -1
-                       end
+          # Deduct from credit balance first
+          @center.credit_balance = @center.credit_balance - @message.price
 
-      # Only send if there are enough credits available
-      if credit && credit_balance >= processed_message.sms_count
+          # Prepare for @message sending
+          to   = @message.full_phone_number
+          body = @message.processed_content
 
-        # Build message usages
-        Array.new(processed_message.sms_count).each do
-          @message.credit_usages.build(credit_id: credit.id)
-        end
+          client = Twilio::REST::Client.new(Rails.application.secrets.twilio_sid,
+                                            Rails.application.secrets.twilio_token)
 
-        # Prepare for @message sending
-        to = @message.phone_number
-        body = @message.processed_content
+          begin
+            rs = client.account.messages.create(
+                   from: Rails.application.secrets.twilio_from,
+                   to: to,
+                   body: body,
+                   status_callback: "http://#{Rails.application.secrets.twilio_callback_host}/callbacks/twilio")
 
-        client = Twilio::REST::Client.new(Rails.application.secrets.twilio_sid,
-                                          Rails.application.secrets.twilio_token)
+            @message.sid    = rs.sid
+            @message.status = rs.status
 
-        begin
-          rs =  client.account.messages.create(
-                  from: Rails.application.secrets.twilio_from,
-                  to: to,
-                  body: body,
-                  status_callback: "http://#{Rails.application.secrets.twilio_callback_host}/callbacks/twilio")
+          rescue Twilio::REST::RequestError => e
+            @message.status = 'invalid'
+          end
 
-          @message.sid = rs.sid
-          @message.status = rs.status
-
-        rescue Twilio::REST::RequestError => e
-          @message.status = 'invalid'
-        end
-
-        ActiveRecord::Base.transaction do
-          credit.save
+          # Update credit balance and message information
+          @center.save
+          @message.save
+        else
+          @message.status = 'no credit'
           @message.save
         end
-      else
-        @message.status = "no credit"
-        @message.save
       end
     end
   end

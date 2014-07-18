@@ -47,12 +47,14 @@ class MessageProcessor
                    (BillCalculator.new(@student).get_unpaid_bill_count.to_s || "0")
   end
 
-  def set_price
-    @price = Country.find_by_calling_code(@message.phone_code).try(:sms_rate) || 0.1
-  end
-
   def calculate_size
     @content_length = @content.length
     @sms_count   = (@content_length / 60.0).ceil
   end
+
+  def set_price
+    @price = Country.find_by_calling_code(@message.phone_code).try(:sms_rate) || 0.1
+    @price = @price * @sms_count
+  end
+
 end
