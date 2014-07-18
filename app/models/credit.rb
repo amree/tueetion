@@ -5,7 +5,6 @@ class Credit < ActiveRecord::Base
 
   accepts_nested_attributes_for :transactions
 
-  scope :available, -> { where("amount > used") }
   scope :by_latest, -> { order("credits.created_at DESC") }
 
   after_create :increase_credit_balance
