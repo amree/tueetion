@@ -7,4 +7,13 @@ class Credit < ActiveRecord::Base
 
   scope :available, -> { where("amount > used") }
   scope :by_latest, -> { order("credits.created_at DESC") }
+
+  after_create :increase_credit_balance
+
+  protected
+
+  def increase_credit_balance
+    self.center.credit_balance = self.center.credit_balance + self.amount
+    self.center.save
+  end
 end
