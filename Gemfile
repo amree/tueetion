@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'awesome_print'
+gem 'awesome_print', '~> 1.2.0'
 gem 'bootstrap-datepicker-rails', '~> 1.3.0.2'
 gem 'bootstrap-sass', '~> 3.2.0.1'
 gem 'capistrano', '~> 3.2.1'
