@@ -82,7 +82,7 @@ class MessagesController < ApplicationController
       res = client.account.messages.get @message.sid
 
       if res.status
-        if @message.update_attributes(status: res.status)
+        if @message.update_attributes(status: res.status, sent_content: res.body)
           redirect_to @message, notice: "Message's status was successfully updated."
         end
       else
