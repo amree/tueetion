@@ -10,15 +10,15 @@ set :repo_url, 'git@github.com:amree/tueetion.git'
 
 # setup rvm.
 set :rbenv_type, :user
-set :rbenv_ruby, '2.1.0'
+set :rbenv_ruby, '2.1.2'
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 
 # how many old releases do we want to keep, not much
-set :keep_releases, 5
+set :keep_releases, 3
 
 # files we want symlinking to specific entries in shared
-set :linked_files, %w{config/database.yml config/twilio.yml}
+set :linked_files, %w{config/database.yml config/secrets.yml}
 
 # dirs we want symlinking to shared
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
@@ -36,12 +36,11 @@ set :tests, []
 # see documentation in lib/capistrano/tasks/setup_config.cap
 # for details of operations
 set(:config_files, %w(
+  database.example.yml
   nginx.conf
-  database.yml
-  twilio.yml
+  secrets.example.yml
   unicorn.rb
   unicorn_init.sh
-  secret.yml
 ))
 
 # which config files should be made executable after copying
@@ -98,4 +97,8 @@ namespace :deploy do
   # As of Capistrano 3.1, the `deploy:restart` task is not called
   # automatically.
   after 'deploy:publishing', 'deploy:restart'
+  # For Redis
+  after 'deploy:publishing', 'redis:restart'
+  # For Resque
+  after 'deploy:publishing', 'deploy:restart_workers'
 end
