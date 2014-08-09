@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :set_google_analytics_id
-  before_filter :add_user_info_to_bugsnag
   around_filter :set_time_zone
+  before_bugsnag_notify :add_user_info_to_bugsnag
 
   protected
 
@@ -73,6 +73,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  private
   def add_user_info_to_bugsnag(notif)
     notif.user = {
       center_name: current_center.name,
