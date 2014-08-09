@@ -7,4 +7,13 @@ namespace :deploy do
       end
     end
   end
+
+  desc "Restart Resque Workers"
+  task :restart_workers do
+    on roles(:worker) do
+      within release_path do
+        execute :rake, "RAILS_ENV=#{fetch(:rails_env)} resque:restart_workers"
+      end
+    end
+  end
 end
