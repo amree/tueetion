@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "Tueetion <tueetion@deebzy.zendesk.com>"
+  default from: "Tueetion <noreply@tueetion.com>"
 
   def invitation(invitation)
     @key = invitation.key
