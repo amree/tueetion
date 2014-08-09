@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
   def set_google_analytics_id
     if Rails.env.production?
       unless current_user && current_user.is_admin?
-        @ga_id = ENV["GOOGLE_ANALYTICS_ID"]
+        @ga_id = Rails.application.secrets.google_analytics_id
       end
     end
   end
