@@ -50,8 +50,9 @@ server {
   error_page 500 502 503 504 /500.html;
   client_max_body_size 4G;
   keepalive_timeout 10;
+
   ssl on;
-  ssl_certificate <%= fetch(:deploy_to) %>/shared/ssl_cert.crt;
-  ssl_certificate_key <%= fetch(:deploy_to) %>/shared/ssl_private_key.key;
+  ssl_certificate /etc/ssl/tueetion_com.crt;
+  ssl_certificate_key /etc/ssl/tueetion_com.key;
 }#
 <% end %>
