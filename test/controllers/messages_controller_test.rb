@@ -41,12 +41,4 @@ class MessagesControllerTest < ActionController::TestCase
 
     assert_redirected_to messages_path
   end
-
-  test "should redirect to index if there's no credit available" do
-    Center.any_instance.stubs(:credits).returns(nil)
-
-    get :new
-
-    assert_redirected_to messages_path
-  end
 end

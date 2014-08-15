@@ -16,15 +16,23 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     unless current_center.credit_balance > 0
-      redirect_to messages_path, alert: "You don't have any message credit in your account. Please contact support for further information."
-    else
-      @message = Message.new
+     flash.now.alert = "I'm sorry, but you don't have any message credit in your account.
+                        Please add some or contact us for further information."
     end
+
+    @message = Message.new
   end
 
   # POST /messages
   # POST /messages.json
   def create
+    unless current_center.credit_balance > 0
+      redirect_to messages_path, alert: "I'm sorry, but you don't have any message credit in your account.
+                                         Please add some or contact us for further information."
+
+      return
+    end
+
     # Build arrays of data
     arr = Array.new
     params[:student_ids].split(",").each do |id|
