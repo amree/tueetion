@@ -17,9 +17,9 @@
                 %th #
                 %th Center
                 %th.text-right
-                  Usage
+                  Balance (RM)
                 %th.text-right
-                  Balance
+                  Amount (RM)
                 %th
             %tbody
               - i = 0
@@ -29,11 +29,9 @@
                   %td
                     = credit.center.name
                   %td.text-right
-                    = credit.used
-                    \/
-                    = credit.amount
+                    = number_to_currency(credit.center.credit_balance, unit: '')
                   %td.text-right
-                    = credit.amount - credit.used
+                    = number_to_currency(credit.amount, unit: '')
                   %td.text-right
                     .btn-group
                       = link_to admin_credit_path(credit), class: "btn btn-default" do

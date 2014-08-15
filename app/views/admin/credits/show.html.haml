@@ -24,11 +24,9 @@
           %dd
             = @credit.center.name
           %dt
-            Used/Amount
+            Amount
           %dd
-            = @credit.used
-            \/
-            = @credit.amount
+            = number_to_currency(@credit.amount, locale: :ms)
 
           - @credit.transactions.each do |transaction|
 
@@ -45,8 +43,7 @@
             %dt
               Value
             %dd
-              RM
-              = number_with_precision transaction.value, precision: 2
+              = number_to_currency(transaction.value, locale: :ms)
             %dt
               Paid At
             %dd

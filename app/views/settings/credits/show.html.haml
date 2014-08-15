@@ -22,11 +22,9 @@
 
         %dl.dl-horizontal
           %dt
-            Usage
+            Amount
           %dd
-            = @credit.used
-            \/
-            = @credit.amount
+            = number_to_currency(@credit.amount, locale: :ms)
 
           - @credit.transactions.each do |transaction|
 

@@ -20,7 +20,7 @@
             %thead
               %th #
               %th Bought At
-              %th Usage
+              %th Amount
               %th
             %tbody
               - i = 0
@@ -31,9 +31,7 @@
                   %td
                     = credit.transactions.map { |t| l t.created_at }.join(',')
                   %td
-                    = credit.used
-                    \/
-                    = credit.amount
+                    = number_to_currency(credit.amount, locale: :ms)
                   %td.text-right
                     = link_to settings_credit_path(credit), class: "btn btn-default" do
                       %i.fa.fa-eye.fa-fw
