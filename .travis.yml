@@ -10,9 +10,7 @@ script:
   - bundle exec rake
 before_script:
   - cp config/deploy/shared/database.example.yml.erb config/database.yml
-  - cp config/deploy/shared/secrets.example.yml.erb config/secrets.example.yml
-  - sed "s/  secret_key_base:.*/  secret_key_base: 2385a8f57010e055c15733ed561ab3abf1b18bd4eb073886feba4b3fdc959a8c490c941591e41bf28efc59638034450c94ea9c16c5e9e918579d1874bf8f9f2a/g" config/secrets.example.yml > config/secrets.tmp.yml
-  - sed "s/  bugsnag_api:.*/  bugsnag_api: whatever/g" config/secrets.tmp.yml > config/secrets.yml
+  - cp config/secrets.travis.yml config/secrets.yml
   - mysql -e 'create database tueetion_test;'
 notifications:
   on_success: never
