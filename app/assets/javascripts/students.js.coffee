@@ -1,7 +1,7 @@
 ready =->
   if $('#student_dob').length
     $('#student_dob').datepicker
-      format: "dd/mm/yyyy"
+      format: "dd-mm-yyyy"
 
   $('#student_ic').blur ->
     if $('#student_ic').val().length == 12

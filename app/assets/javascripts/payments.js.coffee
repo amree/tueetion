@@ -3,7 +3,7 @@ ready =->
     $('#payment_paid_at').datepicker
       todayBtn: "linked"
       todayHighlight: true
-      format: "dd/mm/yyyy"
+      format: "dd-mm-yyyy"
 
     $('#payment_paid_at').datepicker 'setDate', new Date()
 

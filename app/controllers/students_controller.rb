@@ -8,7 +8,6 @@ class StudentsController < ApplicationController
   before_action :set_enrollable_id_selections, only: [:index]
 
   # GET /students
-  # GET /students.json
   def index
     @q = current_center.students.search params[:q]
 
@@ -16,7 +15,6 @@ class StudentsController < ApplicationController
   end
 
   # GET /students/1
-  # GET /students/1.json
   def show
     @payments = Payment.joins(bill: :student).where("students.id = ?", @student.id)
   end
@@ -28,46 +26,38 @@ class StudentsController < ApplicationController
 
   # GET /students/1/edit
   def edit
+    @student.dob = format_date_for_edit(@student.dob)
   end
 
   # POST /students
-  # POST /students.json
   def create
     @student = current_center.students.new(student_params)
 
-    respond_to do |format|
-      if @student.save
-        format.html { redirect_to @student, notice: 'Student was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @student }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
-      end
+    if @student.save
+      redirect_to @student, notice: 'Student was successfully created.'
+    else
+      @student.dob = format_date_for_edit(@student.dob)
+
+      render action: 'new'
     end
   end
 
   # PATCH/PUT /students/1
-  # PATCH/PUT /students/1.json
   def update
-    respond_to do |format|
-      if @student.update(student_params)
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
-      end
+    if @student.update(student_params)
+      redirect_to @student, notice: 'Student was successfully updated.'
+    else
+      @student.dob = format_date_for_edit(@student.dob)
+
+      render action: 'edit'
     end
   end
 
   # DELETE /students/1
-  # DELETE /students/1.json
   def destroy
     @student.destroy
-    respond_to do |format|
-      format.html { redirect_to students_url }
-      format.json { head :no_content }
-    end
+
+    redirect_to students_url
   end
 
   # POST /students/1/create_bill
@@ -119,6 +109,16 @@ class StudentsController < ApplicationController
     @enrollable_id_selections = Hash.new
     @enrollable_id_selections["Combination Fee"] = current_center.combination_fees.order(:name).collect { |q| [q.name, q.id] }
     @enrollable_id_selections["Quantity Fee"] = current_center.quantity_fees.order(:name).collect { |q| [q.name, q.id] }
+  end
+
+  protected
+
+  def format_date_for_edit(date)
+    if date.nil?
+      nil
+    else
+      date.strftime('%d-%m-%Y')
+    end
   end
 end
 
