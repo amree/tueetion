@@ -3,6 +3,8 @@ rvm:
   - 2.1.1
 env:
   - DB=mysql
+services:
+  - redis-server
 bundler_args: --without development production
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
