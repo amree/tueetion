@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+  - 2.1.1
+env:
+  - DB=mysql
+bundler_args: --without development production
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rake
+before_script:
+  - cp config/deploy/shared/database.example.yml.erb config/database.yml
+  - mysql -e 'create database tueetion_test;'
+notifications:
+  on_success: never

@@ -10,6 +10,7 @@ gem 'capistrano-rails', '~> 1.1.1'
 gem 'capistrano-rbenv', '~> 2.0.2'
 gem 'cocoon', '~> 1.2.1'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'coveralls', '~> 0.7.0', require: false
 gem 'devise', '~> 3.2.2'
 gem 'font-awesome-sass', '~> 4.1.0'
 gem 'haml-rails', '~> 0.4'
