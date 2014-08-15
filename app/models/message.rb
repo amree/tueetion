@@ -2,7 +2,6 @@
 class Message < ActiveRecord::Base
   belongs_to :center
   belongs_to :student
-  has_many :credit_usages
 
   before_validation :set_phone_code_and_number, if: "self.student.present?"
   before_validation :set_status_to_new, if: "self.new_record?"
