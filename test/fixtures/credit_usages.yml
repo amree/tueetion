@@ -1,7 +1,0 @@
-sent_message_usage:
-  message: sent_message
-  credit: credit_pakar
-
-processed_usage:
-  message: processed_message
-  credit: credit_pakar

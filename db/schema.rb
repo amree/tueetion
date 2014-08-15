@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718095745) do
+ActiveRecord::Schema.define(version: 20140815143505) do
 
   create_table "bill_items", force: true do |t|
     t.integer  "bill_id"
@@ -89,16 +89,6 @@ ActiveRecord::Schema.define(version: 20140718095745) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "credit_usages", force: true do |t|
-    t.integer  "message_id"
-    t.integer  "credit_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "credit_usages", ["credit_id"], name: "index_credit_usages_on_credit_id", using: :btree
-  add_index "credit_usages", ["message_id"], name: "index_credit_usages_on_message_id", using: :btree
 
   create_table "credits", force: true do |t|
     t.integer  "center_id"
