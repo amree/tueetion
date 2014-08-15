@@ -27,3 +27,6 @@
 
 # Ignore compiled assets
 /public/assets
+
+# Ignore generated outputs
+/coverage
