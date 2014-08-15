@@ -15,6 +15,7 @@ processed_message:
   phone_number: 0199171765
   content: "{{first_name}} {{last_name}} {{unpaid_amount}} {{unpaid_bill_count}}"
   processed_content: Muhammad Ali Muhammad Hassan 30.00 1
+  price: 0.1
   status: in progress
 
 
@@ -40,5 +41,5 @@ sent_message:
   phone_code: +60
   phone_number: 0199171765
   content: The message has already been sent
-  price: 0.027
+  price: 0.1
   status: sent

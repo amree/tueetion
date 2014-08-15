@@ -13,7 +13,7 @@ class Message < ActiveRecord::Base
   before_validation :validate_content
 
   after_create :enqueue_in_resque
-  after_update :destroy_credit_usages, if: "self.status_changed? && self.status == 'failed'"
+  after_update :reduce_credit_usage, if: "self.status_changed? && self.status == 'failed'"
 
   def full_phone_number
     phone_code + phone_number
@@ -62,9 +62,11 @@ class Message < ActiveRecord::Base
     end
   end
 
-  def destroy_credit_usages
-    self.credit_usages.each do |usage|
-      usage.destroy
+  def reduce_credit_usage
+    center = self.center
+    center.with_lock do
+      center.credit_balance += self.price
+      center.save!
     end
   end
 
