@@ -57,6 +57,7 @@ Tueetion::Application.routes.draw do
 
   resources :options, only: [:edit, :update]
 
+  match 'pricing',        to: 'fronts#pricing',        via: [:get]
   match 'privacy-policy', to: 'fronts#privacy_policy', via: [:get]
 
   namespace :public do
