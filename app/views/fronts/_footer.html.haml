@@ -1,0 +1,26 @@
+.about
+  .container
+    .row
+      .col-md-3.col-md-offset-1.about-nav
+        %strong Product
+        = link_to "Features", "#"
+        = link_to "Pricing", pricing_path
+        = link_to "Help &amp; Support", "#"
+      .col-md-3.about-nav
+        %strong Company
+        = link_to "Privacy", privacy_policy_path
+        = link_to "Terms"
+      .col-md-offset-2.col-md-3.about-nav
+        %strong Contacts
+        = link_to "mailto:hello@teetion.com" do
+          %i.fa.fa-envelope.fa-lg
+          hello@tueetion.com
+        = link_to "http://twitter.com/tueetion" do
+          %i.fa.fa-twitter.fa-lg
+          Twitter
+        = link_to "http://facebook/tueetion" do
+          %i.fa.fa-facebook-square.fa-lg
+          Facebook
+
+
+
