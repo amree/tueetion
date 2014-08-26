@@ -39,9 +39,12 @@ Tueetion::Application.routes.draw do
     resources :combination_item_fees, except: [:index, :show]
   end
 
-  get "dashboards/index"
+  get 'dashboards/index'
 
   get 'fronts/index'
+
+  match 'pricing',        to: 'fronts#pricing',        via: [:get]
+  match 'privacy-policy', to: 'fronts#privacy_policy', via: [:get]
 
   resources :groups, except: [:show]
 
@@ -56,9 +59,6 @@ Tueetion::Application.routes.draw do
   end
 
   resources :options, only: [:edit, :update]
-
-  match 'pricing',        to: 'fronts#pricing',        via: [:get]
-  match 'privacy-policy', to: 'fronts#privacy_policy', via: [:get]
 
   namespace :public do
     resources :students, only: [:show] do
