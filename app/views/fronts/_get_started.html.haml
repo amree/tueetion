@@ -4,6 +4,7 @@
       .col-md-12.text-center
         %span Get Started in 60 seconds
         = link_to "Try Tueetion Free", new_user_registration_path, class: "btn btn-lg btn-success"
-        %span Questions? hello@tueetion.com
+        - if show_contact ||= false
+          %span Questions? hello@tueetion.com
 
 
