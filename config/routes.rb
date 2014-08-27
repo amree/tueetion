@@ -43,6 +43,7 @@ Tueetion::Application.routes.draw do
 
   get 'fronts/index'
 
+  match 'about',          to: 'fronts#about',          via: [:get]
   match 'pricing',        to: 'fronts#pricing',        via: [:get]
   match 'privacy-policy', to: 'fronts#privacy_policy', via: [:get]
 
