@@ -12,7 +12,7 @@ gem 'cocoon', '~> 1.2.1'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'coveralls', '~> 0.7.0', require: false
 gem 'devise', '~> 3.3.0'
-gem 'font-awesome-sass', '~> 4.2.0'
+gem 'font-awesome-rails', '~> 4.2.0.0'
 gem 'haml-rails', '~> 0.4'
 gem 'highcharts-rails', '~> 4.0.1'
 gem 'hirb', '~> 0.7.1'
