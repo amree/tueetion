@@ -55,4 +55,13 @@ module ApplicationHelper
       var
     end
   end
+
+  def starting_row_number(current_page)
+   if current_page.blank?
+     current_page = 0
+   else
+     Kaminari.config.default_per_page * (Integer(current_page) - 1)
+   end
+  end
+
 end

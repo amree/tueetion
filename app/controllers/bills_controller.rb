@@ -7,7 +7,7 @@ class BillsController < ApplicationController
   def index
     @q = current_center.bills.by_latest.search params[:q]
 
-    @bills = @q.result
+    @bills = @q.result.page params[:page]
   end
 
   # GET /bills/1

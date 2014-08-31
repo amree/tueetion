@@ -36,7 +36,7 @@
                   Status
                 %th
             %tbody
-              - i = 0
+              - i = starting_row_number(params[:page])
               - @students.each do |student|
                 %tr
                   %td= i = i + 1
@@ -54,3 +54,4 @@
         - else
           No result.
 
+        = paginate @students

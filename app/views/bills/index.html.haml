@@ -35,7 +35,7 @@
                 %th Status
                 %th
             %tbody
-              - i = 0
+              - i = starting_row_number(params[:page])
               - @bills.each do |bill|
                 %tr
                   %td= i = i + 1
@@ -54,3 +54,5 @@
                       %i.fa.fa-eye.fa-fw
         - else
           No result.
+
+        = paginate @bills

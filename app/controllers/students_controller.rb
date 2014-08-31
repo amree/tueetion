@@ -11,7 +11,7 @@ class StudentsController < ApplicationController
   def index
     @q = current_center.students.search params[:q]
 
-    @students = @q.result(distinct: true)
+    @students = @q.result(distinct: true).page params[:page]
   end
 
   # GET /students/1

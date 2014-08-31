@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = current_center.messages.order("created_at DESC")
+    @messages = current_center.messages.order("created_at DESC").page params[:page]
   end
 
   # GET /messages/1
