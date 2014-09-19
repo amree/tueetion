@@ -404,8 +404,10 @@
   })();
 
   $(function() {
-    var options  = new LightboxOptions();
-    var lightbox = new Lightbox(options);
+    $(document).bind('page:change', function() {
+      var options  = new LightboxOptions();
+      var lightbox = new Lightbox(options);
+    });
   });
 
 }).call(this);
