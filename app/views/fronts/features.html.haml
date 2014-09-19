@@ -2,93 +2,111 @@
   .container
     .row
       .col-md-10.col-md-offset-1
-        %h4
-          = link_to 'Dashboard', asset_path('features/feature-dashboard.png'), { data: { lightbox: 'feature', title: 'Dashboard' } }
+        .media
+          = link_to asset_path('features/feature-dashboard.png'), class: 'pull-right', data: { lightbox: 'feature', title: 'Dashboard' } do
+            = image_tag asset_path('features/feature-dashboard-thumb.png'), class: 'media-object img-thumbnail'
 
-        %p
+          .media-body
+            %h4.media-heading
+              Dashboard
+
           You’ll get status overview of your entire business in one page. You can quickly inspect various data without clicking lots of links.
 
-          [insert gambar widget]
+        %hr
+
+        .media
+          = link_to asset_path('features/feature-data-entry.png'), class: 'pull-right', data: { lightbox: 'feature', title: 'Simple Data Entry' } do
+            = image_tag asset_path('features/feature-data-entry-thumb.png'), class: 'media-object img-thumbnail'
+
+          .media-body
+            %h4.media-heading
+              Simple Data Entry
+
+          Everyone dislike data entry. That's why we strive to make data entry as simple and quick as possible. You will only need to enter important fields.
 
         %hr
 
-        %h4
-          = link_to 'Simple Data Entry', asset_path('features/feature-data-entry.png'), { data: { lightbox: 'feature', title: 'Simpe Data Entry' } }
+        .media
+          = link_to asset_path('features/feature-bill.png'), class: 'pull-right', data: { lightbox: 'feature', title: 'Bill Management' } do
+            = image_tag asset_path('features/feature-bill-thumb.png'), class: 'media-object img-thumbnail'
 
-        %p
-          We strive to make data entry as simple and quick as possible. You will only need to enter important fields.
+          .media-body
+            %h4.media-heading
+              Bill Management
 
-          [partial of form masuk student]
-
-        %hr
-
-        %h4
-          = link_to 'Bill Management', asset_path('features/feature-bill.png'), { data: { lightbox: 'feature', title: 'Bill Management' } }
-
-        %p
           With bill management, everything related to bill can be accessed in one place. You can list, search, sort and many more with it.
 
-          [partial header of form]
-
         %hr
 
-        %h4
-          = link_to 'Print Output', asset_path('features/feature-print.png'), { data: { lightbox: 'feature', title: 'Print Output' } }
+        .media
+          = link_to asset_path('features/feature-print.png'), class: 'pull-right', data: { lightbox: 'feature', title: 'Print' } do
+            = image_tag asset_path('features/feature-print-thumb.png'), class: 'media-object img-thumbnail'
 
-        %p
+          .media-body
+            %h4.media-heading
+              Print
+
           You don’t have to worry about your paper billing. We have put together the functionality to print bill to A5 paper.
 
-          [partial PDF]
-
         %hr
 
-        %h4
-          = link_to 'SMS Messaging', asset_path('features/feature-sms.png'), { data: { lightbox: 'feature', title: 'SMS Messaging' } }
+        .media
+          = link_to asset_path('features/feature-sms.png'), class: 'pull-right', data: { lightbox: 'feature', title: 'SMS Messaging' } do
+            = image_tag asset_path('features/feature-sms-thumb.png'), class: 'media-object img-thumbnail'
 
-        %p
+          .media-body
+            %h4.media-heading
+              SMS Messaging
+
           You read it right! We got Short Messaging Service (SMS) integrated. No more typing phone number manually. All you have to is choose the student or you can even choose a group of student for faster messaging.
 
-          [partial from SMS list]
-
         %hr
 
-        %h4
-          = link_to 'SMS Template', asset_path('features/feature-template.png'), { data: { lightbox: 'feature', title: 'SMS Template' } }
+        .media
+          = link_to asset_path('features/feature-template.png'), class: 'pull-right', data: { lightbox: 'feature', title: 'SMS Template' } do
+            = image_tag asset_path('features/feature-template-thumb.png'), class: 'media-object img-thumbnail'
 
-        %p
+          .media-body
+            %h4.media-heading
+              SMS Template
+
           With our powerful SMS template editor, you can insert values such as name, remaining payment and others from Tueetion directly into your message.
 
-          [partial of sms editor]
-
         %hr
 
-        %h4
-          = link_to 'Multiple Reports', asset_path('features/feature-reports.png'), { data: { lightbox: 'feature', title: 'Multiple Reports' } }
+        .media
+          = link_to asset_path('features/feature-reports.png'), class: 'pull-right', data: { lightbox: 'feature', title: 'Multiple Reports' } do
+            = image_tag asset_path('features/feature-reports-thumb.png'), class: 'media-object img-thumbnail'
 
-        %p
+          .media-body
+            %h4.media-heading
+              Multiple Reports
+
           Using reports from Tueetion you can assess your business performance and plan for the future based on your past. This will significant in making sure you stay relevant and profit at the same time.
 
-          [menu Reports]
-
         %hr
 
-        %h4
-          = link_to 'Charts', asset_path('features/feature-charts.png'), { data: { lightbox: 'feature', title: 'Charts' } }
+        .media
+          = link_to asset_path('features/feature-charts.png'), class: 'pull-right', data: { lightbox: 'feature', title: 'Charts' } do
+            = image_tag asset_path('features/feature-charts-thumb.png'), class: 'media-object img-thumbnail'
 
-        %p
+          .media-body
+            %h4.media-heading
+              Charts
+
           What good reports without charts. Tueetion has prepared a lot of charts in proper places to ensure you can grasp information regarding your business easier and faster.
 
-          [partial pie chart]
-
         %hr
 
-        %h4
-          = link_to 'Customization', asset_path('features/feature-customization.png'), { data: { lightbox: 'feature', title: 'Customization' } }
+        .media
+          = link_to asset_path('features/feature-customization.png'), class: 'pull-right', data: { lightbox: 'feature', title: 'Customization' } do
+            = image_tag asset_path('features/feature-customization-thumb.png'), class: 'media-object img-thumbnail'
 
-        %p
+          .media-body
+            %h4.media-heading
+              Customization
+
           Most business has different needs. With that in mind, Tueetion allows you to customize it based on your business needs.
-
-          [partial of side menu in setup]
 
 = render 'fronts/get_started'
 = render 'fronts/footer'
