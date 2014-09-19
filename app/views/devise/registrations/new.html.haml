@@ -33,13 +33,13 @@
             = f.label :password_confirmation
             = f.password_field :password_confirmation, class: "form-control"
 
-          = f.submit "Sign Up", class: "btn btn-primary", :"data-disable-with" => "Signing up..."
-          %span.signup-agreement
+          .signup-agreement
             By clicking Sign Up you agree to the
             = link_to "Terms of Service", terms_of_service_path
             and
             = succeed "." do
               = link_to "Privacy Policy", privacy_policy_path
+          = f.submit "Sign Up", class: "btn btn-primary", :"data-disable-with" => "Signing up..."
 
 .row
   .col-md-4.col-md-offset-4
