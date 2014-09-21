@@ -30,3 +30,4 @@
 
 # Ignore generated outputs
 /coverage
+/.cap_tasks~
