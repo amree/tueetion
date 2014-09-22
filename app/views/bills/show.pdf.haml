@@ -3,12 +3,10 @@
   %head
     %title
       Bill
-    - if Rails.env.development?
-      = wicked_pdf_stylesheet_link_tag 'custom'
-    - else
-      = stylesheet_link_tag "application"
 
-  %body.container{ style: "background-color: white; padding-top: 0px;"}
+    = wicked_pdf_stylesheet_link_tag 'application'
+
+  %body.print.container{ style: "background-color: white; padding-top: 0px;"}
     .row
       .col-md-12
         .pull-right
