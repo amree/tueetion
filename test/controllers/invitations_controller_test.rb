@@ -26,12 +26,12 @@ class InvitationsControllerTest < ActionController::TestCase
       delete :destroy, id: @invitation
     end
 
-    assert_redirected_to invitations_path
+    assert_redirected_to staffs_path
   end
 
   test "should get reinvite" do
     get :reinvite, id: @invitation
 
-    assert_redirected_to invitations_path
+    assert_redirected_to staffs_path
   end
 end

@@ -34,7 +34,7 @@ class InvitationsController < ApplicationController
     @invitation.destroy
 
     respond_to do |format|
-      format.html { redirect_to invitations_path, notice: "Invitation was successfully deleted." }
+      format.html { redirect_to staffs_path, notice: "Invitation was successfully deleted." }
       format.json { head :no_content }
     end
   end
@@ -42,7 +42,7 @@ class InvitationsController < ApplicationController
   def reinvite
     UserMailer.invitation(@invitation).deliver
 
-    redirect_to invitations_path, notice: "Invitation was successfully resent."
+    redirect_to staffs_path, notice: "Invitation was successfully resent."
   end
 
   private

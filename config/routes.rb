@@ -51,7 +51,7 @@ Tueetion::Application.routes.draw do
 
   resources :groups, except: [:show]
 
-  resources :invitations, only: [:index, :new, :create, :destroy] do
+  resources :invitations, only: [:new, :create, :destroy] do
     member do
       get :reinvite
     end
