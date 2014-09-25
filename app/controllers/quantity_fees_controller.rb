@@ -15,7 +15,11 @@ class QuantityFeesController < ApplicationController
 
   # GET /quantity_fees/new
   def new
-    @quantity_fee = QuantityFee.new
+    if current_center.subjects.blank?
+      redirect_to subjects_path, alert: 'You need to define a subject before proceeding.'
+    else
+      @quantity_fee = QuantityFee.new
+    end
   end
 
   # GET /quantity_fees/1/edit
