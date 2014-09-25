@@ -22,3 +22,9 @@ sains:
   center: pakar
   name: Sains
   is_active: true
+
+sejarah:
+  center: kami
+  name: Sejarah
+  is_active: true
+
