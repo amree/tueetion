@@ -19,6 +19,18 @@
             %h2
               Enroll Subjects
 
+          - if @student.errors.any?
+            .alert.alert-danger.alert-dismissible{ role: "alert" }
+              %button.close{ :"data-dismiss" => "alert", type: "button" }
+                %span{ :"aria-hidden" => true } &times;
+                %span.sr-only Close
+              %strong
+                Error
+              %ul
+                - @student.errors.messages.each do |msg|
+                  %li
+                    = msg[1].join(',')
+
           = f.fields_for :quantity_fee_enrolls do |builder|
             = render "quantity_fee_enroll_fields", f: builder
 
