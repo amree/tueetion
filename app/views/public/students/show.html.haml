@@ -1,25 +1,40 @@
-.row
-  .col-md-12
-    .panel.panel-borderless
-      .panel-body
-        .section-title
-          %h2 Profile
+.public
+  .container
+    - if @student
+      .row
+        .col-md-12
+          .panel.panel-borderless
+            .panel-body
+              .section-title
+                %h2 Profile
 
-        .row
-          .col-md-12
-            %p
-              = status_label(@student.is_active)
-              &nbsp;
-              = @student.first_name
-              = @student.last_name
+              .row
+                .col-md-12
+                  %p
+                    = status_label(@student.is_active)
+                    &nbsp;
+                    = @student.first_name
+                    = @student.last_name
 
-    .panel.panel-borderless
-      .panel-body
-        .section-title
-          %h2 Bills
+          .panel.panel-borderless
+            .panel-body
+              .section-title
+                %h2 Bills
 
-        - if @student.bills.count > 0
-          = render 'bills', bills: @student.bills.by_latest, student: @student
-        - else
-          No bill yet.
+              - if @student.bills.count > 0
+                = render 'bills', bills: @student.bills.by_latest, student: @student
+              - else
+                No bill yet.
+    - else
+      .row
+        .col-md-12
+          .panel.panel-warning
+            .panel-heading
+              %h3.panel-title
+                Alert
+            .panel-body
+              %p
+                No student has been found with this URL. Please contact your learning center to verify the correct URL.
 
+              %p
+                = link_to "Back to Tueetion", root_path, class: "btn btn-primary"
