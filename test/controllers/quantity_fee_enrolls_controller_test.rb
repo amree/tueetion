@@ -19,6 +19,17 @@ class QuantityFeeEnrollsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:student)
   end
 
+  test "should be redirected to Quantity Fee setup when no fees defined" do
+    # TODO: Mock!
+    @ali.center.quantity_fees.each do |qf|
+      qf.delete
+    end
+
+    get :index, student_id: @ali
+
+    assert_redirected_to quantity_fees_path
+  end
+
   test "should create quantity_fee_enroll" do
     params = {
       "quantity_fee_enrolls_attributes" => {
