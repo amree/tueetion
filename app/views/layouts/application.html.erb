@@ -3,10 +3,10 @@
 <body>
   <% if current_user %>
     <% if current_user.access_level > User::OWNER_LEVEL %>
-    <%= render 'layouts/admin' %>
-  <% else %>
-    <%= render 'layouts/user' %>
-  <% end %>
+      <%= render 'layouts/admin' %>
+    <% else %>
+      <%= render 'layouts/user' %>
+    <% end %>
   <% else %>
     <%= render 'layouts/guest' %>
   <% end %>
