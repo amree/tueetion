@@ -20,7 +20,7 @@
                 %th Created At
                 %th
             %tbody
-              - i = 0
+              - i = starting_row_number(params[:page])
               - @centers.each do |center|
                 %tr
                   %td= i = i + 1
@@ -37,3 +37,4 @@
         - else
           No result.
 
+        = paginate @centers

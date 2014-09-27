@@ -3,7 +3,7 @@ class Admin::CentersController < ApplicationController
 
   # GET /admin/centers
   def index
-    @centers = Center.all
+    @centers = Center.order("created_at DESC").page params[:page]
   end
 
   # GET /admin/centers/1

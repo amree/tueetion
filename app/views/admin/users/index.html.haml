@@ -19,7 +19,7 @@
                 %th Registered At
                 %th
             %tbody
-              - i = 0
+              - i = starting_row_number(params[:page])
               - @users.each do |user|
                 %tr
                   %td= i = i + 1
@@ -39,3 +39,4 @@
         - else
           No result.
 
+        = paginate @users
