@@ -10,3 +10,8 @@ combo2:
   price: 10.00
   is_active: true
 
+combo_kami:
+  center: kami
+  name: Combo Kami
+  price: 80
+  is_active: true

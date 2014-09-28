@@ -2,12 +2,26 @@ class CombinationFeeEnroll < Enroll
   validates :student_id, uniqueness: { scope: [:enrollable_id, :enrollable_type] }
 
   before_validation :set_enrollable_type
+  validates :enrollable, presence: true
+  validate  :enrollable_should_be_from_same_center
   after_create :generate_enrolled_subjects
   after_update :regenerate_enrolled_subjects, if: "self.enrollable_id_changed?"
 
   def name
     enrollable.name
   end
+
+  def enrollable_should_be_from_same_center
+    unless self.enrollable.nil?
+      student_center_id = self.student.center.id
+      enroll_fee_center_id = self.enrollable.center.id
+
+      if student_center_id != enroll_fee_center_id
+        errors.add(:enrollable, "must be from the same center")
+      end
+    end
+  end
+
 
   protected
 

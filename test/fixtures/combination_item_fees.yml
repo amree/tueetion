@@ -10,3 +10,6 @@ combo2_math:
   combination_fee: combo2
   subject: math
 
+combo_kami_bm:
+  combination_fee: combo_kami
+  subject: bm_kami
