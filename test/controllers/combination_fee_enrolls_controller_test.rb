@@ -21,6 +21,17 @@ class CombinationFeeEnrollsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:student)
   end
 
+  test "should redirect to subject's path when no subject defined'" do
+    # TODO: Mock!
+    @ali.center.combination_fees.each do |combination_fee|
+      combination_fee.delete
+    end
+
+    get :index, student_id: @ali
+
+    assert_redirected_to combination_fees_path
+  end
+
   test "should insert new combination fee package to the student" do
     rand = Time.now.object_id.to_s
 

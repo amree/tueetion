@@ -3,6 +3,10 @@ class CombinationFeeEnrollsController < ApplicationController
   before_action :set_combination_fees
 
   def index
+    if current_center.combination_fees.blank?
+      redirect_to combination_fees_path, alert: 'You need to setup your Combination/Package Fees before proceeding.'
+    end
+
     unless @student.combination_fee_enrolls.size > 0
       @student.combination_fee_enrolls.build
     end
