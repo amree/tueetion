@@ -16,5 +16,4 @@ class Center < ActiveRecord::Base
   has_one  :option
 
   validates :name, presence: true
-  validates :name, uniqueness: true
 end
