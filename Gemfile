@@ -12,6 +12,7 @@ gem 'cocoon', '~> 1.2.1'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'coveralls', '~> 0.7.0', require: false
 gem 'devise', '~> 3.4.0'
+gem 'fancybox2-rails', '~> 0.2.8'
 gem 'font-awesome-rails', '~> 4.2.0.0'
 gem 'haml-rails', '~> 0.4'
 gem 'highcharts-rails', '~> 4.0.1'
