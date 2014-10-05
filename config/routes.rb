@@ -2,7 +2,7 @@ require "resque_web"
 
 Tueetion::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
 
   mount ResqueWeb::Engine => "/rq"
   ResqueWeb::Engine.eager_load!
