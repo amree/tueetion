@@ -33,7 +33,11 @@ class CentersController < ApplicationController
       option.time_zone = 'Kuala Lumpur'
       option.save
 
-      redirect_to @center, notice: 'Center was successfully created.'
+      msg = "Center was successfully created.
+             We recommend you to take a quick look our Getting Started.
+             Just click Help & Support to view it."
+
+      redirect_to @center, notice: msg
     else
       render action: 'new'
     end
