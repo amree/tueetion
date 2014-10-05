@@ -1,0 +1,378 @@
+.help
+  .container
+    .row
+      .col-md-8.col-md-offset-2
+        .well
+          %p
+            Hello :)
+          %p
+            We're still in the process refining our help. But current documentation
+            should help you up and running in no time. If you have more questions,
+            feel free to ask us at
+            = mail_to "hello@tueetion.com"
+
+        .panel
+          .panel-body
+            .section-title
+              %h2 Getting Started with Tueetion
+
+            %p
+              This guide will assume you've just set your center's name. You'll be
+              presented with this page after that. If you're not seeing this page,
+              just click <strong>Setup</strong> and then choose
+              <strong>Center</strong> from the navigation bar at the top.
+
+            %p.text-center
+              = image_tag "help/setup-center.png", class: "img-rounded"
+
+            %p
+              This is the main <strong>Setup</strong> page for
+              <strong>Center</strong>. You can see other options at the left menu.
+
+            %p
+              However, not all options need to be adjust right now. We'll just change
+              enough options to make sure your account usable.
+
+            .section-title
+              %h3 Subjects
+
+            %p
+              One of the most important thing you need to setup is your subjects.
+              Click <strong>Subjects</strong> on the left menu and you'll be
+              presented with this page:
+
+            %p.text-center
+              = image_tag "help/setup-subject.png", class: "img-rounded"
+
+            %p
+              Click the big blue <strong>New Subject</strong> button and you'll be
+              greeted with a page to create new subject.
+
+            %p
+              %strong Create New Subject
+
+            %p
+              Fill in the details to create new subject. The subject name should be
+              unique and make sure it's set to active. Otherwise, it won't be
+              available for use. Click <strong>Submit</strong> to create the new
+              subject. If everything goes well, you'll see page with the new subject
+              details. Click <strong>List</strong> to see all of your subjects.
+
+            %p.text-center
+              = image_tag "help/setup-subject-mathematic.png", class: "img-rounded"
+
+            .section-title
+              %h3 Fee
+
+            %p
+              Tueetion supports two types of fee structures. One of them is
+              <strong>Quantity Based Fee</strong>. If you're
+              charging your student based on how much subject he/she took, that
+              would be considered as Quantity Based Fee.
+
+            %p
+              For an example, you have a fee structure such as RM 10 for
+              Mathematic, RM 20 for Science or RM 30 for English.
+
+            %p
+              The other type of fee would be <strong>Combination Based Fee</strong>.
+              For this type of fee, you're charing based on combination of subjects
+              he/she took.
+
+            %p
+              For an example, Student B took a group of subjects such as English,
+              Mathematic, and Science and based on your fee structure, you'll charge
+              RM 40 for every 3 subjects he/she took. So, this will be considered as
+              <strong>Combination Based Fee</strong>.
+
+            %p
+              You don't have to worry if you don't understand it. We'll be happy to
+              help you, just send us an email at
+
+              = mail_to "hello@tueetion.com"
+
+              and send us along with your fee brochure and we'll get you sorted out
+              in no time.
+
+            %p
+              Assuming you understand, use the following guide to setup your fee
+              structure.
+
+            .section-title
+              %h3 Quantity Based Fee
+
+            %p
+              Click <strong>Quantity Based Fee</strong> on the left menu and then
+              click the <strong>New Quantity Fee</strong> button. You'll be presented
+              with a form just like below:
+
+            %p.text-center
+              = image_tag "help/setup-quantity-fee-form.png", class: "img-rounded"
+
+            %p
+              To create new a Quantity Fee:
+
+            %ol
+              %li
+                Fill in the <strong>Name</strong> for this Quantity Fee. For an
+                example, for Mathematic, I'll put <strong>Fee for
+                Mathematic</strong>. This is to ensure I'd recognize this fee when
+                I want to enroll a student with it.
+
+              %li
+                Choose the correct <strong>Subject</strong> (in this case, it'd be
+                the Mathematic).
+
+              %li
+                Put the correct price for this fee. After that, just click <strong>
+                Save</strong>.
+
+            %p
+              If everything goes well, you'll be presented wth a page info for the
+              subject you've just entered. Just like before, you can click
+              <strong>List</strong> to see all of your Quantity Fees.
+
+            .section-title
+              %h3 Combination Based Fee
+
+            %p
+              Click <strong>Combination Based Fee</strong> on the left menu and then
+              click the <strong>New Combination Fee</strong> button. You'll be
+              presented with a form just like below:
+
+            %p.text-center
+              = image_tag "help/setup-combination-fee-form.png", class: "img-rounded"
+
+            %p
+              To create a new Combination Based Fee:
+
+            %ol
+              %li
+                Enter the <strong>Name</strong> for this fee. Choose a good name so
+                that you can guess the subjects in this group. For example, I use
+                <strong>Challenging Subjects</strong>.
+
+              %li
+                Put the correct <strong>Price</strong> so that students enrolling
+                in this fee will billed correctly.
+
+              %li
+                After that, just click <strong>Save</strong>.
+
+            %p
+              If everything goes well, you'll be presented with a page to add
+              subjects into the group we've just created just like below:
+
+            %p.text-center
+              = image_tag "help/setup-combination-fee-items.png", class: "img-rounded"
+
+            %p
+              To add Subject to this group:
+
+            %ol
+              %li
+                Click big blue <strong>New Subject</strong> button.
+
+              %li
+                Fill in the form by selecting the correct <strong>Subject</strong>.
+
+              %li
+                Click <strong>Save</strong>.
+
+              %li
+                The list will be updated with the <strong>Subject</strong> you've
+                just entered. Add more subject if you wanto, usually it should be
+                more than just one since this a group.
+
+            %p
+              For an example, I've added Mathematic and Science for this group. This
+              is my current page for this group (notice the <strong>Combination Fee
+              Subjects</strong>):
+
+            %p.text-center
+              = image_tag "help/setup-combination-fee-with-items.png", class: "img-rounded"
+
+            %p
+              We're now ready to add our first student.
+
+            .section-title
+              %h3 Students
+
+            %p
+              To add new Student:
+
+            %ol
+              %li
+                Click <strong>Students</strong> in the main navigation bar (the
+                green bar).
+              %li
+                Click the big blue <strong>New Student</strong> button.
+              %li
+                You'll be greeted with a form with a lot of fields.
+              %li
+                You don't have to fill in everything, just make sure you enter the
+                <strong>Identity (IC), First Name, Last Name and Phone Number
+                </strong>.
+              %li
+                Click the big blue <strong>Save</strong> button.
+              %li
+                You'll get a page like below when you've succeeded.
+              %li
+                <strong>Pay attention</strong> to the button in the red box. That's
+                where you'll do actions for selected student.
+
+            %p.text-center
+              = image_tag "help/student-show.png", class: "img-rounded"
+
+            .section-title
+              %h3 Enrollment
+
+            %p
+              You can now do <strong>Subject</strong> or <strong>Package</strong>
+              enrollment for the selected student.
+
+              For an example, we'll just use the last student we've just created and
+              assign Subject for him. The steps for <strong>Subject</strong> or
+              <strong>Package</strong> are pretty much the same so I'll just show
+              you how to enroll him with <strong>Subject</strong> using image below:
+
+            %p.text-center
+              = image_tag "help/student-show-actions.png", class: "img-rounded"
+
+            %ol
+              %li
+                Click <strong>Subject Enrollment</strong>.
+              %li
+                You'll be presented with a page where you can add more <strong>
+                Subject</strong> by clicking the <strong>Add</strong> button on the
+                right.
+              %li
+                If you have more than one subject, you can select other subject by
+                choosing it from the drop down selection.
+              %li
+                If you wan to remove added subject, just click the red <strong>
+                Remove</strong> button.
+              %li
+                After you've done, just click <strong>Update Student</strong> to save
+                your selection.
+              %li
+                You'll be forwarded back to the student's main page with your subject
+                selections just like below:
+
+            %p.text-center
+              = image_tag "help/student-package-subject.png", class: "img-rounded"
+
+            %p
+              Feel free to update current selection by clicking <strong>Subject
+              Enrollment</strong> again.
+
+            %p
+              The steps for <strong>Package Enrollment</strong> is pretty much the
+              same.
+
+            .section-title
+              %h3 Bills
+
+            %p
+              When it's time for the student to pay for the bill, you need to
+              generate a bill for him. You can do this to all of your students with
+              just one click by going to <strong>Setup > Bulk Actions</strong>. This
+              is where you can do actions for all of your students with easy.
+
+            %p
+              Bills will be generated based on the student's enrollments. You can
+              also manually add extra bill items if you have to.
+
+            %p
+              To generate bill for all of your students, just click <strong>Run
+              </strong> in <strong>Create Bills</strong> panel just like below:
+
+            %p.text-center
+              = image_tag "help/bulk-create-bills.png", class: "img-rounded"
+
+            %p
+              However, if you just want to create bill for a particular student,
+              just go the student's main page and click <strong>Action</strong>
+              button and choose <strong>Generate Bill</strong> just like the picture
+              below:
+
+            %p.text-center
+              = image_tag "help/student-generate-bill.png", class: "img-rounded"
+
+            %p
+              With this method, only the bill for the particular student will be
+              generated. Bills for any student will appear at the bottom of the main
+              page for the student with status set as <strong>UNPAID</strong>. You
+              can see the following screenshot as an example.
+
+            %p.text-center
+              = image_tag "help/student-bills.png", class: "img-rounded"
+
+            %p
+              You can see the full details of the bill by clicking the <strong>Eye
+              </strong> icon on the right of the bill's row. You'll be forwarded to
+              the main page of the chosen bill just like below:
+
+            %p.text-center
+              = image_tag "help/bill.png", class: "img-rounded"
+
+            %p
+              Everything you need to do with the selected bill are available on the
+              same page. For an example:
+
+            %ul
+              %li
+                You can print the <strong>Bill</strong> by clicking the blue <strong>
+                Actions</strong> button and choose <strong>Print</strong>.
+              %li
+                You can add new bill item by clicking <strong>Add Bill Item</strong>.
+                This could be anything, you can even add discount for the student by
+                putting negative value in it.
+              %li
+                You can also cancel this bill by clicking <strong>Deactive Bill
+                </strong>.
+
+            .section-title
+              %h3 Payment
+
+            %p
+              Tueetion also has supports in recording Student's payment. After the
+              student has made full payment, the <strong>Bill</strong> will be
+              recorded as <strong>PAID</strong>. You can also record partial payment.
+
+            %p
+              To start adding payment, just click <strong>Add Payment</strong> from
+              the <strong>Actions</strong> button in the bill's main page. You see
+              the selection from the following image:
+
+            %p.text-center
+              = image_tag "help/bill-add-payment.png", class: "img-rounded"
+
+            %p
+              You'll be presented with a page where you can enter the amount of
+              payment. For an example, my student paid RM 20, so, you'll put RM 20
+              and select the date when the payment has been made just like the
+              following screenshot:
+
+            %p.text-center
+              = image_tag "help/bill-new-payment.png", class: "img-rounded"
+
+            %p
+              If you put full payment, the bill's status will be changed to <strong>
+              PAID</strong>. If there's no problem, you'll be redirected to the
+              Bill's main page where you can see all of the previous payment records.
+              You can see an example in the following screenshot:
+
+            %p.text-center
+              = image_tag "help/bill-paid.png", class: "img-rounded"
+
+            %p
+              That's it, you've just finished this guide. There are still a lot of
+              features not covered here, so be sure to check them out. If you have
+              any question, feel free to ask us at
+
+              = mail_to "hello@tueetion.com"
+
+            %p
+              Thanks for reading :)
+
