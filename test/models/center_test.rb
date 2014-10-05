@@ -13,9 +13,9 @@ class CenterTest < ActiveSupport::TestCase
     assert @dup.invalid?, "Name should not be nil"
   end
 
-  test "name should not be unique for " do
+  test "name should not be unique" do
     @dup = @pakar.dup
 
-    assert @dup.valid?, "Name should not be unique"
+    assert @dup.save, "Name should not be unique"
   end
 end
