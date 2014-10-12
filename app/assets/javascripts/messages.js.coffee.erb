@@ -46,28 +46,28 @@ ready =->
   input  = $('form#new_message div#message_student_ids')
   output = $('form#new_message input#student_ids')
 
-  $(input).select2
-    placeholder: "Search for students"
-    multiple: true
-    minimumInputLength: 3
-    ajax:
-      url: "/students.json"
-      dataType: "json"
-      data: (term, page) ->
-        q: { "first_name_or_last_name_cont": term }
+  if $(input).length > 0
+    $(input).select2
+      placeholder: "Search for students"
+      multiple: true
+      minimumInputLength: 3
+      ajax:
+        url: "/students.json"
+        dataType: "json"
+        data: (term, page) ->
+          q: { "first_name_or_last_name_cont": term }
 
-      results: (data, page) ->
-        results: data
+        results: (data, page) ->
+          results: data
 
-    formatSelection: (item) ->
-      item.first_name + " " + item.last_name
+      formatSelection: (item) ->
+        item.first_name + " " + item.last_name
 
-    formatResult: (item) ->
-      item.first_name + " " + item.last_name
+      formatResult: (item) ->
+        item.first_name + " " + item.last_name
 
-  $(input).on('change', (e) ->
-    $(output).val(e.val)
-  )
+    $(input).on 'change', (e) ->
+      $(output).val(e.val)
 
   # Template
   #
