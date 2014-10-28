@@ -1,6 +1,5 @@
 class CentersController < ApplicationController
-  before_action :check_center, except: [:new, :create]
-  before_action :set_center, only: [:show, :edit, :update, :destroy]
+  before_action :set_center
 
   layout "single", only: [:new, :create]
 
@@ -74,6 +73,7 @@ class CentersController < ApplicationController
                          The bills will be automatically shown when they're ready"
   end
 
+  # GET /center/deactivate_bills
   def deactivate_bills
     time = Time.zone.now.beginning_of_month
 
@@ -85,6 +85,18 @@ class CentersController < ApplicationController
                 notice: "Deactivating bills job has been queued.
                          The bills will be automatically marked as deactivated
                          when they're finished."
+  end
+
+  # GET /center/overdue_bills
+  def overdue_bills
+    current_center.bills.not_overdue.each do |bill|
+      Resque.enqueue(BillOverduerWorker, bill.id)
+    end
+
+    redirect_to bulks_centers_path,
+                notice: "This job has been queued.
+                         Every active, non paid bills will be marked as overdued
+                         when they're done."
   end
 
   private

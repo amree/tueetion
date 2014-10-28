@@ -31,6 +31,7 @@ Tueetion::Application.routes.draw do
       get :bulks
       get :create_bills
       get :deactivate_bills
+      get :overdue_bills
     end
     resources :branches, except: [:index, :show]
   end

@@ -21,7 +21,6 @@
         = link_to "Run", create_bills_centers_path, class: "btn btn-default" 
 
 
-  .col-md-9
     .panel.panel-default
       .panel-heading
         Deactivate Bills
@@ -29,4 +28,12 @@
         Deactivate bills for all of the active students in the current month.
       .panel-footer
         = link_to "Run", deactivate_bills_centers_path, class: "btn btn-default" 
+
+    .panel.panel-default
+      .panel-heading
+        Overdue Bills
+      .panel-body
+        Mark every active and non overdue bills to overdued bills.
+      .panel-footer
+        = link_to "Run", overdue_bills_centers_path, class: "btn btn-default" 
 

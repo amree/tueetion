@@ -7,6 +7,7 @@ class Bill < ActiveRecord::Base
   scope :active,    -> { where(is_active: true) }
   scope :unpaid,    -> { where(is_paid: false) }
   scope :overdue,   -> { where(is_overdue: true) }
+  scope :not_overdue, -> { where(is_overdue: false, is_paid: false, is_active: true )}
   scope :by_latest, -> { order("created_at desc") }
   scope :by_month,  ->(time) { where(created_at: time..time.end_of_month,
                                      is_active: true) }
