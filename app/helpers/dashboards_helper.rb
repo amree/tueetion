@@ -4,7 +4,7 @@ module DashboardsHelper
       Payment
         .joins(:bill)
         .where(
-          payments: { created_at: date..(date + 1) },
+          payments: { paid_at: date..(date + 1) },
           bills: { center_id: current_user.center_id } ).sum("payments.amount").to_f
     end
   end
