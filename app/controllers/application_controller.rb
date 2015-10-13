@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :set_google_analytics_id
   around_filter :set_time_zone
-  before_bugsnag_notify :add_user_info_to_bugsnag
 
   protected
 
@@ -71,17 +70,6 @@ class ApplicationController < ActionController::Base
     if current_user && current_center.nil?
       redirect_to new_center_path
     end
-  end
-
-  private
-  def add_user_info_to_bugsnag(notif)
-    notif.user = {
-      center_name: current_center.name,
-      center_id: current_center.id,
-      email: current_user.email,
-      name: current_user.full_name,
-      id: current_user.id
-    }
   end
 
   helper_method :current_center
