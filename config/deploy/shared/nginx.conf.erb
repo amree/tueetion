@@ -52,6 +52,7 @@ server {
   keepalive_timeout 10;
 
   ssl on;
+  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
   ssl_certificate /etc/ssl/tueetion_com.crt;
   ssl_certificate_key /etc/ssl/tueetion_com.key;
 }#
