@@ -5,7 +5,7 @@
     %li= link_to @student.first_name, @student
     %li.active Enroll Package
 
-= render 'layouts/flash_messages'
+= render 'layouts/flashes/flash_messages'
 
 = form_for @student, url: student_combination_fee_enrolls_path(@student), html: { class: "form-horizontal", role: "form" }, method: :post do |f|
 

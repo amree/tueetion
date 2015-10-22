@@ -5,7 +5,7 @@
       %strong Sign In
     .panel.panel-default
       .panel-body
-        = render 'layouts/flash_messages'
+        = render 'layouts/flashes/flash_messages'
 
         = form_for resource, :as => resource_name, :url => session_path(resource_name) do |f|
           .form-group
