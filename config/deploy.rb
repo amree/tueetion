@@ -6,7 +6,7 @@ set :deploy_user, 'amree'
 
 # setup repo details
 set :scm, :git
-set :repo_url, 'git@github.com:amree/tueetion.git'
+set :repo_url, 'git@gitlab.com:amree/tueetion.git'
 
 # setup rvm.
 set :rbenv_type, :user
