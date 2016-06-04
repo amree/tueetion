@@ -82,12 +82,11 @@ Tueetion::Application.configure do
   config.action_mailer.default_url_options = { :host => 'tueetion.com' }
 
   config.action_mailer.smtp_settings = {
-    :address   => "smtp.mandrillapp.com",
-    :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
-    :enable_starttls_auto => true, # detects and uses STARTTLS
-    :user_name => Rails.application.secrets.mandrill_username,
-    :password  => Rails.application.secrets.mandrill_password,
-    :authentication => 'login', # Mandrill supports 'plain' or 'login'
-    :domain => 'tueetion.com', # your domain to identify your server when conn
+    :address   => "smtp.sparkpostmail.com",
+    :port      => 587,
+    :enable_starttls_auto => true,
+    :user_name => Rails.application.secrets.sparkpost_username,
+    :password  => Rails.application.secrets.sparkpost_password,
+    :domain => 'tueetion.com',
   }
 end
